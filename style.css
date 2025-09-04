@@ -1,0 +1,50 @@
+body {
+  background: #99ccff; /* Old-school sky blue */
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: yellow;
+  padding: 20px;
+  border-bottom: 5px dotted red;
+}
+
+nav {
+  margin: 20px;
+}
+
+nav a {
+  background: lime;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 2px solid black;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background: pink;
+  color: blue;
+}
+
+.marquee {
+  background: purple;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.content {
+  padding: 20px;
+}
+
+footer {
+  background: black;
+  color: lime;
+  padding: 10px;
+  margin-top: 20px;
+}
