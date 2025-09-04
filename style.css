@@ -1,50 +1,64 @@
 body {
-  background: #99ccff; /* Old-school sky blue */
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  text-align: center;
+  background: #f4f1e8; /* parchment-like */
+  font-family: "Georgia", serif;
   margin: 0;
   padding: 0;
+  color: #2c2c2c;
 }
 
 header {
-  background: yellow;
-  padding: 20px;
-  border-bottom: 5px dotted red;
+  background: #d2b48c; /* tanned leather tone */
+  padding: 25px;
+  text-align: center;
+  border-bottom: 3px solid #a07855;
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  text-shadow: 1px 1px 2px #fff;
 }
 
 nav {
-  margin: 20px;
+  background: #e0d6c3;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 2px solid #c0a97a;
 }
 
 nav a {
-  background: lime;
-  padding: 10px 20px;
-  margin: 5px;
-  border: 2px solid black;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 8px 15px;
+  background: #f7f3eb;
+  border: 1px solid #a58a67;
+  border-radius: 5px;
   text-decoration: none;
-  color: black;
+  color: #2c2c2c;
   font-weight: bold;
+  box-shadow: inset 1px 1px 2px #fff, 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 nav a:hover {
-  background: pink;
-  color: blue;
-}
-
-.marquee {
-  background: purple;
-  color: white;
-  padding: 10px;
-  font-size: 18px;
+  background: #d6c7af;
 }
 
 .content {
-  padding: 20px;
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+  background: #fffdf7;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  margin-top: 30px;
 }
 
 footer {
-  background: black;
-  color: lime;
-  padding: 10px;
-  margin-top: 20px;
+  background: #d2b48c;
+  text-align: center;
+  padding: 15px;
+  border-top: 3px solid #a07855;
+  margin-top: 40px;
+  font-size: 14px;
 }
