@@ -3,72 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Al Maymunah</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Al-Maymunah</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      background: #fdfaf5;
+      color: #2f2419;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, #f6ecd6, #e5d5b8);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+    }
+
+    header img {
+      height: 60px;
+      object-fit: contain;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav .category {
+      position: relative;
+      font-size: 16px;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 6px 4px;
+    }
+
+    nav .category:hover .dropdown {
+      display: block;
+      animation: fadeIn .3s ease;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fffdf7;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      min-width: 220px;
+      z-index: 999;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 15px;
+      color: #3e2d20;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .dropdown a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown a:hover {
+      background: linear-gradient(90deg,#f3e9d6,#fffdf9);
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.08);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(6px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Layout */
+    .page {
+      display: flex;
+      margin-top: 90px; /* push below header */
+      padding: 20px;
+      gap: 22px;
+    }
+
+    /* Sidebar */
+    .left-embed {
+      width: 300px;
+      font-family: "Cormorant Garamond", serif;
+      color: #3e2d20;
+    }
+
+    .panel {
+      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .divider {
+      height: 1px;
+      margin: 14px 0;
+      background: linear-gradient(to right, transparent, rgba(90,70,50,0.3), transparent);
+    }
+
+    .section-title{
+      font-family: "Cinzel", serif;
+      font-weight:400;
+      color:#5b3a29;
+      font-size:15px;
+      margin-bottom:8px;
+      letter-spacing:.5px;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#d4a44b,#b48838);
+      color:#fff;
+      text-decoration:none;
+      font-size:13px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+    .badge:hover{ transform:translateY(-3px); transition:transform .18s ease; }
+
+    .quote {
+      font-style:italic;
+      color:#3b2a1a;
+      background: linear-gradient(180deg,#fffaf0,#f6ecd6);
+      border-radius:8px;
+      padding:12px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .small {
+      font-size:13px;
+      color:#6b4f3a;
+      margin-top:8px;
+    }
+
+    .source-link {
+      display:inline-block;
+      margin-top:8px;
+      padding:6px 10px;
+      font-size:13px;
+      background:#6d4c2f;
+      color:#fff;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .source-link:hover { background:#8a6543; }
+
+    /* Content */
+    .content {
+      flex: 1;
+      background: #fffdf9;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      padding: 24px;
+      line-height: 1.6;
+    }
+
+    .content h2 {
+      font-family: "Cinzel", serif;
+      margin-top: 0;
+      font-size: 24px;
+      color: #4a3627;
+    }
+
+    @media (max-width: 820px){
+      .page {flex-direction: column;}
+      .left-embed{ width:100%; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/almaymunah.gif" 
-         alt="Al Maymunah" class="site-logo">
+    <nav>
+      <div class="category">For Muslim & Muslimaah
+        <div class="dropdown">
+          <a href="#">Library</a>
+        </div>
+      </div>
+      <div class="category">Thaalib Al ʿIlm Guides
+        <div class="dropdown">
+          <a href="#">Advice & Tools</a>
+          <a href="#">For the Student of Knowledge</a>
+        </div>
+      </div>
+    </nav>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/almaymunah.gif?raw=true" alt="Al-Maymunah">
   </header>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="#">For Muslim & Muslimaah ▾</a>
-        <ul class="dropdown">
-          <li><a href="library.html">Library</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Thaalib al-ʿIlm ▾</a>
-        <ul class="dropdown">
-          <li><a href="student.html">For the Student of Knowledge</a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Layout -->
-  <div class="container">
-    <main>
-      <h2>Welcome to Al Maymunah</h2>
-      <p>
-        Bismillah. This is <strong>Al Maymunah</strong>, a humble digital corner
-        for beneficial knowledge, guidance, and timeless resources.
-      </p>
-    </main>
-
+  <div class="page">
     <!-- Sidebar -->
-    <aside class="right-sidebar">
-
-      <!-- search -->
-      <div class="panel">
-        <div class="search">
-          <input type="search" placeholder="Search books, topics..." aria-label="Search books">
-          <button aria-label="Search">&#128269;</button>
-        </div>
-        <div class="small" style="margin-top:8px;">Quickly find categories or titles</div>
-      </div>
-
+    <aside class="left-embed" aria-label="Sidebar">
       <!-- categories -->
       <div class="panel">
         <div class="section-title">Categories</div>
-        <div class="badges" role="list">
-          <a class="badge" href="#" role="listitem">Beginner</a>
-          <a class="badge" href="#" role="listitem">Manners</a>
-          <a class="badge" href="#" role="listitem">Poetry</a>
-          <a class="badge" href="#" role="listitem">Aqīdah & Tawheed</a>
-          <a class="badge" href="#" role="listitem">Fiqh</a>
-          <a class="badge" href="#" role="listitem">Tafsīr</a>
+        <div class="badges">
+          <a class="badge" href="#">Beginner</a>
+          <a class="badge" href="#">Manners</a>
+          <a class="badge" href="#">Poetry</a>
+          <a class="badge" href="#">Aqīdah & Tawheed</a>
+          <a class="badge" href="#">Fiqh</a>
+          <a class="badge" href="#">Tafsīr</a>
         </div>
+        <div class="divider"></div>
+        <div class="small">Explore topics of Islamic knowledge</div>
       </div>
 
       <!-- quote -->
@@ -81,11 +247,24 @@
           for the penalty of such has been set aside for the one who seeks that with his knowledge."
         </div>
         <div class="small">— <em>The Etiquette of Seeking Knowledge</em>, p.64</div>
-        <a class="source-link" href="https://darpdfs.org/storage/2023/02/The-Etiquette-of-Seeking-Knowledge-Sh.-Bakr-Aboo-Zayd.pdf#page=64" target="_blank">View Source (PDF)</a>
+        <a class="source-link" href="https://darpdfs.org/storage/2023/02/The-Etiquette-of-Seeking-Knowledge-Sh.-Bakr-Aboo-Zayd.pdf#page=64" target="_blank">📖 View Source (PDF)</a>
       </div>
-
     </aside>
-  </div>
 
+    <!-- Main content -->
+    <main class="content">
+      <h2>Welcome to Al-Maymunah</h2>
+      <p>
+        This is a simple Islamic-themed website designed with a subtle parchment look, 
+        skewmorphic touches, and dropdown navigation. 
+        You can expand the categories above to explore resources for Muslims, Muslimah, and 
+        students of knowledge.
+      </p>
+      <p>
+        The sidebar contains categories for quick browsing as well as a quote from the scholars 
+        reminding us of sincerity in seeking knowledge.
+      </p>
+    </main>
+  </div>
 </body>
 </html>
