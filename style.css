@@ -1,31 +1,72 @@
+/* General Page Style */
 body {
-  background: #f4f1e8;
-  font-family: "Georgia", serif;
   margin: 0;
-  padding: 0;
+  font-family: "Georgia", serif;
+  background: #f9f5ec;
   color: #2c2c2c;
 }
 
-/* Header */
+/* Sticky Header */
 header {
-  background: #d2b48c;
-  padding: 25px;
-  text-align: center;
-  border-bottom: 3px solid #a07855;
-  box-shadow: inset 0 -3px 6px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(145deg, #d4af37, #c9a032, #b38728);
+  box-shadow: inset 2px 2px 5px #fff5d6,
+              inset -2px -2px 5px #9c7c1f,
+              0 4px 8px rgba(0,0,0,0.3);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
+/* Logo */
+.site-logo {
+  height: 50px;
+  max-width: 200px;
+  object-fit: contain;
 }
 
-/* Navigation bar with skeuomorphic background */
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fdf6d5;
+  border: 2px solid #c6a84d;
+  border-radius: 25px;
+  padding: 5px 12px;
+  box-shadow: inset 2px 2px 5px #fff,
+              inset -2px -2px 5px #a88a36;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  padding-left: 8px;
+  color: #2c2c2c;
+}
+
+.search-bar input::placeholder {
+  color: #7a6a3d;
+}
+
+.search-bar button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #7a6a3d;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+/* Navigation */
 nav {
-  background: #e0d6c3;
-  padding: 12px 20px; /* padding for spacing */
-  border-bottom: 2px solid #c0a97a;
-  box-shadow: inset 0 2px 5px #fff, inset 0 -2px 5px #c7b8a5;
+  background: #1f2a36;
+  padding: 10px 30px;
 }
 
 nav ul {
@@ -33,80 +74,92 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-start; /* align to left */
+  gap: 20px;
 }
 
 nav ul li {
   position: relative;
-  margin-right: 20px; /* space between items */
 }
 
 nav a {
+  color: #f0e6c8;
   text-decoration: none;
-  color: #2c2c2c;
   font-weight: bold;
-  padding: 6px 0;
-  display: inline-block;
-  transition: color 0.2s ease-in-out;
+  padding: 5px 8px;
 }
 
-nav a:hover {
-  color: #5a3e1b;
+nav ul li:hover > a {
+  color: #ffd966;
 }
 
-/* Dropdown menu */
-nav ul li ul {
+.dropdown {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background: #f7f3eb;
+  background: #2c3945;
   padding: 10px;
-  border: 1px solid #a58a67;
-  border-radius: 6px;
-  box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 3px #c7b8a5, 2px 2px 6px rgba(0,0,0,0.2);
+  list-style: none;
+  border-radius: 5px;
 }
 
-nav ul li:hover ul {
+nav ul li:hover .dropdown {
   display: block;
 }
 
-nav ul li ul li {
-  display: block;
+.dropdown li {
   margin: 5px 0;
 }
 
-/* Content area */
-.content {
-  padding: 40px;
-  max-width: 800px;
-  margin: 30px auto;
-  background: #fffdf7;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-shadow: inset 2px 2px 5px #fff, inset -2px -2px 5px #c7b8a5, 0 4px 6px rgba(0,0,0,0.2);
+/* Layout */
+.container {
+  display: flex;
+  margin: 20px;
+  gap: 20px;
 }
 
-/* Recommended section */
-.recommended {
-  background: #efe7dc;
-  padding: 20px;
-  border: 2px solid #a58a67;
-  border-radius: 6px;
-  margin-top: 20px;
-  box-shadow: inset 2px 2px 5px #fff, inset -2px -2px 5px #c7b8a5;
-}
-.recommended h3 {
-  margin-top: 0;
-  color: #5a3e1b;
+/* Main content */
+main {
+  flex: 3;
 }
 
-/* Footer */
-footer {
-  margin-top: 30px;
+/* Sidebar */
+.sidebar {
+  flex: 1;
+  background: #fff8e1;
+  border: 2px solid #e0c97f;
   padding: 15px;
-  background: #d2b48c;
-  text-align: center;
-  border-top: 2px solid #a07855;
-  box-shadow: inset 0 2px 5px rgba(255,255,255,0.8), inset 0 -2px 5px rgba(0,0,0,0.2);
+  box-shadow: inset 2px 2px 5px #fff,
+              inset -2px -2px 5px #b8a24d;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  color: #4a3f1d;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 8px 0;
+}
+
+.sidebar a {
+  color: #2c2c2c;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 14px;
+  color: #5c4a1f;
+  border-left: 3px solid #c6a84d;
+  padding-left: 10px;
 }
