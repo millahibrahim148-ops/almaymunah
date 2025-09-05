@@ -13,6 +13,23 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Page intro overlay */
+    #intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 2000;
+      animation: fadeOut 1.5s ease forwards;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
     }
 
     /* Header */
@@ -24,32 +41,33 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease-in-out;
     }
     header.shrink {
-      padding: 15px 20px;
+      padding: 12px 20px;
     }
     header img {
       max-width: 400px;
       display: block;
       margin: 0 auto 20px;
-      border-radius: 0; /* no rounded corners */
-      box-shadow: none; /* remove shadow */
-      transition: max-width 0.3s ease, margin 0.3s ease;
+      border-radius: 0;
+      box-shadow: none;
+      transition: max-width 0.4s ease, margin 0.4s ease;
     }
     header.shrink img {
       max-width: 180px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     header h1 {
       font-family: "Amiri", serif;
       font-size: 38px;
       margin: 0;
       font-weight: 400;
-      transition: font-size 0.3s ease;
+      transition: font-size 0.4s ease, margin 0.4s ease;
     }
     header.shrink h1 {
       font-size: 26px;
+      margin-top: 5px;
     }
     header h2 {
       font-family: "Comic Sans MS", cursive, sans-serif;
@@ -57,7 +75,7 @@
       margin-top: 8px;
       font-weight: 400;
       color: #f3e9d6;
-      transition: font-size 0.3s ease, opacity 0.3s ease;
+      transition: font-size 0.4s ease, opacity 0.4s ease;
     }
     header.shrink h2 {
       font-size: 14px;
@@ -85,8 +103,8 @@
       max-width: 120px;
       display: block;
       margin: 0 auto 20px;
-      border-radius: 0; /* keep it square */
-      box-shadow: none; /* remove shadow */
+      border-radius: 0;
+      box-shadow: none;
     }
     .sidebar-section {
       margin-bottom: 20px;
@@ -101,7 +119,7 @@
     }
     .category-list a {
       display: block;
-      padding: 8px 0;
+      padding: 10px 0;
       font-size: 15px;
       text-decoration: none;
       color: #3e2d20;
@@ -176,19 +194,25 @@
       max-width: 200px;
       display: block;
       margin: 0 auto 12px;
-      border-radius: 0; /* keep square */
-      box-shadow: none; /* remove shadow */
+      border-radius: 0;
+      box-shadow: none;
     }
   </style>
 </head>
 <body>
+  <!-- Overlay intro -->
+  <div id="intro-overlay"></div>
+
+  <!-- Header -->
   <header id="main-header">
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
     <h1>Al Maymunah</h1>
     <h2>A place for beneficial knowledge</h2>
   </header>
 
+  <!-- Layout -->
   <div class="container">
+    <!-- Sidebar -->
     <aside>
       <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/unnamed.png?raw=true" alt="Logo" class="logo">
       <div class="sidebar-section">
@@ -203,6 +227,7 @@
       </div>
     </aside>
 
+    <!-- Main -->
     <main>
       <div class="welcome">
         <h2>Welcome to Al Maymunah</h2>
@@ -235,6 +260,7 @@
     </main>
   </div>
 
+  <!-- Footer -->
   <footer>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Footer">
     <p>Al Maymunah – Sharing beneficial knowledge with the ummah.</p>
@@ -245,7 +271,7 @@
     // Shrink header on scroll
     const header = document.getElementById('main-header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 60) {
         header.classList.add('shrink');
       } else {
         header.classList.remove('shrink');
