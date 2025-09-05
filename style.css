@@ -12,17 +12,17 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #d4af37; /* golden color */
+  background: #d4af37; /* golden */
   padding: 15px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px; /* taller header */
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15); /* subtle skeuomorphic effect */
+  height: 100px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .site-logo {
-  height: 80px;   /* bigger title */
+  height: 80px;
   max-width: 350px;
   object-fit: contain;
 }
@@ -52,7 +52,7 @@ nav ul li a {
   text-decoration: none;
   color: #222;
   font-size: 16px;
-  font-weight: 400; /* softer, not bold */
+  font-weight: 400;
 }
 
 nav ul li:hover {
@@ -61,21 +61,34 @@ nav ul li:hover {
 
 /* Dropdown */
 nav ul li ul.dropdown {
-  display: none;
+  display: block;
   position: absolute;
   background: #f3e9c9;
   border: 1px solid #c2a444;
   min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   z-index: 999;
 }
 
 nav ul li:hover ul.dropdown {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 nav ul li ul.dropdown li a {
   padding: 10px 14px;
   font-size: 15px;
+  display: block;
+  transition: background 0.2s ease;
+}
+
+nav ul li ul.dropdown li a:hover {
+  background: #e9ddba;
 }
 
 /* Layout */
