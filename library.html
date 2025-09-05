@@ -3,58 +3,414 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Islamic Library - Al Maymunah</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Al-Maymunah Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400&family=Cinzel&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      background: #fdfaf5;
+      color: #2f2419;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, #f6ecd6, #e5d5b8);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header img {
+      height: 110px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-family: "Scheherazade New", serif;
+      font-size: 32px;
+      margin: 8px 0 2px;
+      color: #3e2d20;
+      font-weight: 400;
+    }
+
+    header p {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 16px;
+      margin: 0;
+      color: #4a3627;
+    }
+
+    /* Layout */
+    .page {
+      display: flex;
+      margin-top: 210px; /* push below header */
+      padding: 20px;
+      gap: 22px;
+      flex: 1;
+    }
+
+    /* Sidebar */
+    .left-embed {
+      width: 300px;
+      font-family: "Cormorant Garamond", serif;
+      color: #3e2d20;
+    }
+
+    .left-embed img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .section-title{
+      font-family: "Cinzel", serif;
+      font-weight:400;
+      color:#5b3a29;
+      font-size:15px;
+      margin-bottom:8px;
+      letter-spacing:.5px;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#d4a44b,#b48838);
+      color:#fff;
+      text-decoration:none;
+      font-size:13px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+    .badge:hover{ transform:translateY(-3px); transition:transform .18s ease; }
+
+    .quote {
+      font-style:italic;
+      color:#3b2a1a;
+      background: linear-gradient(180deg,#fffaf0,#f6ecd6);
+      border-radius:8px;
+      padding:12px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .small {
+      font-size:13px;
+      color:#6b4f3a;
+      margin-top:8px;
+    }
+
+    .source-link {
+      display:inline-block;
+      margin-top:8px;
+      padding:6px 10px;
+      font-size:13px;
+      background:#6d4c2f;
+      color:#fff;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .source-link:hover { background:#8a6543; }
+
+    /* Content */
+    .content {
+      flex: 1;
+      background: #fffdf9;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      padding: 24px;
+      line-height: 1.6;
+    }
+
+    .content h2 {
+      font-family: "Cinzel", serif;
+      margin-top: 0;
+      font-size: 24px;
+      color: #4a3627;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(180deg, #e5d5b8, #f6ecd6);
+      margin-top: 20px;
+    }
+
+    footer img {
+      height: 70px;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #3e2d20;
+      margin: 0;
+    }
+
+    /* Book embed styles (from your code, adjusted) */
+    .book-embed {
+      display: flex;
+      align-items: flex-start;
+      background: #f8f4e9;
+      border: 2px solid #c8b48c;
+      border-radius: 12px;
+      padding: 20px;
+      width: 650px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      perspective: 1200px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      background-image: radial-gradient(circle at top left, #f9f5e8, #e8ddc3);
+      margin-bottom: 30px;
+    }
+
+    .book-embed:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .book {
+      width: 170px;
+      height: 240px;
+      position: relative;
+      margin-right: 25px;
+      perspective: 1500px;
+      cursor: pointer;
+    }
+
+    .cover {
+      width: 100%;
+      height: 100%;
+      background: url("https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1590430330i/53485362.jpg") center/cover no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 2px solid #6d4c2f;
+      border-radius: 5px;
+      transform-origin: left center;
+      transform: rotateY(0deg);
+      transition: transform 1.2s ease;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.4), 3px 0 10px rgba(0,0,0,0.5);
+      z-index: 3;
+    }
+
+    .back-cover {
+      width: 100%;
+      height: 100%;
+      background: url("https://img.freepik.com/premium-vector/dark-concrete-background-with-grunge-effect_278222-9641.jpg?w=360") center/cover no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 2px solid #6d4c2f;
+      border-radius: 5px;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      z-index: 1;
+    }
+
+    .pages {
+      width: 100%;
+      height: 100%;
+      background: url("https://imgv2-2-f.scribdassets.com/img/document/748566569/original/578523ae6f/1?v=1") center/cover no-repeat;
+      border: 2px solid #d9c7a4;
+      border-radius: 3px;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    .book.open .cover {
+      transform: rotateY(-60deg);
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #4b3621;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .categories {
+      margin-bottom: 12px;
+    }
+
+    .categories a {
+      display: inline-block;
+      margin: 3px 6px 3px 0;
+      padding: 5px 14px;
+      font-size: 13px;
+      text-decoration: none;
+      border-radius: 20px;
+      color: #fff;
+      background: #5c4033;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .categories a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .description {
+      font-size: 14px;
+      color: #3e2d20;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .buttons {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #6d4c2f;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn:hover {
+      background: #5c3c25;
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <form class="search-bar">
-      <input type="text" placeholder="Search..." aria-label="Search">
-      <button type="submit">&#128269;</button>
-    </form>
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/almaymunah.gif" 
-         alt="Al Maymunah" class="site-logo">
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Header">
+    <h1>Al-Maymunah</h1>
+    <p>Almaymunah Library collection of Benefical Books</p>
   </header>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="#">For Muslim & Muslimaah ▼</a>
-        <ul class="dropdown">
-          <li><a href="library.html">Library</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Thaalib al-ʿIlm ▼</a>
-        <ul class="dropdown">
-          <li><a href="student.html">For the Student of Knowledge</a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="page">
+    <!-- Sidebar -->
+    <aside class="left-embed" aria-label="Sidebar">
+      <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/unnamed.png?raw=true" alt="Sidebar Logo">
+      <div class="panel">
+        <div class="section-title">Categories</div>
+        <div class="badges">
+          <a class="badge" href="#">Beginner</a>
+          <a class="badge" href="#">Manners</a>
+          <a class="badge" href="#">Poetry</a>
+          <a class="badge" href="#">Aqīdah & Tawheed</a>
+          <a class="badge" href="#">Fiqh</a>
+          <a class="badge" href="#">Tafsīr</a>
+        </div>
+      </div>
 
-  <div class="container">
-    <main>
-      <h2>Islamic Library</h2>
-      <p>
-        Explore a growing collection of classical and contemporary works 
-        on Islam — including Qur’an studies, Hadith, Fiqh, Aqeedah, and more.
-      </p>
-    </main>
-
-    <aside class="sidebar">
-      <h3>Related</h3>
-      <ul>
-        <li><a href="student.html">For Students of Knowledge</a></li>
-      </ul>
+      <div class="panel">
+        <div class="section-title">Quote</div>
+        <div class="quote">
+          "Knowledge is not sought for amusement, but for guidance. It is light for the heart, and a path to Allah."
+        </div>
+        <div class="small">— Wisdom for the seeker</div>
+      </div>
     </aside>
+
+    <!-- Main content -->
+    <main class="content">
+      <h2>Library</h2>
+
+      <!-- Book embed -->
+      <div class="book-embed">
+        <div class="book" id="book">
+          <div class="cover"></div>
+          <div class="pages"></div>
+          <div class="back-cover"></div>
+        </div>
+        <div class="info">
+          <div class="title">Ta’iyyah of Abu Ishaq al-Ilbirī</div>
+          <div class="categories">
+            <a href="#">Beginner</a>
+            <a href="#">Advice</a>
+            <a href="#">Poetry</a>
+          </div>
+          <div class="description">
+            Written by the Andalusian scholar Abu Ishāq al-Ilbīrī, this Tā’iyyah addresses Abu Bakr with beneficial advice, reminders and admonitions. It seeks to soften the reader’s heart, awaken from heedlessness, and inspire striving for the Hereafter.
+          </div>
+          <div class="buttons">
+            <button class="btn" onclick="window.open('https://drive.google.com/file/d/1wZz_SoFfsZ5XDn-Rdf3Q3UT0pMRj9kaZ/view?usp=sharing','_blank')">
+              <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF"> View PDF
+            </button>
+            <audio controls>
+              <source src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/%5BCutted%20Poem%5D%20at-Ta%27iyyah%20%20Abu%20Ishaq%20al-Ilbeeri.mp4?raw=true" type="audio/mp4">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 
+  <footer>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Footer">
+    <p>&copy; 2025 Al-Maymunah Library. All rights reserved. Beneficial books for seekers of knowledge.</p>
+  </footer>
+
+  <script>
+    const book = document.getElementById('book');
+    let clickTimer = null;
+
+    book.addEventListener('click', () => {
+      if (clickTimer === null) {
+        clickTimer = setTimeout(() => {
+          book.classList.toggle('open');
+          clickTimer = null;
+        }, 300);
+      } else {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        window.open('https://drive.google.com/file/d/1wZz_SoFfsZ5XDn-Rdf3Q3UT0pMRj9kaZ/view?usp=sharing', '_blank');
+      }
+    });
+  </script>
 </body>
 </html>
