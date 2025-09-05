@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Al Maymunah</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -45,19 +46,44 @@
       </p>
     </main>
 
-    <aside class="sidebar">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="library.html">Islamic Library</a></li>
-        <li><a href="student.html">For Students of Knowledge</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
+    <!-- Sidebar -->
+    <aside class="right-sidebar">
 
-      <h3>Quote of the Day</h3>
-      <blockquote>
-        “Whoever travels a path in search of knowledge, Allah will make easy for him a path to Paradise.” 
-        <br>— Prophet Muhammad ﷺ
-      </blockquote>
+      <!-- search -->
+      <div class="panel">
+        <div class="search">
+          <input type="search" placeholder="Search books, topics..." aria-label="Search books">
+          <button aria-label="Search">&#128269;</button>
+        </div>
+        <div class="small" style="margin-top:8px;">Quickly find categories or titles</div>
+      </div>
+
+      <!-- categories -->
+      <div class="panel">
+        <div class="section-title">Categories</div>
+        <div class="badges" role="list">
+          <a class="badge" href="#" role="listitem">Beginner</a>
+          <a class="badge" href="#" role="listitem">Manners</a>
+          <a class="badge" href="#" role="listitem">Poetry</a>
+          <a class="badge" href="#" role="listitem">Aqīdah & Tawheed</a>
+          <a class="badge" href="#" role="listitem">Fiqh</a>
+          <a class="badge" href="#" role="listitem">Tafsīr</a>
+        </div>
+      </div>
+
+      <!-- quote -->
+      <div class="panel">
+        <div class="section-title">Quote</div>
+        <div class="quote">
+          Al-Khateeb said:<br><br>
+          "It is incumbent upon the seeker of knowledge to purify his intention in seeking knowledge, and it should be achieving the pleasure of Allah. 
+          He should beware of making it a way to achieve materialistic gain, and a way of gaining [worldly] compensation; 
+          for the penalty of such has been set aside for the one who seeks that with his knowledge."
+        </div>
+        <div class="small">— <em>The Etiquette of Seeking Knowledge</em>, p.64</div>
+        <a class="source-link" href="https://darpdfs.org/storage/2023/02/The-Etiquette-of-Seeking-Knowledge-Sh.-Bakr-Aboo-Zayd.pdf#page=64" target="_blank">View Source (PDF)</a>
+      </div>
+
     </aside>
   </div>
 
