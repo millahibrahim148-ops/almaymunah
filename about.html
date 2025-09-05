@@ -2,29 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Al Maymunah</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
-    <h1>About Al Maymunah</h1>
+    <form class="search-bar">
+      <input type="text" placeholder="Search..." aria-label="Search">
+      <button type="submit">🔍</button>
+    </form>
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/almaymunah.gif" 
+         alt="Al Maymunah" class="site-logo">
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li>
+        <a href="#">For Muslim & Muslimaah ▼</a>
+        <ul class="dropdown">
+          <li><a href="library.html">📚 Library</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Thaalib al-ʿIlm ▼</a>
+        <ul class="dropdown">
+          <li><a href="student.html">🖋️ For the Student of Knowledge</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">ℹ️ About</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+    </ul>
   </nav>
 
-  <div class="content">
-    <h2>About</h2>
-    <p><b>Al Maymunah</b> is a personal web project that mixes retro charm with a skeuomorphic design style.</p>
-    <p>Think of it like an old leather-bound book on the web — a little nostalgic, but still neat and functional.</p>
+  <div class="container">
+    <main>
+      <h2>ℹ️ About Al Maymunah</h2>
+      <p>
+        Al Maymunah is a project dedicated to making Islamic resources more accessible,
+        providing a space for Muslims to study, reflect, and benefit.
+      </p>
+    </main>
+
+    <aside class="sidebar">
+      <h3>🌿 Mission</h3>
+      <p>To spread beneficial knowledge with sincerity and simplicity.</p>
+    </aside>
   </div>
 
-  <footer>
-    <p>Designed with care and simplicity ✨</p>
-  </footer>
 </body>
 </html>
-
