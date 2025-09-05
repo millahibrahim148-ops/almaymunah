@@ -1,52 +1,107 @@
-/* Sticky Header */
+/* General */
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: #fdfbf6;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Header */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #d4af37; /* solid golden yellow */
-  padding: 20px 40px;  /* bigger padding for perfect size */
+  background: #d4af37; /* golden color */
+  padding: 15px 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 80px; /* fixed height for perfection */
+  justify-content: center;
+  height: 100px; /* taller header */
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15); /* subtle skeuomorphic effect */
 }
 
-/* Logo */
 .site-logo {
-  height: 55px; /* slightly bigger for balance */
-  max-width: 220px;
+  height: 80px;   /* bigger title */
+  max-width: 350px;
   object-fit: contain;
 }
 
-/* Search bar */
-.search-bar {
+/* Navigation */
+nav {
+  background: #f3e9c9;
+  border-top: 2px solid #c2a444;
+  border-bottom: 2px solid #c2a444;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  background: #fffbea;
-  border: 2px solid #c6a84d;
-  border-radius: 25px;
-  padding: 6px 14px;
+  justify-content: center;
 }
 
-.search-bar input {
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: "Georgia", serif;
-  font-size: 15px;
-  padding-left: 8px;
-  color: #2c2c2c;
+nav ul li {
+  position: relative;
 }
 
-.search-bar input::placeholder {
-  color: #7a6a3d;
-}
-
-.search-bar button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: #7a6a3d;
+nav ul li a {
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: #222;
   font-size: 16px;
-  margin-left: 5px;
+  font-weight: 400; /* softer, not bold */
+}
+
+nav ul li:hover {
+  background: #e4d7aa;
+}
+
+/* Dropdown */
+nav ul li ul.dropdown {
+  display: none;
+  position: absolute;
+  background: #f3e9c9;
+  border: 1px solid #c2a444;
+  min-width: 200px;
+  z-index: 999;
+}
+
+nav ul li:hover ul.dropdown {
+  display: block;
+}
+
+nav ul li ul.dropdown li a {
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Main content */
+main {
+  flex: 3;
+  padding-right: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 1;
+  background: #fffdfa;
+  border-left: 2px solid #e0d3a1;
+  padding: 15px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-weight: 500;
 }
