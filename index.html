@@ -5,113 +5,198 @@
   <title>Al Maymunah - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin:0; padding:0;
-      font-family:"Cormorant Garamond", serif;
-      background:#fdfbf6;
-      color:#2f2f2f;
+      font-family: "Cormorant Garamond", serif;
+      background: #fdfbf6;
+      color: #2f2f2f;
+      line-height: 1.6;
     }
+
     header {
-      text-align:center;
-      padding:35px 20px;
-      background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
-      border-bottom:1px solid #c8b48c;
-      box-shadow:inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      text-align: center;
+      padding: 35px 20px;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      border-bottom: 1px solid #c8b48c;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
     }
-    header img { max-width:320px; margin:0 auto 12px; display:block; }
+    header img {
+      max-width: 320px;
+      display: block;
+      margin: 0 auto 12px auto;
+    }
     header h1 {
-      font-family:"Amiri",serif;
-      font-size:34px;
-      color:#3a2b1a;
+      font-family: "Amiri", serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: #3a2b1a;
     }
     header p {
-      font-size:15px;
-      color:#5c4b36;
-      margin-top:8px;
+      font-size: 16px;
+      color: #5c4b36;
+      margin-top: 8px;
+      display: inline-block;
     }
+    header .verse-link {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 14px;
+      color: #3a2b1a;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    header .verse-link:hover {
+      color: #8a6d3b;
+    }
+
     .container {
-      display:flex;
-      max-width:1100px;
-      margin:30px auto;
-      padding:0 20px;
-      gap:24px;
+      display: flex;
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      gap: 24px;
     }
+
+    /* Sidebar */
     aside {
-      width:260px;
-      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
-      border:1px solid rgba(0,0,0,0.08);
-      border-radius:12px;
-      padding:18px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-      height:fit-content;
+      width: 260px;
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      height: fit-content;
     }
     aside h3 {
-      font-size:18px;
-      margin-bottom:12px;
-      color:#4b3621;
-      border-bottom:1px solid #d9c7a4;
-      padding-bottom:5px;
-      font-family:"Amiri",serif;
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #4b3621;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+      font-family: "Amiri", serif;
+    }
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
     }
     .sidebar-links a {
-      display:block;
-      padding:10px 12px;
-      margin-bottom:6px;
-      background:linear-gradient(180deg,#fdfbf6,#efe3cd);
-      border:1px solid #d9c7a4;
-      border-radius:8px;
-      color:#3a2b1a;
-      text-decoration:none;
-      font-size:15px;
-      transition:background 0.2s, transform 0.15s;
+      display: block;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 8px;
+      color: #3a2b1a;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      transition: background 0.2s, transform 0.15s;
     }
-    .sidebar-links a:hover { background:#f7e8c9; transform:translateX(3px); }
+    .sidebar-links a:hover {
+      background: #f7e8c9;
+      transform: translateX(3px);
+    }
+
     main {
-      flex:1;
-      background:#fffdf9;
-      padding:30px;
-      border:1px solid #e4d8c2;
-      border-radius:10px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.08);
+      flex: 1;
+      background: #fffdf9;
+      padding: 20px;
+      border: 1px solid #e4d8c2;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
-    main h2 {
-      font-family:"Amiri",serif;
-      font-size:26px;
-      margin-bottom:18px;
-      color:#3a2b1a;
+    .welcome {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .welcome h2 {
+      font-family: "Amiri", serif;
+      font-size: 28px;
+      color: #3a2b1a;
     }
     .article-preview {
-      background:#fff8d6;
-      border:1px solid #e4d8c2;
-      border-radius:10px;
-      padding:16px;
-      margin-top:20px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.08);
+      background: #fff8e1;
+      border-left: 4px solid #e0c266;
+      padding: 16px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
     .article-preview h3 {
-      margin:0 0 10px;
-      font-family:"Amiri",serif;
-      color:#4b3621;
+      font-family: "Amiri", serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #3a2b1a;
     }
-    .article-preview p { margin-bottom:12px; }
+    .article-preview p {
+      font-size: 15px;
+      color: #4a3a27;
+    }
     .article-preview a {
-      display:inline-block;
-      background:#f7e8c9;
-      padding:8px 14px;
-      border-radius:8px;
-      text-decoration:none;
-      color:#3a2b1a;
-      font-weight:500;
-      transition:0.2s;
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #8a6d3b;
+      text-decoration: underline;
     }
-    .article-preview a:hover { background:#ecd9b2; }
+    .article-preview a:hover {
+      color: #3a2b1a;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .modal-content {
+      background: #fffdf9;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #d9c7a4;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: scaleIn 0.4s ease forwards;
+    }
+    .close-btn {
+      color: #3a2b1a;
+      float: right;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      color: #8a6d3b;
+    }
+
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes scaleIn { from {transform: scale(0.8);} to {transform: scale(1);} }
+    @keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
+    @keyframes scaleOut { from {transform: scale(1);} to {transform: scale(0.8);} }
+
+    /* Highlight */
+    .highlight {
+      background: linear-gradient(to left, #f9e6a2 100%, transparent 0);
+      background-size: 200% 100%;
+      background-position: right;
+      transition: background-position 2.5s ease-in-out;
+    }
+    .highlight.active {
+      background-position: left;
+    }
+
     footer {
-      text-align:center;
-      padding:20px;
-      margin-top:40px;
-      border-top:1px solid #e4d8c2;
-      font-size:14px;
-      color:#5c4b36;
+      text-align: center;
+      margin: 30px 0 20px;
+      font-size: 14px;
+      color: #6a5a44;
     }
   </style>
 </head>
@@ -119,7 +204,10 @@
   <header>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Maktabat Al Maymunah">
     <h1>Al Maymunah</h1>
-    <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
+    <p>
+      Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah
+      <span class="verse-link" id="openModal">(58:11) Al-Mujādilah 11 – "Allāh will raise those who have believed among you and those who were given knowledge, by degrees"</span>
+    </p>
   </header>
 
   <div class="container">
@@ -128,30 +216,84 @@
       <div class="sidebar-links">
         <a href="index.html">Home</a>
         <a href="library.html">Library</a>
-        <a href="article.html">Article</a>
+        <a href="a-student-guide-to-note-taking-review.html">📂 Article</a>
         <a href="#">Audio</a>
         <a href="#">About</a>
       </div>
     </aside>
 
     <main>
-      <h2>Welcome to Al Maymunah</h2>
-      <p>A place for beneficial books, guidance, and articles for students of knowledge.</p>
-
-      <div class="article-preview">
-        <h3>A Student’s Guide to Note-Taking & Review</h3>
-        <p>
-          A question was asked to a brother regarding how one can effectively take notes and review 
-          as a student of knowledge — especially when struggling with excessive highlighting.  
-          In this article, practical advice is shared on how to capture, review, and retain knowledge.
-        </p>
-        <a href="a-student-guide-to-note-taking-review.html">📖 Read Full Article</a>
+      <div class="welcome">
+        <h2>Welcome to Al Maymunah</h2>
+        <p>A place for beneficial books, guidance, and articles for students of knowledge.</p>
       </div>
+
+      <section class="article-preview">
+        <h3>📖 A Student’s Guide to Note-Taking & Review</h3>
+        <p>A practical answer to a student asking about excessive highlighting and struggling with effective note-taking. 
+        The article explains how to balance reading, summarizing, and reviewing to maximize benefit and retention in the path of seeking knowledge.</p>
+        <a href="a-student-guide-to-note-taking-review.html">Read full article →</a>
+      </section>
     </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="quranModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h3>(58:11) Surah Al-Mujādilah</h3>
+      <p style="font-family: 'Amiri', serif; font-size: 20px; direction: rtl; text-align: right;">
+        يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قِيلَ لَكُمْ تَفَسَّحُوا۟ فِى ٱلْمَجَـٰلِسِ فَٱفْسَحُوا۟ يَفْسَحِ ٱللَّهُ لَكُمْ ۖ وَإِذَا قِيلَ ٱنشُزُوا۟ فَٱنشُزُوا۟ يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَـٰتٍۢ ۚ وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ ١١
+      </p>
+      <p><em>Translation (Dr. Mustafa Khattab):</em><br>
+        O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. And if you are told to rise, then do so. 
+        <span id="highlightText">Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. And Allah is All-Aware of what you do.</span>
+      </p>
+      <p><a href="https://quran.com/al-mujadila/11" target="_blank">(Read on Quran.com)</a></p>
+      <audio id="quranAudio">
+        <source src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/058%20verse%2011.mp3?raw=true" type="audio/mp3">
+      </audio>
+    </div>
   </div>
 
   <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
+
+  <script>
+    const modal = document.getElementById("quranModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+    const audio = document.getElementById("quranAudio");
+    const highlightText = document.getElementById("highlightText");
+
+    openBtn.onclick = () => {
+      modal.style.display = "block";
+      audio.currentTime = 0;
+      audio.play();
+
+      highlightText.classList.remove("highlight", "active");
+
+      audio.ontimeupdate = () => {
+        if (audio.currentTime >= 17) {
+          highlightText.classList.add("highlight");
+          setTimeout(() => highlightText.classList.add("active"), 100);
+        }
+      };
+    };
+
+    closeBtn.onclick = () => {
+      modal.style.animation = "fadeOut 0.3s forwards";
+      modal.querySelector(".modal-content").style.animation = "scaleOut 0.3s forwards";
+      setTimeout(() => {
+        modal.style.display = "none";
+        modal.style.animation = "fadeIn 0.4s ease forwards";
+        modal.querySelector(".modal-content").style.animation = "scaleIn 0.4s ease forwards";
+        audio.pause();
+      }, 300);
+    };
+
+    window.onclick = (e) => { if (e.target == modal) closeBtn.onclick(); };
+  </script>
 </body>
 </html>
