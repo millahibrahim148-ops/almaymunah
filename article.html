@@ -2,166 +2,175 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Article - Al-Maymunah</title>
+  <title>Al Maymunah - Articles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: "Georgia", serif;
-      background: #fdfaf3;
-      color: #2e2e2e;
+      font-family: "Cormorant Garamond", serif;
+      background: #fdfbf6;
+      color: #2f2f2f;
+      line-height: 1.6;
     }
 
     /* Header */
     header {
-      background: linear-gradient(145deg, #f0e2c4, #e0cda9);
-      padding: 20px;
       text-align: center;
-      box-shadow: inset 4px 4px 8px #cbb897, inset -4px -4px 8px #fff6e5;
+      padding: 35px 20px;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      border-bottom: 1px solid #c8b48c;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
     }
-
     header img {
-      max-height: 100px;
+      max-width: 300px;
       display: block;
-      margin: 0 auto 10px auto;
+      margin: 0 auto 12px auto;
     }
-
     header h1 {
-      font-size: 2.2em;
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: normal;
+      font-family: "Amiri", serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: #3a2b1a;
     }
 
-    /* Search bar */
-    .search-bar {
-      margin-top: 15px;
-    }
-
-    .search-bar input {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 8px;
-      width: 60%;
-      font-size: 15px;
-      box-shadow: inset 3px 3px 6px #cbb897, inset -3px -3px 6px #fff6e5;
-    }
-
-    /* Article container */
     .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fffaf0;
+      display: flex;
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      gap: 24px;
+    }
+
+    /* Sidebar */
+    aside {
+      width: 260px;
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.15), -4px -4px 12px rgba(255,255,255,0.7);
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      height: fit-content;
     }
-
-    .meta {
-      font-size: 0.9em;
-      color: #555;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #d9c9a9;
-      padding-bottom: 8px;
+    aside h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #4b3621;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+      font-family: "Amiri", serif;
     }
-
-    .meta span {
-      display: inline-block;
-      margin-right: 15px;
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
     }
-
-    article h2 {
-      margin-top: 0;
-      font-family: "Cormorant Garamond", serif;
-    }
-
-    /* Share button */
-    .share-btn {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 10px 18px;
-      background: #d4b483;
-      color: #fff;
-      border: none;
+    .sidebar-links a {
+      display: block;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
       border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
-      transition: background 0.3s;
+      color: #3a2b1a;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .sidebar-links a:hover {
+      background: #f7e8c9;
+      transform: translateX(3px);
     }
 
-    .share-btn:hover {
-      background: #c39a5f;
+    /* Main content */
+    main {
+      flex: 1;
+      background: #fffdf9;
+      padding: 20px;
+      border: 1px solid #e4d8c2;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .articles-section {
+      margin-bottom: 30px;
+    }
+    .articles-section h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #4b3621;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+      font-family: "Amiri", serif;
+    }
+    .article-links a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 8px;
+      color: #3a2b1a;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .article-links a:hover {
+      background: #f7e8c9;
+      transform: translateX(3px);
+    }
+    .article-links img {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
     }
 
     footer {
-      margin-top: 50px;
-      padding: 20px;
       text-align: center;
-      font-size: 0.9em;
-      background: #f0e2c4;
-      box-shadow: inset 2px 2px 6px #cbb897, inset -2px -2px 6px #fff6e5;
+      padding: 20px;
+      border-top: 1px solid #d9c7a4;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      margin-top: 40px;
+      font-size: 14px;
+      color: #6b5a45;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/almaymunah.gif?raw=true" alt="Al-Maymunah Logo">
-    <h1>Al-Maymunah</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search articles...">
-    </div>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/almaymunah.gif?raw=true" alt="Al Maymunah Title">
+    <h1>Articles</h1>
   </header>
 
   <div class="container">
-    <div class="meta">
-      <span id="date"></span>
-      <span>Uploader: Al-Maymunah</span>
-    </div>
+    <aside>
+      <h3>Navigation</h3>
+      <div class="sidebar-links">
+        <a href="index.html">Home</a>
+        <a href="library.html">Library</a>
+        <a href="articles.html">Articles</a>
+        <a href="#">Audio</a>
+        <a href="#">About</a>
+      </div>
+    </aside>
 
-    <article>
-      <h2>Sample Article Title</h2>
-      <p>
-        This is the content of your article. You can place your Islamic writings, research, or reminders here.
-      </p>
-      <p>
-        Knowledge is life for the hearts, light for the eyes, and strength for the souls.
-      </p>
-    </article>
-
-    <button class="share-btn" onclick="shareArticle()">Share this Article</button>
+    <main>
+      <div class="articles-section">
+        <h3>Latest Articles</h3>
+        <div class="article-links">
+          <a href="a-student-guide-to-note-taking-review.html">
+            A Student of Knowledge's Guide to Effective Note-Taking and Review
+            <img src="https://freesvg.org/img/Folder-1.png" alt="Folder Icon">
+          </a>
+        </div>
+      </div>
+    </main>
   </div>
 
   <footer>
-    <p>&copy; 2025 Al-Maymunah. All rights reserved.</p>
+    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Hijri date
-    function getHijriDate() {
-      const today = new Date();
-      const hijri = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      }).format(today);
-      return hijri;
-    }
-    document.getElementById("date").innerText = "Date: " + getHijriDate();
-
-    // Share button
-    function shareArticle() {
-      const url = window.location.href;
-      if (navigator.share) {
-        navigator.share({
-          title: document.title,
-          text: "Check out this article from Al-Maymunah",
-          url: url
-        });
-      } else {
-        navigator.clipboard.writeText(url);
-        alert("Link copied to clipboard!");
-      }
-    }
-  </script>
 </body>
 </html>
