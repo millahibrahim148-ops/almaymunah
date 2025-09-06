@@ -2,274 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Al Maymunah – Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cinzel&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <title>Al Maymunah Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
-    /* Reset & body */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Cormorant Garamond", serif;
-      background: #fdfaf5;
-      color: #3e2d20;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Intro overlay */
-    #intro-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      z-index: 2000;
-      animation: fadeOut 1.6s ease forwards;
-    }
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
+      background: #fdfbf6;
+      color: #2f2f2f;
+      line-height: 1.6;
     }
 
     /* Header */
     header {
-      background: linear-gradient(180deg, #6d4c2f, #4b2e1e);
-      color: #fff;
       text-align: center;
-      padding: 40px 20px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: all 0.4s ease-in-out;
-    }
-    header.shrink {
-      padding: 14px 20px;
+      padding: 30px 20px;
+      border-bottom: 1px solid #ddd;
+      background: #faf7f2;
     }
     header img {
-      max-width: 420px;
+      max-width: 120px;
       display: block;
-      margin: 0 auto 18px;
-      border-radius: 0;
-      box-shadow: none;
-      transition: max-width 0.5s ease, margin 0.5s ease;
-    }
-    header.shrink img {
-      max-width: 180px;
-      margin-bottom: 8px;
+      margin: 0 auto 12px;
     }
     header h1 {
       font-family: "Amiri", serif;
-      font-size: 40px;
+      font-size: 36px;
+      margin-bottom: 6px;
       font-weight: 400;
-      transition: font-size 0.5s ease;
     }
-    header.shrink h1 {
-      font-size: 26px;
-    }
-    header h2 {
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      font-size: 20px;
-      margin-top: 8px;
-      font-weight: 400;
-      color: #f3e9d6;
-      transition: font-size 0.5s ease, opacity 0.4s ease;
-    }
-    header.shrink h2 {
-      font-size: 14px;
-      opacity: 0.85;
+    header p {
+      font-size: 16px;
+      color: #555;
     }
 
     /* Layout */
     .container {
       display: flex;
-      flex: 1;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 30px auto;
-      gap: 24px;
       padding: 0 20px;
+      gap: 24px;
     }
 
     /* Sidebar */
     aside {
-      width: 260px;
-      background: #f9f5ec;
-      padding: 18px;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      width: 250px;
+      padding: 20px;
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 8px;
       height: fit-content;
     }
-    aside img.logo {
-      max-width: 120px;
-      display: block;
-      margin: 0 auto 18px;
-      border-radius: 0;
-      box-shadow: none;
-    }
-    .sidebar-section {
-      margin-bottom: 20px;
-    }
-    .sidebar-title {
-      font-family: "Cinzel", serif;
-      font-size: 16px;
-      margin-bottom: 10px;
-      color: #5b3a29;
-      border-bottom: 1px solid #cbb693;
-      padding-bottom: 4px;
-    }
-    .category-list a {
-      display: block;
-      padding: 10px 0;
-      font-size: 15px;
-      text-decoration: none;
-      color: #3e2d20;
-      border-bottom: 1px solid #e0d4c2;
-      transition: background 0.2s, padding-left 0.2s;
-    }
-    .category-list a:hover {
-      background: #f0e6d8;
-      padding-left: 6px;
-    }
-
-    /* Main content */
-    main { flex: 1; }
-    .welcome {
-      background: #f8f4e9;
-      border: 2px solid #c8b48c;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-    .welcome h2 {
-      font-family: "Amiri", serif;
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    .welcome p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .quick-links {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .link-card {
-      background: #fff;
-      border: 1px solid #d9c7a4;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .link-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-    .link-card h3 {
-      margin: 0 0 10px;
+    aside h3 {
       font-size: 18px;
-      color: #5b3a29;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
     }
-    .link-card p {
-      font-size: 14px;
+    .sidebar-links a {
+      display: block;
+      padding: 8px 0;
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    .sidebar-links a:hover {
+      color: #007B7F;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+    }
+    .post {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .post h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .post p {
+      margin-bottom: 12px;
+    }
+    .post img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 15px 0;
     }
 
     /* Footer */
     footer {
-      background: #4b2e1e;
-      color: #f3e9d6;
       text-align: center;
-      padding: 22px;
-      margin-top: auto;
-    }
-    footer img {
-      max-width: 220px;
-      display: block;
-      margin: 0 auto 12px;
-      border-radius: 0;
-      box-shadow: none;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      background: #faf7f2;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <!-- Overlay intro -->
-  <div id="intro-overlay"></div>
-
-  <!-- Header -->
-  <header id="main-header">
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
+  <header>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/unnamed.png?raw=true" alt="Al Maymunah Logo">
     <h1>Al Maymunah</h1>
-    <h2>A place for beneficial knowledge</h2>
+    <p>Sharing Beneficial Knowledge</p>
   </header>
 
-  <!-- Layout -->
   <div class="container">
     <!-- Sidebar -->
     <aside>
-      <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/unnamed.png?raw=true" alt="Logo" class="logo">
-      <div class="sidebar-section">
-        <div class="sidebar-title">Navigation</div>
-        <div class="category-list">
-          <a href="index.html">🏠 Home</a>
-          <a href="library.html">📚 Library</a>
-          <a href="#">📖 Articles</a>
-          <a href="#">🎙 Audio</a>
-          <a href="#">📜 About</a>
-        </div>
+      <h3>Navigation</h3>
+      <div class="sidebar-links">
+        <a href="index.html">🏠 Home</a>
+        <a href="library.html">📚 Library</a>
+        <a href="#">📖 Articles</a>
+        <a href="#">🎙 Audio</a>
+        <a href="#">📜 About</a>
       </div>
     </aside>
 
-    <!-- Main -->
+    <!-- Main Content -->
     <main>
-      <div class="welcome">
+      <div class="post">
         <h2>Welcome to Al Maymunah</h2>
-        <p>
-          بسم الله الرحمن الرحيم <br><br>
-          This website is dedicated to the preservation and sharing of beneficial Islamic books and resources.  
-          We aim to provide seekers of knowledge with authentic works from classical and contemporary scholars.  
-          Browse through our library, read articles, and listen to audio reminders.
-        </p>
+        <p>This is a simple blog-style site where we share beneficial books, articles, and resources for students of knowledge.</p>
+        <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
+        <p>Explore our growing collection of classical and contemporary works.</p>
+      </div>
 
-        <div class="quick-links">
-          <div class="link-card" onclick="window.location.href='library.html'">
-            <h3>Library</h3>
-            <p>Explore our collection of beneficial books.</p>
-          </div>
-          <div class="link-card">
-            <h3>Articles</h3>
-            <p>Read beneficial writings and fatāwā.</p>
-          </div>
-          <div class="link-card">
-            <h3>Audio</h3>
-            <p>Listen to Islamic lectures and reminders.</p>
-          </div>
-          <div class="link-card">
-            <h3>About</h3>
-            <p>Learn more about the Al Maymunah project.</p>
-          </div>
-        </div>
+      <div class="post">
+        <h2>Featured Book: Tā’iyyah of Abu Ishaq al-Ilbirī</h2>
+        <p>A timeless Andalusian poem filled with admonitions and wisdom. Click below to read or listen:</p>
+        <p><a href="https://drive.google.com/file/d/1wZz_SoFfsZ5XDn-Rdf3Q3UT0pMRj9kaZ/view?usp=sharing" target="_blank">📖 Open PDF</a></p>
+        <audio controls>
+          <source src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/%5BCutted%20Poem%5D%20at-Ta%27iyyah%20%20Abu%20Ishaq%20al-Ilbeeri.mp4?raw=true" type="audio/mp4">
+          Your browser does not support the audio element.
+        </audio>
       </div>
     </main>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Footer">
-    <p>Al Maymunah – Sharing beneficial knowledge with the ummah.</p>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Shrink header on scroll
-    const header = document.getElementById('main-header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        header.classList.add('shrink');
-      } else {
-        header.classList.remove('shrink');
-      }
-    });
-  </scri
+</body>
+</html>
