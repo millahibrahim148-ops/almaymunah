@@ -20,6 +20,7 @@
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
       border-bottom: 1px solid #c8b48c;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      position: relative;
     }
     header img {
       max-width: 320px;
@@ -36,6 +37,17 @@
       font-size: 16px;
       color: #5c4b36;
       margin-top: 8px;
+    }
+    header .verse-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 14px;
+      color: #3a2b1a;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    header .verse-link:hover {
+      color: #8a6d3b;
     }
 
     .container {
@@ -156,33 +168,51 @@
       transform: translateX(3px);
     }
 
-    .evidences {
-      margin-top: 35px;
-      background: #fbf7ef;
+    /* Popup Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: #fffdf9;
+      margin: auto;
+      padding: 20px;
       border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      padding: 18px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
-    .evidences h3 {
+    .modal-content h3 {
       font-family: "Amiri", serif;
-      font-size: 20px;
-      margin-bottom: 15px;
       color: #3a2b1a;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
+      margin-bottom: 15px;
     }
-    .evidences p {
+    .modal-content p {
       font-size: 15px;
-      margin: 8px 0;
+      margin-bottom: 12px;
       color: #4b3621;
     }
-    .evidences blockquote {
-      background: #fffdf9;
-      border-left: 4px solid #c8b48c;
-      padding: 10px 15px;
-      margin: 10px 0;
-      font-style: italic;
+    .modal-content audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .close-btn {
+      color: #3a2b1a;
+      float: right;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      color: #8a6d3b;
     }
 
     footer {
@@ -201,7 +231,8 @@
   <header>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Maktabat Al Maymunah">
     <h1>Al Maymunah</h1>
-    <p>Knowledge is life for the hearts, light for the eyes, and strength for the souls.</p>
+    <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
+    <span class="verse-link" id="openModal">(58:11) Al-Mujādilah 11 – "Allāh will raise those who have believed among you and those who were given knowledge, by degrees"</span>
   </header>
 
   <div class="container">
@@ -233,22 +264,39 @@
           </a>
         </div>
       </div>
-
-      <div class="evidences">
-        <h3>Evidences on the Virtue of Knowledge</h3>
-        <p><strong>(From the Qur’ān):</strong></p>
-        <blockquote>(58:11) Al-Mujādilah 11 — "Allāh will raise those who have believed among you and those who were given knowledge, by degrees."</blockquote>
-        <blockquote>(39:09) Az-Zumar 9 — "Are those who know equal to those who do not know?"</blockquote>
-
-        <p><strong>(From the Sunnah):</strong></p>
-        <blockquote>(Riyad as-Salihin 1376) — The Messenger of Allah ﷺ said: "When Allah wishes good for someone, He bestows upon him the understanding of the Deen."</blockquote>
-        <p><em>(Commentary: This hadith shows that deep understanding of religion is a sign of Allah’s favor upon His servant, and knowledge is among the greatest blessings.)</em></p>
-      </div>
     </main>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="quranModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h3>(58:11) Surah Al-Mujādilah</h3>
+      <p style="font-family: 'Amiri', serif; font-size: 20px; direction: rtl; text-align: right;">
+        يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قِيلَ لَكُمْ تَفَسَّحُوا۟ فِى ٱلْمَجَـٰلِسِ فَٱفْسَحُوا۟ يَفْسَحِ ٱللَّهُ لَكُمْ ۖ وَإِذَا قِيلَ ٱنشُزُوا۟ فَٱنشُزُوا۟ يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَـٰتٍۢ ۚ وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ ١١
+      </p>
+      <p><em>Translation (Dr. Mustafa Khattab):</em><br>
+      O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. And if you are told to rise, then do so. Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. And Allah is All-Aware of what you do.</p>
+      <p><a href="https://quran.com/al-mujadila/11" target="_blank">(Read on Quran.com)</a></p>
+      <audio controls>
+        <source src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/058%20verse%2011.mp3?raw=true" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   </div>
 
   <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
+
+  <script>
+    const modal = document.getElementById("quranModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+
+    openBtn.onclick = () => modal.style.display = "block";
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
+  </script>
 </body>
 </html>
