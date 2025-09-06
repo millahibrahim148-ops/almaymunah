@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Al Maymunah - Home</title>
+  <title>Al Maymunah - Index</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,6 +13,7 @@
       line-height: 1.6;
     }
 
+    /* Header */
     header {
       text-align: center;
       padding: 35px 20px;
@@ -20,14 +21,9 @@
       border-bottom: 1px solid #c8b48c;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
     }
-    header img {
-      max-width: 320px;
-      display: block;
-      margin: 0 auto 12px auto;
-    }
     header h1 {
       font-family: "Amiri", serif;
-      font-size: 36px;
+      font-size: 42px;
       font-weight: 400;
       color: #3a2b1a;
     }
@@ -35,18 +31,12 @@
       font-size: 16px;
       color: #5c4b36;
       margin-top: 8px;
-      display: inline-block;
     }
-    header .verse-link {
-      display: inline-block;
-      margin-left: 10px;
-      font-size: 14px;
-      color: #3a2b1a;
-      text-decoration: underline;
+    .verse-link {
+      color: #8a652f;
       cursor: pointer;
-    }
-    header .verse-link:hover {
-      color: #8a6d3b;
+      text-decoration: underline;
+      margin-left: 8px;
     }
 
     .container {
@@ -97,6 +87,7 @@
       transform: translateX(3px);
     }
 
+    /* Main */
     main {
       flex: 1;
       background: #fffdf9;
@@ -105,74 +96,126 @@
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
-    .welcome {
+    .banner {
       text-align: center;
       margin-bottom: 25px;
     }
-    .welcome h2 {
-      font-family: "Amiri", serif;
-      font-size: 28px;
+    .banner img {
+      max-width: 380px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+    .banner h2 {
+      margin-top: 12px;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 22px;
+      font-weight: normal;
       color: #3a2b1a;
     }
 
-    /* Popup Modal */
-    .modal {
-      display: none;
+    /* Popup styles */
+    .popup-overlay {
       position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      animation: fadeIn 0.4s ease forwards;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
-    .modal-content {
-      background: #fffdf9;
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #d9c7a4;
-      border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      animation: scaleIn 0.4s ease forwards;
+    .popup {
+      background: #fdf6e3;
+      padding: 25px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      animation: popupOpen 0.6s ease;
+      position: relative;
     }
-    .close-btn {
-      color: #3a2b1a;
-      float: right;
+    @keyframes popupOpen {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes popupClose {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-30px); }
+    }
+    .popup h3 {
+      font-family: "Amiri", serif;
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #4b3621;
+    }
+    .popup .quran-arabic {
       font-size: 22px;
-      font-weight: bold;
+      line-height: 1.9;
+      margin-bottom: 15px;
+      direction: rtl;
+      text-align: right;
+      font-family: "Amiri", serif;
+      background: linear-gradient(90deg,#c2a74e 0%,#fff8dc 50%,#c2a74e 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s ease forwards;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .popup .quran-translation {
+      font-size: 16px;
+      color: #2f2f2f;
+      margin-bottom: 12px;
+    }
+    .highlight-translation {
+      background: linear-gradient(to right, #fff59d, #ffe082);
+      transition: background 0.8s ease;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { background-color: #fff59d; }
+      to { background-color: #ffeb3b; }
+    }
+    .popup a {
+      display: inline-block;
+      margin-top: 12px;
+      color: #8a652f;
+      text-decoration: underline;
+    }
+    .popup .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #8a652f;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 6px;
       cursor: pointer;
     }
-    .close-btn:hover {
-      color: #8a6d3b;
-    }
 
-    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-    @keyframes scaleIn { from {transform: scale(0.8);} to {transform: scale(1);} }
-    @keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
-    @keyframes scaleOut { from {transform: scale(1);} to {transform: scale(0.8);} }
-
-    /* Highlight effect */
-    .highlight {
-      background: linear-gradient(to left, #f9e6a2 100%, transparent 0);
-      background-size: 200% 100%;
-      background-position: right;
-      transition: background-position 2.5s ease-in-out;
-    }
-    .highlight.active {
-      background-position: left;
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #d9c7a4;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      margin-top: 40px;
+      font-size: 14px;
+      color: #6b5a45;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Maktabat Al Maymunah">
-    <h1>Al Maymunah</h1>
-    <p>
-      Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah
-      <span class="verse-link" id="openModal">(58:11) Al-Mujādilah 11 – "Allāh will raise those who have believed among you and those who were given knowledge, by degrees"</span>
-    </p>
+    <h1>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah
+      <span class="verse-link" id="verseTrigger">(58:11) Al-Mujadila 11</span>
+    </h1>
   </header>
 
   <div class="container">
@@ -188,29 +231,32 @@
     </aside>
 
     <main>
-      <div class="welcome">
-        <h2>Welcome to Al Maymunah</h2>
-        <p>A place for beneficial books, guidance, and articles for students of knowledge.</p>
+      <div class="banner">
+        <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
+        <h2>Almaymunah Library Collection of Beneficial Books</h2>
       </div>
     </main>
   </div>
 
-  <!-- Modal Popup -->
-  <div id="quranModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModal">&times;</span>
-      <h3>(58:11) Surah Al-Mujādilah</h3>
-      <p style="font-family: 'Amiri', serif; font-size: 20px; direction: rtl; text-align: right;">
-        يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قِيلَ لَكُمْ تَفَسَّحُوا۟ فِى ٱلْمَجَـٰلِسِ فَٱفْسَحُوا۟ يَفْسَحِ ٱللَّهُ لَكُمْ ۖ وَإِذَا قِيلَ ٱنشُزُوا۟ فَٱنشُزُوا۟ يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَـٰتٍۢ ۚ وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ ١١
+  <!-- Popup -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup" id="popupBox">
+      <button class="close-btn" id="closePopup">X</button>
+      <h3>(58:11) Surah Al-Mujadila</h3>
+      <p class="quran-arabic">
+        يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قِيلَ لَكُمْ تَفَسَّحُوا۟ فِى ٱلْمَجَـٰلِسِ فَٱفْسَحُوا۟ يَفْسَحِ ٱللَّهُ لَكُمْ ۖ 
+        وَإِذَا قِيلَ ٱنشُزُوا۟ فَٱنشُزُوا۟ يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَـٰتٍۢ ۚ 
+        وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ ١١
       </p>
-      <p><em>Translation (Dr. Mustafa Khattab):</em><br>
-        O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. And if you are told to rise, then do so. 
-        <span id="highlightText">Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. And Allah is All-Aware of what you do.</span>
+      <p class="quran-translation" id="translation">
+        O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. 
+        And if you are told to rise, then do so. 
+        <span id="highlightPart">Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. 
+        And Allah is All-Aware of what you do.</span>
+        — Dr. Mustafa Khattab, The Clear Quran
       </p>
-      <p><a href="https://quran.com/al-mujadila/11" target="_blank">(Read on Quran.com)</a></p>
-      <audio id="quranAudio">
-        <source src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/058%20verse%2011.mp3?raw=true" type="audio/mp3">
-      </audio>
+      <a href="https://quran.com/al-mujadila/11" target="_blank">📖 View on Quran.com</a>
+      <audio id="verseAudio" src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/058%20verse%2011.mp3?raw=true"></audio>
     </div>
   </div>
 
@@ -219,41 +265,39 @@
   </footer>
 
   <script>
-    const modal = document.getElementById("quranModal");
-    const openBtn = document.getElementById("openModal");
-    const closeBtn = document.getElementById("closeModal");
-    const audio = document.getElementById("quranAudio");
-    const highlightText = document.getElementById("highlightText");
+    const verseTrigger = document.getElementById('verseTrigger');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupBox = document.getElementById('popupBox');
+    const closePopup = document.getElementById('closePopup');
+    const verseAudio = document.getElementById('verseAudio');
+    const highlightPart = document.getElementById('highlightPart');
 
-    openBtn.onclick = () => {
-      modal.style.display = "block";
-      audio.currentTime = 0;
-      audio.play();
+    verseTrigger.addEventListener('click', () => {
+      popupOverlay.style.display = 'flex';
+      verseAudio.currentTime = 0;
+      verseAudio.play();
+    });
 
-      // reset highlight
-      highlightText.classList.remove("highlight", "active");
-
-      // Add highlight after 17s
-      audio.ontimeupdate = () => {
-        if (audio.currentTime >= 17) {
-          highlightText.classList.add("highlight");
-          setTimeout(() => highlightText.classList.add("active"), 100);
-        }
-      };
-    };
-
-    closeBtn.onclick = () => {
-      modal.style.animation = "fadeOut 0.3s forwards";
-      modal.querySelector(".modal-content").style.animation = "scaleOut 0.3s forwards";
+    closePopup.addEventListener('click', () => {
+      popupBox.style.animation = 'popupClose 0.5s ease forwards';
       setTimeout(() => {
-        modal.style.display = "none";
-        modal.style.animation = "fadeIn 0.4s ease forwards";
-        modal.querySelector(".modal-content").style.animation = "scaleIn 0.4s ease forwards";
-        audio.pause();
-      }, 300);
-    };
+        popupOverlay.style.display = 'none';
+        popupBox.style.animation = 'popupOpen 0.6s ease';
+        verseAudio.pause();
+      }, 500);
+    });
 
-    window.onclick = (e) => { if (e.target == modal) closeBtn.onclick(); };
+    popupOverlay.addEventListener('click', (e) => {
+      if (e.target === popupOverlay) {
+        closePopup.click();
+      }
+    });
+
+    verseAudio.addEventListener('timeupdate', () => {
+      if (verseAudio.currentTime >= 17) {
+        highlightPart.classList.add('highlight-translation');
+      }
+    });
   </script>
 </body>
 </html>
