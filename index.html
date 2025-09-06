@@ -5,32 +5,25 @@
   <title>Al Maymunah - Index</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Cormorant Garamond", serif;
       background: #fdfbf6;
       color: #2f2f2f;
-      line-height: 1.6;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Header */
     header {
       text-align: center;
-      padding: 35px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      padding: 30px 20px;
+      background: #f9f5ec;
+      border-bottom: 1px solid #ddd2b4;
     }
     header h1 {
       font-family: "Amiri", serif;
-      font-size: 42px;
+      font-size: 32px;
       font-weight: 400;
       color: #3a2b1a;
-    }
-    header p {
-      font-size: 16px;
-      color: #5c4b36;
-      margin-top: 8px;
     }
     .verse-link {
       color: #8a652f;
@@ -47,14 +40,13 @@
       gap: 24px;
     }
 
-    /* Sidebar */
     aside {
       width: 260px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
+      background: #fbf7ef;
+      border: 1px solid #e5d9b8;
+      border-radius: 10px;
       padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       height: fit-content;
     }
     aside h3 {
@@ -65,21 +57,16 @@
       padding-bottom: 5px;
       font-family: "Amiri", serif;
     }
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-    }
     .sidebar-links a {
       display: block;
       padding: 10px 12px;
       margin-bottom: 6px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      background: #fdfbf6;
       border: 1px solid #d9c7a4;
       border-radius: 8px;
       color: #3a2b1a;
       text-decoration: none;
       font-size: 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
       transition: background 0.2s, transform 0.15s;
     }
     .sidebar-links a:hover {
@@ -87,7 +74,6 @@
       transform: translateX(3px);
     }
 
-    /* Main */
     main {
       flex: 1;
       background: #fffdf9;
@@ -109,12 +95,12 @@
     .banner h2 {
       margin-top: 12px;
       font-family: "Comic Sans MS", cursive, sans-serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: normal;
       color: #3a2b1a;
     }
 
-    /* Popup styles */
+    /* Popup */
     .popup-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -126,67 +112,54 @@
       z-index: 1000;
     }
     .popup {
-      background: #fdf6e3;
+      background: #fffdf4;
       padding: 25px;
       border-radius: 12px;
       width: 80%;
       max-width: 700px;
       text-align: center;
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      animation: popupOpen 0.6s ease;
+      animation: popupOpen 0.5s ease;
       position: relative;
     }
     @keyframes popupOpen {
-      from { opacity: 0; transform: translateY(-30px); }
+      from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes popupClose {
       from { opacity: 1; transform: translateY(0); }
-      to { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 0; transform: translateY(-20px); }
     }
+
     .popup h3 {
       font-family: "Amiri", serif;
       font-size: 20px;
       margin-bottom: 12px;
       color: #4b3621;
     }
-    .popup .quran-arabic {
+    .quran-arabic {
       font-size: 22px;
       line-height: 1.9;
       margin-bottom: 15px;
       direction: rtl;
       text-align: right;
       font-family: "Amiri", serif;
-      background: linear-gradient(90deg,#c2a74e 0%,#fff8dc 50%,#c2a74e 100%);
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 3s ease forwards;
     }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    .popup .quran-translation {
+    .quran-translation {
       font-size: 16px;
       color: #2f2f2f;
       margin-bottom: 12px;
     }
-    .highlight-translation {
-      background: linear-gradient(to right, #fff59d, #ffe082);
-      transition: background 0.8s ease;
-      animation: glow 2s infinite alternate;
+
+    /* Glow effect */
+    .glow {
+      animation: glowAnim 1.8s infinite alternate;
     }
-    @keyframes glow {
-      from { background-color: #fff59d; }
-      to { background-color: #ffeb3b; }
+    @keyframes glowAnim {
+      from { text-shadow: 0 0 5px #f4d742, 0 0 10px #f1c40f; }
+      to { text-shadow: 0 0 15px #ffd633, 0 0 25px #f9e79f; }
     }
-    .popup a {
-      display: inline-block;
-      margin-top: 12px;
-      color: #8a652f;
-      text-decoration: underline;
-    }
+
     .popup .close-btn {
       position: absolute;
       top: 10px;
@@ -199,21 +172,28 @@
       cursor: pointer;
     }
 
+    .popup a {
+      display: inline-block;
+      margin-top: 12px;
+      color: #8a652f;
+      text-decoration: underline;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       border-top: 1px solid #d9c7a4;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      background: #f9f5ec;
       margin-top: 40px;
       font-size: 14px;
       color: #6b5a45;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah
+    <h1>
+      Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah
       <span class="verse-link" id="verseTrigger">(58:11) Al-Mujadila 11</span>
     </h1>
   </header>
@@ -243,12 +223,12 @@
     <div class="popup" id="popupBox">
       <button class="close-btn" id="closePopup">X</button>
       <h3>(58:11) Surah Al-Mujadila</h3>
-      <p class="quran-arabic">
+      <p class="quran-arabic" id="quranArabic">
         يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قِيلَ لَكُمْ تَفَسَّحُوا۟ فِى ٱلْمَجَـٰلِسِ فَٱفْسَحُوا۟ يَفْسَحِ ٱللَّهُ لَكُمْ ۖ 
         وَإِذَا قِيلَ ٱنشُزُوا۟ فَٱنشُزُوا۟ يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَـٰتٍۢ ۚ 
         وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ ١١
       </p>
-      <p class="quran-translation" id="translation">
+      <p class="quran-translation">
         O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. 
         And if you are told to rise, then do so. 
         <span id="highlightPart">Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. 
@@ -270,20 +250,24 @@
     const popupBox = document.getElementById('popupBox');
     const closePopup = document.getElementById('closePopup');
     const verseAudio = document.getElementById('verseAudio');
+    const quranArabic = document.getElementById('quranArabic');
     const highlightPart = document.getElementById('highlightPart');
 
     verseTrigger.addEventListener('click', () => {
       popupOverlay.style.display = 'flex';
       verseAudio.currentTime = 0;
       verseAudio.play();
+      quranArabic.classList.add('glow'); // glow Arabic on open
     });
 
     closePopup.addEventListener('click', () => {
       popupBox.style.animation = 'popupClose 0.5s ease forwards';
       setTimeout(() => {
         popupOverlay.style.display = 'none';
-        popupBox.style.animation = 'popupOpen 0.6s ease';
+        popupBox.style.animation = 'popupOpen 0.5s ease';
         verseAudio.pause();
+        quranArabic.classList.remove('glow');
+        highlightPart.classList.remove('glow');
       }, 500);
     });
 
@@ -295,7 +279,7 @@
 
     verseAudio.addEventListener('timeupdate', () => {
       if (verseAudio.currentTime >= 17) {
-        highlightPart.classList.add('highlight-translation');
+        highlightPart.classList.add('glow'); // glow English at 0:17
       }
     });
   </script>
