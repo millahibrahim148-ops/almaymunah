@@ -2,174 +2,259 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Al-Maymunah - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - Al Maymunah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: "Georgia", serif;
-      background: #fdfaf3;
-      color: #2e2e2e;
+      font-family: "Cormorant Garamond", serif;
+      background: #f9f5ef;
+      color: #3e2d20;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    /* Header */
     header {
-      background: linear-gradient(145deg, #f0e2c4, #e0cda9);
-      padding: 20px;
+      background: linear-gradient(180deg,#f3e9d6,#e8dcc7);
       text-align: center;
-      box-shadow: inset 4px 4px 8px #cbb897, inset -4px -4px 8px #fff6e5;
-    }
-
-    header img {
-      max-height: 100px;
-      display: block;
-      margin: 0 auto 10px auto;
+      padding: 28px 16px;
+      border-bottom: 2px solid #d6c4aa;
     }
 
     header h1 {
-      font-size: 2.2em;
       margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: normal;
+      font-size: 2.4rem;
+      font-family: "Cinzel", serif;
+      color: #4b2f1f;
+      letter-spacing: 1px;
     }
 
-    /* Search bar */
-    .search-bar {
-      margin-top: 15px;
-    }
-
-    .search-bar input {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 8px;
-      width: 60%;
-      font-size: 15px;
-      box-shadow: inset 3px 3px 6px #cbb897, inset -3px -3px 6px #fff6e5;
-    }
-
-    /* Layout */
-    .layout {
+    .container {
       display: flex;
-      margin: 30px;
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
       gap: 20px;
     }
 
     /* Sidebar */
-    aside {
-      width: 220px;
-      padding: 20px;
-      background: #f0e2c4;
-      border-radius: 10px;
-      box-shadow: inset 4px 4px 8px #cbb897, inset -4px -4px 8px #fff6e5;
+    .sidebar {
+      width: 280px;
+      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
       height: fit-content;
     }
 
-    aside h3 {
-      margin-top: 0;
-      font-size: 1.2em;
-      border-bottom: 1px solid #cbb897;
-      padding-bottom: 5px;
-    }
-
-    aside ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    aside li {
-      margin: 12px 0;
-    }
-
-    aside a {
-      text-decoration: none;
-      color: #3e2d20;
+    .section-title {
+      font-family: "Cinzel", serif;
+      font-weight: 400;
+      color: #5b3a29;
       font-size: 15px;
-      transition: color 0.3s;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccb693;
+      padding-bottom: 4px;
     }
 
-    aside a:hover {
-      color: #8b5e3c;
+    .search {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
     }
-
-    /* Main content */
-    main {
+    .search input {
       flex: 1;
-      padding: 20px;
-      background: #fffaf0;
-      border-radius: 12px;
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.15), -4px -4px 12px rgba(255,255,255,0.7);
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.15);
+      padding: 8px 10px;
+      background: #fffdf9;
+      font-size: 14px;
+    }
+    .search button {
+      border: 0;
+      background: #6d4c2f;
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
     }
 
-    main h2 {
-      margin-top: 0;
-      font-family: "Cormorant Garamond", serif;
+    .badges {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .article-preview {
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #d9c9a9;
-    }
-
-    .article-preview h3 {
-      margin: 0 0 10px 0;
-    }
-
-    .article-preview a {
+    .badge {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: linear-gradient(135deg,#d4a44b,#b48838);
+      color: #fff;
       text-decoration: none;
-      color: #2e2e2e;
+      font-size: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    .badge:hover { transform: translateY(-2px); transition: transform .18s ease; }
+
+    .quote {
+      font-style: italic;
+      color: #3b2a1a;
+      background: linear-gradient(180deg,#fffaf0,#f6ecd6);
+      border-radius: 8px;
+      padding: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 16px;
     }
 
-    .article-preview a:hover {
-      color: #8b5e3c;
+    /* Article */
+    .article {
+      flex: 1;
+      background: linear-gradient(180deg,#fffdf9,#f9f3e8);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .article h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      font-family: "Cinzel", serif;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #6b4f3a;
+      margin-bottom: 20px;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      background: #6d4c2f;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 16px;
+    }
+
+    .share-btn img {
+      width: 16px;
+      height: 16px;
     }
 
     footer {
-      margin-top: 50px;
-      padding: 20px;
+      background: #e8dcc7;
       text-align: center;
-      font-size: 0.9em;
-      background: #f0e2c4;
-      box-shadow: inset 2px 2px 6px #cbb897, inset -2px -2px 6px #fff6e5;
+      padding: 18px;
+      font-size: 14px;
+      border-top: 2px solid #d6c4aa;
+      color: #4b2f1f;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/almaymunah.gif?raw=true" alt="Al-Maymunah Logo">
-    <h1>Al-Maymunah</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search articles...">
-    </div>
+    <h1>Al Maymunah</h1>
   </header>
 
-  <div class="layout">
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="article.html">Islamic Articles</a></li>
-        <li><a href="#">Library</a></li>
-        <li><a href="#">Guides</a></li>
-      </ul>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="section-title">Search</div>
+      <div class="search">
+        <input type="search" id="searchInput" placeholder="Search...">
+        <button onclick="searchArticle()">Go</button>
+      </div>
+
+      <div class="section-title">Categories</div>
+      <div class="badges">
+        <a class="badge" href="library.html">Library</a>
+        <a class="badge" href="#">Fiqh</a>
+        <a class="badge" href="#">Aqīdah</a>
+        <a class="badge" href="#">Manners</a>
+      </div>
+
+      <div class="section-title">Quote</div>
+      <div class="quote">
+        “Knowledge is life for the hearts, light for the eyes, and strength for the souls.”
+      </div>
     </aside>
 
-    <main>
-      <h2>Latest Articles</h2>
-
-      <div class="article-preview">
-        <h3><a href="article.html">Sample Article Title</a></h3>
-        <p>A preview of the article content goes here. Click to read more...</p>
+    <!-- Article -->
+    <main class="article">
+      <h2>Seeking Knowledge with Sincerity</h2>
+      <div class="meta">
+        <span id="hijri-date"></span> | Uploaded by Al Maymunah
       </div>
+      <p>
+        Knowledge is among the greatest blessings bestowed upon mankind. It guides, protects, and elevates hearts. The seeker of knowledge should purify his intention, aiming solely for the pleasure of Allah, not worldly gain.
+      </p>
+      <p>
+        Scholars have emphasized sincerity in seeking knowledge, reminding us that knowledge without intention is like a tree without fruit.
+      </p>
 
-      <div class="article-preview">
-        <h3><a href="article.html">Another Article</a></h3>
-        <p>A short description or excerpt of another article can be placed here...</p>
-      </div>
+      <a href="#" class="share-btn" onclick="shareArticle(event)">
+        <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" alt="Share">
+        Share
+      </a>
     </main>
   </div>
 
   <footer>
-    <p>&copy; 2025 Al-Maymunah. All rights reserved.</p>
+    &copy; <span id="year"></span> Al Maymunah. All rights reserved.
   </footer>
+
+  <script>
+    // Hijri date generator (basic)
+    function hijriDate() {
+      const today = new Date();
+      const hijri = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }).format(today);
+      document.getElementById('hijri-date').textContent = hijri;
+    }
+    hijriDate();
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Share button
+    function shareArticle(e) {
+      e.preventDefault();
+      if (navigator.share) {
+        navigator.share({
+          title: document.querySelector('.article h2').innerText,
+          url: window.location.href
+        });
+      } else {
+        alert("Sharing not supported, copy the URL: " + window.location.href);
+      }
+    }
+
+    // Dummy search
+    function searchArticle() {
+      const query = document.getElementById("searchInput").value.trim();
+      if (query) {
+        alert("Searching for: " + query);
+      }
+    }
+  </script>
 </body>
 </html>
