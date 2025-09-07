@@ -65,9 +65,6 @@
       flex-direction: column;
     }
     .sidebar-links a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 10px 12px;
       margin-bottom: 6px;
       background: linear-gradient(180deg, #fdfbf6, #efe3cd);
@@ -78,10 +75,6 @@
       font-size: 15px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
       transition: background 0.2s, transform 0.15s;
-    }
-    .sidebar-links a img {
-      width: 18px;
-      height: 18px;
     }
     .sidebar-links a:hover {
       background: #f7e8c9;
@@ -105,6 +98,13 @@
       border-bottom: 1px solid #d9c7a4;
       padding-bottom: 5px;
       font-family: "Amiri", serif;
+      cursor: pointer;
+    }
+    .toggle-btn {
+      font-size: 14px;
+      margin-left: 8px;
+      color: #6b5a45;
+      cursor: pointer;
     }
     .library-links a {
       display: flex;
@@ -120,6 +120,7 @@
       font-size: 15px;
       transition: background 0.2s, transform 0.15s;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      cursor: pointer;
     }
     .library-links a img {
       width: 18px;
@@ -128,6 +129,26 @@
     .library-links a:hover {
       background: #f7e8c9;
       transform: translateX(3px);
+    }
+    .dropdown {
+      display: none;
+      margin-left: 15px;
+      margin-top: 6px;
+    }
+    .dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      padding: 6px 10px;
+      background: #fdfbf6;
+      border: 1px solid #e4d8c2;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+    .dropdown a img {
+      width: 16px;
+      height: 16px;
     }
     footer {
       text-align: center;
@@ -139,6 +160,7 @@
       color: #6b5a45;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
     }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -152,35 +174,54 @@
     <aside>
       <h3>Navigation</h3>
       <div class="sidebar-links">
-        <a href="index.html">Home <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-        <a href="library.html">Library <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-        <a href="article.html">Articles <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-        <a href="#">Audio <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-        <a href="#">About <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
+        <a href="index.html">Home</a>
+        <a href="library.html">Library</a>
+        <a href="article.html">Articles</a>
+        <a href="#">Audio</a>
+        <a href="#">About</a>
       </div>
     </aside>
 
     <main>
       <div class="library-section">
-        <h3>Beginner</h3>
-        <div class="library-links">
-          <a href="#">Book 1: Basic Fiqh <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-          <a href="#">Book 2: Islamic Manners <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-        </div>
-      </div>
+        <h3>Beginner <span class="toggle-btn">[+]</span></h3>
+        <div class="library-links hidden">
+          <a class="book-toggle" href="javascript:void(0)">
+            Hilyaatu thaalib al-ʿIlm (Ettiquettes of a student on seeking 'Ilm)
+            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
+          </a>
+          <div class="dropdown">
+            <a href="#">English Book</a>
+            <a href="#">Arabic Book</a>
+            <a href="#">Syarh Book (Arabic)</a>
+            <a href="#">Lesson (1-6) & Syarh Lesson (1-61)</a>
+            <a href="#">Notes & Summary</a>
+          </div>
 
-      <div class="library-section">
-        <h3>Classical Texts</h3>
-        <div class="library-links">
-          <a href="#">Tā’iyyah of Abu Ishaq al-Ilbirī <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-          <a href="#">Al-‘Aqidah al-Wasitiyyah <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
-        </div>
-      </div>
+          <a class="book-toggle" href="javascript:void(0)">
+            The Tā'iyyah of Abu Ishāq al-Ilbīrī
+            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
+          </a>
+          <div class="dropdown">
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf"> Open PDF</a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="audio"> Listen to Poetry</a>
+          </div>
 
-      <div class="library-section">
-        <h3>Poetry</h3>
-        <div class="library-links">
-          <a href="#">Selected Islamic Poems <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></a>
+          <a class="book-toggle" href="javascript:void(0)">
+            Gateway to Understanding Aqīdah Fiqh Sīrah & Tafsīr
+            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
+          </a>
+          <div class="dropdown">
+            <a href="#">Open Book</a>
+          </div>
+
+          <a class="book-toggle" href="javascript:void(0)">
+            Lvl 1: The Text of the Student of Knowledge
+            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
+          </a>
+          <div class="dropdown">
+            <a href="#">Open Book</a>
+          </div>
         </div>
       </div>
     </main>
@@ -189,5 +230,37 @@
   <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Toggle category expand/collapse
+    document.querySelectorAll(".library-section h3").forEach(section => {
+      section.addEventListener("click", () => {
+        let links = section.nextElementSibling;
+        let btn = section.querySelector(".toggle-btn");
+        if (links.classList.contains("hidden")) {
+          links.classList.remove("hidden");
+          btn.textContent = "[-]";
+        } else {
+          links.classList.add("hidden");
+          btn.textContent = "[+]";
+        }
+      });
+    });
+
+    // Toggle book dropdowns
+    document.querySelectorAll(".book-toggle").forEach(book => {
+      book.addEventListener("click", () => {
+        let dropdown = book.nextElementSibling;
+        let icon = book.querySelector(".folder-icon");
+        if (dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+          icon.src = "https://freesvg.org/img/Folder-1.png"; // closed
+        } else {
+          dropdown.style.display = "block";
+          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true"; // open
+        }
+      });
+    });
+  </script>
 </body>
 </html>
