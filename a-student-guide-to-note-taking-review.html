@@ -51,9 +51,7 @@
       font-family:"Amiri",serif;
     }
     .sidebar-links a, .sidebar-links button {
-      display:flex;
-      align-items:center;
-      gap:8px;
+      display:block;
       padding:10px 12px;
       margin-bottom:6px;
       background:linear-gradient(180deg,#fdfbf6,#efe3cd);
@@ -62,15 +60,12 @@
       color:#3a2b1a;
       text-decoration:none;
       font-size:15px;
-      cursor:pointer;
       transition:background 0.2s, transform 0.15s;
       width:100%;
+      text-align:left;
+      cursor:pointer;
     }
     .sidebar-links a:hover, .sidebar-links button:hover { background:#f7e8c9; transform:translateX(3px); }
-    .sidebar-links img {
-      width:18px;
-      height:18px;
-    }
 
     main {
       flex:1;
@@ -95,6 +90,39 @@
     main p { margin-bottom:16px; }
     main ul { margin-left:20px; }
 
+    .note-section {
+      display:none;
+      margin-top:30px;
+      padding:20px;
+      background:#fff8e7;
+      border:1px solid #e4d8c2;
+      border-radius:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    }
+    .note-section h3 { color:#3a2b1a; }
+    .note-section footer {
+      margin-top:20px;
+      font-size:14px;
+      color:#5c4b36;
+    }
+
+    .pdf-download {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      background:#efe3cd;
+      border:1px solid #d9c7a4;
+      border-radius:8px;
+      margin:20px 0;
+      text-decoration:none;
+      color:#3a2b1a;
+      font-size:15px;
+      transition:background 0.2s;
+    }
+    .pdf-download:hover { background:#f7e8c9; }
+    .pdf-download img { width:18px; height:18px; }
+
     /* Right navigation sidebar */
     aside.right {
       width:260px;
@@ -106,9 +134,7 @@
       padding:16px;
       box-shadow:0 6px 18px rgba(0,0,0,0.12);
     }
-    .toc-category {
-      margin-bottom:10px;
-    }
+    .toc-category { margin-bottom:10px; }
     .toc-category h4 {
       font-size:16px;
       margin:0;
@@ -153,53 +179,6 @@
       font-size:14px;
       color:#5c4b36;
     }
-
-    /* Note popup */
-    .note-popup {
-      display:none;
-      position:fixed;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      background:#fffdf9;
-      border:1px solid #d9c7a4;
-      border-radius:10px;
-      padding:25px;
-      max-width:700px;
-      max-height:80vh;
-      overflow-y:auto;
-      box-shadow:0 6px 18px rgba(0,0,0,0.25);
-      z-index:1000;
-    }
-    .note-popup h3 {
-      margin-top:0;
-      color:#3a2b1a;
-      font-family:"Amiri",serif;
-    }
-    .note-popup footer {
-      margin-top:20px;
-      border-top:1px solid #e4d8c2;
-      padding-top:10px;
-      font-size:14px;
-    }
-    .note-overlay {
-      display:none;
-      position:fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background:rgba(0,0,0,0.4);
-      z-index:999;
-    }
-    .close-btn {
-      background:#d9534f;
-      border:none;
-      color:white;
-      padding:6px 12px;
-      border-radius:6px;
-      cursor:pointer;
-      float:right;
-    }
-    .close-btn:hover { background:#c9302c; }
   </style>
 </head>
 <body>
@@ -219,114 +198,109 @@
         <a href="a-student-guide-to-note-taking-review.html">Article</a>
         <a href="#">Audio</a>
         <a href="#">About</a>
-        <button id="noteBtn">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png" alt="Note"> Note
-        </button>
+        <button id="noteBtn">Notes</button>
       </div>
     </aside>
 
     <!-- Article content -->
     <main>
       <h2 id="top">A Student’s Guide to Note-Taking & Review</h2>
-      <!-- (Your full article text remains here, unchanged) -->
-    </main>
 
-    <!-- Right navigation sidebar -->
-    <aside class="right">
-      <div class="toc-category">
-        <h4>Question <span>[+]</span></h4>
-        <div class="toc-links">
-          <a href="#question">Read Question</a>
-        </div>
-      </div>
+      <a class="pdf-download" href="note-taking.pdf" download>
+        Download as PDF
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF">
+      </a>
 
-      <div class="toc-category">
-        <h4>Answer <span>[+]</span></h4>
-        <div class="toc-links">
-          <a href="#answer">General Answer</a>
-          <a href="#notes">On Taking Notes</a>
-          <a href="#memorization">On Memorization</a>
-          <a href="#summary">On Summarizing & Rereading</a>
-          <a href="#review">On Reviewing & Retention</a>
-          <a href="#final">Final Advice</a>
-        </div>
-      </div>
-    </aside>
-  </div>
+      <h3 id="question">Question</h3>
+      <p>A question was asked to the brother regarding how can one have an effective note taking 
+        and review as a student of knowledges and that the questioner stated he has bad highlighting 
+        problem when it comes to book and text that he find interesting as he stated that he even 
+        sometimes turn the page he's reading into a colorful page due to the excessive highlighting 
+        he is doing.</p>
 
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
+      <p>And the questioner is said to be on his path of learning the Deen and learning as a student 
+        of knowledges hence the brother here will clarify on how to properly have an effective note 
+        taking and review. <em>May Allah increase us all in beneficial knowledges and may Allah make 
+        this a benefits for us all</em>.</p>
 
-  <!-- Note Popup -->
-  <div class="note-overlay" id="noteOverlay"></div>
-  <div class="note-popup" id="notePopup">
-    <button class="close-btn" id="closeNote">Close</button>
-    <h3 id="intro">Introduction</h3>
-    <p>I want to explain something Obviously there is benefits in taking a note of something and in turning to it 100% but the thing is When you are new to a book, especially if it's a topic you haven't read that much about Everything is new to you everything you look at and you think subhanAllah. I did not know that.  
-    All right SubhanAllah first time I picked up a volume of Tafsir As-Sa'di I was like subhanAllah every single page here and there new information overload and that's a beautiful thing and how do that? It's a beauty That we can experience this, right? </p>
+      <h3 id="answer">Answer</h3>
+      <p>I want to explain something Obviously there is benefits in taking a note of something and 
+        in turning to it 100% but the thing is When you are new to a book, especially if it's a topic 
+        you haven't read that much about Everything is new to you everything you look at and you think 
+        subhanAllah. I did not know that. All right SubhanAllah first time I picked up a volume of Tafsir As-Sa'di
+        I was like subhanAllah every single page here and there new information overload and that's a beautiful thing 
+        and how do that? It's a beauty That we can experience this, right?</p>
 
-    <h3 id="benefits">Benefits of Note-taking</h3>
-    <p>if I was gonna take a note about everything that blew my mind SubhanAllah, I would just rewrite Tafsir As-Sa'di in a more inferior way because now it's my version It's not the translated text of the original, right So when you get acquainted with the material then you can take notes right because then all of a sudden More things are going to be in your general understanding. 
-    You're going to acquire a better understanding of the topic and So the next time you read it less things are going to stand out to you as being especially Important or fascinating, right?</p>
+      <h3 id="notes">On Taking Notes</h3>
+      <p>if I was gonna take a note about everything that blew my mind SubhanAllah, I would just rewrite Tafsir As-Sa'di 
+        in a more inferior way because now it's my version It's not the translated text of the original, right So when you 
+        get acquainted with the material then you can take notes right because then all of a sudden More things are going 
+        to be in your general understanding. You're going to acquire a better understanding of the topic and So the next time 
+        you read it less things are going to stand out to you as being especially Important or fascinating, right?</p>
 
-    <h3 id="memorization">Types of Memorization</h3>
-    <p>The scholars they say that the person Who has knowledge is one who acts upon it...  
-    One ¹ where you memorize something word-for-word ...  
-    ² you memorize it in meaning, right? ...</p>
+      <h3 id="memorization">On Memorization</h3>
+      <p>The scholars they say that the person Who has knowledge is one who acts upon it And this is a good way to not only make sure that you fully understand something by putting into practice But also if you're physically doing something Related to what you have read then you're going to remember it better.  
 
-    <h3 id="summarizing">Summarizing & Rereading</h3>
-    <p>And he mentions that one of the ways that you become the best level of Acquainted with a text... reread it many times Many many times...</p>
+      there are many clips of Brother Abdur-Rahman Hassan, he is a student of knowledge and he gives a recommendation on how people should treat Memorization, right He says there are two types 
+        of memorization One ¹ where you memorize something word-for-word, which is what we typically think of when we say we were going to memorize something We literally letter for letter. Everything is memorized and this is something you should only do with an Arabic text 100% 
+      and It's also something that is incredibly time-consuming and it's very difficult Something which is easier and something you do before you even approach that stage is ² you memorize it in meaning, right? 
+      You know it well enough you've read it enough you can summarize it in your own words You get the point across but it's not word-for-word, right? It's the general gist of what's being said</p>
 
-    <h3 id="reviewing">Reviewing & Retention</h3>
-    <p>Because Memorization consists of exposing yourself to the thing over and over and over again until it digs into your brain... renew your memorization like a subscription...</p>
+      <h3 id="summary">On Summarizing & Rereading</h3>
+      <p>And he mentions that one of the ways that you become the best level of Acquainted with a text in terms of its meaning and what it's trying to convey is that you write it in your own words by doing a summary and So You will read the book again and you take notes.  
+      So the best way to understand a text is to summarize it in your own words. This requires rereading multiple times.</p>
 
-    <h3 id="final">Final Advice</h3>
-    <p>You should be really conservative with your highlights in your notes because if you use the same book five years from now You're gonna be a little annoyed with yourself.</p>
+      <h3 id="review">On Reviewing & Retention</h3>
+      <p>but you only include the most vital information and any time that the author goes off on a tangent or he repeats himself Oh, you know sometimes in order to make sure someone really gets something they will labor the point ten times get ten examples Well,  
+      maybe you just put one two or three, right? And you're writing it With the same meaning in your own words Then that is the best way like the absolute best way that you can really get fully acquainted with a piece of knowledge.  
 
-    <footer>
-      <p>
-        Share this, Baarakallaah Feekum: <br>
-        <em>“One who guides to something good has a reward similar to that of its doer” - Saheeh Muslim vol.3, no.4665</em>
-      </p>
-    </footer>
-  </div>
+      But the thing is For you to be so well acquainted with it that you understand what the author is saying you understand what he wanted people to understand so you're able to consume it and I'm sorry you're able to Distill it so it can be consumed in a much smaller text.  
 
-  <script>
-    document.querySelectorAll(".toc-category h4").forEach(toggle => {
-      toggle.addEventListener("click", () => {
-        let links = toggle.nextElementSibling;
-        let sign = toggle.querySelector("span");
-        if (links.style.display === "flex") {
-          links.style.display = "none";
-          sign.textContent = "[+]";
-        } else {
-          links.style.display = "flex";
-          sign.textContent = "[-]";
-        }
-      });
-    });
+      You have to reread it many times Many many times you would have to reread the same book many times to make a really good summary And that brings me to something which is really under appreciated In Al Madrasatu Al Umariyyah And may you which brother Abdurrahman Hassan is from They say in their various curricula That when someone Has read something They should read it again. And then in the next year, they should read it even more times, right.  
 
-    // Note popup script
-    const noteBtn = document.getElementById("noteBtn");
-    const notePopup = document.getElementById("notePopup");
-    const noteOverlay = document.getElementById("noteOverlay");
-    const closeNote = document.getElementById("closeNote");
+      And There are books which bearing in mind they're students of knowledge they know Islam Better than many people who are alive in our time right now. They are doing some of the best teaching in a non-Arabic setting in the world and They tell people That there are books that they will reread five ten times in a year even if they're the simplest books.  
 
-    noteBtn.addEventListener("click", () => {
-      notePopup.style.display = "block";
-      noteOverlay.style.display = "block";
-    });
+      Why? Because there is no better way to make sure you fully understand and remember things to an exact point than continually rereading it.  
 
-    closeNote.addEventListener("click", () => {
-      notePopup.style.display = "none";
-      noteOverlay.style.display = "none";
-    });
+      Because Memorization consists of exposing yourself to the thing over and over and over again until it digs into your brain.  
 
-    noteOverlay.addEventListener("click", () => {
-      notePopup.style.display = "none";
-      noteOverlay.style.display = "none";
-    });
-  </script>
-</body>
-</html>
+      And so You can memorize it sure But as well as that if you are continually reviewing the material that you have memorized your memorization will remain fresh or remain strong and And you will find it has found almost impossible to forget.  
+
+      If you memorize something and you don't revisit it You won't memorize it for real.  
+
+      There are people they memorize the Quran when they're young and They don't you know recite more than a couple common Surahs and so they forget a lot of it.  
+
+      And this is a less a really big problem people have during their their journey of memorizing the Quran They will not do the Assignment that they're set of reviewing a certain thing and so then when it comes time to review it with their Sheikh They forget it what they forget it a verse or something, you know you need to Renew your memorization. Oh, it's like a online subscription.</p>
+
+      <h3 id="final">Final Advice</h3>
+      <p>You need to renew it on your card. Otherwise, it's gonna poof It's gonna go So you constantly revisit the material and of course since you're rereading it so many so many times You're gonna see a lot of your highlights and your old notes and you're gonna think dude Why did I highlight that?  
+
+      So fella, there are some things I've highlighted. I'm thinking why did I highlight?  
+
+      Because as you become more and more familiar with it The knowledge is it's with you, you know, you don't even need the highlighter.  
+
+      Yeah That's not to say you shouldn't highlight as you go along because there are definitely things that will be useful for you But you know You should be really conservative with your highlights in your notes because if you use the same book five years from now You're gonna be a little annoyed with yourself.</p>
+
+      <!-- Hidden Notes Section -->
+      <div class="note-section" id="noteSection">
+        <h3 id="intro">Introduction</h3>
+        <p>I want to explain something Obviously there is benefits in taking a note of something and in turning to it 100% but the thing is When you are new to a book, especially if it's a topic you haven't read that much about Everything is new to you everything you look at and you think subhanAllah. I did not know that.  
+        All right SubhanAllah first time I picked up a volume of Tafsir As-Sa'di I was like subhanAllah every single page here and there new information overload and that's a beautiful thing and how do that? It's a beauty That we can experience this, right?</p>
+
+        <h3 id="benefits">Benefits of Note-taking</h3>
+        <p>if I was gonna take a note about everything that blew my mind SubhanAllah, I would just rewrite Tafsir As-Sa'di in a more inferior way because now it's my version It's not the translated text of the original, right So when you get acquainted with the material then you can take notes right because then all of a sudden More things are going to be in your general understanding. 
+        You're going to acquire a better understanding of the topic and So the next time you read it less things are going to stand out to you as being especially Important or fascinating, right?</p>
+
+        <h3 id="memorization">Types of Memorization</h3>
+        <p>The scholars they say that the person Who has knowledge is one who acts upon it...  
+        One ¹ where you memorize something word-for-word ...  
+        ² you memorize it in meaning, right? ...</p>
+
+        <h3 id="summarizing">Summarizing & Rereading</h3>
+        <p>And he mentions that one of the ways that you become the best level of Acquainted with a text... reread it many times Many many times...</p>
+
+        <h3 id="reviewing">Reviewing & Retention</h3>
+        <p>Because Memorization consists of exposing yourself to the thing over and over and over again until it digs into your brain... renew your memorization like a subscription...</p>
+
+        <h3 id="final">Final Advice</h3>
+        <p>You should be really conservative with your highlights in your notes because if you use the same book five years
