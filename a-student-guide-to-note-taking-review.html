@@ -11,8 +11,6 @@
       background:#fdfbf6;
       color:#2f2f2f;
       line-height:1.7;
-      display:flex;
-      flex-direction:column;
     }
     header {
       text-align:center;
@@ -27,14 +25,14 @@
 
     .container {
       display:flex;
-      max-width:1300px;
+      max-width:1200px;
       margin:30px auto;
       padding:0 20px;
       gap:24px;
     }
 
-    aside.left {
-      width:220px;
+    aside.sidebar {
+      width:260px;
       background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
       border:1px solid rgba(0,0,0,0.08);
       border-radius:12px;
@@ -42,7 +40,7 @@
       box-shadow:0 6px 18px rgba(0,0,0,0.12);
       height:fit-content;
     }
-    aside.left h3 {
+    aside.sidebar h3 {
       font-size:18px;
       margin-bottom:12px;
       color:#4b3621;
@@ -50,19 +48,48 @@
       padding-bottom:5px;
       font-family:"Amiri",serif;
     }
-    .sidebar-links a {
-      display:block;
-      padding:10px 12px;
-      margin-bottom:6px;
-      background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+    .sidebar-links {
+      max-height:600px;
+      overflow-y:auto;
+    }
+    .category {
+      margin-bottom:10px;
+    }
+    .category button {
+      width:100%;
+      text-align:left;
+      padding:8px 10px;
+      background:#efe3cd;
       border:1px solid #d9c7a4;
-      border-radius:8px;
+      border-radius:6px;
+      cursor:pointer;
+      font-size:15px;
+      transition:background 0.2s;
+    }
+    .category button:hover { background:#f7e8c9; }
+    .subcategory {
+      margin-top:6px;
+      margin-left:15px;
+      display:none;
+      animation: slideDown 0.3s ease-out;
+    }
+    .subcategory a {
+      display:block;
+      padding:6px 10px;
+      margin-bottom:5px;
+      background:#fffdf9;
+      border:1px solid #e4d8c2;
+      border-radius:6px;
+      font-size:14px;
       color:#3a2b1a;
       text-decoration:none;
-      font-size:15px;
-      transition:background 0.2s, transform 0.15s;
+      transition:background 0.2s;
     }
-    .sidebar-links a:hover { background:#f7e8c9; transform:translateX(3px); }
+    .subcategory a:hover { background:#f7e8c9; }
+    @keyframes slideDown {
+      from { opacity:0; transform:translateY(-5px); }
+      to { opacity:1; transform:translateY(0); }
+    }
 
     main {
       flex:1;
@@ -78,6 +105,15 @@
       margin-bottom:18px;
       color:#3a2b1a;
     }
+    .intro-box {
+      background:#fff8d6;
+      border:1px solid #e4d8c2;
+      border-radius:10px;
+      padding:16px;
+      margin-bottom:20px;
+      box-shadow:0 3px 10px rgba(0,0,0,0.08);
+      font-style:italic;
+    }
     main h3 {
       font-family:"Amiri",serif;
       font-size:22px;
@@ -85,57 +121,19 @@
       color:#4b3621;
     }
     main p { margin-bottom:16px; }
-    main ul { margin-left:20px; }
 
-    /* Right navigation sidebar */
-    aside.right {
-      width:260px;
-      max-height:600px;
-      overflow-y:auto;
-      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
-      border:1px solid rgba(0,0,0,0.08);
-      border-radius:12px;
-      padding:16px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-    }
-    .toc-category {
-      margin-bottom:10px;
-    }
-    .toc-category h4 {
-      font-size:16px;
-      margin:0;
-      color:#3a2b1a;
-      cursor:pointer;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:6px 8px;
-      background:#efe3cd;
-      border:1px solid #d9c7a4;
+    .pdf-download {
+      display:inline-block;
+      margin:15px 0;
+      padding:10px 16px;
+      background:#d9c7a4;
+      color:#2f2f2f;
       border-radius:6px;
-      transition:background 0.2s;
-    }
-    .toc-category h4:hover { background:#f7e8c9; }
-    .toc-links {
-      margin-top:6px;
-      margin-left:10px;
-      display:none;
-      flex-direction:column;
-      animation: slideDown 0.3s ease forwards;
-    }
-    .toc-links a {
-      font-size:14px;
-      padding:6px 8px;
       text-decoration:none;
-      color:#4b3621;
-      border-radius:6px;
+      font-weight:bold;
       transition:background 0.2s;
     }
-    .toc-links a:hover { background:#fff3d1; }
-    @keyframes slideDown {
-      from { opacity:0; max-height:0; }
-      to { opacity:1; max-height:500px; }
-    }
+    .pdf-download:hover { background:#c8b48c; }
 
     footer {
       text-align:center;
@@ -144,6 +142,11 @@
       border-top:1px solid #e4d8c2;
       font-size:14px;
       color:#5c4b36;
+    }
+    .hijri-date {
+      font-style:italic;
+      margin-bottom:15px;
+      display:block;
     }
   </style>
 </head>
@@ -155,103 +158,93 @@
   </header>
 
   <div class="container">
-    <!-- Left navigation -->
-    <aside class="left">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
       <h3>Navigation</h3>
       <div class="sidebar-links">
-        <a href="index.html">Home</a>
-        <a href="library.html">Library</a>
-        <a href="a-student-guide-to-note-taking-review.html">Article</a>
-        <a href="#">Audio</a>
-        <a href="#">About</a>
+        <div class="category">
+          <button onclick="toggleSub(this)">[+] Question</button>
+          <div class="subcategory">
+            <a href="#question">How can one have an effective note taking...</a>
+          </div>
+        </div>
+        <div class="category">
+          <button onclick="toggleSub(this)">[+] Answer</button>
+          <div class="subcategory">
+            <a href="#intro">Introduction</a>
+            <a href="#benefits">Benefits of Note-taking</a>
+            <a href="#memorization">Types of Memorization</a>
+            <a href="#summarizing">Summarizing & Rereading</a>
+            <a href="#reviewing">Reviewing & Retention</a>
+            <a href="#final">Final Advice</a>
+          </div>
+        </div>
       </div>
     </aside>
 
-    <!-- Article content -->
+    <!-- Main Content -->
     <main>
-      <h2 id="top">A Student’s Guide to Note-Taking & Review</h2>
+      <span class="hijri-date" id="hijriDate"></span>
+      <h2>A Student’s Guide to Note-Taking & Review</h2>
+      <a class="pdf-download" href="note-taking.pdf" download>📄 Download PDF</a>
 
       <h3 id="question">Question</h3>
-      <p>
-        A question was asked to the brother regarding how can one have an effective note taking 
-        and review as a student of knowledges and that the questioner stated he has bad highlighting 
-        problem when it comes to book and text that he find interesting as he stated that he even 
-        sometimes turn the page he's reading into a colorful page due to the excessive highlighting 
-        he is doing.
-      </p>
-      <p>
-        And the questioner is said to be on his path of learning the Deen and learning as a student 
-        of knowledges hence the brother here will clarify on how to properly have an effective note 
-        taking and review. <em>May Allah increase us all in beneficial knowledges and may Allah make 
-        this a benefits for us all</em>.
-      </p>
+      <div class="intro-box">
+        how can one have an effective note taking and review as a student of knowledges? i am really bad when it comes to highlighting text sometimes i would turn the page that contain an information that i find interesting i would turn it into a colorful page due to the excessive highlighting i am doing  
 
-      <h3 id="answer">Answer</h3>
-      <p>I want to explain something. Obviously there is benefits in taking a note of something and 
-        in turning to it 100% but the thing is when you are new to a book, especially if it's a topic 
-        you haven't read that much about, everything is new to you…</p>
+        i am a beginner student of knowledges and i am new to the path of seeking knowledge so please clarify to us on how to properly have an effective note taking  and review May Allah increase us all in beneficial knowledges and may Allah make  this a benefits for us all
+      </div>
 
-      <h3 id="notes">On Taking Notes</h3>
-      <p>If I was gonna take a note about everything that blew my mind… you’d just rewrite the book. 
-        When you get acquainted with the material, you can take notes more effectively.</p>
+      <h3 id="intro">Introduction</h3>
+      <p>I want to explain something Obviously there is benefits in taking a note of something and in turning to it 100% but the thing is When you are new to a book, especially if it's a topic you haven't read that much about Everything is new to you everything you look at and you think subhanAllah. I did not know that.  
+      All right SubhanAllah first time I picked up a volume of Tafsir As-Sa'di I was like subhanAllah every single page here and there new information overload and that's a beautiful thing and how do that? It's a beauty That we can experience this, right? </p>
 
-      <h3 id="memorization">On Memorization</h3>
-      <p>Scholars mention two types of memorization… word-for-word, and memorization of meaning.</p>
+      <h3 id="benefits">Benefits of Note-taking</h3>
+      <p>if I was gonna take a note about everything that blew my mind SubhanAllah, I would just rewrite Tafsir As-Sa'di in a more inferior way because now it's my version It's not the translated text of the original, right So when you get acquainted with the material then you can take notes right because then all of a sudden More things are going to be in your general understanding. 
+      You're going to acquire a better understanding of the topic and So the next time you read it less things are going to stand out to you as being especially Important or fascinating, right?</p>
 
-      <h3 id="summary">On Summarizing & Rereading</h3>
-      <p>The best way to understand a text is to summarize it in your own words. This requires rereading 
-        multiple times.</p>
+      <h3 id="memorization">Types of Memorization</h3>
+      <p>The scholars they say that the person Who has knowledge is one who acts upon it...  
+      One ¹ where you memorize something word-for-word ...  
+      ² you memorize it in meaning, right? ...</p>
 
-      <h3 id="review">On Reviewing & Retention</h3>
-      <p>Continuous review is key. Memorization without revisiting leads to forgetting. Scholars advise 
-        reading even simple books 5–10 times a year for mastery.</p>
+      <h3 id="summarizing">Summarizing & Rereading</h3>
+      <p>And he mentions that one of the ways that you become the best level of Acquainted with a text... reread it many times Many many times...</p>
+
+      <h3 id="reviewing">Reviewing & Retention</h3>
+      <p>Because Memorization consists of exposing yourself to the thing over and over and over again until it digs into your brain... renew your memorization like a subscription...</p>
 
       <h3 id="final">Final Advice</h3>
-      <p>Highlight conservatively. Review often. Reread patiently. Knowledge remains with those who 
-        revisit and act upon it.</p>
+      <p>You should be really conservative with your highlights in your notes because if you use the same book five years from now You're gonna be a little annoyed with yourself.</p>
+
+      <footer>
+        <p>
+          Share this, Baarakallaah Feekum: <br>
+          <em>“One who guides to something good has a reward similar to that of its doer” - Saheeh Muslim vol.3, no.4665</em>
+        </p>
+      </footer>
     </main>
-
-    <!-- Right navigation sidebar -->
-    <aside class="right">
-      <div class="toc-category">
-        <h4>Question <span>[+]</span></h4>
-        <div class="toc-links">
-          <a href="#question">Read Question</a>
-        </div>
-      </div>
-
-      <div class="toc-category">
-        <h4>Answer <span>[+]</span></h4>
-        <div class="toc-links">
-          <a href="#answer">General Answer</a>
-          <a href="#notes">On Taking Notes</a>
-          <a href="#memorization">On Memorization</a>
-          <a href="#summary">On Summarizing & Rereading</a>
-          <a href="#review">On Reviewing & Retention</a>
-          <a href="#final">Final Advice</a>
-        </div>
-      </div>
-    </aside>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
-
   <script>
-    document.querySelectorAll(".toc-category h4").forEach(toggle => {
-      toggle.addEventListener("click", () => {
-        let links = toggle.nextElementSibling;
-        let sign = toggle.querySelector("span");
-        if (links.style.display === "flex") {
-          links.style.display = "none";
-          sign.textContent = "[+]";
-        } else {
-          links.style.display = "flex";
-          sign.textContent = "[-]";
-        }
+    function toggleSub(btn) {
+      const sub = btn.nextElementSibling;
+      if (sub.style.display === "block") {
+        sub.style.display = "none";
+        btn.textContent = btn.textContent.replace("[-]", "[+]");
+      } else {
+        sub.style.display = "block";
+        btn.textContent = btn.textContent.replace("[+]", "[-]");
+      }
+    }
+
+    // Hijri date API
+    fetch("https://api.aladhan.com/v1/gToH?date=" + new Date().toLocaleDateString("en-GB"))
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("hijriDate").textContent =
+          "📅 Hijri Date: " + data.data.hijri.date + " (" + data.data.hijri.weekday.en + ")";
       });
-    });
   </script>
 </body>
 </html>
