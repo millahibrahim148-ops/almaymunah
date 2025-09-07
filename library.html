@@ -118,7 +118,8 @@
     }
     .collapsible:after {
       content: '[+]';
-      font-weight: bold;
+      font-weight: normal;
+      color: #3a2b1a;
     }
     .collapsible.active:after {
       content: '[-]';
@@ -127,8 +128,8 @@
     .content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      margin-left: 10px;
+      transition: max-height 0.4s ease-out;
+      margin-left: 15px;
       margin-bottom: 10px;
     }
     .content a, .content button {
@@ -190,8 +191,11 @@
       <!-- Category 1 -->
       <button class="collapsible">Category 1</button>
       <div class="content">
-        <button class="collapsible">Library resources for learning & Studying with beginner books <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
+        
+        <!-- Subcategory -->
+        <button class="collapsible">Library resources for learning & Studying with beginner books</button>
         <div class="content">
+          
           <!-- Book 1 -->
           <button class="collapsible">Hilyaatu thaalib al-ʿIlm (Etiquettes of a Student of Knowledge) <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
           <div class="content">
@@ -231,6 +235,7 @@
           <div class="content">
             <a href="#">Open Book</a>
           </div>
+
         </div>
       </div>
     </main>
