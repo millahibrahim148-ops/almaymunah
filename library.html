@@ -12,6 +12,7 @@
       color: #2f2f2f;
       line-height: 1.6;
     }
+
     header {
       text-align: center;
       padding: 35px 20px;
@@ -36,6 +37,7 @@
       color: #5c4b36;
       margin-top: 8px;
     }
+
     .container {
       display: flex;
       max-width: 1100px;
@@ -43,6 +45,8 @@
       padding: 0 20px;
       gap: 24px;
     }
+
+    /* Sidebar */
     aside {
       width: 260px;
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
@@ -65,6 +69,7 @@
       flex-direction: column;
     }
     .sidebar-links a {
+      display: block;
       padding: 10px 12px;
       margin-bottom: 6px;
       background: linear-gradient(180deg, #fdfbf6, #efe3cd);
@@ -80,6 +85,7 @@
       background: #f7e8c9;
       transform: translateX(3px);
     }
+
     main {
       flex: 1;
       background: #fffdf9;
@@ -88,68 +94,68 @@
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
-    .library-section {
-      margin-bottom: 30px;
-    }
-    .library-section h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #4b3621;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-      font-family: "Amiri", serif;
+
+    /* Collapsible Buttons */
+    .collapsible {
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      color: #3a2b1a;
       cursor: pointer;
-    }
-    .toggle-btn {
-      font-size: 14px;
-      margin-left: 8px;
-      color: #6b5a45;
-      cursor: pointer;
-    }
-    .library-links a {
+      padding: 12px;
+      width: 100%;
+      text-align: left;
+      border: 1px solid #d9c7a4;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+      margin-bottom: 8px;
+      transition: background 0.2s;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      color: #3a2b1a;
+    }
+    .collapsible:hover {
+      background: #f7e8c9;
+    }
+    .collapsible:after {
+      content: '+';
+      font-weight: bold;
+      float: right;
+    }
+    .collapsible.active:after {
+      content: '-';
+    }
+
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+    .content a, .content button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      margin: 5px 0;
+      background: #fffdf9;
+      border: 1px solid #e4d8c2;
+      border-radius: 6px;
       text-decoration: none;
-      font-size: 15px;
+      color: #3a2b1a;
+      font-size: 14px;
       transition: background 0.2s, transform 0.15s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
       cursor: pointer;
     }
-    .library-links a img {
+    .content a img, .content button img {
       width: 18px;
       height: 18px;
     }
-    .library-links a:hover {
+    .content a:hover, .content button:hover {
       background: #f7e8c9;
       transform: translateX(3px);
     }
-    .dropdown {
-      display: none;
-      margin-left: 15px;
-      margin-top: 6px;
-    }
-    .dropdown a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      padding: 6px 10px;
-      background: #fdfbf6;
-      border: 1px solid #e4d8c2;
-      border-radius: 6px;
-      margin-bottom: 4px;
-    }
-    .dropdown a img {
-      width: 16px;
-      height: 16px;
-    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -160,7 +166,6 @@
       color: #6b5a45;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
     }
-    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -183,43 +188,49 @@
     </aside>
 
     <main>
-      <div class="library-section">
-        <h3>Beginner <span class="toggle-btn">[+]</span></h3>
-        <div class="library-links hidden">
-          <a class="book-toggle" href="javascript:void(0)">
-            Hilyaatu thaalib al-ʿIlm (Ettiquettes of a student on seeking 'Ilm)
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
+      <!-- Category 1 -->
+      <button class="collapsible">Category 1</button>
+      <div class="content">
+        <button class="collapsible">Library resources for learning & Studying with beginner books</button>
+        <div class="content">
+          <!-- Book 1 -->
+          <button class="collapsible">Hilyaatu thaalib al-ʿIlm (Etiquettes of a Student of Knowledge) <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
+          <div class="content">
             <a href="#">English Book</a>
             <a href="#">Arabic Book</a>
             <a href="#">Syarh Book (Arabic)</a>
-            <a href="#">Lesson (1-6) & Syarh Lesson (1-61)</a>
-            <a href="#">Notes & Summary</a>
+
+            <!-- Lesson & Commentary Nested -->
+            <button class="collapsible">Lesson & Commentary</button>
+            <div class="content">
+              <p><strong>Commentary of the book taught by Shaykh Saeed Hassan:</strong></p>
+              <a href="#">Lesson 1</a>
+              <a href="#">Lesson 2</a>
+              <a href="#">Lesson 3</a>
+              <a href="#">Lesson 4</a>
+              <a href="#">Lesson 5</a>
+              <a href="#">Lesson 6</a>
+              <p><strong>Syarh Lessons by Ustadh AbdulAziz Al-Haqqan:</strong></p>
+              <a href="#">Go to Lessons Page</a>
+            </div>
           </div>
 
-          <a class="book-toggle" href="javascript:void(0)">
-            The Tā'iyyah of Abu Ishāq al-Ilbīrī
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf"> Open PDF</a>
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="audio"> Listen to Poetry</a>
+          <!-- Book 2 -->
+          <button class="collapsible">The Tā'iyyah of Abu Ishāq al-Ilbīrī <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
+          <div class="content">
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Pdf_icon.svg" alt="pdf"> Open PDF</a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="audio"> Listen to Poetry</a>
           </div>
 
-          <a class="book-toggle" href="javascript:void(0)">
-            Gateway to Understanding Aqīdah Fiqh Sīrah & Tafsīr
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
+          <!-- Book 3 -->
+          <button class="collapsible">Gateway to understanding ʿAqīdah, Fiqh, Sīrah & Tafsīr <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
+          <div class="content">
             <a href="#">Open Book</a>
           </div>
 
-          <a class="book-toggle" href="javascript:void(0)">
-            Lvl 1: The Text of the Student of Knowledge
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
+          <!-- Book 4 -->
+          <button class="collapsible">Lvl 1 The Text of the Student of Knowledge <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
+          <div class="content">
             <a href="#">Open Book</a>
           </div>
         </div>
@@ -232,32 +243,15 @@
   </footer>
 
   <script>
-    // Toggle category expand/collapse
-    document.querySelectorAll(".library-section h3").forEach(section => {
-      section.addEventListener("click", () => {
-        let links = section.nextElementSibling;
-        let btn = section.querySelector(".toggle-btn");
-        if (links.classList.contains("hidden")) {
-          links.classList.remove("hidden");
-          btn.textContent = "[-]";
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(btn => {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        let content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
         } else {
-          links.classList.add("hidden");
-          btn.textContent = "[+]";
-        }
-      });
-    });
-
-    // Toggle book dropdowns
-    document.querySelectorAll(".book-toggle").forEach(book => {
-      book.addEventListener("click", () => {
-        let dropdown = book.nextElementSibling;
-        let icon = book.querySelector(".folder-icon");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png"; // closed
-        } else {
-          dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true"; // open
+          content.style.maxHeight = content.scrollHeight + "px";
         }
       });
     });
