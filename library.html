@@ -117,12 +117,11 @@
       background: #f7e8c9;
     }
     .collapsible:after {
-      content: '+';
+      content: '[+]';
       font-weight: bold;
-      float: right;
     }
     .collapsible.active:after {
-      content: '-';
+      content: '[-]';
     }
 
     .content {
@@ -191,7 +190,7 @@
       <!-- Category 1 -->
       <button class="collapsible">Category 1</button>
       <div class="content">
-        <button class="collapsible">Library resources for learning & Studying with beginner books</button>
+        <button class="collapsible">Library resources for learning & Studying with beginner books <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
         <div class="content">
           <!-- Book 1 -->
           <button class="collapsible">Hilyaatu thaalib al-ʿIlm (Etiquettes of a Student of Knowledge) <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
@@ -201,7 +200,7 @@
             <a href="#">Syarh Book (Arabic)</a>
 
             <!-- Lesson & Commentary Nested -->
-            <button class="collapsible">Lesson & Commentary</button>
+            <button class="collapsible">Lesson & Commentary <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
             <div class="content">
               <p><strong>Commentary of the book taught by Shaykh Saeed Hassan:</strong></p>
               <a href="#">Lesson 1</a>
@@ -218,8 +217,7 @@
           <!-- Book 2 -->
           <button class="collapsible">The Tā'iyyah of Abu Ishāq al-Ilbīrī <img src="https://freesvg.org/img/Folder-1.png" alt="folder"></button>
           <div class="content">
-            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Pdf_icon.svg" alt="pdf"> Open PDF</a>
-            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="audio"> Listen to Poetry</a>
+            <a href="#">Open PDF <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Pdf_icon.svg" alt="pdf"></a>
           </div>
 
           <!-- Book 3 -->
@@ -248,10 +246,12 @@
       btn.addEventListener("click", function() {
         this.classList.toggle("active");
         let content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
+        if (content && content.classList.contains("content")) {
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
         }
       });
     });
