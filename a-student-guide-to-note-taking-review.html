@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>A Student’s Guide to Note-Taking & Review</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       margin:0; padding:0;
@@ -12,10 +11,12 @@
       background:#fdfbf6;
       color:#2f2f2f;
       line-height:1.7;
+      display:flex;
+      flex-direction:column;
     }
     header {
       text-align:center;
-      padding:35px 20px 15px;
+      padding:35px 20px;
       background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
       border-bottom:1px solid #c8b48c;
       box-shadow:inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
@@ -24,38 +25,16 @@
     header h1 { font-family:"Amiri",serif; font-size:34px; color:#3a2b1a; }
     header p { font-size:15px; color:#5c4b36; margin-top:8px; }
 
-    nav {
-      background:#3a2b1a;
-      padding:10px 0;
-      box-shadow:0 3px 10px rgba(0,0,0,0.2);
-    }
-    nav ul {
-      display:flex;
-      justify-content:center;
-      gap:30px;
-      list-style:none;
-      margin:0;
-      padding:0;
-    }
-    nav ul li a {
-      color:#fdfbf6;
-      text-decoration:none;
-      font-weight:bold;
-      font-size:16px;
-      transition:color 0.2s;
-    }
-    nav ul li a:hover { color:#d9c7a4; }
-
     .container {
       display:flex;
-      max-width:1200px;
+      max-width:1300px;
       margin:30px auto;
       padding:0 20px;
       gap:24px;
     }
 
-    aside.sidebar {
-      width:260px;
+    aside.left {
+      width:220px;
       background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
       border:1px solid rgba(0,0,0,0.08);
       border-radius:12px;
@@ -63,7 +42,7 @@
       box-shadow:0 6px 18px rgba(0,0,0,0.12);
       height:fit-content;
     }
-    aside.sidebar h3 {
+    aside.left h3 {
       font-size:18px;
       margin-bottom:12px;
       color:#4b3621;
@@ -71,46 +50,19 @@
       padding-bottom:5px;
       font-family:"Amiri",serif;
     }
-    .sidebar-links {
-      max-height:600px;
-      overflow-y:auto;
-    }
-    .category { margin-bottom:10px; }
-    .category button {
-      width:100%;
-      text-align:left;
-      padding:8px 10px;
-      background:#efe3cd;
-      border:1px solid #d9c7a4;
-      border-radius:6px;
-      cursor:pointer;
-      font-size:15px;
-      transition:background 0.2s;
-    }
-    .category button:hover { background:#f7e8c9; }
-    .subcategory {
-      margin-top:6px;
-      margin-left:15px;
-      display:none;
-      animation: slideDown 0.3s ease-out;
-    }
-    .subcategory a {
+    .sidebar-links a {
       display:block;
-      padding:6px 10px;
-      margin-bottom:5px;
-      background:#fffdf9;
-      border:1px solid #e4d8c2;
-      border-radius:6px;
-      font-size:14px;
+      padding:10px 12px;
+      margin-bottom:6px;
+      background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+      border:1px solid #d9c7a4;
+      border-radius:8px;
       color:#3a2b1a;
       text-decoration:none;
-      transition:background 0.2s;
+      font-size:15px;
+      transition:background 0.2s, transform 0.15s;
     }
-    .subcategory a:hover { background:#f7e8c9; }
-    @keyframes slideDown {
-      from { opacity:0; transform:translateY(-5px); }
-      to { opacity:1; transform:translateY(0); }
-    }
+    .sidebar-links a:hover { background:#f7e8c9; transform:translateX(3px); }
 
     main {
       flex:1;
@@ -126,15 +78,6 @@
       margin-bottom:18px;
       color:#3a2b1a;
     }
-    .intro-box {
-      background:#fff8d6;
-      border:1px solid #e4d8c2;
-      border-radius:10px;
-      padding:16px;
-      margin-bottom:20px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.08);
-      font-style:italic;
-    }
     main h3 {
       font-family:"Amiri",serif;
       font-size:22px;
@@ -142,27 +85,56 @@
       color:#4b3621;
     }
     main p { margin-bottom:16px; }
+    main ul { margin-left:20px; }
 
-    .pdf-download {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin:15px 0;
-      padding:10px 16px;
-      background:#d9c7a4;
-      color:#2f2f2f;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:bold;
+    /* Right navigation sidebar */
+    aside.right {
+      width:260px;
+      max-height:600px;
+      overflow-y:auto;
+      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .toc-category {
+      margin-bottom:10px;
+    }
+    .toc-category h4 {
+      font-size:16px;
+      margin:0;
+      color:#3a2b1a;
       cursor:pointer;
-      border:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:6px 8px;
+      background:#efe3cd;
+      border:1px solid #d9c7a4;
+      border-radius:6px;
       transition:background 0.2s;
     }
-    .pdf-download:hover { background:#c8b48c; }
-    .pdf-download svg {
-      width:18px;
-      height:18px;
-      fill:#2f2f2f;
+    .toc-category h4:hover { background:#f7e8c9; }
+    .toc-links {
+      margin-top:6px;
+      margin-left:10px;
+      display:none;
+      flex-direction:column;
+      animation: slideDown 0.3s ease forwards;
+    }
+    .toc-links a {
+      font-size:14px;
+      padding:6px 8px;
+      text-decoration:none;
+      color:#4b3621;
+      border-radius:6px;
+      transition:background 0.2s;
+    }
+    .toc-links a:hover { background:#fff3d1; }
+    @keyframes slideDown {
+      from { opacity:0; max-height:0; }
+      to { opacity:1; max-height:500px; }
     }
 
     footer {
@@ -173,11 +145,6 @@
       font-size:14px;
       color:#5c4b36;
     }
-    .hijri-date {
-      font-style:italic;
-      margin-bottom:15px;
-      display:block;
-    }
   </style>
 </head>
 <body>
@@ -187,118 +154,102 @@
     <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="index.html">🏠 Home</a></li>
-      <li><a href="library.html">📚 Library</a></li>
-      <li><a href="articles.html">📄 Articles</a></li>
-      <li><a href="about.html">ℹ️ About</a></li>
-      <li><a href="contact.html">✉️ Contact</a></li>
-    </ul>
-  </nav>
-
   <div class="container">
-    <!-- Left Sidebar -->
-    <aside class="sidebar">
+    <!-- Left navigation -->
+    <aside class="left">
       <h3>Navigation</h3>
       <div class="sidebar-links">
-        <div class="category">
-          <button onclick="toggleSub(this)">[+] Question</button>
-          <div class="subcategory">
-            <a href="#question">How can one have an effective note taking...</a>
-          </div>
-        </div>
-        <div class="category">
-          <button onclick="toggleSub(this)">[+] Answer</button>
-          <div class="subcategory">
-            <a href="#intro">Introduction</a>
-            <a href="#benefits">Benefits of Note-taking</a>
-            <a href="#memorization">Types of Memorization</a>
-            <a href="#summarizing">Summarizing & Rereading</a>
-            <a href="#reviewing">Reviewing & Retention</a>
-            <a href="#final">Final Advice</a>
-          </div>
-        </div>
+        <a href="index.html">Home</a>
+        <a href="library.html">Library</a>
+        <a href="a-student-guide-to-note-taking-review.html">Article</a>
+        <a href="#">Audio</a>
+        <a href="#">About</a>
       </div>
     </aside>
 
-    <!-- Main Content -->
-    <main id="articleContent">
-      <span class="hijri-date" id="hijriDate"></span>
-      <h2>A Student’s Guide to Note-Taking & Review</h2>
-
-      <button class="pdf-download" id="downloadPdf">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-          <path d="M181.9 256.1c-5-16.2-13.6-29.5-24.7-39.9s-26.6-16-45.3-16h-8v128h7.2c20.9 0 36.9-6.1 47.9-18.2s16.5-29.4 16.5-50.7c0-1.5-.1-3.1-.3-4.6zm37.3-42.7c0 13.3 4.7 23.7 14 31.3s22.6 11.4 39.7 11.4h8v-85.3h-7.4c-17.1 0-30.2 3.7-39.5 11s-14.8 18.4-14.8 31.6zm164.8-120c-9.4-9.4-22-14.1-34.6-14.1H256v128c0 35.3-28.7 64-64 64h-32v128H64c-17.7 0-32 14.3-32 32v64h288c12.6 0 25.2-4.7 34.6-14.1l96-96c9.4-9.4 14.1-22 14.1-34.6V93.3c0-12.6-4.7-25.2-14.1-34.6z"/>
-        </svg>
-        Download as PDF
-      </button>
+    <!-- Article content -->
+    <main>
+      <h2 id="top">A Student’s Guide to Note-Taking & Review</h2>
 
       <h3 id="question">Question</h3>
-      <div class="intro-box">
-        how can one have an effective note taking and review as a student of knowledges? ...
-      </div>
+      <p>
+        A question was asked to the brother regarding how can one have an effective note taking 
+        and review as a student of knowledges and that the questioner stated he has bad highlighting 
+        problem when it comes to book and text that he find interesting as he stated that he even 
+        sometimes turn the page he's reading into a colorful page due to the excessive highlighting 
+        he is doing.
+      </p>
+      <p>
+        And the questioner is said to be on his path of learning the Deen and learning as a student 
+        of knowledges hence the brother here will clarify on how to properly have an effective note 
+        taking and review. <em>May Allah increase us all in beneficial knowledges and may Allah make 
+        this a benefits for us all</em>.
+      </p>
 
-      <h3 id="intro">Introduction</h3>
-      <p>I want to explain something ...</p>
+      <h3 id="answer">Answer</h3>
+      <p>I want to explain something. Obviously there is benefits in taking a note of something and 
+        in turning to it 100% but the thing is when you are new to a book, especially if it's a topic 
+        you haven't read that much about, everything is new to you…</p>
 
-      <h3 id="benefits">Benefits of Note-taking</h3>
-      <p>if I was gonna take a note about everything ...</p>
+      <h3 id="notes">On Taking Notes</h3>
+      <p>If I was gonna take a note about everything that blew my mind… you’d just rewrite the book. 
+        When you get acquainted with the material, you can take notes more effectively.</p>
 
-      <h3 id="memorization">Types of Memorization</h3>
-      <p>One ¹ ... ² you memorize it in meaning...</p>
+      <h3 id="memorization">On Memorization</h3>
+      <p>Scholars mention two types of memorization… word-for-word, and memorization of meaning.</p>
 
-      <h3 id="summarizing">Summarizing & Rereading</h3>
-      <p>And he mentions that one of the ways ...</p>
+      <h3 id="summary">On Summarizing & Rereading</h3>
+      <p>The best way to understand a text is to summarize it in your own words. This requires rereading 
+        multiple times.</p>
 
-      <h3 id="reviewing">Reviewing & Retention</h3>
-      <p>Because Memorization consists ... renew your memorization like a subscription...</p>
+      <h3 id="review">On Reviewing & Retention</h3>
+      <p>Continuous review is key. Memorization without revisiting leads to forgetting. Scholars advise 
+        reading even simple books 5–10 times a year for mastery.</p>
 
       <h3 id="final">Final Advice</h3>
-      <p>You should be really conservative with your highlights...</p>
-
-      <footer>
-        <p>
-          Share this, Baarakallaah Feekum: <br>
-          <em>“One who guides to something good has a reward similar to that of its doer” - Saheeh Muslim vol.3, no.4665</em>
-        </p>
-      </footer>
+      <p>Highlight conservatively. Review often. Reread patiently. Knowledge remains with those who 
+        revisit and act upon it.</p>
     </main>
+
+    <!-- Right navigation sidebar -->
+    <aside class="right">
+      <div class="toc-category">
+        <h4>Question <span>[+]</span></h4>
+        <div class="toc-links">
+          <a href="#question">Read Question</a>
+        </div>
+      </div>
+
+      <div class="toc-category">
+        <h4>Answer <span>[+]</span></h4>
+        <div class="toc-links">
+          <a href="#answer">General Answer</a>
+          <a href="#notes">On Taking Notes</a>
+          <a href="#memorization">On Memorization</a>
+          <a href="#summary">On Summarizing & Rereading</a>
+          <a href="#review">On Reviewing & Retention</a>
+          <a href="#final">Final Advice</a>
+        </div>
+      </div>
+    </aside>
   </div>
 
+  <footer>
+    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
+  </footer>
+
   <script>
-    function toggleSub(btn) {
-      const sub = btn.nextElementSibling;
-      if (sub.style.display === "block") {
-        sub.style.display = "none";
-        btn.textContent = btn.textContent.replace("[-]", "[+]");
-      } else {
-        sub.style.display = "block";
-        btn.textContent = btn.textContent.replace("[+]", "[-]");
-      }
-    }
-
-    // Hijri date API
-    fetch("https://api.aladhan.com/v1/gToH?date=" + new Date().toLocaleDateString("en-GB"))
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("hijriDate").textContent =
-          "📅 Hijri Date: " + data.data.hijri.date + " (" + data.data.hijri.weekday.en + ")";
-      });
-
-    // PDF download
-    document.getElementById("downloadPdf").addEventListener("click", () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ unit: "pt", format: "a4" });
-      const content = document.getElementById("articleContent");
-      doc.html(content, {
-        callback: function (doc) {
-          doc.save("note-taking.pdf");
-        },
-        margin: [20, 20, 20, 20],
-        x: 10,
-        y: 10,
-        html2canvas: { scale: 0.6 }
+    document.querySelectorAll(".toc-category h4").forEach(toggle => {
+      toggle.addEventListener("click", () => {
+        let links = toggle.nextElementSibling;
+        let sign = toggle.querySelector("span");
+        if (links.style.display === "flex") {
+          links.style.display = "none";
+          sign.textContent = "[+]";
+        } else {
+          links.style.display = "flex";
+          sign.textContent = "[-]";
+        }
       });
     });
   </script>
