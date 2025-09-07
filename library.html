@@ -2,309 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Al Maymunah - Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al Maymunah - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Cormorant Garamond", serif;
-      background: #fdfbf6;
-      color: #2f2f2f;
-      line-height: 1.6;
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: #f4f4f4;
+      color: #222;
     }
+
     header {
       text-align: center;
-      padding: 35px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      padding: 2rem;
+      background: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif') no-repeat center top/cover;
+      color: white;
+      font-family: 'Amiri', serif;
     }
-    header img {
-      max-width: 320px;
-      border-radius: 8px;
-      display: block;
-      margin: 0 auto 12px;
-    }
+
     header h1 {
-      font-family: "Amiri", serif;
-      font-size: 42px;
-      font-weight: 400;
-      color: #3a2b1a;
+      font-size: 2.5rem;
+      margin: 0;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     }
-    header p {
-      font-size: 16px;
-      color: #5c4b36;
-      margin-top: 8px;
+
+    nav {
+      width: 320px;
+      padding: 1rem;
+      background: #fff;
+      border-right: 1px solid #ccc;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
-    .container {
-      display: flex;
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-      gap: 24px;
-    }
-    aside {
-      width: 260px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      height: fit-content;
-    }
-    aside h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      color: #4b3621;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-      font-family: "Amiri", serif;
-    }
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar-links a {
-      padding: 10px 12px;
-      margin-bottom: 6px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      transition: background 0.2s, transform 0.15s;
-    }
-    .sidebar-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(3px);
-    }
-    main {
-      flex: 1;
-      background: #fffdf9;
-      padding: 20px;
-      border: 1px solid #e4d8c2;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-    .library-section {
-      margin-bottom: 30px;
-    }
-    .library-section h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #4b3621;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-      font-family: "Amiri", serif;
+
+    nav h2 {
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem;
       cursor: pointer;
-    }
-    .toggle-btn {
-      font-size: 14px;
-      margin-left: 8px;
-      color: #6b5a45;
-      cursor: pointer;
-    }
-    .library-links a {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      cursor: pointer;
+      justify-content: space-between;
+      font-weight: normal;
     }
-    .library-links a img {
+
+    nav h2::after {
+      content: '[+]';
+      font-size: 0.9rem;
+    }
+
+    nav h2.open::after {
+      content: '[-]';
+    }
+
+    .category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding-left: 0.8rem;
+      border-left: 1px solid #aaa;
+      margin-left: 0.5rem;
+    }
+
+    .category-content.open {
+      max-height: 2000px; /* big enough */
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    button {
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0.3rem 0;
+      width: 100%;
+    }
+
+    button img.icon {
       width: 18px;
       height: 18px;
+      margin-right: 8px;
     }
-    .library-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(3px);
-    }
-    .dropdown {
-      display: none;
-      margin-left: 15px;
-      margin-top: 6px;
-    }
-    .dropdown a {
+
+    .poetry-button {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
-      padding: 6px 10px;
-      background: #fdfbf6;
-      border: 1px solid #e4d8c2;
-      border-radius: 6px;
-      margin-bottom: 4px;
     }
-    .dropdown a img {
-      width: 16px;
-      height: 16px;
+
+    .poetry-button span {
+      flex: 1;
     }
-    .nested-dropdown {
-      display: none;
-      margin-top: 6px;
+
+    .poetry-button img {
+      width: 18px;
+      height: 18px;
+      margin-left: 8px;
     }
+
     .lesson-group {
-      border-left: 3px solid #d9c7a4;
-      margin-left: 12px;
-      padding-left: 12px;
-      margin-top: 8px;
-      margin-bottom: 8px;
+      border-left: 2px solid #444;
+      margin-left: 1rem;
+      padding-left: 1rem;
     }
-    .lesson-group p {
-      margin: 6px 0;
-      font-weight: bold;
-      color: #4b3621;
-      font-size: 14px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #d9c7a4;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      margin-top: 40px;
-      font-size: 14px;
-      color: #6b5a45;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
-    }
-    .hidden { display: none; }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
-    <h1>Al Maymunah</h1>
-    <p>Library of Beneficial Books</p>
+    <h1>Al Maymunah Library</h1>
   </header>
 
-  <div class="container">
-    <aside>
-      <h3>Navigation</h3>
-      <div class="sidebar-links">
-        <a href="index.html">Home</a>
-        <a href="library.html">Library</a>
-        <a href="article.html">Articles</a>
-        <a href="#">Audio</a>
-        <a href="#">About</a>
+  <nav>
+    <!-- Category 1 -->
+    <h2>Category 1</h2>
+    <div class="category-content">
+      <h2>Library resources for learning & Studying with beginner books</h2>
+      <div class="category-content">
+        <button>
+          <img src="https://cdn-icons-png.flaticon.com/512/318/318477.png" class="icon" alt="book">
+          Basic Book 1
+        </button>
+        <button>
+          <img src="https://cdn-icons-png.flaticon.com/512/318/318477.png" class="icon" alt="book">
+          Basic Book 2
+        </button>
       </div>
-    </aside>
+    </div>
 
-    <main>
-      <div class="library-section">
-        <h3>Beginner <span class="toggle-btn">[+]</span></h3>
-        <div class="library-links hidden">
-          <a class="book-toggle" href="javascript:void(0)">
-            Hilyaatu thaalib al-ʿIlm (Ettiquettes of a student on seeking 'Ilm)
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
-            <a href="#">English Book</a>
-            <a href="#">Arabic Book</a>
-            <a href="#">Syarh Book (Arabic)</a>
-            <a class="lesson-toggle" href="javascript:void(0)">
-              Lesson (1-6) & Syarh Lesson (1-61)
-              <img src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="nested-dropdown">
-              <div class="lesson-group">
-                <p>Commentary of the book taught by Shaykh Saeed Hassan:</p>
-                <a href="#">Lesson 1</a>
-                <a href="#">Lesson 2</a>
-                <a href="#">Lesson 3</a>
-                <a href="#">Lesson 4</a>
-                <a href="#">Lesson 5</a>
-                <a href="#">Lesson 6</a>
-                <p>Syarh Lessons by Ustadz AbdulAziz Al-Haqqan:</p>
-                <a href="#">Go to Lessons Page</a>
-              </div>
-            </div>
-            <a href="#">Notes & Summary</a>
-          </div>
-
-          <a class="book-toggle" href="javascript:void(0)">
-            The Tā'iyyah of Abu Ishāq al-Ilbīrī
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
-            <a href="#">Open PDF <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf"></a>
-          </div>
-
-          <a class="book-toggle" href="javascript:void(0)">
-            Gateway to Understanding Aqīdah Fiqh Sīrah & Tafsīr
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
-            <a href="#">Open Book</a>
-          </div>
-
-          <a class="book-toggle" href="javascript:void(0)">
-            Lvl 1: The Text of the Student of Knowledge
-            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-          </a>
-          <div class="dropdown">
-            <a href="#">Open Book</a>
-          </div>
-        </div>
+    <!-- Lesson & Commentary -->
+    <h2>Lesson (1-6) & Syarh Lesson (1-61)</h2>
+    <div class="category-content lesson-group">
+      <h2>Commentary of the book taught by Shaykh Saeed Hassan</h2>
+      <div class="category-content">
+        <button>
+          <img src="https://freesvg.org/img/1489798288.png" class="icon" alt="lesson">
+          Lesson 1
+        </button>
+        <button>
+          <img src="https://freesvg.org/img/1489798288.png" class="icon" alt="lesson">
+          Lesson 2
+        </button>
+        <button>
+          <img src="https://freesvg.org/img/1489798288.png" class="icon" alt="lesson">
+          Lesson 3
+        </button>
+        <button>
+          <img src="https://freesvg.org/img/1489798288.png" class="icon" alt="lesson">
+          Lesson 4
+        </button>
+        <button>
+          <img src="https://freesvg.org/img/1489798288.png" class="icon" alt="lesson">
+          Lesson 5
+        </button>
+        <button>
+          <img src="https://freesvg.org/img/1489798288.png" class="icon" alt="lesson">
+          Lesson 6
+        </button>
       </div>
-    </main>
-  </div>
 
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
+      <h2>Syarh Lessons by Ustadz AbdulAziz Al-Haqqan</h2>
+      <div class="category-content">
+        <button>
+          <img src="https://cdn-icons-png.flaticon.com/512/318/318477.png" class="icon" alt="syarh">
+          Go to Lessons Page
+        </button>
+      </div>
+    </div>
+
+    <!-- Poetry -->
+    <h2>Poetry</h2>
+    <div class="category-content">
+      <button class="poetry-button">
+        <span>Tā’iyyah of Abu Ishaq</span>
+        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon">
+      </button>
+    </div>
+  </nav>
 
   <script>
-    // Toggle category expand/collapse
-    document.querySelectorAll(".library-section h3").forEach(section => {
-      section.addEventListener("click", () => {
-        let links = section.nextElementSibling;
-        let btn = section.querySelector(".toggle-btn");
-        if (links.classList.contains("hidden")) {
-          links.classList.remove("hidden");
-          btn.textContent = "[-]";
-        } else {
-          links.classList.add("hidden");
-          btn.textContent = "[+]";
-        }
-      });
-    });
-
-    // Toggle book dropdowns
-    document.querySelectorAll(".book-toggle").forEach(book => {
-      book.addEventListener("click", () => {
-        let dropdown = book.nextElementSibling;
-        let icon = book.querySelector(".folder-icon");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png"; // closed
-        } else {
-          dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true"; // open
-        }
-      });
-    });
-
-    // Toggle nested lesson dropdown
-    document.querySelectorAll(".lesson-toggle").forEach(lesson => {
-      lesson.addEventListener("click", () => {
-        let dropdown = lesson.nextElementSibling;
-        let icon = lesson.querySelector("img");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png"; // closed
-        } else {
-          dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true"; // open
+    document.querySelectorAll("nav h2").forEach(h2 => {
+      h2.addEventListener("click", () => {
+        h2.classList.toggle("open");
+        const content = h2.nextElementSibling;
+        if (content && content.classList.contains("category-content")) {
+          content.classList.toggle("open");
         }
       });
     });
