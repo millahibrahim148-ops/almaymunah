@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>A Student’s Guide to Note-Taking & Review</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       margin:0; padding:0;
@@ -14,7 +15,7 @@
     }
     header {
       text-align:center;
-      padding:35px 20px;
+      padding:35px 20px 15px;
       background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
       border-bottom:1px solid #c8b48c;
       box-shadow:inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
@@ -22,6 +23,28 @@
     header img { max-width:320px; margin:0 auto 12px; display:block; }
     header h1 { font-family:"Amiri",serif; font-size:34px; color:#3a2b1a; }
     header p { font-size:15px; color:#5c4b36; margin-top:8px; }
+
+    nav {
+      background:#3a2b1a;
+      padding:10px 0;
+      box-shadow:0 3px 10px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    nav ul li a {
+      color:#fdfbf6;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:16px;
+      transition:color 0.2s;
+    }
+    nav ul li a:hover { color:#d9c7a4; }
 
     .container {
       display:flex;
@@ -52,9 +75,7 @@
       max-height:600px;
       overflow-y:auto;
     }
-    .category {
-      margin-bottom:10px;
-    }
+    .category { margin-bottom:10px; }
     .category button {
       width:100%;
       text-align:left;
@@ -123,7 +144,9 @@
     main p { margin-bottom:16px; }
 
     .pdf-download {
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       margin:15px 0;
       padding:10px 16px;
       background:#d9c7a4;
@@ -131,9 +154,16 @@
       border-radius:6px;
       text-decoration:none;
       font-weight:bold;
+      cursor:pointer;
+      border:none;
       transition:background 0.2s;
     }
     .pdf-download:hover { background:#c8b48c; }
+    .pdf-download svg {
+      width:18px;
+      height:18px;
+      fill:#2f2f2f;
+    }
 
     footer {
       text-align:center;
@@ -156,6 +186,16 @@
     <h1>Al Maymunah</h1>
     <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
   </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="library.html">📚 Library</a></li>
+      <li><a href="articles.html">📄 Articles</a></li>
+      <li><a href="about.html">ℹ️ About</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+    </ul>
+  </nav>
 
   <div class="container">
     <!-- Left Sidebar -->
@@ -183,39 +223,39 @@
     </aside>
 
     <!-- Main Content -->
-    <main>
+    <main id="articleContent">
       <span class="hijri-date" id="hijriDate"></span>
       <h2>A Student’s Guide to Note-Taking & Review</h2>
-      <a class="pdf-download" href="note-taking.pdf" download>📄 Download PDF</a>
+
+      <button class="pdf-download" id="downloadPdf">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+          <path d="M181.9 256.1c-5-16.2-13.6-29.5-24.7-39.9s-26.6-16-45.3-16h-8v128h7.2c20.9 0 36.9-6.1 47.9-18.2s16.5-29.4 16.5-50.7c0-1.5-.1-3.1-.3-4.6zm37.3-42.7c0 13.3 4.7 23.7 14 31.3s22.6 11.4 39.7 11.4h8v-85.3h-7.4c-17.1 0-30.2 3.7-39.5 11s-14.8 18.4-14.8 31.6zm164.8-120c-9.4-9.4-22-14.1-34.6-14.1H256v128c0 35.3-28.7 64-64 64h-32v128H64c-17.7 0-32 14.3-32 32v64h288c12.6 0 25.2-4.7 34.6-14.1l96-96c9.4-9.4 14.1-22 14.1-34.6V93.3c0-12.6-4.7-25.2-14.1-34.6z"/>
+        </svg>
+        Download as PDF
+      </button>
 
       <h3 id="question">Question</h3>
       <div class="intro-box">
-        how can one have an effective note taking and review as a student of knowledges? i am really bad when it comes to highlighting text sometimes i would turn the page that contain an information that i find interesting i would turn it into a colorful page due to the excessive highlighting i am doing  
-
-        i am a beginner student of knowledges and i am new to the path of seeking knowledge so please clarify to us on how to properly have an effective note taking  and review May Allah increase us all in beneficial knowledges and may Allah make  this a benefits for us all
+        how can one have an effective note taking and review as a student of knowledges? ...
       </div>
 
       <h3 id="intro">Introduction</h3>
-      <p>I want to explain something Obviously there is benefits in taking a note of something and in turning to it 100% but the thing is When you are new to a book, especially if it's a topic you haven't read that much about Everything is new to you everything you look at and you think subhanAllah. I did not know that.  
-      All right SubhanAllah first time I picked up a volume of Tafsir As-Sa'di I was like subhanAllah every single page here and there new information overload and that's a beautiful thing and how do that? It's a beauty That we can experience this, right? </p>
+      <p>I want to explain something ...</p>
 
       <h3 id="benefits">Benefits of Note-taking</h3>
-      <p>if I was gonna take a note about everything that blew my mind SubhanAllah, I would just rewrite Tafsir As-Sa'di in a more inferior way because now it's my version It's not the translated text of the original, right So when you get acquainted with the material then you can take notes right because then all of a sudden More things are going to be in your general understanding. 
-      You're going to acquire a better understanding of the topic and So the next time you read it less things are going to stand out to you as being especially Important or fascinating, right?</p>
+      <p>if I was gonna take a note about everything ...</p>
 
       <h3 id="memorization">Types of Memorization</h3>
-      <p>The scholars they say that the person Who has knowledge is one who acts upon it...  
-      One ¹ where you memorize something word-for-word ...  
-      ² you memorize it in meaning, right? ...</p>
+      <p>One ¹ ... ² you memorize it in meaning...</p>
 
       <h3 id="summarizing">Summarizing & Rereading</h3>
-      <p>And he mentions that one of the ways that you become the best level of Acquainted with a text... reread it many times Many many times...</p>
+      <p>And he mentions that one of the ways ...</p>
 
       <h3 id="reviewing">Reviewing & Retention</h3>
-      <p>Because Memorization consists of exposing yourself to the thing over and over and over again until it digs into your brain... renew your memorization like a subscription...</p>
+      <p>Because Memorization consists ... renew your memorization like a subscription...</p>
 
       <h3 id="final">Final Advice</h3>
-      <p>You should be really conservative with your highlights in your notes because if you use the same book five years from now You're gonna be a little annoyed with yourself.</p>
+      <p>You should be really conservative with your highlights...</p>
 
       <footer>
         <p>
@@ -245,6 +285,22 @@
         document.getElementById("hijriDate").textContent =
           "📅 Hijri Date: " + data.data.hijri.date + " (" + data.data.hijri.weekday.en + ")";
       });
+
+    // PDF download
+    document.getElementById("downloadPdf").addEventListener("click", () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: "pt", format: "a4" });
+      const content = document.getElementById("articleContent");
+      doc.html(content, {
+        callback: function (doc) {
+          doc.save("note-taking.pdf");
+        },
+        margin: [20, 20, 20, 20],
+        x: 10,
+        y: 10,
+        html2canvas: { scale: 0.6 }
+      });
+    });
   </script>
 </body>
 </html>
