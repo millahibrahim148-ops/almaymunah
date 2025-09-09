@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hilyah Ṭālib al-ʿIlm - Page 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Cormorant Garamond", serif;
+      background: #fdfbf6;
+      color: #2f2f2f;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px 20px;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      border-bottom: 1px solid #c8b48c;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+    }
+    header img {
+      max-width: 320px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto 12px;
+    }
+    header h1 {
+      font-family: "Amiri", serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: #3a2b1a;
+    }
+    header p {
+      font-size: 18px;
+      color: #5c4b36;
+      margin-top: 8px;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+      align-items: center;
+    }
+    .top-buttons a, .top-buttons button {
+      text-decoration: none;
+      padding: 10px 18px;
+      background: linear-gradient(180deg, #fff, #f0e8da);
+      border: 1px solid #c8b48c;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
+      font-size: 16px;
+      color: #3a2b1a;
+      transition: transform 0.15s, background 0.2s;
+      cursor: pointer;
+    }
+    .top-buttons a:hover, .top-buttons button:hover {
+      transform: scale(1.05);
+      background: #fdfbf6;
+    }
+
+    .searchbar {
+      padding: 8px 12px;
+      border: 1px solid #c8b48c;
+      border-radius: 6px;
+      font-size: 16px;
+      background: #fffefb;
+    }
+
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fffdf9;
+      border: 1px solid #c8b48c;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      min-width: 240px;
+      z-index: 1000;
+      text-align: left;
+      padding: 10px;
+    }
+    .dropdown-content button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      margin: 6px 0;
+      padding: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .dropdown-content button:hover { background: #f7e8c9; }
+    .dropdown:hover .dropdown-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      gap: 20px;
+    }
+
+    .sidebar-left {
+      width: 220px;
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      height: fit-content;
+    }
+    .sidebar-left h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #3a2b1a;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+    }
+    .sidebar-left a {
+      display: block;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      color: #3a2b1a;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .sidebar-left a:hover { background: #f7e8c9; }
+
+    .sidebar-right {
+      width: 260px;
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .sidebar-right h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #3a2b1a;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+    }
+    .chapter { margin-bottom: 10px; }
+    .chapter a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #3a2b1a;
+      font-size: 16px;
+    }
+    .chapter a:hover { background: #f7e8c9; }
+
+    main {
+      flex: 1;
+      background: #fffdf9;
+      padding: 25px;
+      border: 1px solid #e4d8c2;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    .foreword-arabic {
+      font-family: "Amiri Quran", serif;
+      font-size: 24px;
+      text-align: right;
+      color: #2c1f0f;
+      margin: 15px 0;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .controls button {
+      font-size: 18px;
+      padding: 8px 16px;
+      background: linear-gradient(180deg, #fff, #f0e8da);
+      border: 1px solid #c8b48c;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .controls input {
+      padding: 8px;
+      font-size: 16px;
+      width: 50px;
+      text-align: center;
+      border: 1px solid #c8b48c;
+      border-radius: 6px;
+      background: #fffefb;
+    }
+
+    .footnote-section {
+      border-top: 2px solid #c8b48c;
+      margin-top: 30px;
+      padding-top: 15px;
+      font-size: 16px;
+      color: #4b3b28;
+      background: #fbf7ef;
+      border-radius: 6px;
+      padding: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid #d9c7a4;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      font-size: 15px;
+      color: #6b5a45;
+      margin-top: 40px;
+    }
+
+    @keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
+    <h1>Hilyah Ṭālib al-ʿIlm</h1>
+    <p>English Translation of the Book Ettiquettes of a Student on Seeking Knowledge</p>
+
+    <div class="top-buttons">
+      <input type="text" class="searchbar" placeholder="Search on this page...">
+      <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar-left">
+      <h2>Navigation</h2>
+      <a href="index.html">Home</a>
+      <a href="library.html">Library</a>
+      <a href="article.html">Articles</a>
+      <a href="#">Audio</a>
+      <a href="#">About</a>
+    </aside>
+
+    <main>
+      <div class="controls">
+        <button>&lt;</button>
+        <input type="text" value="2">
+        <button>&gt;</button>
+      </div>
+
+      <h2>The Author's Foreword</h2>
+      <p>
+        To proceed: Today we are generally witnessing an Islaamic awakening as we see the Muslims re-uniting with their Islaamic identity that they had lost for so many years, and the situation is as Allaah described it by saying:
+      </p>
+
+      <div class="foreword-arabic">
+        أَوَ مَن كَانَ مَيْتًا فَأَحْيَيْنَهُ وَجَعَلْنَا لَهُ نُورًا يَمْشِي بِهِ فِي النَّاسِ كَمَن مَّثَلُهُ فِي الظُّلُمَاتِ لَيْسَ بِخَارِجٍ مِنْهَا
+      </div>
+      <p>
+        "Is he who is dead and We gave him life and set for him a light whereby he can walk amongst men; like him who is in the darkness never to emerge therefrom?" <br>
+        [Soorah al-An'aam (6):122]
+      </p>
+
+      <p>
+        On the other hand this person (whose heart was revived by Allaah) will become shocked by the unfortunate situation which the Muslims live in today; from being humiliated, ravaged by their enemies and by the division of the [Islaamic] Nation into groups and sects.
+      </p>
+
+      <p>
+        Amongst the things that a conscious person is [also] shocked by, is the scarcity of the real practising scholars; those who "guide those who have strayed, are patient in every calamity [that befalls them], give life to the [spiritually] dead with Allaah's Book and enlighten those [spiritually] blind with the light of Allaah"¹, and how their places became occupied by the ruwaybidah who feign possessing knowledge and have little or no association with knowledge yet they are witnessed answering questions and passing fatwas (religious verdicts) without any hesitation. This is due to the weakness of their piety and fear of Allaah; causing people to be misled by their incorrect and inaccurate fatwas,
+      </p>
+
+      <div class="footnote-section">
+        ¹ Extracted from Imaam Ahmad's foreword to his book <i>ar-Rad alaz-Zanaadiqah wal Jahmiyyah</i>, see <i>al-Masaa'il war-Rasaa'il</i> (2/71).
+      </div>
+
+      <div class="controls">
+        <button>&lt;</button>
+        <input type="text" value="2">
+        <button>&gt;</button>
+      </div>
+    </main>
+
+    <aside class="sidebar-right">
+      <h2>Chapters</h2>
+      <div class="chapter"><a href="page1.html">Translator's Foreword</a></div>
+      <div class="chapter"><a href="page2.html">The Author's Foreword</a></div>
+      <div class="chapter"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
+  </footer>
+</body>
+</html>
