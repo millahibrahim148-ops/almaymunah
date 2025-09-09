@@ -206,7 +206,7 @@
       margin-top: 40px;
     }
 
-    /* Modal (Description popup with animation) */
+    /* Modal (popup) */
     .modal {
       display: none;
       position: fixed;
@@ -236,17 +236,9 @@
       color: #3a2b1a;
     }
 
-    @keyframes fadeIn {
-      from { background: rgba(0,0,0,0); }
-      to { background: rgba(0,0,0,0.6); }
-    }
-    @keyframes slideIn {
-      to { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
+    @keyframes fadeIn { from { background: rgba(0,0,0,0); } to { background: rgba(0,0,0,0.6); } }
+    @keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
   </style>
 </head>
 <body>
@@ -258,8 +250,6 @@
 
     <div class="top-buttons">
       <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
-      <a href="#">Commentary Lesson of the Book</a>
-      <a href="#">Syarh of the Book By Ibn Uthaymin</a>
       <a href="#" onclick="openModal()">Description of the Book</a>
     </div>
   </header>
@@ -277,7 +267,7 @@
 
     <!-- Main -->
     <main>
-      <!-- Controls on top -->
+      <!-- Controls top -->
       <div class="controls">
         <button>&lt;</button>
         <input type="text" value="1 / 19">
@@ -292,7 +282,7 @@
       </div>
       <p>"O you who believe! Fear Allaah as He should be feared..." [Soorah Aal-Imraan (3): 102]</p>
 
-      <!-- Controls on bottom -->
+      <!-- Controls bottom -->
       <div class="controls">
         <button>&lt;</button>
         <input type="text" value="1 / 19">
@@ -319,7 +309,7 @@
     <div class="modal-content" id="modalBox">
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Description of the Book</h2>
-      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge (printed as part of the scientific collection)</p>
+      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
       <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
       <p><strong>Publisher:</strong> Dar al-Asima for Publishing and Distribution, Riyadh</p>
       <p><strong>Edition:</strong> First, 1416 AH</p>
