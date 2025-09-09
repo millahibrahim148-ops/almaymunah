@@ -46,8 +46,9 @@
       flex-wrap: wrap;
       gap: 15px;
       margin-top: 15px;
+      align-items: center;
     }
-    .top-buttons a {
+    .top-buttons a, .top-buttons button {
       text-decoration: none;
       padding: 10px 18px;
       background: linear-gradient(180deg, #fff, #f0e8da);
@@ -57,10 +58,57 @@
       font-size: 16px;
       color: #3a2b1a;
       transition: transform 0.15s, background 0.2s;
+      cursor: pointer;
     }
-    .top-buttons a:hover {
+    .top-buttons a:hover, .top-buttons button:hover {
       transform: scale(1.05);
       background: #fdfbf6;
+    }
+
+    /* Search bar */
+    .searchbar {
+      padding: 8px 12px;
+      border: 1px solid #c8b48c;
+      border-radius: 6px;
+      font-size: 16px;
+      background: #fffefb;
+    }
+
+    /* Dropdown categories */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fffdf9;
+      border: 1px solid #c8b48c;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      min-width: 240px;
+      z-index: 1000;
+      text-align: left;
+      padding: 10px;
+    }
+    .dropdown-content button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      margin: 6px 0;
+      padding: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .dropdown-content button:hover {
+      background: #f7e8c9;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+      animation: slideIn 0.3s ease forwards;
     }
 
     /* Container with sidebars */
@@ -124,10 +172,7 @@
       padding-bottom: 5px;
     }
     .chapter { margin-bottom: 10px; }
-    .chapter p {
-      font-size: 16px;
-      color: #3a2b1a;
-    }
+    .chapter p { font-size: 16px; color: #3a2b1a; }
 
     main {
       flex: 1;
@@ -177,13 +222,7 @@
       background: linear-gradient(180deg, #fff, #f0e8da);
       border: 1px solid #c8b48c;
       border-radius: 8px;
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
       cursor: pointer;
-      transition: transform 0.15s, background 0.2s;
-    }
-    .controls button:hover {
-      transform: scale(1.05);
-      background: #fdfbf6;
     }
     .controls input {
       padding: 8px;
@@ -202,20 +241,11 @@
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
       font-size: 15px;
       color: #6b5a45;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
       margin-top: 40px;
     }
 
-    /* Modal (popup) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      animation: fadeIn 0.3s ease forwards;
-    }
+    /* Modal */
+    .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
     .modal-content {
       background: #fffdf9;
       margin: 8% auto;
@@ -228,17 +258,9 @@
       opacity: 0;
       animation: slideIn 0.3s ease forwards;
     }
-    .modal-content h2 { margin-bottom: 12px; }
-    .close {
-      float: right;
-      font-size: 24px;
-      cursor: pointer;
-      color: #3a2b1a;
-    }
+    .close { float: right; font-size: 24px; cursor: pointer; color: #3a2b1a; }
 
-    @keyframes fadeIn { from { background: rgba(0,0,0,0); } to { background: rgba(0,0,0,0.6); } }
     @keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
-    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
   </style>
 </head>
 <body>
@@ -249,11 +271,45 @@
     <p>English Translation of the Book Ettiquettes of a Student on Seeking Knowledge</p>
 
     <div class="top-buttons">
+      <input type="text" class="searchbar" placeholder="Search on this page...">
       <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
+
+      <div class="dropdown">
+        <button>Categories</button>
+        <div class="dropdown-content">
+          <button>(English Book) Hilyaatu thaalib al-ʿIlm</button>
+          <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
+          <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
+          <div class="dropdown">
+            <button>Lessons (1–6) & Syarh (1–61)</button>
+            <div class="dropdown-content">
+              <div class="dropdown">
+                <button>Commentary by Shaykh Saeed Hassan</button>
+                <div class="dropdown-content">
+                  <button>Lesson 1</button>
+                  <button>Lesson 2</button>
+                  <button>Lesson 3</button>
+                  <button>Lesson 4</button>
+                  <button>Lesson 5</button>
+                  <button>Lesson 6</button>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button>Syarh by Ustadz AbdulAziz Al-Haqqan</button>
+                <div class="dropdown-content">
+                  <button>Go to Lessons Page</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <a href="#" onclick="openModal()">Description of the Book</a>
     </div>
   </header>
 
+  <!-- Container -->
   <div class="container">
     <!-- Sidebar Left -->
     <aside class="sidebar-left">
@@ -267,7 +323,6 @@
 
     <!-- Main -->
     <main>
-      <!-- Controls top -->
       <div class="controls">
         <button>&lt;</button>
         <input type="text" value="1 / 19">
@@ -282,7 +337,6 @@
       </div>
       <p>"O you who believe! Fear Allaah as He should be feared..." [Soorah Aal-Imraan (3): 102]</p>
 
-      <!-- Controls bottom -->
       <div class="controls">
         <button>&lt;</button>
         <input type="text" value="1 / 19">
@@ -311,7 +365,7 @@
       <h2>Description of the Book</h2>
       <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
       <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
-      <p><strong>Publisher:</strong> Dar al-Asima for Publishing and Distribution, Riyadh</p>
+      <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
       <p><strong>Edition:</strong> First, 1416 AH</p>
       <p><strong>Number of pages:</strong> 97</p>
     </div>
@@ -319,16 +373,10 @@
 
   <script>
     function openModal() {
-      const modal = document.getElementById("descriptionModal");
-      const box = document.getElementById("modalBox");
-      modal.style.display = "block";
-      box.style.animation = "slideIn 0.3s ease forwards";
+      document.getElementById("descriptionModal").style.display = "block";
     }
     function closeModal() {
-      const modal = document.getElementById("descriptionModal");
-      const box = document.getElementById("modalBox");
-      box.style.animation = "fadeOut 0.3s ease forwards";
-      setTimeout(()=> modal.style.display = "none", 300);
+      document.getElementById("descriptionModal").style.display = "none";
     }
     window.onclick = function(event) {
       const modal = document.getElementById("descriptionModal");
