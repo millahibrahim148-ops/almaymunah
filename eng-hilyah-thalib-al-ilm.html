@@ -193,28 +193,19 @@
   <div class="sidebar-right">
     <h3>Chapters</h3>
     <button onclick="loadPage('translator')">Translator's Foreword</button>
-    <button onclick="loadPage('author')">Author's Foreword</button>
+    <button disabled>Author's Foreword</button>
     <button disabled>Chapter 1: The Etiquette...</button>
   </div>
 </div>
 
 <script>
-  // Sidebar Navigation
+  // Sidebar Navigation Example
   function loadPage(page) {
-    let content = document.getElementById('pageContent');
-
     if (page === 'translator') {
-      content.innerHTML = `
+      document.getElementById('pageContent').innerHTML = `
         <h2>Translator's Foreword</h2>
         <p>All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness...
-        (full content here again)</p>
-      `;
-    }
-
-    if (page === 'author') {
-      content.innerHTML = `
-        <h2>Author's Foreword</h2>
-        <p>[This is where you add the text for Author's Foreword page]</p>
+        (content same as above)</p>
       `;
     }
   }
