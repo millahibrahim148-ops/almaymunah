@@ -39,7 +39,6 @@
       margin-top: 8px;
     }
 
-    /* Buttons under header */
     .top-buttons {
       display: flex;
       justify-content: center;
@@ -65,7 +64,6 @@
       background: #fdfbf6;
     }
 
-    /* Search bar */
     .searchbar {
       padding: 8px 12px;
       border: 1px solid #c8b48c;
@@ -74,11 +72,8 @@
       background: #fffefb;
     }
 
-    /* Dropdown categories */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+    /* Dropdown */
+    .dropdown { position: relative; display: inline-block; }
     .dropdown-content {
       display: none;
       position: absolute;
@@ -88,7 +83,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       min-width: 240px;
       z-index: 1000;
-      text-align: left;
       padding: 10px;
     }
     .dropdown-content button {
@@ -103,15 +97,10 @@
       cursor: pointer;
       font-size: 15px;
     }
-    .dropdown-content button:hover {
-      background: #f7e8c9;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-      animation: slideIn 0.3s ease forwards;
-    }
+    .dropdown-content button:hover { background: #f7e8c9; }
+    .dropdown:hover .dropdown-content { display: block; animation: slideIn 0.3s ease forwards; }
 
-    /* Container with sidebars */
+    /* Container */
     .container {
       display: flex;
       max-width: 1200px;
@@ -147,11 +136,8 @@
       color: #3a2b1a;
       text-decoration: none;
       font-size: 15px;
-      transition: background 0.2s;
     }
-    .sidebar-left a:hover {
-      background: #f7e8c9;
-    }
+    .sidebar-left a:hover { background: #f7e8c9; }
 
     /* Sidebar right */
     .sidebar-right {
@@ -172,7 +158,7 @@
       padding-bottom: 5px;
     }
     .chapter { margin-bottom: 10px; }
-    .chapter p { font-size: 16px; color: #3a2b1a; }
+    .chapter p { font-size: 16px; color: #3a2b1a; cursor: pointer; }
 
     main {
       flex: 1;
@@ -183,23 +169,6 @@
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
 
-    .verse { margin-bottom: 28px; }
-    .verse .arabic {
-      font-family: "Amiri Quran", serif;
-      font-size: 28px;
-      text-align: right;
-      color: #2c1f0f;
-      margin-bottom: 10px;
-    }
-    .verse .translation {
-      font-size: 18px;
-      color: #3f2e1d;
-      background: #fbf7ef;
-      padding: 10px;
-      border-left: 3px solid #d9c7a4;
-      border-radius: 6px;
-    }
-
     .foreword-arabic {
       font-family: "Amiri Quran", serif;
       font-size: 24px;
@@ -208,7 +177,6 @@
       margin: 15px 0;
     }
 
-    /* Controls */
     .controls {
       display: flex;
       justify-content: center;
@@ -330,12 +298,27 @@
       </div>
 
       <h2>Translator's Foreword</h2>
-      <p>All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness...</p>
+      <p>
+        All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
+        We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
+        Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide.
+        I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messenger.
+      </p>
 
       <div class="foreword-arabic">
         يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
       </div>
-      <p>"O you who believe! Fear Allaah as He should be feared..." [Soorah Aal-Imraan (3): 102]</p>
+      <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam." <br>[Soorah Aal-Imraan (3):102]</p>
+
+      <div class="foreword-arabic">
+        يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِن زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاء وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بهِ وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
+      </div>
+      <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you." <br>[Soorah an-Nisaa (4):1]</p>
+
+      <div class="foreword-arabic">
+        يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فقد فاز فوزا عظيما
+      </div>
+      <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
 
       <div class="controls">
         <button>&lt;</button>
@@ -348,7 +331,7 @@
     <aside class="sidebar-right">
       <h2>Chapters</h2>
       <div class="chapter"><p>Translator's Foreword</p></div>
-      <div class="chapter"><p>The Author's Foreword</p></div>
+      <div class="chapter"><p>Author's Foreword</p></div>
       <div class="chapter"><p>Chapter 1: The Etiquette of the Seeker's Inner Self</p></div>
     </aside>
   </div>
@@ -372,17 +355,11 @@
   </div>
 
   <script>
-    function openModal() {
-      document.getElementById("descriptionModal").style.display = "block";
-    }
-    function closeModal() {
-      document.getElementById("descriptionModal").style.display = "none";
-    }
+    function openModal() { document.getElementById("descriptionModal").style.display = "block"; }
+    function closeModal() { document.getElementById("descriptionModal").style.display = "none"; }
     window.onclick = function(event) {
       const modal = document.getElementById("descriptionModal");
-      if (event.target == modal) {
-        closeModal();
-      }
+      if (event.target == modal) { closeModal(); }
     }
   </script>
 </body>
