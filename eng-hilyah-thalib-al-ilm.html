@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>English Hilyah Ṭālib al-ʿIlm</title>
+  <title>Hilyah Ṭālib al-ʿIlm</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,76 +12,9 @@
       color: #2f2f2f;
       line-height: 1.6;
       font-size: 18px;
-      display: grid;
-      grid-template-columns: 220px 1fr 260px;
-      grid-template-areas:
-        "left header right"
-        "left main right"
-        "left footer right";
-      min-height: 100vh;
-    }
-
-    /* Sidebar left (Navigation) */
-    .sidebar-left {
-      grid-area: left;
-      background: #fbf7ef;
-      border-right: 1px solid #d9c7a4;
-      padding: 20px;
-    }
-    .sidebar-left h2 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #3a2b1a;
-    }
-    .sidebar-left a {
-      display: block;
-      padding: 8px 10px;
-      color: #3a2b1a;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-bottom: 8px;
-      transition: background 0.2s;
-    }
-    .sidebar-left a:hover {
-      background: #f7e8c9;
-    }
-
-    /* Sidebar right (Chapters) */
-    .sidebar-right {
-      grid-area: right;
-      background: #fbf7ef;
-      border-left: 1px solid #d9c7a4;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .sidebar-right h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #3a2b1a;
-    }
-    .chapter {
-      margin-bottom: 10px;
-    }
-    .chapter button {
-      background: none;
-      border: none;
-      font-size: 16px;
-      color: #3a2b1a;
-      cursor: pointer;
-      margin-bottom: 5px;
-    }
-    .chapter ul {
-      list-style: none;
-      padding-left: 15px;
-      margin-top: 5px;
-      display: block; /* expanded by default */
-    }
-    .chapter ul li {
-      margin: 4px 0;
     }
 
     header {
-      grid-area: header;
       text-align: center;
       padding: 25px 20px;
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
@@ -110,7 +43,8 @@
     .top-buttons {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
       margin-top: 15px;
     }
     .top-buttons a {
@@ -129,16 +63,94 @@
       background: #fdfbf6;
     }
 
-    main {
-      grid-area: main;
-      max-width: 800px;
+    /* Container with sidebars */
+    .container {
+      display: flex;
+      max-width: 1200px;
       margin: 30px auto;
-      padding: 25px;
+      padding: 0 20px;
+      gap: 20px;
+    }
+
+    /* Sidebar left (Navigation) */
+    .sidebar-left {
+      width: 220px;
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      height: fit-content;
+    }
+    .sidebar-left h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #3a2b1a;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+    }
+    .sidebar-left a {
+      display: block;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      color: #3a2b1a;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .sidebar-left a:hover {
+      background: #f7e8c9;
+    }
+
+    /* Sidebar right (Chapters) */
+    .sidebar-right {
+      width: 260px;
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .sidebar-right h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #3a2b1a;
+      border-bottom: 1px solid #d9c7a4;
+      padding-bottom: 5px;
+    }
+    .chapter {
+      margin-bottom: 10px;
+    }
+    .chapter button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: #3a2b1a;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    .chapter ul {
+      list-style: none;
+      padding-left: 15px;
+      margin-top: 5px;
+      display: block; /* expanded by default */
+    }
+    .chapter ul li { margin: 4px 0; }
+
+    main {
+      flex: 1;
       background: #fffdf9;
+      padding: 25px;
       border: 1px solid #e4d8c2;
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
+
     .verse { margin-bottom: 28px; }
     .verse .arabic {
       font-family: "Amiri", serif;
@@ -200,7 +212,6 @@
     }
 
     footer {
-      grid-area: footer;
       text-align: center;
       padding: 15px;
       border-top: 1px solid #d9c7a4;
@@ -208,67 +219,71 @@
       font-size: 15px;
       color: #6b5a45;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar Left -->
-  <aside class="sidebar-left">
-    <h2>Navigation</h2>
-    <a href="index.html">Home</a>
-    <a href="library.html">Library</a>
-    <a href="article.html">Articles</a>
-    <a href="#">Audio</a>
-    <a href="#">About</a>
-  </aside>
-
   <!-- Header -->
   <header>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
-    <h1>English Hilyah Ṭālib al-ʿIlm</h1>
-    <p>Etiquettes of the Student of Knowledge</p>
+    <h1>Hilyah Ṭālib al-ʿIlm</h1>
+    <p>English Translation</p>
 
     <div class="top-buttons">
       <a href="#">Download Book PDF</a>
       <a href="#">Commentary Lesson of the Book</a>
-      <a href="#">Explanation of the Book By Ibn Uthaymin</a>
+      <a href="#">Syarh of the Book By Ibn Uthaymin</a>
+      <a href="#">Description of the Book</a>
     </div>
   </header>
 
-  <!-- Sidebar Right -->
-  <aside class="sidebar-right">
-    <h2>Chapters</h2>
-    <div class="chapter">
-      <button onclick="toggleChapter(this)">[-] Chapter 1</button>
-      <ul>
-        <li>Section 1</li>
-        <li>Section 2</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <button onclick="toggleChapter(this)">[-] Chapter 2</button>
-      <ul>
-        <li>Section 1</li>
-        <li>Section 2</li>
-      </ul>
-    </div>
-  </aside>
+  <div class="container">
+    <!-- Sidebar Left -->
+    <aside class="sidebar-left">
+      <h2>Navigation</h2>
+      <a href="index.html">Home</a>
+      <a href="library.html">Library</a>
+      <a href="article.html">Articles</a>
+      <a href="#">Audio</a>
+      <a href="#">About</a>
+    </aside>
 
-  <!-- Main -->
-  <main>
-    <div id="verses"></div>
+    <!-- Main -->
+    <main>
+      <div id="verses"></div>
 
-    <div class="controls">
-      <div class="nav-buttons">
-        <button onclick="prevVerse()">&lt;</button>
-        <button onclick="nextVerse()">&gt;</button>
+      <div class="controls">
+        <div class="nav-buttons">
+          <button onclick="prevVerse()">&lt;</button>
+          <button onclick="nextVerse()">&gt;</button>
+        </div>
+        <div class="go-control">
+          <input type="number" id="verseNumber" min="1" placeholder="No.">
+          <button onclick="goToVerse()">Go</button>
+        </div>
       </div>
-      <div class="go-control">
-        <input type="number" id="verseNumber" min="1" placeholder="No.">
-        <button onclick="goToVerse()">Go</button>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <h2>Chapters</h2>
+      <div class="chapter">
+        <button onclick="toggleChapter(this)">[-] Chapter 1</button>
+        <ul>
+          <li>Section 1</li>
+          <li>Section 2</li>
+        </ul>
       </div>
-    </div>
-  </main>
+      <div class="chapter">
+        <button onclick="toggleChapter(this)">[-] Chapter 2</button>
+        <ul>
+          <li>Section 1</li>
+          <li>Section 2</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
 
   <!-- Footer -->
   <footer>
