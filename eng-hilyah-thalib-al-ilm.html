@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hilyah Ṭālib al-ʿIlm - Page 2</title>
+  <title>Hilyah Ṭālib al-ʿIlm</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,6 +39,7 @@
       margin-top: 8px;
     }
 
+    /* Buttons under header */
     .top-buttons {
       display: flex;
       justify-content: center;
@@ -64,6 +65,7 @@
       background: #fdfbf6;
     }
 
+    /* Search bar */
     .searchbar {
       padding: 8px 12px;
       border: 1px solid #c8b48c;
@@ -72,7 +74,11 @@
       background: #fffefb;
     }
 
-    .dropdown { position: relative; display: inline-block; }
+    /* Dropdown categories */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
     .dropdown-content {
       display: none;
       position: absolute;
@@ -97,9 +103,15 @@
       cursor: pointer;
       font-size: 15px;
     }
-    .dropdown-content button:hover { background: #f7e8c9; }
-    .dropdown:hover .dropdown-content { display: block; animation: slideIn 0.3s ease forwards; }
+    .dropdown-content button:hover {
+      background: #f7e8c9;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+      animation: slideIn 0.3s ease forwards;
+    }
 
+    /* Container with sidebars */
     .container {
       display: flex;
       max-width: 1200px;
@@ -108,6 +120,7 @@
       gap: 20px;
     }
 
+    /* Sidebar left */
     .sidebar-left {
       width: 220px;
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
@@ -136,8 +149,11 @@
       font-size: 15px;
       transition: background 0.2s;
     }
-    .sidebar-left a:hover { background: #f7e8c9; }
+    .sidebar-left a:hover {
+      background: #f7e8c9;
+    }
 
+    /* Sidebar right */
     .sidebar-right {
       width: 260px;
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
@@ -175,6 +191,23 @@
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
 
+    .verse { margin-bottom: 28px; }
+    .verse .arabic {
+      font-family: "Amiri Quran", serif;
+      font-size: 28px;
+      text-align: right;
+      color: #2c1f0f;
+      margin-bottom: 10px;
+    }
+    .verse .translation {
+      font-size: 18px;
+      color: #3f2e1d;
+      background: #fbf7ef;
+      padding: 10px;
+      border-left: 3px solid #d9c7a4;
+      border-radius: 6px;
+    }
+
     .foreword-arabic {
       font-family: "Amiri Quran", serif;
       font-size: 24px;
@@ -183,6 +216,7 @@
       margin: 15px 0;
     }
 
+    /* Controls */
     .controls {
       display: flex;
       justify-content: center;
@@ -208,17 +242,6 @@
       background: #fffefb;
     }
 
-    .footnote-section {
-      border-top: 2px solid #c8b48c;
-      margin-top: 30px;
-      padding-top: 15px;
-      font-size: 16px;
-      color: #4b3b28;
-      background: #fbf7ef;
-      border-radius: 6px;
-      padding: 12px;
-    }
-
     footer {
       text-align: center;
       padding: 15px;
@@ -229,10 +252,27 @@
       margin-top: 40px;
     }
 
+    /* Modal */
+    .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+    .modal-content {
+      background: #fffdf9;
+      margin: 8% auto;
+      padding: 20px;
+      border: 1px solid #c8b48c;
+      border-radius: 10px;
+      width: 60%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateY(-30px);
+      opacity: 0;
+      animation: slideIn 0.3s ease forwards;
+    }
+    .close { float: right; font-size: 24px; cursor: pointer; color: #3a2b1a; }
+
     @keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
     <h1>Hilyah Ṭālib al-ʿIlm</h1>
@@ -241,10 +281,22 @@
     <div class="top-buttons">
       <input type="text" class="searchbar" placeholder="Search on this page...">
       <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
+
+      <div class="dropdown">
+        <button>Categories</button>
+        <div class="dropdown-content">
+          <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
+          <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
+        </div>
+      </div>
+
+      <a href="#" onclick="openModal()">Description of the Book</a>
     </div>
   </header>
 
+  <!-- Container -->
   <div class="container">
+    <!-- Sidebar Left -->
     <aside class="sidebar-left">
       <h2>Navigation</h2>
       <a href="index.html">Home</a>
@@ -254,55 +306,84 @@
       <a href="#">About</a>
     </aside>
 
+    <!-- Main -->
     <main>
       <div class="controls">
         <button>&lt;</button>
-        <input type="text" value="2">
+        <input type="text" value="1">
         <button>&gt;</button>
       </div>
 
-      <h2>The Author's Foreword</h2>
+      <h2>Translator's Foreword</h2>
       <p>
-        To proceed: Today we are generally witnessing an Islaamic awakening as we see the Muslims re-uniting with their Islaamic identity that they had lost for so many years, and the situation is as Allaah described it by saying:
+        All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
+        We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
+        Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide.
+        I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messenger.
       </p>
 
       <div class="foreword-arabic">
-        أَوَ مَن كَانَ مَيْتًا فَأَحْيَيْنَهُ وَجَعَلْنَا لَهُ نُورًا يَمْشِي بِهِ فِي النَّاسِ كَمَن مَّثَلُهُ فِي الظُّلُمَاتِ لَيْسَ بِخَارِجٍ مِنْهَا
+        يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
       </div>
-      <p>
-        "Is he who is dead and We gave him life and set for him a light whereby he can walk amongst men; like him who is in the darkness never to emerge therefrom?" <br>
-        [Soorah al-An'aam (6):122]
-      </p>
+      <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam." <br>[Soorah Aal-Imraan (3):102]</p>
 
-      <p>
-        On the other hand this person (whose heart was revived by Allaah) will become shocked by the unfortunate situation which the Muslims live in today; from being humiliated, ravaged by their enemies and by the division of the [Islaamic] Nation into groups and sects.
-      </p>
-
-      <p>
-        Amongst the things that a conscious person is [also] shocked by, is the scarcity of the real practising scholars; those who "guide those who have strayed, are patient in every calamity [that befalls them], give life to the [spiritually] dead with Allaah's Book and enlighten those [spiritually] blind with the light of Allaah"¹, and how their places became occupied by the ruwaybidah who feign possessing knowledge and have little or no association with knowledge yet they are witnessed answering questions and passing fatwas (religious verdicts) without any hesitation. This is due to the weakness of their piety and fear of Allaah; causing people to be misled by their incorrect and inaccurate fatwas,
-      </p>
-
-      <div class="footnote-section">
-        ¹ Extracted from Imaam Ahmad's foreword to his book <i>ar-Rad alaz-Zanaadiqah wal Jahmiyyah</i>, see <i>al-Masaa'il war-Rasaa'il</i> (2/71).
+      <div class="foreword-arabic">
+        يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِن زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاء وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بهِ وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
       </div>
+      <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you." <br>[Soorah an-Nisaa (4):1]</p>
+
+      <div class="foreword-arabic">
+        يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فقد فاز فوزا عظيما
+      </div>
+      <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
 
       <div class="controls">
         <button>&lt;</button>
-        <input type="text" value="2">
+        <input type="text" value="1">
         <button>&gt;</button>
       </div>
     </main>
 
+    <!-- Sidebar Right -->
     <aside class="sidebar-right">
       <h2>Chapters</h2>
-      <div class="chapter"><a href="page1.html">Translator's Foreword</a></div>
-      <div class="chapter"><a href="page2.html">The Author's Foreword</a></div>
+      <div class="chapter"><a href="#">Translator's Foreword</a></div>
+      <div class="chapter"><a href="#">The Author's Foreword</a></div>
       <div class="chapter"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
     </aside>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
+
+  <!-- Modal -->
+  <div id="descriptionModal" class="modal">
+    <div class="modal-content" id="modalBox">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Description of the Book</h2>
+      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
+      <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
+      <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
+      <p><strong>Edition:</strong> First, 1416 AH</p>
+      <p><strong>Number of pages:</strong> 97</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("descriptionModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("descriptionModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById("descriptionModal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
