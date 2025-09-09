@@ -172,18 +172,15 @@
       padding-bottom: 5px;
     }
     .chapter { margin-bottom: 10px; }
-    .chapter button {
-      background: none;
-      border: none;
+    .chapter a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
       color: #3a2b1a;
       font-size: 16px;
-      cursor: pointer;
-      text-align: left;
-      width: 100%;
     }
-    .chapter button:hover {
-      text-decoration: underline;
-    }
+    .chapter a:hover { background: #f7e8c9; }
 
     main {
       flex: 1;
@@ -192,6 +189,23 @@
       border: 1px solid #e4d8c2;
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    .verse { margin-bottom: 28px; }
+    .verse .arabic {
+      font-family: "Amiri Quran", serif;
+      font-size: 28px;
+      text-align: right;
+      color: #2c1f0f;
+      margin-bottom: 10px;
+    }
+    .verse .translation {
+      font-size: 18px;
+      color: #3f2e1d;
+      background: #fbf7ef;
+      padding: 10px;
+      border-left: 3px solid #d9c7a4;
+      border-radius: 6px;
     }
 
     .foreword-arabic {
@@ -221,7 +235,7 @@
     .controls input {
       padding: 8px;
       font-size: 16px;
-      width: 80px;
+      width: 50px;
       text-align: center;
       border: 1px solid #c8b48c;
       border-radius: 6px;
@@ -271,31 +285,8 @@
       <div class="dropdown">
         <button>Categories</button>
         <div class="dropdown-content">
-          <button>(English Book) Hilyaatu thaalib al-ʿIlm</button>
           <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
           <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
-          <div class="dropdown">
-            <button>Lessons (1–6) & Syarh (1–61)</button>
-            <div class="dropdown-content">
-              <div class="dropdown">
-                <button>Commentary by Shaykh Saeed Hassan</button>
-                <div class="dropdown-content">
-                  <button>Lesson 1</button>
-                  <button>Lesson 2</button>
-                  <button>Lesson 3</button>
-                  <button>Lesson 4</button>
-                  <button>Lesson 5</button>
-                  <button>Lesson 6</button>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button>Syarh by Ustadz AbdulAziz Al-Haqqan</button>
-                <div class="dropdown-content">
-                  <button>Go to Lessons Page</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -316,22 +307,49 @@
     </aside>
 
     <!-- Main -->
-    <main id="content">
+    <main>
       <div class="controls">
         <button>&lt;</button>
-        <input type="text" value="1 / 19">
+        <input type="text" value="1">
         <button>&gt;</button>
       </div>
+
       <h2>Translator's Foreword</h2>
-      <p>All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness...</p>
+      <p>
+        All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
+        We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
+        Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide.
+        I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messenger.
+      </p>
+
+      <div class="foreword-arabic">
+        يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
+      </div>
+      <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam." <br>[Soorah Aal-Imraan (3):102]</p>
+
+      <div class="foreword-arabic">
+        يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِن زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاء وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بهِ وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
+      </div>
+      <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you." <br>[Soorah an-Nisaa (4):1]</p>
+
+      <div class="foreword-arabic">
+        يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فقد فاز فوزا عظيما
+      </div>
+      <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
+
+      <div class="controls">
+        <button>&lt;</button>
+        <input type="text" value="1">
+        <button>&gt;</button>
+      </div>
     </main>
 
     <!-- Sidebar Right -->
     <aside class="sidebar-right">
       <h2>Chapters</h2>
-      <div class="chapter"><button onclick="loadPage('foreword')">Translator's Foreword</button></div>
-      <div class="chapter"><button onclick="loadPage('author')">Author's Foreword</button></div>
-      <div class="chapter"><button onclick="loadPage('chapter1')">Chapter 1: The Etiquette of the Seeker's Inner Self</button></div>
+      <div class="chapter"><a href="#">Translator's Foreword</a></div>
+      <div class="chapter"><a href="#">The Author's Foreword</a></div>
+      <div class="chapter"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
     </aside>
   </div>
 
@@ -364,44 +382,6 @@
       const modal = document.getElementById("descriptionModal");
       if (event.target == modal) {
         closeModal();
-      }
-    }
-
-    function loadPage(page) {
-      const content = document.getElementById("content");
-
-      if (page === "foreword") {
-        content.innerHTML = `
-          <div class="controls">
-            <button>&lt;</button>
-            <input type="text" value="1 / 19">
-            <button>&gt;</button>
-          </div>
-          <h2>Translator's Foreword</h2>
-          <p>All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness...</p>
-        `;
-      }
-      if (page === "author") {
-        content.innerHTML = `
-          <div class="controls">
-            <button>&lt;</button>
-            <input type="text" value="2 / 19">
-            <button>&gt;</button>
-          </div>
-          <h2>Author's Foreword</h2>
-          <p>Here you put the Author’s Foreword text...</p>
-        `;
-      }
-      if (page === "chapter1") {
-        content.innerHTML = `
-          <div class="controls">
-            <button>&lt;</button>
-            <input type="text" value="3 / 19">
-            <button>&gt;</button>
-          </div>
-          <h2>Chapter 1: The Etiquette of the Seeker’s Inner Self</h2>
-          <p>Here goes the content of Chapter 1...</p>
-        `;
       }
     }
   </script>
