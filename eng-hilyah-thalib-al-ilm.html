@@ -274,17 +274,7 @@
           <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
           <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
           <div class="dropdown">
-            <button>Lessons (1–6) & Syarh (1–61)</button>
-            <div class="dropdown-content">
-              <div class="dropdown">
-                <button>Commentary by Shaykh Saeed Hassan</button>
-                <div class="dropdown-content">
-                  <button>Lesson 1</button>
-                  <button>Lesson 2</button>
-                  <button>Lesson 3</button>
-                  <button>Lesson 4</button>
-                  <button>Lesson 5</button>
-                  <button>Lesson 6</button>
+            <button>Lessons (1–6) & Syarh (1–61)</button/
                 </div>
               </div>
               <div class="dropdown">
@@ -396,17 +386,6 @@
       const content = document.getElementById("content");
 
       if (page === "foreword") {
-        content.innerHTML = `
-          <div class="controls">
-            <button>&lt;</button>
-            <input type="text" value="1 / 19">
-            <button>&gt;</button>
-          </div>
-          <h2>Translator's Foreword</h2>
-          <p>All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness...</p>
-        `;
-      }
-      if (page === "foreword") {
   content.innerHTML = `
     <h2>Translator's Foreword</h2>
     <p>
@@ -433,17 +412,28 @@
 
     <div class="controls">
       <button>&lt;</button>
-      <input type="text" value="1 / 19">
+      <input type="text" value="1">
       <button>&gt;</button>
     </div>
   `;
 }
 
+      if (page === "author") {
+        content.innerHTML = `
+          <div class="controls">
+            <button>&lt;</button>
+            <input type="text" value="2">
+            <button>&gt;</button>
+          </div>
+          <h2>Author's Foreword</h2>
+          <p>Here you put the Author’s Foreword text...</p>
+        `;
+      }
       if (page === "chapter1") {
         content.innerHTML = `
           <div class="controls">
             <button>&lt;</button>
-            <input type="text" value="3 / 19">
+            <input type="text" value="3">
             <button>&gt;</button>
           </div>
           <h2>Chapter 1: The Etiquette of the Seeker’s Inner Self</h2>
@@ -454,5 +444,3 @@
   </script>
 </body>
 </html>
-
-
