@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Hilyah Ṭālib al-ʿIlm</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -12,9 +12,6 @@
       color: #2f2f2f;
       line-height: 1.6;
       font-size: 18px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
@@ -42,6 +39,7 @@
       margin-top: 8px;
     }
 
+    /* Buttons under header */
     .top-buttons {
       display: flex;
       justify-content: center;
@@ -65,15 +63,16 @@
       background: #fdfbf6;
     }
 
+    /* Container with sidebars */
     .container {
       display: flex;
       max-width: 1200px;
       margin: 30px auto;
       padding: 0 20px;
       gap: 20px;
-      flex: 1;
     }
 
+    /* Sidebar left */
     .sidebar-left {
       width: 220px;
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
@@ -106,6 +105,7 @@
       background: #f7e8c9;
     }
 
+    /* Sidebar right */
     .sidebar-right {
       width: 260px;
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
@@ -123,24 +123,11 @@
       border-bottom: 1px solid #d9c7a4;
       padding-bottom: 5px;
     }
-    .chapter {
-      margin-bottom: 10px;
-    }
-    .chapter button {
-      background: none;
-      border: none;
+    .chapter { margin-bottom: 10px; }
+    .chapter p {
       font-size: 16px;
       color: #3a2b1a;
-      cursor: pointer;
-      margin-bottom: 5px;
     }
-    .chapter ul {
-      list-style: none;
-      padding-left: 15px;
-      margin-top: 5px;
-      display: block;
-    }
-    .chapter ul li { margin: 4px 0; }
 
     main {
       flex: 1;
@@ -153,8 +140,8 @@
 
     .verse { margin-bottom: 28px; }
     .verse .arabic {
-      font-family: "Amiri", serif;
-      font-size: 26px;
+      font-family: "Amiri Quran", serif;
+      font-size: 28px;
       text-align: right;
       color: #2c1f0f;
       margin-bottom: 10px;
@@ -168,6 +155,46 @@
       border-radius: 6px;
     }
 
+    .foreword-arabic {
+      font-family: "Amiri Quran", serif;
+      font-size: 24px;
+      text-align: right;
+      color: #2c1f0f;
+      margin: 15px 0;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .controls button {
+      font-size: 18px;
+      padding: 8px 16px;
+      background: linear-gradient(180deg, #fff, #f0e8da);
+      border: 1px solid #c8b48c;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .controls button:hover {
+      transform: scale(1.05);
+      background: #fdfbf6;
+    }
+    .controls input {
+      padding: 8px;
+      font-size: 16px;
+      width: 80px;
+      text-align: center;
+      border: 1px solid #c8b48c;
+      border-radius: 6px;
+      background: #fffefb;
+    }
+
     footer {
       text-align: center;
       padding: 15px;
@@ -179,40 +206,46 @@
       margin-top: 40px;
     }
 
-    /* Popup modal */
+    /* Modal (Description popup with animation) */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 999;
       left: 0; top: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
+      animation: fadeIn 0.3s ease forwards;
     }
     .modal-content {
       background: #fffdf9;
-      border: 2px solid #c8b48c;
-      border-radius: 10px;
+      margin: 8% auto;
       padding: 20px;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      border: 1px solid #c8b48c;
+      border-radius: 10px;
+      width: 60%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateY(-30px);
+      opacity: 0;
+      animation: slideIn 0.3s ease forwards;
     }
-    .modal-content h3 {
-      margin-bottom: 15px;
+    .modal-content h2 { margin-bottom: 12px; }
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
       color: #3a2b1a;
     }
-    .close-btn {
-      margin-top: 15px;
-      padding: 8px 14px;
-      background: linear-gradient(180deg, #fff, #f0e8da);
-      border: 1px solid #c8b48c;
-      border-radius: 6px;
-      cursor: pointer;
+
+    @keyframes fadeIn {
+      from { background: rgba(0,0,0,0); }
+      to { background: rgba(0,0,0,0.6); }
     }
-    .close-btn:hover {
-      background: #fdfbf6;
+    @keyframes slideIn {
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
   </style>
 </head>
@@ -244,143 +277,35 @@
 
     <!-- Main -->
     <main>
+      <!-- Controls on top -->
+      <div class="controls">
+        <button>&lt;</button>
+        <input type="text" value="1 / 19">
+        <button>&gt;</button>
+      </div>
+
       <h2>Translator's Foreword</h2>
-      <p>
-        All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness. We seek refuge in Him from the evil of our inner-selves and the evil of our actions. Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide. I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messen-ger.
-      </p>
-      <p class="verse arabic">
+      <p>All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness...</p>
+
+      <div class="foreword-arabic">
         يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
-      </p>
-      <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam."<br>[Soorah Aal-Imraan (3):102]</p>
+      </div>
+      <p>"O you who believe! Fear Allaah as He should be feared..." [Soorah Aal-Imraan (3): 102]</p>
 
-      <p class="verse arabic">
-        يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِنْهَا زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاءً وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بِهِ، وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
-      </p>
-      <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you."<br>[Soorah an-Nisa (4):1]</p>
-
-      <p class="verse arabic">
-        يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَلَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فَقَدْ فَازَ فوزا عظيمًا
-      </p>
-      <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement."<br>[Soorah al-Ahzaab (33):70-71]</p>
+      <!-- Controls on bottom -->
+      <div class="controls">
+        <button>&lt;</button>
+        <input type="text" value="1 / 19">
+        <button>&gt;</button>
+      </div>
     </main>
 
     <!-- Sidebar Right -->
     <aside class="sidebar-right">
       <h2>Chapters</h2>
-      <div class="chapter"><p>Transliteration Table</p></div>
-      <div class="chapter"><p>The Translator's Foreword</p></div>
+      <div class="chapter"><p>Translator's Foreword</p></div>
       <div class="chapter"><p>The Author's Foreword</p></div>
-      <!-- Chapter 1 --> 
-      <div class="chapter"> <button onclick="toggleChapter(this)">[-] Chapter 1: The Etiquette of the Seeker's Inner Self</button>
-      <li>1. Knowledge is worship</li>
-      <li>2. Be adherent to the path of the Salaf as-Saalih</li>
-      <li>3. Commit to fearing Allaah, the Most High</li>
-      <li>4. Continual observance [of Allaah]</li>
-      <li>5. Lower your wing and put arrogance and pride behind you</li>
-      <li>6. Contentment and zuhd (Asceticism)</li>
-      <li>7. Adorn yourself with the splendour of knowledge</li>
-      <li>8. Adorn [yourself] with honour</li>
-      <li>9. Enjoy masculine qualities</li>
-      <li>10. Forsaking luxury</li>
-      <li>11. To avoid the gatherings of vain speech</li>
-      <li>12. Avoid commotion (hayshaat)</li>
-      <li>13. Adorn [yourself] with gentleness</li>
-      <li>14. Contemplation</li>
-      <li>15. Firmness and confirmation</li>
-    </ul>
-  </div>
-
-  <!-- Chapter 2 -->
-  <div class="chapter">
-    <button onclick="toggleChapter(this)">[-] Chapter 2: The Methodology of Seeking Knowledge</button>
-    <ul>
-      <li>16. The methodology of seeking knowledge and its levels</li>
-      <li>17. To acquire knowledge from the mashaa'yikh (scholars)</li>
-    </ul>
-  </div>
-
-  <!-- Chapter 3 -->
-  <div class="chapter">
-    <button onclick="toggleChapter(this)">[-] Chapter 3: The Etiquette of the Seeker with his Shaykh</button>
-    <ul>
-      <li>18. Considering the shaykh's [consequent] status</li>
-      <li>19. Your capital - O seeker is from your shaykh</li>
-      <li>20. The shaykh's enthusiasm in his lessons</li>
-      <li>21. Writing what the shaykh says during the lesson or revision</li>
-      <li>22. Acquiring knowledge from a mubtadi' (an innovator)</li>
-    </ul>
-  </div>
-
-  <!-- Chapter 4 -->
-  <div class="chapter">
-    <button onclick="toggleChapter(this)">[-] Chapter 4: The Etiquette of Companionship</button>
-    <ul>
-      <li>23. Beware of the bad companion</li>
-    </ul>
-  </div>
-
-  <!-- Chapter 5 -->
-  <div class="chapter">
-    <button onclick="toggleChapter(this)">[-] Chapter 5: The Etiquette of the Student in Leading a Life of Knowledge</button>
-    <ul>
-      <li>24. High aspirations in knowledge</li>
-      <li>25. The burning desire for seeking knowledge</li>
-      <li>26. Emigrating for the sake of seeking knowledge</li>
-      <li>27. Preserving knowledge through writing</li>
-      <li>28. Preservation through paying attention</li>
-      <li>29. Occasional revision of knowledge</li>
-      <li>30. To gain understanding by deriving fiqh rulings</li>
-      <li>31. Seeking refuge in Allaah when acquiring knowledge</li>
-      <li>32. Honesty in knowledge</li>
-      <li>33. Truthfulness</li>
-      <li>34. The sanctuary of the seeker of knowledge</li>
-      <li>35. Preserving your capital (lifetime)</li>
-      <li>36. Relaxing the body</li>
-      <li>37. Precision and correction in reading</li>
-      <li>38. Summarising long compilations</li>
-      <li>39. Excellence in asking questions</li>
-      <li>40. Debating without argumentation</li>
-      <li>41. Revision of the knowledge in groups</li>
-      <li>42. The seeker of knowledge lives between Qur'an & Sunnah</li>
-      <li>43. Completion of learning the tools of every subject</li>
-    </ul>
-  </div>
-
-  <!-- Chapter 6 -->
-  <div class="chapter">
-    <button onclick="toggleChapter(this)">[-] Chapter 6: Adorn Yourself with the Implementation of Knowledge</button>
-    <ul>
-      <li>44. The signs of beneficial knowledge</li>
-      <li>45. The alms of knowledge</li>
-      <li>46. The glory of the scholars</li>
-      <li>47. Protection of knowledge</li>
-      <li>48. Diplomacy not compromise (on behalf of the religion)</li>
-      <li>49. Passion for the books</li>
-      <li>50. The foundation of your library</li>
-      <li>51. Dealing with the book</li>
-      <li>52. Further to this</li>
-      <li>53. Writing with diacritical points</li>
-    </ul>
-  </div>
-
-  <!-- Chapter 7 -->
-  <div class="chapter">
-    <button onclick="toggleChapter(this)">[-] Chapter 7: Precautions</button>
-    <ul>
-      <li>54. False hopes</li>
-      <li>55. Beware of being "Aboo Shibr"</li>
-      <li>56. Becoming manifest before becoming qualified</li>
-      <li>57. Deterioration of manners in knowledge</li>
-      <li>58. (Merely) "putting pen to paper"</li>
-      <li>59. Your stance on the mistakes of those who preceded you</li>
-      <li>60. Deterring dubious affairs</li>
-      <li>61. Beware of grammatical errors</li>
-      <li>62. Beware of premature intellectuality</li>
-      <li>63. Beware of the new Israa'eeliyaat</li>
-      <li>64. Beware of Byzantine debate</li>
-      <li>65. No walaa' and baraa' over sectarianism</li>
-      <li>66. The things that nullify this hilyah</li>
-
+      <div class="chapter"><p>Chapter 1: The Etiquette of the Seeker's Inner Self</p></div>
     </aside>
   </div>
 
@@ -391,27 +316,36 @@
 
   <!-- Modal -->
   <div id="descriptionModal" class="modal">
-    <div class="modal-content">
-      <h3>Book Description</h3>
-      <p>
-        The Book: Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge (printed as part of the scientific collection)<br><br>
-        Author: Bakr bin Abdullah Abu Zaid (d. 1429 AH)<br><br>
-        Publisher: Dar al-Asima for Publishing and Distribution, Riyadh<br>
-        Edition: First, 1416 AH<br>
-        Number of pages: 97
-      </p>
-      <button class="close-btn" onclick="closeModal()">Close</button>
+    <div class="modal-content" id="modalBox">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Description of the Book</h2>
+      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge (printed as part of the scientific collection)</p>
+      <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
+      <p><strong>Publisher:</strong> Dar al-Asima for Publishing and Distribution, Riyadh</p>
+      <p><strong>Edition:</strong> First, 1416 AH</p>
+      <p><strong>Number of pages:</strong> 97</p>
     </div>
   </div>
 
   <script>
     function openModal() {
-      document.getElementById("descriptionModal").style.display = "flex";
+      const modal = document.getElementById("descriptionModal");
+      const box = document.getElementById("modalBox");
+      modal.style.display = "block";
+      box.style.animation = "slideIn 0.3s ease forwards";
     }
     function closeModal() {
-      document.getElementById("descriptionModal").style.display = "none";
+      const modal = document.getElementById("descriptionModal");
+      const box = document.getElementById("modalBox");
+      box.style.animation = "fadeOut 0.3s ease forwards";
+      setTimeout(()=> modal.style.display = "none", 300);
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById("descriptionModal");
+      if (event.target == modal) {
+        closeModal();
+      }
     }
   </script>
 </body>
 </html>
-
