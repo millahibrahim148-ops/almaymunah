@@ -12,10 +12,78 @@
       color: #2f2f2f;
       line-height: 1.6;
       font-size: 18px;
+      display: grid;
+      grid-template-columns: 220px 1fr 260px;
+      grid-template-areas:
+        "left header right"
+        "left main right"
+        "left footer right";
+      min-height: 100vh;
     }
+
+    /* Sidebar left (Navigation) */
+    .sidebar-left {
+      grid-area: left;
+      background: #fbf7ef;
+      border-right: 1px solid #d9c7a4;
+      padding: 20px;
+    }
+    .sidebar-left h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #3a2b1a;
+    }
+    .sidebar-left a {
+      display: block;
+      padding: 8px 10px;
+      color: #3a2b1a;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 8px;
+      transition: background 0.2s;
+    }
+    .sidebar-left a:hover {
+      background: #f7e8c9;
+    }
+
+    /* Sidebar right (Chapters) */
+    .sidebar-right {
+      grid-area: right;
+      background: #fbf7ef;
+      border-left: 1px solid #d9c7a4;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .sidebar-right h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #3a2b1a;
+    }
+    .chapter {
+      margin-bottom: 10px;
+    }
+    .chapter button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: #3a2b1a;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    .chapter ul {
+      list-style: none;
+      padding-left: 15px;
+      margin-top: 5px;
+      display: block; /* expanded by default */
+    }
+    .chapter ul li {
+      margin: 4px 0;
+    }
+
     header {
+      grid-area: header;
       text-align: center;
-      padding: 35px 20px;
+      padding: 25px 20px;
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
       border-bottom: 1px solid #c8b48c;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
@@ -28,7 +96,7 @@
     }
     header h1 {
       font-family: "Amiri", serif;
-      font-size: 46px;
+      font-size: 42px;
       font-weight: 400;
       color: #3a2b1a;
     }
@@ -37,40 +105,44 @@
       color: #5c4b36;
       margin-top: 8px;
     }
-    nav {
+
+    /* Buttons under header */
+    .top-buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 12px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border-bottom: 1px solid #d9c7a4;
-      font-size: 17px;
+      margin-top: 15px;
     }
-    nav a {
+    .top-buttons a {
       text-decoration: none;
+      padding: 10px 18px;
+      background: linear-gradient(180deg, #fff, #f0e8da);
+      border: 1px solid #c8b48c;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
+      font-size: 16px;
       color: #3a2b1a;
-      padding: 8px 14px;
-      border-radius: 6px;
-      transition: background 0.2s;
+      transition: transform 0.15s, background 0.2s;
     }
-    nav a:hover {
-      background: #f7e8c9;
+    .top-buttons a:hover {
+      transform: scale(1.05);
+      background: #fdfbf6;
     }
+
     main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 30px;
+      grid-area: main;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 25px;
       background: #fffdf9;
       border: 1px solid #e4d8c2;
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
-    .verse {
-      margin-bottom: 28px;
-    }
+    .verse { margin-bottom: 28px; }
     .verse .arabic {
       font-family: "Amiri", serif;
-      font-size: 28px;
+      font-size: 26px;
       text-align: right;
       color: #2c1f0f;
       margin-bottom: 10px;
@@ -83,6 +155,7 @@
       border-left: 3px solid #d9c7a4;
       border-radius: 6px;
     }
+
     .controls {
       display: flex;
       flex-direction: column;
@@ -94,17 +167,19 @@
       display: flex;
       gap: 15px;
     }
-    .nav-buttons button {
-      font-size: 20px;
-      padding: 10px 20px;
+    .nav-buttons button,
+    .go-control button {
+      font-size: 18px;
+      padding: 8px 16px;
       background: linear-gradient(180deg, #fff, #f0e8da);
       border: 1px solid #c8b48c;
-      border-radius: 10px;
+      border-radius: 8px;
       box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
       cursor: pointer;
       transition: transform 0.15s, background 0.2s;
     }
-    .nav-buttons button:hover {
+    .nav-buttons button:hover,
+    .go-control button:hover {
       transform: scale(1.05);
       background: #fdfbf6;
     }
@@ -112,7 +187,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .go-control input {
       padding: 8px;
@@ -123,26 +198,13 @@
       border-radius: 6px;
       background: #fffefb;
     }
-    .go-control button {
-      padding: 8px 18px;
-      background: linear-gradient(180deg, #fff, #f0e8da);
-      border: 1px solid #c8b48c;
-      border-radius: 8px;
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.15s, background 0.2s;
-    }
-    .go-control button:hover {
-      transform: scale(1.05);
-      background: #fdfbf6;
-    }
+
     footer {
+      grid-area: footer;
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       border-top: 1px solid #d9c7a4;
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      margin-top: 50px;
       font-size: 15px;
       color: #6b5a45;
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
@@ -150,20 +212,49 @@
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
-    <h1>English Hilyah Ṭālib al-ʿIlm</h1>
-    <p>Etiquettes of the Student of Knowledge</p>
-  </header>
-
-  <nav>
+  <!-- Sidebar Left -->
+  <aside class="sidebar-left">
+    <h2>Navigation</h2>
     <a href="index.html">Home</a>
     <a href="library.html">Library</a>
     <a href="article.html">Articles</a>
     <a href="#">Audio</a>
     <a href="#">About</a>
-  </nav>
+  </aside>
 
+  <!-- Header -->
+  <header>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
+    <h1>English Hilyah Ṭālib al-ʿIlm</h1>
+    <p>Etiquettes of the Student of Knowledge</p>
+
+    <div class="top-buttons">
+      <a href="#">Download Book PDF</a>
+      <a href="#">Commentary Lesson of the Book</a>
+      <a href="#">Explanation of the Book By Ibn Uthaymin</a>
+    </div>
+  </header>
+
+  <!-- Sidebar Right -->
+  <aside class="sidebar-right">
+    <h2>Chapters</h2>
+    <div class="chapter">
+      <button onclick="toggleChapter(this)">[-] Chapter 1</button>
+      <ul>
+        <li>Section 1</li>
+        <li>Section 2</li>
+      </ul>
+    </div>
+    <div class="chapter">
+      <button onclick="toggleChapter(this)">[-] Chapter 2</button>
+      <ul>
+        <li>Section 1</li>
+        <li>Section 2</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main -->
   <main>
     <div id="verses"></div>
 
@@ -179,6 +270,7 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
@@ -187,7 +279,6 @@
     const versesData = [
       {arabic: "يَنْبَغِي لِطَالِبِ الْعِلْمِ...", translation: "It is appropriate for the student of knowledge..."},
       {arabic: "وَمِنْ أَهَمِّ مَا يَجِبُ...", translation: "And among the most important obligations..."}
-      // Add the rest here...
     ];
 
     const versesContainer = document.getElementById('verses');
@@ -224,7 +315,17 @@
       }
     }
 
-    // initial load
+    function toggleChapter(btn) {
+      const ul = btn.nextElementSibling;
+      if (ul.style.display === "none") {
+        ul.style.display = "block";
+        btn.textContent = btn.textContent.replace("[+]", "[-]");
+      } else {
+        ul.style.display = "none";
+        btn.textContent = btn.textContent.replace("[-]", "[+]");
+      }
+    }
+
     renderVerse();
   </script>
 </body>
