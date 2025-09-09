@@ -2,346 +2,223 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hilyah Ṭālib al-ʿIlm</title>
+  <title>Hilyah Ṭālib al-ʿIlm – English translation of the book Ettiquettes of a Student on Seeking Knowledge</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Cormorant Garamond", serif;
-      background: #fdfbf6;
-      color: #2f2f2f;
-      line-height: 1.6;
-      font-size: 18px;
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: #fdfbf7;
+      color: #2c2c2c;
+      display: flex;
     }
-
     header {
       text-align: center;
-      padding: 25px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      padding: 20px;
+      background: #fff;
+      border-bottom: 2px solid #ccc;
     }
     header img {
-      max-width: 320px;
+      max-width: 600px;
+      width: 100%;
       border-radius: 8px;
-      display: block;
-      margin: 0 auto 12px;
     }
     header h1 {
-      font-family: "Amiri", serif;
-      font-size: 42px;
-      font-weight: 400;
-      color: #3a2b1a;
+      margin-top: 10px;
+      font-family: 'Amiri', serif;
+      font-size: 26px;
     }
-    header p {
-      font-size: 18px;
-      color: #5c4b36;
-      margin-top: 8px;
-    }
-
-    /* Buttons under header */
-    .top-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 15px;
-    }
-    .top-buttons a {
-      text-decoration: none;
-      padding: 10px 18px;
-      background: linear-gradient(180deg, #fff, #f0e8da);
-      border: 1px solid #c8b48c;
-      border-radius: 8px;
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
-      font-size: 16px;
-      color: #3a2b1a;
-      transition: transform 0.15s, background 0.2s;
-    }
-    .top-buttons a:hover {
-      transform: scale(1.05);
-      background: #fdfbf6;
-    }
-
-    /* Container with sidebars */
     .container {
       display: flex;
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-      gap: 20px;
+      flex: 1;
     }
-
-    /* Sidebar left (Navigation) */
-    .sidebar-left {
+    .sidebar {
       width: 220px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      height: fit-content;
-    }
-    .sidebar-left h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #3a2b1a;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-    }
-    .sidebar-left a {
-      display: block;
-      padding: 8px 10px;
-      margin-bottom: 8px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 6px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      transition: background 0.2s;
-    }
-    .sidebar-left a:hover {
-      background: #f7e8c9;
-    }
-
-    /* Sidebar right (Chapters) */
-    .sidebar-right {
-      width: 260px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      max-height: 600px;
+      background: #f8f5f0;
+      border-right: 2px solid #ccc;
+      padding: 15px;
       overflow-y: auto;
+      height: 100vh;
     }
-    .sidebar-right h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #3a2b1a;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
+    .rightbar {
+      width: 220px;
+      background: #f8f5f0;
+      border-left: 2px solid #ccc;
+      padding: 15px;
+      overflow-y: auto;
+      height: 100vh;
     }
-    .chapter {
-      margin-bottom: 10px;
-    }
-    .chapter button {
-      background: none;
-      border: none;
-      font-size: 16px;
-      color: #3a2b1a;
-      cursor: pointer;
-      margin-bottom: 5px;
-    }
-    .chapter ul {
-      list-style: none;
-      padding-left: 15px;
-      margin-top: 5px;
-      display: block; /* expanded by default */
-    }
-    .chapter ul li { margin: 4px 0; }
-
     main {
       flex: 1;
-      background: #fffdf9;
-      padding: 25px;
-      border: 1px solid #e4d8c2;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      padding: 20px;
     }
-
-    .verse { margin-bottom: 28px; }
-    .verse .arabic {
-      font-family: "Amiri", serif;
-      font-size: 26px;
-      text-align: right;
-      color: #2c1f0f;
-      margin-bottom: 10px;
+    .nav-links, .chapter-links {
+      list-style: none;
+      padding: 0;
     }
-    .verse .translation {
-      font-size: 18px;
-      color: #3f2e1d;
-      background: #fbf7ef;
-      padding: 10px;
-      border-left: 3px solid #d9c7a4;
-      border-radius: 6px;
-    }
-
-    .controls {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-top: 40px;
-    }
-    .nav-buttons {
-      display: flex;
-      gap: 15px;
-    }
-    .nav-buttons button,
-    .go-control button {
-      font-size: 18px;
-      padding: 8px 16px;
-      background: linear-gradient(180deg, #fff, #f0e8da);
-      border: 1px solid #c8b48c;
-      border-radius: 8px;
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
+    .nav-links li, .chapter-links li {
+      margin: 8px 0;
       cursor: pointer;
-      transition: transform 0.15s, background 0.2s;
     }
-    .nav-buttons button:hover,
-    .go-control button:hover {
-      transform: scale(1.05);
-      background: #fdfbf6;
-    }
-    .go-control {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-    .go-control input {
-      padding: 8px;
-      font-size: 16px;
-      width: 80px;
+    .button-row {
       text-align: center;
-      border: 1px solid #c8b48c;
+      margin: 20px 0;
+    }
+    .button-row button {
+      background: #8b0000;
+      color: white;
+      padding: 10px 15px;
+      border: none;
       border-radius: 6px;
-      background: #fffefb;
+      margin: 5px;
+      cursor: pointer;
+      font-family: 'Amiri', serif;
+      font-size: 16px;
+      transition: background 0.3s;
     }
-
-    footer {
+    .button-row button:hover {
+      background: #600000;
+    }
+    .page-controls {
       text-align: center;
-      padding: 15px;
-      border-top: 1px solid #d9c7a4;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      font-size: 15px;
-      color: #6b5a45;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
-      margin-top: 40px;
+      margin: 20px 0;
+    }
+    .page-controls button {
+      background: #fff;
+      border: 2px solid #ccc;
+      padding: 6px 12px;
+      margin: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .page-controls input {
+      width: 60px;
+      text-align: center;
+      padding: 5px;
+      margin: 5px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+    }
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 20px;
+      max-width: 500px;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .popup-content h2 {
+      margin-top: 0;
+    }
+    .close-btn {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
-    <h1>Hilyah Ṭālib al-ʿIlm</h1>
-    <p>English Translation</p>
 
-    <div class="top-buttons">
-      <a href="#">Download Book PDF</a>
-      <a href="#">Commentary Lesson of the Book</a>
-      <a href="#">Syarh of the Book By Ibn Uthaymin</a>
-      <a href="#">Description of the Book</a>
-    </div>
-  </header>
-
-  <div class="container">
-    <!-- Sidebar Left -->
-    <aside class="sidebar-left">
-      <h2>Navigation</h2>
-      <a href="index.html">Home</a>
-      <a href="library.html">Library</a>
-      <a href="article.html">Articles</a>
-      <a href="#">Audio</a>
-      <a href="#">About</a>
-    </aside>
-
-    <!-- Main -->
-    <main>
-      <div id="verses"></div>
-
-      <div class="controls">
-        <div class="nav-buttons">
-          <button onclick="prevVerse()">&lt;</button>
-          <button onclick="nextVerse()">&gt;</button>
-        </div>
-        <div class="go-control">
-          <input type="number" id="verseNumber" min="1" placeholder="No.">
-          <button onclick="goToVerse()">Go</button>
-        </div>
-      </div>
-    </main>
-
-    <!-- Sidebar Right -->
-    <aside class="sidebar-right">
-      <h2>Chapters</h2>
-      <div class="chapter">
-        <button onclick="toggleChapter(this)">[-] Chapter 1</button>
-        <ul>
-          <li>Section 1</li>
-          <li>Section 2</li>
-        </ul>
-      </div>
-      <div class="chapter">
-        <button onclick="toggleChapter(this)">[-] Chapter 2</button>
-        <ul>
-          <li>Section 1</li>
-          <li>Section 2</li>
-        </ul>
-      </div>
-    </aside>
+  <!-- Left Sidebar -->
+  <div class="sidebar">
+    <h3>Navigation</h3>
+    <ul class="nav-links">
+      <li>🏠 Home</li>
+      <li>📚 Library</li>
+      <li>📝 Articles</li>
+      <li>📖 About</li>
+    </ul>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
+  <!-- Main Content -->
+  <div class="container">
+    <main>
+      <header>
+        <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Header Image">
+        <h1>Hilyah Ṭālib al-ʿIlm – English translation of the book Ettiquettes of a Student on Seeking Knowledge</h1>
+      </header>
+
+      <div class="button-row">
+        <button onclick="window.open('https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing','_blank')">📄 Download Book PDF</button>
+        <button>📖 Commentary Lessons of the Book</button>
+        <button>📘 Syarh</button>
+        <button onclick="openPopup()">📑 Description of the Book</button>
+      </div>
+
+      <div class="page-controls">
+        <button onclick="prevPage()">&lt;</button>
+        <input type="text" id="pageNumber" value="1">
+        <button onclick="goPage()">Go</button>
+        <button onclick="nextPage()">&gt;</button>
+      </div>
+
+      <article>
+        <h2>Sample Page</h2>
+        <p>This is where the translated book content will be displayed...</p>
+      </article>
+    </main>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div class="rightbar">
+    <h3>Chapters</h3>
+    <ul class="chapter-links">
+      <li>[–] Introduction</li>
+      <li>[–] Chapter 1</li>
+      <li>[–] Chapter 2</li>
+      <li>[–] Chapter 3</li>
+      <li>[–] Chapter 4</li>
+      <li>[–] Chapter 5</li>
+    </ul>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Description of the Book</h2>
+      <p><b>The Book:</b> Hilyah Ṭālib al-ʿIlm – Ettiquettes of a student on seeking knowledge (printed as part of the scientific collection)</p>
+      <p><b>Author:</b> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
+      <p><b>Publisher:</b> Dar al-Asima for Publishing and Distribution, Riyadh</p>
+      <p><b>Edition:</b> First, 1416 AH</p>
+      <p><b>Number of Pages:</b> 97</p>
+    </div>
+  </div>
 
   <script>
-    const versesData = [
-      {arabic: "يَنْبَغِي لِطَالِبِ الْعِلْمِ...", translation: "It is appropriate for the student of knowledge..."},
-      {arabic: "وَمِنْ أَهَمِّ مَا يَجِبُ...", translation: "And among the most important obligations..."}
-    ];
-
-    const versesContainer = document.getElementById('verses');
-    let currentVerse = 0;
-
-    function renderVerse() {
-      versesContainer.innerHTML = `
-        <div class="verse">
-          <div class="arabic">${versesData[currentVerse].arabic}</div>
-          <div class="translation">${versesData[currentVerse].translation}</div>
-        </div>
-      `;
+    function openPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
     }
 
-    function nextVerse() {
-      if (currentVerse < versesData.length - 1) {
-        currentVerse++;
-        renderVerse();
-      }
+    // Page controls
+    function prevPage() {
+      let input = document.getElementById("pageNumber");
+      let current = parseInt(input.value) || 1;
+      if (current > 1) input.value = current - 1;
     }
-
-    function prevVerse() {
-      if (currentVerse > 0) {
-        currentVerse--;
-        renderVerse();
-      }
+    function nextPage() {
+      let input = document.getElementById("pageNumber");
+      let current = parseInt(input.value) || 1;
+      input.value = current + 1;
     }
-
-    function goToVerse() {
-      const num = parseInt(document.getElementById("verseNumber").value);
-      if (!isNaN(num) && num >= 1 && num <= versesData.length) {
-        currentVerse = num - 1;
-        renderVerse();
-      }
+    function goPage() {
+      let input = document.getElementById("pageNumber");
+      alert("Navigating to page " + input.value);
     }
-
-    function toggleChapter(btn) {
-      const ul = btn.nextElementSibling;
-      if (ul.style.display === "none") {
-        ul.style.display = "block";
-        btn.textContent = btn.textContent.replace("[+]", "[-]");
-      } else {
-        ul.style.display = "none";
-        btn.textContent = btn.textContent.replace("[-]", "[+]");
-      }
-    }
-
-    renderVerse();
   </script>
+
 </body>
 </html>
