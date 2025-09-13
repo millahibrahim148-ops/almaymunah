@@ -89,50 +89,50 @@
     main {
       flex: 1;
       background: #fffdf9;
-      padding: 20px;
+      padding: 25px;
       border: 1px solid #e4d8c2;
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
-    .articles {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 18px;
-    }
-    .article-card {
-      background: linear-gradient(180deg, #fdfbf6, #f9f3e6);
-      border: 1px solid #d9c7a4;
-      border-radius: 10px;
-      padding: 16px;
+    .intro {
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.2s, background 0.3s;
+      margin-bottom: 25px;
     }
-    .article-card:hover {
-      transform: translateY(-4px);
-      background: #fff7df;
-    }
-    .article-card h3 {
+    .intro h2 {
       font-family: "Amiri", serif;
-      font-size: 20px;
+      font-size: 30px;
+      margin-bottom: 12px;
       color: #3a2b1a;
-      margin-bottom: 10px;
     }
-    .article-card a {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 14px;
-      background: #f0e0be;
+    .intro p {
+      font-size: 17px;
+      color: #4b3a27;
+      max-width: 700px;
+      margin: 0 auto 20px auto;
+    }
+
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .quick-links a {
+      padding: 10px 18px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
       border-radius: 8px;
-      text-decoration: none;
       color: #3a2b1a;
-      font-size: 14px;
-      border: 1px solid #c8b48c;
-      transition: background 0.2s;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 3px 6px rgba(0,0,0,0.08);
+      transition: background 0.2s, transform 0.15s;
     }
-    .article-card a:hover {
-      background: #e6d4ab;
+    .quick-links a:hover {
+      background: #f7e8c9;
+      transform: translateY(-2px);
     }
 
     footer {
@@ -166,19 +166,18 @@
     </aside>
 
     <main>
-      <h2 style="font-family: 'Amiri', serif; margin-bottom: 20px; color:#3a2b1a;">Articles</h2>
-      <div class="articles">
-        <div class="article-card">
-          <h3>Translator’s Foreword</h3>
-          <a href="foreword.html">Read</a>
-        </div>
-        <div class="article-card">
-          <h3>Virtues of Knowledge</h3>
-          <a href="virtues.html">Read</a>
-        </div>
-        <div class="article-card">
-          <h3>Recommended Books</h3>
-          <a href="books.html">Read</a>
+      <div class="intro">
+        <h2>Knowledge & Guidance</h2>
+        <p>
+          This library is dedicated to the preservation and sharing of authentic Islamic knowledge — 
+          focusing on the Qur’ān, Sunnah, and the understanding of the Salaf. Explore beneficial books, 
+          articles, and audio resources curated for students of knowledge and seekers of guidance.
+        </p>
+        <div class="quick-links">
+          <a href="library.html">📚 Library</a>
+          <a href="article.html">📝 Articles</a>
+          <a href="#">🎧 Audio</a>
+          <a href="#">ℹ️ About</a>
         </div>
       </div>
     </main>
