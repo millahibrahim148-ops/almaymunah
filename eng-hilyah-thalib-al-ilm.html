@@ -1,777 +1,497 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <title>Hilyah Ṭālib al-ʿIlm</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-
   <style>
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-
       font-family: "Cormorant Garamond", serif;
-
       background: #fdfbf6;
-
       color: #2f2f2f;
-
       line-height: 1.6;
-
       font-size: 18px;
-
     }
-
-
 
     header {
-
       text-align: center;
-
       padding: 25px 20px;
-
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-
       border-bottom: 1px solid #c8b48c;
-
       box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
-
     }
-
     header img {
-
       max-width: 320px;
-
       border-radius: 8px;
-
       display: block;
-
       margin: 0 auto 12px;
-
     }
-
     header h1 {
-
       font-family: "Amiri", serif;
-
       font-size: 42px;
-
       font-weight: 400;
-
       color: #3a2b1a;
-
     }
-
     header p {
-
       font-size: 18px;
-
       color: #5c4b36;
-
       margin-top: 8px;
-
     }
-
-
 
     /* Buttons under header */
-
     .top-buttons {
-
       display: flex;
-
       justify-content: center;
-
       flex-wrap: wrap;
-
       gap: 15px;
-
       margin-top: 15px;
-
       align-items: center;
-
     }
-
     .top-buttons a, .top-buttons button {
-
       text-decoration: none;
-
       padding: 10px 18px;
-
       background: linear-gradient(180deg, #fff, #f0e8da);
-
       border: 1px solid #c8b48c;
-
       border-radius: 8px;
-
       box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
-
       font-size: 16px;
-
       color: #3a2b1a;
-
       transition: transform 0.15s, background 0.2s;
-
       cursor: pointer;
-
     }
-
     .top-buttons a:hover, .top-buttons button:hover {
-
       transform: scale(1.05);
-
       background: #fdfbf6;
-
     }
-
-
 
     /* Search bar */
-
     .searchbar {
-
       padding: 8px 12px;
-
       border: 1px solid #c8b48c;
-
       border-radius: 6px;
-
       font-size: 16px;
-
       background: #fffefb;
-
     }
-
-
 
     /* Dropdown categories */
-
     .dropdown {
-
       position: relative;
-
       display: inline-block;
-
     }
-
     .dropdown-content {
-
       display: none;
-
       position: absolute;
-
       background: #fffdf9;
-
       border: 1px solid #c8b48c;
-
       border-radius: 8px;
-
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
       min-width: 240px;
-
       z-index: 1000;
-
       text-align: left;
-
       padding: 10px;
-
     }
-
     .dropdown-content button {
-
       display: block;
-
       width: 100%;
-
       text-align: left;
-
       background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-
       border: 1px solid #d9c7a4;
-
       border-radius: 6px;
-
       margin: 6px 0;
-
       padding: 8px;
-
       cursor: pointer;
-
       font-size: 15px;
-
     }
-
     .dropdown-content button:hover {
-
       background: #f7e8c9;
-
     }
-
     .dropdown:hover .dropdown-content {
-
       display: block;
-
       animation: slideIn 0.3s ease forwards;
-
     }
-
-
 
     /* Container with sidebars */
-
     .container {
-
       display: flex;
-
       max-width: 1200px;
-
       margin: 30px auto;
-
       padding: 0 20px;
-
       gap: 20px;
-
     }
-
-
 
     /* Sidebar left */
-
     .sidebar-left {
-
       width: 220px;
-
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-
       border: 1px solid rgba(0,0,0,0.08);
-
       border-radius: 12px;
-
       padding: 18px;
-
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-
       height: fit-content;
-
     }
-
     .sidebar-left h2 {
-
       font-size: 20px;
-
       margin-bottom: 12px;
-
       color: #3a2b1a;
-
       border-bottom: 1px solid #d9c7a4;
-
       padding-bottom: 5px;
-
     }
-
     .sidebar-left a {
-
       display: block;
-
       padding: 8px 10px;
-
       margin-bottom: 8px;
-
       background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-
       border: 1px solid #d9c7a4;
-
       border-radius: 6px;
-
       color: #3a2b1a;
-
       text-decoration: none;
-
       font-size: 15px;
-
       transition: background 0.2s;
-
     }
-
     .sidebar-left a:hover {
-
       background: #f7e8c9;
-
     }
-
-
 
     /* Sidebar right */
-
     .sidebar-right {
-
       width: 260px;
-
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-
       border: 1px solid rgba(0,0,0,0.08);
-
       border-radius: 12px;
-
       padding: 18px;
-
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-
       max-height: 600px;
-
       overflow-y: auto;
-
     }
-
     .sidebar-right h2 {
-
       font-size: 20px;
-
       margin-bottom: 12px;
-
       color: #3a2b1a;
-
       border-bottom: 1px solid #d9c7a4;
-
       padding-bottom: 5px;
-
     }
-
     .chapter { margin-bottom: 10px; }
-
     .chapter a {
-
       display: block;
-
       padding: 6px 10px;
-
       border-radius: 6px;
-
       text-decoration: none;
-
       color: #3a2b1a;
-
       font-size: 16px;
-
     }
-
-    .chapter a:hover { background: #f7e8c9; }
-
-
+    .chapter a.active, .chapter a:hover { background: #f7e8c9; }
 
     main {
-
       flex: 1;
-
       background: #fffdf9;
-
       padding: 25px;
-
       border: 1px solid #e4d8c2;
-
       border-radius: 12px;
-
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-
     }
-
-
 
     .verse { margin-bottom: 28px; }
-
     .verse .arabic {
-
       font-family: "Amiri Quran", serif;
-
       font-size: 28px;
-
       text-align: right;
-
       color: #2c1f0f;
-
       margin-bottom: 10px;
-
     }
-
     .verse .translation {
-
       font-size: 18px;
-
       color: #3f2e1d;
-
       background: #fbf7ef;
-
       padding: 10px;
-
       border-left: 3px solid #d9c7a4;
-
       border-radius: 6px;
-
     }
-
-
 
     .foreword-arabic {
-
       font-family: "Amiri Quran", serif;
-
       font-size: 24px;
-
       text-align: right;
-
       color: #2c1f0f;
-
       margin: 15px 0;
-
     }
-
-
 
     /* Controls */
-
     .controls {
-
       display: flex;
-
       justify-content: center;
-
       align-items: center;
-
       gap: 10px;
-
       margin: 20px 0;
-
     }
-
     .controls button {
-
       font-size: 18px;
-
       padding: 8px 16px;
-
       background: linear-gradient(180deg, #fff, #f0e8da);
-
       border: 1px solid #c8b48c;
-
       border-radius: 8px;
-
       cursor: pointer;
-
     }
-
     .controls input {
-
       padding: 8px;
-
       font-size: 16px;
-
       width: 50px;
-
       text-align: center;
-
       border: 1px solid #c8b48c;
-
       border-radius: 6px;
-
       background: #fffefb;
-
     }
-
-
 
     footer {
-
       text-align: center;
-
       padding: 15px;
-
       border-top: 1px solid #d9c7a4;
-
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-
       font-size: 15px;
-
       color: #6b5a45;
-
       margin-top: 40px;
-
     }
-
-
 
     /* Modal */
-
     .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
-
     .modal-content {
-
       background: #fffdf9;
-
       margin: 8% auto;
-
       padding: 20px;
-
       border: 1px solid #c8b48c;
-
       border-radius: 10px;
-
       width: 60%;
-
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-
       transform: translateY(-30px);
-
       opacity: 0;
-
       animation: slideIn 0.3s ease forwards;
-
     }
-
     .close { float: right; font-size: 24px; cursor: pointer; color: #3a2b1a; }
-
-
 
     @keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
 
+    .page-content { display: none; }
+    #page1 { display: block; }
+    .active-chapter { background: #f7e8c9; font-weight: bold; }
   </style>
-
 </head>
-
 <body>
-
-  <!-- Header -->
-
-  <header>
-
+    <header>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
-
     <h1>Hilyah Ṭālib al-ʿIlm</h1>
-
     <p>English Translation of the Book Ettiquettes of a Student on Seeking Knowledge</p>
 
-
-
     <div class="top-buttons">
-
       <input type="text" class="searchbar" placeholder="Search on this page...">
-
       <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
 
-
-
       <div class="dropdown">
-
         <button>Categories</button>
-
         <div class="dropdown-content">
-
           <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
-
           <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
-
         </div>
-
       </div>
-
-
 
       <a href="#" onclick="openModal()">Description of the Book</a>
-
     </div>
-
   </header>
 
-
-
-  <!-- Container -->
-
-  <div class="container">
-
-    <!-- Sidebar Left -->
-
-    <aside class="sidebar-left">
-
+    <div class="container">
+        <aside class="sidebar-left">
       <h2>Navigation</h2>
-
       <a href="index.html">Home</a>
-
       <a href="library.html">Library</a>
-
       <a href="article.html">Articles</a>
-
       <a href="#">Audio</a>
-
       <a href="#">About</a>
-
     </aside>
 
+        <main>
+      <div class="controls">
+        <button id="prevPageBtn">&lt;</button>
+        <input type="text" id="pageNumberInput" value="1">
+        <button id="nextPageBtn">&gt;</button>
+      </div>
 
+      <div id="page-container">
+                <div id="page1" class="page-content">
+          <h2 id="translators-foreword">Translator's Foreword</h2>
+          <p>
+            All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
+            We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
+            Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide.
+            I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messenger.
+          </p>
+          <div class="foreword-arabic">
+            يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
+          </div>
+          <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam." <br>[Soorah Aal-Imraan (3):102]</p>
+          <div class="foreword-arabic">
+            يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِن زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاء وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بهِ وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
+          </div>
+          <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you." <br>[Soorah an-Nisaa (4):1]</p>
+          <div class="foreword-arabic">
+            يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فقد فاز فوزا عظيما
+          </div>
+          <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
+        </div>
 
-    <!-- Main -->
+                <div id="page2" class="page-content">
+          <h2 id="authors-foreword">The Author's Foreword</h2>
+          <div class="verse">
+            <div class="arabic">
+              بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+            </div>
+            <div class="translation">
+              In the Name of Allāh, the Most Compassionate, the Most Merciful
+            </div>
+          </div>
+          <div class="foreword-arabic">
+            الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+          </div>
+          <p>Praise is for Allāh, the Lord of the worlds, and may Allāh raise the rank of our Prophet Muhammad, his family, and his companions and grant them peace. To proceed:</p>
+          <p>
+            This is an abridgement pertaining to the etiquette (adab) of the student of knowledge with himself, his teacher, his associates, and his lesson. I have put it together with all its various topics; selecting the most important aspects for the student to pay attention to.
+          </p>
+        </div>
 
-    <main>
+                <div id="page3" class="page-content">
+          <h2 id="chapter1">Chapter 1: The Etiquette of the Seeker's Inner Self</h2>
+          <h3>1. The Etiquette of the Heart: Purity and Intention</h3>
+          <p>
+            The heart of the student of knowledge must be purified from all diseases, such as envy, arrogance, and the love of fame. The intention for seeking knowledge must be for the sake of Allāh Subhanahu wa ta'Ala alone. The Prophet Muhammad ﷺ said:
+          </p>
+          <div class="verse">
+            <div class="arabic">
+              إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
+            </div>
+            <div class="translation">
+              "Indeed, actions are by intentions, and for every person is what he intended."
+            </div>
+          </div>
+          <p>
+            This principle is fundamental. The student must constantly check his heart and renew his intention to seek knowledge for the pleasure of Allāh Subhanahu wa ta'Ala, not for worldly gain or recognition.
+          </p>
+        </div>
+      </div>
 
       <div class="controls">
-
-        <button>&lt;</button>
-
-        <input type="text" value="1">
-
-        <button>&gt;</button>
-
+        <button id="prevPageBtnBottom">&lt;</button>
+        <input type="text" id="pageNumberInputBottom" value="1">
+        <button id="nextPageBtnBottom">&gt;</button>
       </div>
-
-
-
-      <h2>Translator's Foreword</h2>
-
-      <p>
-
-        All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
-
-        We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
-
-        Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide.
-
-        I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messenger.
-
-      </p>
-
-
-
-      <div class="foreword-arabic">
-
-        يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
-
-      </div>
-
-      <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam." <br>[Soorah Aal-Imraan (3):102]</p>
-
-
-
-      <div class="foreword-arabic">
-
-        يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِن زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاء وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بهِ وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
-
-      </div>
-
-      <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you." <br>[Soorah an-Nisaa (4):1]</p>
-
-
-
-      <div class="foreword-arabic">
-
-        يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فقد فاز فوزا عظيما
-
-      </div>
-
-      <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
-
-
-
-      <div class="controls">
-
-        <button>&lt;</button>
-
-        <input type="text" value="1">
-
-        <button>&gt;</button>
-
-      </div>
-
     </main>
 
-
-
-    <!-- Sidebar Right -->
-
-    <aside class="sidebar-right">
-
+        <aside class="sidebar-right">
       <h2>Chapters</h2>
-
-      <div class="chapter"><a href="#">Translator's Foreword</a></div>
-
-      <div class="chapter"><a href="#">The Author's Foreword</a></div>
-
-      <div class="chapter"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
-
+      <div class="chapter"><a href="#translators-foreword" id="link-page1">Translator's Foreword</a></div>
+      <div class="chapter"><a href="#authors-foreword" id="link-page2">The Author's Foreword</a></div>
+      <div class="chapter"><a href="#chapter1" id="link-page3">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
     </aside>
-
   </div>
 
-
-
-  <!-- Footer -->
-
-  <footer>
-
+    <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-
   </footer>
 
-
-
-  <!-- Modal -->
-
-  <div id="descriptionModal" class="modal">
-
+    <div id="descriptionModal" class="modal">
     <div class="modal-content" id="modalBox">
-
       <span class="close" onclick="closeModal()">&times;</span>
-
       <h2>Description of the Book</h2>
-
       <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
-
       <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
-
       <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
-
       <p><strong>Edition:</strong> First, 1416 AH</p>
-
       <p><strong>Number of pages:</strong> 97</p>
-
     </div>
-
   </div>
 
-
-
   <script>
-
     function openModal() {
-
       document.getElementById("descriptionModal").style.display = "block";
-
     }
-
     function closeModal() {
-
       document.getElementById("descriptionModal").style.display = "none";
-
     }
-
     window.onclick = function(event) {
-
       const modal = document.getElementById("descriptionModal");
-
       if (event.target == modal) {
-
         closeModal();
-
       }
-
     }
 
+    // Page Navigation Logic
+    const pages = document.querySelectorAll('.page-content');
+    const pageInput = document.getElementById('pageNumberInput');
+    const pageInputBottom = document.getElementById('pageNumberInputBottom');
+    const prevBtn = document.getElementById('prevPageBtn');
+    const nextBtn = document.getElementById('nextPageBtn');
+    const prevBtnBottom = document.getElementById('prevPageBtnBottom');
+    const nextBtnBottom = document.getElementById('nextPageBtnBottom');
+    
+    let currentPage = 1;
+    const totalPages = pages.length;
+
+    function showPage(pageNumber) {
+      pages.forEach((page, index) => {
+        page.style.display = (index + 1 === pageNumber) ? 'block' : 'none';
+      });
+      pageInput.value = pageNumber;
+      pageInputBottom.value = pageNumber;
+      updateButtons();
+      updateChapterLinks(pageNumber);
+    }
+
+    function updateButtons() {
+      prevBtn.disabled = currentPage === 1;
+      prevBtnBottom.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtnBottom.disabled = currentPage === totalPages;
+    }
+
+    function goToPage(pageNumber) {
+      if (pageNumber >= 1 && pageNumber <= totalPages) {
+        currentPage = pageNumber;
+        showPage(currentPage);
+      }
+    }
+
+    function updateChapterLinks(pageNumber) {
+      document.querySelectorAll('.chapter a').forEach(link => {
+        link.classList.remove('active-chapter');
+      });
+      const activeLink = document.getElementById('link-page' + pageNumber);
+      if (activeLink) {
+        activeLink.classList.add('active-chapter');
+      }
+    }
+
+    prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+    prevBtnBottom.addEventListener('click', () => goToPage(currentPage - 1));
+    nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+    nextBtnBottom.addEventListener('click', () => goToPage(currentPage + 1));
+    
+    pageInput.addEventListener('change', (e) => {
+      const newPage = parseInt(e.target.value);
+      if (!isNaN(newPage) && newPage !== currentPage) {
+        goToPage(newPage);
+      }
+    });
+    
+    pageInputBottom.addEventListener('change', (e) => {
+      const newPage = parseInt(e.target.value);
+      if (!isNaN(newPage) && newPage !== currentPage) {
+        goToPage(newPage);
+      }
+    });
+
+    document.getElementById('link-page1').addEventListener('click', (e) => { e.preventDefault(); goToPage(1); });
+    document.getElementById('link-page2').addEventListener('click', (e) => { e.preventDefault(); goToPage(2); });
+    document.getElementById('link-page3').addEventListener('click', (e) => { e.preventDefault(); goToPage(3); });
+
+    // Initialize page and buttons
+    showPage(currentPage);
   </script>
-
 </body>
-
 </html>
