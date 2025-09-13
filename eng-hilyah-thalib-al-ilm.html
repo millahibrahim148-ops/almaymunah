@@ -1,361 +1,777 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Al Maymunah - Library</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Cormorant Garamond", serif;
-      background: #fdfbf6;
-      color: #2f2f2f;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 35px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
-    }
-    header img {
-      max-width: 320px;
-      border-radius: 8px;
-      display: block;
-      margin: 0 auto 12px;
-    }
-    header h1 {
-      font-family: "Amiri", serif;
-      font-size: 42px;
-      font-weight: 400;
-      color: #3a2b1a;
-    }
-    header p {
-      font-size: 16px;
-      color: #5c4b36;
-      margin-top: 8px;
-    }
-    .container {
-      display: flex;
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-      gap: 24px;
-    }
-    aside {
-      width: 260px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      height: fit-content;
-    }
-    aside h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      color: #4b3621;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-      font-family: "Amiri", serif;
-    }
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar-links a {
-      padding: 10px 12px;
-      margin-bottom: 6px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      transition: background 0.2s, transform 0.15s;
-    }
-    .sidebar-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(3px);
-    }
-    main {
-      flex: 1;
-      background: #fffdf9;
-      padding: 20px;
-      border: 1px solid #e4d8c2;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-    .library-section {
-      margin-bottom: 30px;
-    }
-    .library-section h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #4b3621;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-      font-family: "Amiri", serif;
-      cursor: pointer;
-    }
-    .toggle-btn {
-      font-size: 14px;
-      margin-left: 8px;
-      color: #6b5a45;
-      cursor: pointer;
-    }
-    .library-links .rec-item {
-      position: relative;
-    }
-    .library-links a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      cursor: pointer;
-    }
-    .library-links a img {
-      width: 18px;
-      height: 18px;
-    }
-    .library-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(3px);
-    }
-    /* Hover popup tooltip */
-    .tooltip {
-      position: absolute;
-      top: 110%;
-      left: 0;
-      background: #fffdf9;
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      padding: 10px;
-      width: 260px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      font-size: 14px;
-      color: #3a2b1a;
-      display: none;
-      z-index: 10;
-    }
-    .tooltip h4 {
-      margin-bottom: 6px;
-      font-family: "Amiri", serif;
-      font-size: 16px;
-    }
-    .rec-item:hover .tooltip {
-      display: block;
-    }
-    .dropdown {
-      display: none;
-      margin-left: 15px;
-      margin-top: 6px;
-    }
-    .dropdown a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      padding: 6px 10px;
-      background: #fdfbf6;
-      border: 1px solid #e4d8c2;
-      border-radius: 6px;
-      margin-bottom: 4px;
-    }
-    .dropdown a img {
-      width: 16px;
-      height: 16px;
-    }
-    .nested-dropdown {
-      display: none;
-      margin-top: 6px;
-    }
-    .lesson-group {
-      border-left: 3px solid #d9c7a4;
-      margin-left: 12px;
-      padding-left: 12px;
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
-    .lesson-group p {
-      margin: 6px 0;
-      font-weight: bold;
-      color: #4b3621;
-      font-size: 14px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #d9c7a4;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      margin-top: 40px;
-      font-size: 14px;
-      color: #6b5a45;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
-    }
-    .hidden { display: none; }
-  </style>
+
+  <meta charset="UTF-8">
+
+  <title>Hilyah Ṭālib al-ʿIlm</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+  <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+
+      font-family: "Cormorant Garamond", serif;
+
+      background: #fdfbf6;
+
+      color: #2f2f2f;
+
+      line-height: 1.6;
+
+      font-size: 18px;
+
+    }
+
+
+
+    header {
+
+      text-align: center;
+
+      padding: 25px 20px;
+
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+
+      border-bottom: 1px solid #c8b48c;
+
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+
+    }
+
+    header img {
+
+      max-width: 320px;
+
+      border-radius: 8px;
+
+      display: block;
+
+      margin: 0 auto 12px;
+
+    }
+
+    header h1 {
+
+      font-family: "Amiri", serif;
+
+      font-size: 42px;
+
+      font-weight: 400;
+
+      color: #3a2b1a;
+
+    }
+
+    header p {
+
+      font-size: 18px;
+
+      color: #5c4b36;
+
+      margin-top: 8px;
+
+    }
+
+
+
+    /* Buttons under header */
+
+    .top-buttons {
+
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin-top: 15px;
+
+      align-items: center;
+
+    }
+
+    .top-buttons a, .top-buttons button {
+
+      text-decoration: none;
+
+      padding: 10px 18px;
+
+      background: linear-gradient(180deg, #fff, #f0e8da);
+
+      border: 1px solid #c8b48c;
+
+      border-radius: 8px;
+
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
+
+      font-size: 16px;
+
+      color: #3a2b1a;
+
+      transition: transform 0.15s, background 0.2s;
+
+      cursor: pointer;
+
+    }
+
+    .top-buttons a:hover, .top-buttons button:hover {
+
+      transform: scale(1.05);
+
+      background: #fdfbf6;
+
+    }
+
+
+
+    /* Search bar */
+
+    .searchbar {
+
+      padding: 8px 12px;
+
+      border: 1px solid #c8b48c;
+
+      border-radius: 6px;
+
+      font-size: 16px;
+
+      background: #fffefb;
+
+    }
+
+
+
+    /* Dropdown categories */
+
+    .dropdown {
+
+      position: relative;
+
+      display: inline-block;
+
+    }
+
+    .dropdown-content {
+
+      display: none;
+
+      position: absolute;
+
+      background: #fffdf9;
+
+      border: 1px solid #c8b48c;
+
+      border-radius: 8px;
+
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+      min-width: 240px;
+
+      z-index: 1000;
+
+      text-align: left;
+
+      padding: 10px;
+
+    }
+
+    .dropdown-content button {
+
+      display: block;
+
+      width: 100%;
+
+      text-align: left;
+
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+
+      border: 1px solid #d9c7a4;
+
+      border-radius: 6px;
+
+      margin: 6px 0;
+
+      padding: 8px;
+
+      cursor: pointer;
+
+      font-size: 15px;
+
+    }
+
+    .dropdown-content button:hover {
+
+      background: #f7e8c9;
+
+    }
+
+    .dropdown:hover .dropdown-content {
+
+      display: block;
+
+      animation: slideIn 0.3s ease forwards;
+
+    }
+
+
+
+    /* Container with sidebars */
+
+    .container {
+
+      display: flex;
+
+      max-width: 1200px;
+
+      margin: 30px auto;
+
+      padding: 0 20px;
+
+      gap: 20px;
+
+    }
+
+
+
+    /* Sidebar left */
+
+    .sidebar-left {
+
+      width: 220px;
+
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+
+      border: 1px solid rgba(0,0,0,0.08);
+
+      border-radius: 12px;
+
+      padding: 18px;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+
+      height: fit-content;
+
+    }
+
+    .sidebar-left h2 {
+
+      font-size: 20px;
+
+      margin-bottom: 12px;
+
+      color: #3a2b1a;
+
+      border-bottom: 1px solid #d9c7a4;
+
+      padding-bottom: 5px;
+
+    }
+
+    .sidebar-left a {
+
+      display: block;
+
+      padding: 8px 10px;
+
+      margin-bottom: 8px;
+
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+
+      border: 1px solid #d9c7a4;
+
+      border-radius: 6px;
+
+      color: #3a2b1a;
+
+      text-decoration: none;
+
+      font-size: 15px;
+
+      transition: background 0.2s;
+
+    }
+
+    .sidebar-left a:hover {
+
+      background: #f7e8c9;
+
+    }
+
+
+
+    /* Sidebar right */
+
+    .sidebar-right {
+
+      width: 260px;
+
+      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+
+      border: 1px solid rgba(0,0,0,0.08);
+
+      border-radius: 12px;
+
+      padding: 18px;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+
+      max-height: 600px;
+
+      overflow-y: auto;
+
+    }
+
+    .sidebar-right h2 {
+
+      font-size: 20px;
+
+      margin-bottom: 12px;
+
+      color: #3a2b1a;
+
+      border-bottom: 1px solid #d9c7a4;
+
+      padding-bottom: 5px;
+
+    }
+
+    .chapter { margin-bottom: 10px; }
+
+    .chapter a {
+
+      display: block;
+
+      padding: 6px 10px;
+
+      border-radius: 6px;
+
+      text-decoration: none;
+
+      color: #3a2b1a;
+
+      font-size: 16px;
+
+    }
+
+    .chapter a:hover { background: #f7e8c9; }
+
+
+
+    main {
+
+      flex: 1;
+
+      background: #fffdf9;
+
+      padding: 25px;
+
+      border: 1px solid #e4d8c2;
+
+      border-radius: 12px;
+
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+
+    }
+
+
+
+    .verse { margin-bottom: 28px; }
+
+    .verse .arabic {
+
+      font-family: "Amiri Quran", serif;
+
+      font-size: 28px;
+
+      text-align: right;
+
+      color: #2c1f0f;
+
+      margin-bottom: 10px;
+
+    }
+
+    .verse .translation {
+
+      font-size: 18px;
+
+      color: #3f2e1d;
+
+      background: #fbf7ef;
+
+      padding: 10px;
+
+      border-left: 3px solid #d9c7a4;
+
+      border-radius: 6px;
+
+    }
+
+
+
+    .foreword-arabic {
+
+      font-family: "Amiri Quran", serif;
+
+      font-size: 24px;
+
+      text-align: right;
+
+      color: #2c1f0f;
+
+      margin: 15px 0;
+
+    }
+
+
+
+    /* Controls */
+
+    .controls {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin: 20px 0;
+
+    }
+
+    .controls button {
+
+      font-size: 18px;
+
+      padding: 8px 16px;
+
+      background: linear-gradient(180deg, #fff, #f0e8da);
+
+      border: 1px solid #c8b48c;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+    }
+
+    .controls input {
+
+      padding: 8px;
+
+      font-size: 16px;
+
+      width: 50px;
+
+      text-align: center;
+
+      border: 1px solid #c8b48c;
+
+      border-radius: 6px;
+
+      background: #fffefb;
+
+    }
+
+
+
+    footer {
+
+      text-align: center;
+
+      padding: 15px;
+
+      border-top: 1px solid #d9c7a4;
+
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+
+      font-size: 15px;
+
+      color: #6b5a45;
+
+      margin-top: 40px;
+
+    }
+
+
+
+    /* Modal */
+
+    .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+
+    .modal-content {
+
+      background: #fffdf9;
+
+      margin: 8% auto;
+
+      padding: 20px;
+
+      border: 1px solid #c8b48c;
+
+      border-radius: 10px;
+
+      width: 60%;
+
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+      transform: translateY(-30px);
+
+      opacity: 0;
+
+      animation: slideIn 0.3s ease forwards;
+
+    }
+
+    .close { float: right; font-size: 24px; cursor: pointer; color: #3a2b1a; }
+
+
+
+    @keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
+
+  </style>
+
 </head>
+
 <body>
-  <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Library Banner">
-    <h1>Al Maymunah</h1>
-    <p>Library of Beneficial Books</p>
-  </header>
 
-  <div class="container">
-    <aside>
-      <h3>Navigation</h3>
-      <div class="sidebar-links">
-        <a href="index.html">Home</a>
-        <a href="library.html">Library</a>
-        <a href="article.html">Articles</a>
-        <a href="#">Audio</a>
-        <a href="#">About</a>
-      </div>
-    </aside>
+  <!-- Header -->
 
-    <main>
-      <div class="library-section">
-        <h3>Beginner <span class="toggle-btn">[+]</span></h3>
-        <div class="library-links hidden">
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              Hilyaatu thaalib al-ʿIlm
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>Hilyaatu thaalib al-ʿIlm</h4>
-              <p>A classical text on the etiquettes of a student in seeking knowledge.</p>
-            </div>
-            <div class="dropdown">
-              <a href="hilyah.html">(English Book)</a>
-              <a href="#">(Arabic Book)</a>
-              <a href="#">Explanation by Ibn Uthaymin</a>
-              <a class="lesson-toggle" href="javascript:void(0)">
-                Lessons
-                <img src="https://freesvg.org/img/1415799000.png" alt="book">
-              </a>
-              <div class="nested-dropdown">
-                <div class="lesson-group">
-                  <p>Commentary by Shaykh Saeed Hassan:</p>
-                  <a href="#">Lesson 1</a>
-                  <a href="#">Lesson 2</a>
-                  <a href="#">Lesson 3</a>
-                  <p>Lessons by Ustadz AbdulAziz Al-Haqqan:</p>
-                  <a href="#">Go to Lessons Page</a>
-                </div>
-              </div>
-              <a href="#">Notes & Summary</a>
-            </div>
-          </div>
+  <header>
 
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              The Tā'iyyah of Abu Ishāq al-Ilbīrī
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>The Tā'iyyah of Abu Ishāq al-Ilbīrī</h4>
-              <p>A timeless poem of wisdom and admonition for students and believers.</p>
-            </div>
-            <div class="dropdown">
-              <a href="#">Open PDF</a>
-            </div>
-          </div>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
 
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              Gateway to Understanding Aqīdah Fiqh Sīrah & Tafsīr
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>Gateway to Understanding</h4>
-              <p>A foundation for beginners in Aqīdah, Fiqh, Sīrah, and Tafsīr studies.</p>
-            </div>
-            <div class="dropdown">
-              <a href="#">Open Book</a>
-            </div>
-          </div>
+    <h1>Hilyah Ṭālib al-ʿIlm</h1>
 
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              Lvl 1: The Text of the Student of Knowledge
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>The Text of the Student of Knowledge</h4>
-              <p>A structured curriculum for entry-level seekers of Islamic knowledge.</p>
-            </div>
-            <div class="dropdown">
-              <a href="#">Open Book</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
+    <p>English Translation of the Book Ettiquettes of a Student on Seeking Knowledge</p>
 
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
 
-  <script>
-    // Toggle category expand/collapse
-    document.querySelectorAll(".library-section h3").forEach(section => {
-      section.addEventListener("click", () => {
-        let links = section.nextElementSibling;
-        let btn = section.querySelector(".toggle-btn");
-        if (links.classList.contains("hidden")) {
-          links.classList.remove("hidden");
-          btn.textContent = "[-]";
-        } else {
-          links.classList.add("hidden");
-          btn.textContent = "[+]";
-        }
-      });
-    });
 
-    // Toggle book dropdowns
-    document.querySelectorAll(".book-toggle").forEach(book => {
-      book.addEventListener("click", () => {
-        let dropdown = book.parentElement.querySelector(".dropdown");
-        let icon = book.querySelector(".folder-icon");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png";
-        } else {
-          dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
-        }
-      });
-    });
+    <div class="top-buttons">
 
-    // Toggle nested lesson dropdown
-    document.querySelectorAll(".lesson-toggle").forEach(lesson => {
-      lesson.addEventListener("click", () => {
-        let dropdown = lesson.nextElementSibling;
-        let icon = lesson.querySelector("img");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png";
-        } else {
-          dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
-        }
-      });
-    });
-  </script>
+      <input type="text" class="searchbar" placeholder="Search on this page...">
+
+      <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
+
+
+
+      <div class="dropdown">
+
+        <button>Categories</button>
+
+        <div class="dropdown-content">
+
+          <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
+
+          <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
+
+        </div>
+
+      </div>
+
+
+
+      <a href="#" onclick="openModal()">Description of the Book</a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Container -->
+
+  <div class="container">
+
+    <!-- Sidebar Left -->
+
+    <aside class="sidebar-left">
+
+      <h2>Navigation</h2>
+
+      <a href="index.html">Home</a>
+
+      <a href="library.html">Library</a>
+
+      <a href="article.html">Articles</a>
+
+      <a href="#">Audio</a>
+
+      <a href="#">About</a>
+
+    </aside>
+
+
+
+    <!-- Main -->
+
+    <main>
+
+      <div class="controls">
+
+        <button>&lt;</button>
+
+        <input type="text" value="1">
+
+        <button>&gt;</button>
+
+      </div>
+
+
+
+      <h2>Translator's Foreword</h2>
+
+      <p>
+
+        All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
+
+        We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
+
+        Whomsoever Allaah guides no one can misguide and whomsoever Allaah misguides no one can guide.
+
+        I bear witness that there is no deity worthy of worship except Allaah and I bear witness that Muhammad is His slave and messenger.
+
+      </p>
+
+
+
+      <div class="foreword-arabic">
+
+        يَتَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَائِهِ، وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُسْلِمُونَ
+
+      </div>
+
+      <p>"O you who believe! Fear Allaah as He should be feared, and die not except in a state of Islaam." <br>[Soorah Aal-Imraan (3):102]</p>
+
+
+
+      <div class="foreword-arabic">
+
+        يَأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِن زَوْجَهَا وَبَثَّ مِنْهُمَا رِجَالًا كَثِيرًا وَنِسَاء وَاتَّقُوا اللَّهَ الَّذِي تَسَاءَلُونَ بهِ وَالْأَرْحَامَ إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا
+
+      </div>
+
+      <p>"O mankind! Be dutiful to your Lord, Who created you from a single person and from him He created his wife and from them both He created many men and women; and fear Allaah through whom you demand (your mutual rights), and (do not cut the relations of) the wombs (kinship). Surely, Allaah is Ever an All-Watcher over you." <br>[Soorah an-Nisaa (4):1]</p>
+
+
+
+      <div class="foreword-arabic">
+
+        يَأَيُّهَا الَّذِينَ ءَامَنُوا اتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا يُصْلِحْ لَكُمْ أَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ اللَّهَ وَرَسُولَهُ فقد فاز فوزا عظيما
+
+      </div>
+
+      <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
+
+
+
+      <div class="controls">
+
+        <button>&lt;</button>
+
+        <input type="text" value="1">
+
+        <button>&gt;</button>
+
+      </div>
+
+    </main>
+
+
+
+    <!-- Sidebar Right -->
+
+    <aside class="sidebar-right">
+
+      <h2>Chapters</h2>
+
+      <div class="chapter"><a href="#">Translator's Foreword</a></div>
+
+      <div class="chapter"><a href="#">The Author's Foreword</a></div>
+
+      <div class="chapter"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
+
+    </aside>
+
+  </div>
+
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
+
+  </footer>
+
+
+
+  <!-- Modal -->
+
+  <div id="descriptionModal" class="modal">
+
+    <div class="modal-content" id="modalBox">
+
+      <span class="close" onclick="closeModal()">&times;</span>
+
+      <h2>Description of the Book</h2>
+
+      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
+
+      <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
+
+      <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
+
+      <p><strong>Edition:</strong> First, 1416 AH</p>
+
+      <p><strong>Number of pages:</strong> 97</p>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    function openModal() {
+
+      document.getElementById("descriptionModal").style.display = "block";
+
+    }
+
+    function closeModal() {
+
+      document.getElementById("descriptionModal").style.display = "none";
+
+    }
+
+    window.onclick = function(event) {
+
+      const modal = document.getElementById("descriptionModal");
+
+      if (event.target == modal) {
+
+        closeModal();
+
+      }
+
+    }
+
+  </script>
+
 </body>
+
 </html>
