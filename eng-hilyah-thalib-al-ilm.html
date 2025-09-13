@@ -279,12 +279,12 @@
     <p>English Translation of the Book Ettiquettes of a Student on Seeking Knowledge</p>
 
     <div class="top-buttons">
-      <input type="text" class="searchbar" placeholder="Search on this page...">
-      <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing">Download Book PDF</a>
+      <input type="text" class="searchbar" placeholder="Search on this page..." id="searchInput">
+      <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing" target="_blank" rel="noopener">Download Book PDF</a>
 
       <div class="dropdown">
         <button>Categories</button>
-        <div class="dropdown-content">
+        <div class="dropdown-content" aria-hidden="true">
           <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
           <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
         </div>
@@ -307,14 +307,14 @@
     </aside>
 
     <!-- Main -->
-    <main>
+    <main id="mainContent">
       <div class="controls">
-        <button>&lt;</button>
-        <input type="text" value="1">
-        <button>&gt;</button>
+        <button onclick="prevPage()">&lt;</button>
+        <input type="text" id="pageNumberTop" value="1" onkeydown="pageNumberKey(event, 'top')">
+        <button onclick="nextPage()">&gt;</button>
       </div>
 
-      <h2>Translator's Foreword</h2>
+      <h2 id="translator">Translator's Foreword</h2>
       <p>
         All praise is due to Allaah alone; we praise Him, seek His aid and seek His forgiveness.
         We seek refuge in Him from the evil of our inner-selves and the evil of our actions.
@@ -338,18 +338,17 @@
       <p>"O you who believe! Keep your duty to Allaah and fear Him, and speak always the truth. He will direct you to do righteous good deeds and will forgive you your sins. And whosoever obeys Allaah and His messenger he has indeed achieved a great achievement." <br>[Soorah al-Ahzaab (33):70-71]</p>
 
       <div class="controls">
-        <button>&lt;</button>
-        <input type="text" value="1">
-        <button>&gt;</button>
+        <button onclick="prevPage()">&lt;</button>
+        <input type="text" id="pageNumberBottom" value="1" onkeydown="pageNumberKey(event, 'bottom')">
+        <button onclick="nextPage()">&gt;</button>
       </div>
     </main>
 
     <!-- Sidebar Right -->
     <aside class="sidebar-right">
       <h2>Chapters</h2>
-      <div class="chapter"><a href="#">Translator's Foreword</a></div>
-      <div class="chapter"><a href="#">The Author's Foreword</a></div>
-      <div class="chapter"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
+      <div class="chapter"><a href="#translator">Translator's Foreword</a></div>
+      <!-- other chapters removed to focus on this chapter (per your request) -->
     </aside>
   </div>
 
@@ -372,6 +371,75 @@
   </div>
 
   <script>
+    // Keep original main HTML so search can restore it
+    const mainEl = document.getElementById('mainContent');
+    const originalMainHTML = mainEl.innerHTML;
+
+    // Search: press Enter in the search input to highlight matches on the page
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchPage();
+      }
+    });
+
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function searchPage() {
+      const q = searchInput.value.trim();
+      if (!q) {
+        // restore original content
+        mainEl.innerHTML = originalMainHTML;
+        // reassign event handlers lost by replacing innerHTML (page number inputs & controls)
+        reattachPageInputHandlers();
+        return;
+      }
+      const regex = new RegExp(escapeRegExp(q), 'gi');
+      const replaced = originalMainHTML.replace(regex, (match) => `<span style="background:#f7e8c9">${match}</span>`);
+      mainEl.innerHTML = replaced;
+      reattachPageInputHandlers();
+    }
+
+    // Reattach page-number input handlers (after search replaces innerHTML)
+    function reattachPageInputHandlers() {
+      const topInput = document.getElementById('pageNumberTop');
+      const bottomInput = document.getElementById('pageNumberBottom');
+      if (topInput) topInput.onkeydown = (e) => pageNumberKey(e, 'top');
+      if (bottomInput) bottomInput.onkeydown = (e) => pageNumberKey(e, 'bottom');
+      // reassign prev/next buttons if necessary (they use inline onclick so safe)
+    }
+
+    // Page number input behaviour: press Enter to navigate to that page number
+    function pageNumberKey(e, which) {
+      if (e.key === 'Enter') {
+        const val = parseInt(document.getElementById(which === 'top' ? 'pageNumberTop' : 'pageNumberBottom').value, 10);
+        if (!isNaN(val)) {
+          if (val === 1) {
+            // already on page 1 — just ensure focus/scroll
+            location.hash = '#translator';
+          } else if (val === 2) {
+            // navigate to page2 (adjust URL if you store pages elsewhere)
+            window.location.href = 'page2.html';
+          } else {
+            alert('Page ' + val + ' not available yet.');
+          }
+        }
+      }
+    }
+
+    // Prev / Next behaviour: next navigates to page2.html; prev shows alert
+    function nextPage() {
+      // change this URL to wherever your page 2 actually lives (GitHub raw or your server)
+      window.location.href = 'page2.html';
+    }
+    function prevPage() {
+      alert('No previous page.');
+    }
+
+    // Modal open/close
     function openModal() {
       document.getElementById("descriptionModal").style.display = "block";
     }
@@ -383,7 +451,10 @@
       if (event.target == modal) {
         closeModal();
       }
-    }
+    };
+
+    // ensure input handlers exist if user manipulates DOM
+    reattachPageInputHandlers();
   </script>
 </body>
 </html>
