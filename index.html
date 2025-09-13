@@ -116,19 +116,18 @@
     }
     .rec-list a {
       display: flex;
-      justify-content: space-between; /* push title left, icon right */
+      justify-content: space-between; /* text left, icon right */
       align-items: center;
-      padding: 12px 14px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
+      padding: 10px 12px;
+      border: none;
+      background: none;
       text-decoration: none;
       color: #3a2b1a;
       font-size: 16px;
-      transition: background 0.2s, transform 0.15s;
+      transition: color 0.2s, transform 0.15s;
     }
     .rec-list a:hover {
-      background: #f7e8c9;
+      color: #8b6a2e;
       transform: translateX(3px);
     }
     .folder-icon {
@@ -181,7 +180,6 @@
   </footer>
 
   <script>
-    // Articles (exclude Translator's Foreword)
     const articles = [
       { title: "To Proceed: The Awakening", link: "page2.html" },
       { title: "Virtues of Knowledge", link: "virtues.html" },
@@ -191,7 +189,6 @@
       { title: "The Student's Path", link: "students-path.html" }
     ];
 
-    // pick 3 random unique articles
     function pickRandomArticles(num) {
       const shuffled = [...articles].sort(() => 0.5 - Math.random());
       return shuffled.slice(0, num);
@@ -209,12 +206,11 @@
 
       const icon = document.createElement("img");
       icon.classList.add("folder-icon");
-      icon.src = "https://freesvg.org/img/Folder-1.png"; // closed by default
+      icon.src = "https://freesvg.org/img/Folder-1.png";
 
       link.appendChild(title);
       link.appendChild(icon);
 
-      // hover effect to swap icons
       link.addEventListener("mouseenter", () => {
         icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
       });
