@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Al Maymunah - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -68,7 +68,7 @@
       display: flex;
       flex-direction: column;
     }
-    .sidebar-links a, .sidebar-links button {
+    .sidebar-links a {
       display: block;
       padding: 10px 12px;
       margin-bottom: 6px;
@@ -80,10 +80,8 @@
       font-size: 15px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
       transition: background 0.2s, transform 0.15s;
-      text-align: left;
-      cursor: pointer;
     }
-    .sidebar-links a:hover, .sidebar-links button:hover {
+    .sidebar-links a:hover {
       background: #f7e8c9;
       transform: translateX(3px);
     }
@@ -96,8 +94,9 @@
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
+
+    /* Recommended Article Box */
     .recommended {
-      margin-top: 30px;
       padding: 20px;
       background: linear-gradient(180deg, #fdfbf6, #efe3cd);
       border: 1px solid #d9c7a4;
@@ -129,40 +128,6 @@
       transform: translateY(-2px);
     }
 
-    /* Article folder list (collapsible) */
-    .articles-folder {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: none;
-      border: none;
-      padding: 0;
-      margin-bottom: 8px;
-      cursor: pointer;
-    }
-    .folder-icon {
-      width: 22px;
-      height: 18px;
-      vertical-align: middle;
-    }
-    .article-list {
-      display: none;
-      margin-top: 8px;
-      padding-left: 6px;
-    }
-    .article-list a {
-      background: linear-gradient(180deg, #fffdf9, #f7f0d9);
-      padding: 8px 10px;
-      margin-bottom: 6px;
-      display:block;
-      border-radius: 6px;
-      border:1px solid #e6d9b1;
-      text-decoration: none;
-      color:#3a2b1a;
-      font-size:15px;
-    }
-    .article-list a:hover { background:#f7e8c9; transform: translateX(3px); }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -182,31 +147,13 @@
   </header>
 
   <div class="container">
-    <!-- Left Sidebar: Navigation with collapsible Articles (folder icon) -->
+    <!-- Sidebar -->
     <aside>
       <h3>Navigation</h3>
       <div class="sidebar-links">
         <a href="index.html">Home</a>
         <a href="library.html">Library</a>
-
-        <!-- Articles folder (collapsible) -->
-        <button id="articlesToggle" class="articles-folder" aria-expanded="false">
-          <img id="folderIcon" class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder-closed">
-          <span style="font-size:15px; color:#3a2b1a;">Articles</span>
-        </button>
-
-        <!-- Hidden list of article links -->
-        <div id="articleList" class="article-list" aria-hidden="true">
-          <!-- More than 3 article buttons -->
-          <a href="page2.html">To Proceed: The Awakening</a>
-          <a href="virtues.html">Virtues of Knowledge</a>
-          <a href="chapter1.html">Etiquette of Seeking Knowledge</a>
-          <a href="notes.html">Note-Taking & Review</a>
-          <a href="memorization.html">Memorization Methods</a>
-          <a href="students-path.html">The Student's Path</a>
-        </div>
-
-        <a href="article.html">All Articles</a>
+        <a href="article.html">Articles</a>
         <a href="#">Audio</a>
         <a href="#">About</a>
       </div>
@@ -217,10 +164,8 @@
       <div class="recommended">
         <h3>Recommended Article</h3>
         <p id="rec-article-title">Loading...</p>
-        <a id="rec-article-link" href="#" target="_self">Read Article</a>
+        <a id="rec-article-link" href="#">Read Article</a>
       </div>
-
-      <!-- You can add additional homepage content here -->
     </main>
   </div>
 
@@ -229,7 +174,7 @@
   </footer>
 
   <script>
-    // === Articles used for "Recommended Article" (do NOT include Translator's Foreword here) ===
+    // Articles (exclude Translator's Foreword)
     const articles = [
       { title: "To Proceed: The Awakening", link: "page2.html" },
       { title: "Virtues of Knowledge", link: "virtues.html" },
@@ -239,7 +184,7 @@
       { title: "The Student's Path", link: "students-path.html" }
     ];
 
-    // pick random article on load
+    // pick random article
     function pickRandomArticle() {
       const idx = Math.floor(Math.random() * articles.length);
       return articles[idx];
@@ -250,35 +195,6 @@
     const recLink = document.getElementById("rec-article-link");
     recLink.href = rec.link;
     recLink.innerText = "Read “" + rec.title + "”";
-
-    // === Left Sidebar folder toggle (open/close icon) ===
-    const articlesToggle = document.getElementById("articlesToggle");
-    const articleList = document.getElementById("articleList");
-    const folderIcon = document.getElementById("folderIcon");
-
-    const closedSrc = "https://freesvg.org/img/Folder-1.png";
-    const openSrc = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
-
-    articlesToggle.addEventListener("click", () => {
-      const expanded = articlesToggle.getAttribute("aria-expanded") === "true";
-      articlesToggle.setAttribute("aria-expanded", String(!expanded));
-      if (expanded) {
-        articleList.style.display = "none";
-        articleList.setAttribute("aria-hidden", "true");
-        folderIcon.src = closedSrc;
-        folderIcon.alt = "folder-closed";
-      } else {
-        articleList.style.display = "block";
-        articleList.setAttribute("aria-hidden", "false");
-        folderIcon.src = openSrc;
-        folderIcon.alt = "folder-open";
-      }
-    });
-
-    // Initialize folder closed
-    articleList.style.display = "none";
-    articlesToggle.setAttribute("aria-expanded", "false");
-    folderIcon.src = closedSrc;
   </script>
 </body>
 </html>
