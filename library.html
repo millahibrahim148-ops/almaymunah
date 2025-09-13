@@ -106,76 +106,29 @@
       color: #6b5a45;
       cursor: pointer;
     }
-    .library-links .rec-item {
-      position: relative;
-    }
-    .library-links a {
+    .library-links a.book-toggle {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 12px;
       margin-bottom: 8px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
       border: 1px solid #d9c7a4;
       border-radius: 8px;
       color: #3a2b1a;
       text-decoration: none;
       font-size: 15px;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
       cursor: pointer;
+      background: none;
+      position: relative;
     }
     .library-links a img {
       width: 18px;
       height: 18px;
     }
-    .library-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(3px);
-    }
-    /* Hover popup tooltip */
-    .tooltip {
-      position: absolute;
-      top: 110%;
-      left: 0;
-      background: #fffdf9;
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      padding: 10px;
-      width: 260px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      font-size: 14px;
-      color: #3a2b1a;
-      display: none;
-      z-index: 10;
-    }
-    .tooltip h4 {
-      margin-bottom: 6px;
-      font-family: "Amiri", serif;
-      font-size: 16px;
-    }
-    .rec-item:hover .tooltip {
-      display: block;
-    }
     .dropdown {
       display: none;
       margin-left: 15px;
       margin-top: 6px;
-    }
-    .dropdown a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      padding: 6px 10px;
-      background: #fdfbf6;
-      border: 1px solid #e4d8c2;
-      border-radius: 6px;
-      margin-bottom: 4px;
-    }
-    .dropdown a img {
-      width: 16px;
-      height: 16px;
     }
     .nested-dropdown {
       display: none;
@@ -194,6 +147,42 @@
       color: #4b3621;
       font-size: 14px;
     }
+
+    /* Tooltip Preview */
+    .preview {
+      position: absolute;
+      left: 105%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 220px;
+      padding: 10px;
+      background: #fffdf9;
+      border: 1px solid #d9c7a4;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 100;
+    }
+    .preview h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      font-family: "Amiri", serif;
+      color: #3a2b1a;
+    }
+    .preview p {
+      font-size: 13px;
+      color: #5c4b36;
+    }
+    .book-toggle:hover .preview {
+      opacity: 1;
+      transform: translateY(-50%) translateX(5px);
+    }
+    .book-toggle.clicked .preview {
+      opacity: 0 !important;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -230,77 +219,29 @@
       <div class="library-section">
         <h3>Beginner <span class="toggle-btn">[+]</span></h3>
         <div class="library-links hidden">
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              Hilyaatu thaalib al-ʿIlm
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
+          <a class="book-toggle" href="javascript:void(0)">
+            Hilyaatu thaalib al-ʿIlm
+            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
+            <div class="preview">
               <h4>Hilyaatu thaalib al-ʿIlm</h4>
-              <p>A classical text on the etiquettes of a student in seeking knowledge.</p>
+              <p>A guidebook outlining the etiquettes and manners of students in seeking knowledge.</p>
             </div>
-            <div class="dropdown">
-              <a href="#">(English Book)</a>
-              <a href="#">(Arabic Book)</a>
-              <a href="#">Explanation by Ibn Uthaymin</a>
-              <a class="lesson-toggle" href="javascript:void(0)">
-                Lessons
-                <img src="https://freesvg.org/img/1415799000.png" alt="book">
-              </a>
-              <div class="nested-dropdown">
-                <div class="lesson-group">
-                  <p>Commentary by Shaykh Saeed Hassan:</p>
-                  <a href="#">Lesson 1</a>
-                  <a href="#">Lesson 2</a>
-                  <a href="#">Lesson 3</a>
-                  <p>Lessons by Ustadz AbdulAziz Al-Haqqan:</p>
-                  <a href="#">Go to Lessons Page</a>
-                </div>
-              </div>
-              <a href="#">Notes & Summary</a>
-            </div>
+          </a>
+          <div class="dropdown">
+            <a href="#">(English Book) Hilyaatu thaalib al-ʿIlm</a>
+            <a href="#">(Arabic Book) Hilyaatu thaalib al-ʿIlm</a>
           </div>
 
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              The Tā'iyyah of Abu Ishāq al-Ilbīrī
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>The Tā'iyyah of Abu Ishāq al-Ilbīrī</h4>
-              <p>A timeless poem of wisdom and admonition for students and believers.</p>
+          <a class="book-toggle" href="javascript:void(0)">
+            The Tā'iyyah of Abu Ishāq al-Ilbīrī
+            <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
+            <div class="preview">
+              <h4>The Tā'iyyah</h4>
+              <p>A timeless poem reminding students of knowledge and character by Abu Ishāq al-Ilbīrī.</p>
             </div>
-            <div class="dropdown">
-              <a href="#">Open PDF</a>
-            </div>
-          </div>
-
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              Gateway to Understanding Aqīdah Fiqh Sīrah & Tafsīr
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>Gateway to Understanding</h4>
-              <p>A foundation for beginners in Aqīdah, Fiqh, Sīrah, and Tafsīr studies.</p>
-            </div>
-            <div class="dropdown">
-              <a href="#">Open Book</a>
-            </div>
-          </div>
-
-          <div class="rec-item">
-            <a class="book-toggle" href="javascript:void(0)">
-              Lvl 1: The Text of the Student of Knowledge
-              <img class="folder-icon" src="https://freesvg.org/img/Folder-1.png" alt="folder">
-            </a>
-            <div class="tooltip">
-              <h4>The Text of the Student of Knowledge</h4>
-              <p>A structured curriculum for entry-level seekers of Islamic knowledge.</p>
-            </div>
-            <div class="dropdown">
-              <a href="#">Open Book</a>
-            </div>
+          </a>
+          <div class="dropdown">
+            <a href="#">Open PDF</a>
           </div>
         </div>
       </div>
@@ -330,29 +271,16 @@
     // Toggle book dropdowns
     document.querySelectorAll(".book-toggle").forEach(book => {
       book.addEventListener("click", () => {
-        let dropdown = book.parentElement.querySelector(".dropdown");
+        let dropdown = book.nextElementSibling;
         let icon = book.querySelector(".folder-icon");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png";
-        } else {
-          dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
-        }
-      });
-    });
+        book.classList.toggle("clicked");
 
-    // Toggle nested lesson dropdown
-    document.querySelectorAll(".lesson-toggle").forEach(lesson => {
-      lesson.addEventListener("click", () => {
-        let dropdown = lesson.nextElementSibling;
-        let icon = lesson.querySelector("img");
         if (dropdown.style.display === "block") {
           dropdown.style.display = "none";
-          icon.src = "https://freesvg.org/img/Folder-1.png";
+          icon.src = "https://freesvg.org/img/Folder-1.png"; // closed
         } else {
           dropdown.style.display = "block";
-          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
+          icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true"; // open
         }
       });
     });
