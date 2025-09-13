@@ -5,219 +5,212 @@
   <title>Hilyah Ṭālib al-ʿIlm - Landing Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Cormorant Garamond", serif;
-      background: #fdfbf6;
-      color: #2f2f2f;
-      line-height: 1.6;
-      font-size: 18px;
+      font-family: 'Cormorant Garamond', serif;
+      margin: 0;
+      padding: 0;
+      background: #fdfdfd;
+      color: #222;
     }
 
     header {
       text-align: center;
-      padding: 25px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
-    }
-    header img {
-      max-width: 340px;
-      border-radius: 8px;
-      display: block;
-      margin: 0 auto 12px;
-    }
-    header h1 {
-      font-family: "Amiri", serif;
-      font-size: 46px;
-      font-weight: 400;
-      color: #3a2b1a;
+      padding: 20px;
+      background: #eaeaea;
     }
 
-    .container {
+    .top-buttons {
       display: flex;
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-      gap: 20px;
-    }
-
-    .sidebar-left {
-      width: 220px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      height: fit-content;
-    }
-    .sidebar-left h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #3a2b1a;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-    }
-    .sidebar-left a {
-      display: block;
-      padding: 8px 10px;
-      margin-bottom: 8px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 6px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      transition: background 0.2s;
-    }
-    .sidebar-left a:hover { background: #f7e8c9; }
-
-    main {
-      flex: 1;
-      background: #fffdf9;
-      padding: 30px;
-      border: 1px solid #e4d8c2;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-    }
-    main h2 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: #3a2b1a;
-    }
-    main p {
-      margin-bottom: 18px;
-    }
-
-    /* TOC Style */
-    .toc {
-      margin-top: 25px;
-    }
-    .toc-section {
-      margin-bottom: 20px;
-    }
-    .toc-header {
-      font-family: "Amiri", serif;
-      font-size: 20px;
-      font-weight: bold;
-      color: #4b3621;
-      margin-bottom: 8px;
-      cursor: pointer;
-      display: flex;
+      justify-content: center;
       align-items: center;
-    }
-    .toggle-btn {
-      font-size: 16px;
-      margin-right: 8px;
-      color: #6b5a45;
-    }
-    .toc-list {
-      border-left: 2px solid #d9c7a4;
-      margin-left: 15px;
-      padding-left: 15px;
-    }
-    .toc-list a {
-      display: block;
-      margin: 6px 0;
-      text-decoration: none;
-      color: #3a2b1a;
-      transition: color 0.2s;
-    }
-    .toc-list a:hover {
-      color: #6b4a2e;
-    }
-    .hidden {
-      display: none;
+      gap: 15px;
+      margin: 10px 0;
     }
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      border-top: 1px solid #d9c7a4;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      font-size: 15px;
-      color: #6b5a45;
-      margin-top: 40px;
+    .top-buttons input.searchbar {
+      padding: 6px;
+      font-size: 14px;
+    }
+
+    .top-buttons a {
+      text-decoration: none;
+      padding: 6px 10px;
+      border: 1px solid #999;
+      background: #f9f9f9;
+      color: #222;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      padding: 6px 10px;
+      border: 1px solid #999;
+      background: #f9f9f9;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      border: 1px solid #ccc;
+      min-width: 200px;
+      z-index: 100;
+    }
+
+    .dropdown-content button {
+      display: block;
+      width: 100%;
+      border: none;
+      background: none;
+      text-align: left;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .description {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+    }
+
+    .chapters {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 10px;
+    }
+
+    .category {
+      margin-bottom: 15px;
+      border-left: 2px dashed #444; /* broken vertical line look */
+      padding-left: 10px;
+    }
+
+    .category button.toggle {
+      background: #f9f9f9;
+      border: 1px solid #999;
+      padding: 3px 6px;
+      margin-right: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+      transform: skew(-5deg);
+    }
+
+    .category h3 {
+      display: inline;
+      cursor: pointer;
+    }
+
+    .category ul {
+      margin: 10px 0 10px 25px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .category ul li {
+      margin: 5px 0;
+    }
+
+    .category ul li a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    .category ul li a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
     <h1>Hilyah Ṭālib al-ʿIlm</h1>
+    <div class="top-buttons">
+      <input type="text" class="searchbar" placeholder="Search on this page..." id="searchInput">
+      <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing" target="_blank" rel="noopener">Download Book PDF</a>
+      <div class="dropdown">
+        <button>Categories</button>
+        <div class="dropdown-content" aria-hidden="true">
+          <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
+          <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <aside class="sidebar-left">
-      <h2>Navigation</h2>
-      <a href="index.html">Home</a>
-      <a href="library.html">Library</a>
-      <a href="article.html">Articles</a>
-      <a href="#">Audio</a>
-      <a href="#">About</a>
-    </aside>
-
-    <main>
-      <h2>Table of Contents</h2>
-      <p>Select a chapter to begin reading:</p>
-
-      <div class="toc">
-        <div class="toc-section">
-          <div class="toc-header"><span class="toggle-btn">[-]</span>Translator's Foreword</div>
-          <div class="toc-list">
-            <a href="#">Translator's Foreword</a>
-          </div>
-        </div>
-
-        <div class="toc-section">
-          <div class="toc-header"><span class="toggle-btn">[-]</span>Author's Foreword</div>
-          <div class="toc-list">
-            <a href="#">Author's Foreword</a>
-          </div>
-        </div>
-
-        <div class="toc-section">
-          <div class="toc-header"><span class="toggle-btn">[-]</span>Chapter 1: The Etiquette of the Seeker's Inner Self</div>
-          <div class="toc-list">
-            <a href="#">1. Knowledge is worship</a>
-            <a href="#">2. Be adherent to the path of the Salaf as-Saalih</a>
-            <a href="#">3. Commit to fearing Allaah, the Most High</a>
-            <a href="#">4. Continual observance [of Allaah]</a>
-            <a href="#">5. Lower your wing and put arrogance and pride behind you</a>
-            <a href="#">6. Contentment and zuhd (Asceticism)</a>
-            <a href="#">7. Adorn yourself with the splendour of knowledge</a>
-            <a href="#">8. Adorn [yourself] with honour</a>
-            <a href="#">9. Enjoy masculine qualities</a>
-            <a href="#">10. Forsaking luxury</a>
-            <a href="#">11. To avoid the gatherings of vain speech</a>
-            <a href="#">12. Avoid commotion (hayshaat)</a>
-            <a href="#">13. Adorn [yourself] with gentleness</a>
-            <a href="#">14. Contemplation</a>
-            <a href="#">15. Firmness and confirmation</a>
-          </div>
-        </div>
-
-        <!-- Continue the same structure for Chapter 2 – Chapter 7 -->
-
-      </div>
-    </main>
+  <div class="description">
+    <h2>Description of the Book</h2>
+    <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
+    <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
+    <p><strong>Translated by:</strong> Abu ’Abdillah Murad ibn Hilmi Ash-Shuweik</p>
+    <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
+    <p><strong>Number of pages:</strong> 97</p>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
+  <div class="chapters">
+    <div class="category">
+      <button class="toggle">[-]</button>
+      <h3>Translator's Foreword</h3>
+    </div>
+
+    <div class="category">
+      <button class="toggle">[-]</button>
+      <h3>Author's Foreword</h3>
+    </div>
+
+    <div class="category">
+      <button class="toggle">[-]</button>
+      <h3>Chapter 1: The Etiquette of the Seeker's Inner Self</h3>
+      <ul>
+        <li><a href="#">1. Knowledge is worship</a></li>
+        <li><a href="#">2. Be adherent to the path of the Salaf as-Saalih</a></li>
+        <li><a href="#">3. Commit to fearing Allaah, the Most High</a></li>
+        <li><a href="#">4. Continual observance [of Allaah]</a></li>
+        <li><a href="#">5. Lower your wing and put arrogance and pride behind you</a></li>
+        <li><a href="#">6. Contentment and zuhd (Asceticism)</a></li>
+        <li><a href="#">7. Adorn yourself with the splendour of knowledge</a></li>
+        <li><a href="#">8. Adorn [yourself] with honour.</a></li>
+        <li><a href="#">9. Enjoy masculine qualities.</a></li>
+        <li><a href="#">10. Forsaking luxury.</a></li>
+        <li><a href="#">11. To avoid the gatherings of vain speech.</a></li>
+        <li><a href="#">12. Avoid commotion (hayshaat)</a></li>
+        <li><a href="#">13. Adorn [yourself] with gentleness.</a></li>
+        <li><a href="#">14. Contemplation</a></li>
+        <li><a href="#">15. Firmness and confirmation</a></li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <button class="toggle">[-]</button>
+      <h3>Chapter 2: The Methodology of Seeking Knowledge</h3>
+      <ul>
+        <li><a href="#">16. The methodology of seeking knowledge and its levels.</a></li>
+        <li><a href="#">17. To acquire knowledge from the mashaa'yikh (scholars)</a></li>
+      </ul>
+    </div>
+  </div>
 
   <script>
-    document.querySelectorAll(".toc-header").forEach(header => {
-      header.addEventListener("click", () => {
-        const list = header.nextElementSibling;
-        const btn = header.querySelector(".toggle-btn");
-        if (list.classList.contains("hidden")) {
-          list.classList.remove("hidden");
-          btn.textContent = "[-]";
-        } else {
-          list.classList.add("hidden");
-          btn.textContent = "[+]";
+    document.querySelectorAll(".category button.toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const list = btn.parentElement.querySelector("ul");
+        if (list) {
+          if (list.style.display === "none") {
+            list.style.display = "block";
+            btn.textContent = "[-]";
+          } else {
+            list.style.display = "none";
+            btn.textContent = "[+]";
+          }
         }
       });
     });
