@@ -2,200 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hilyah Ṭālib al-ʿIlm</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <title>Hilyah Ṭālib al-ʿIlm - Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Cormorant Garamond", serif;
-      background: #fdfbf6;
-      color: #2f2f2f;
-      line-height: 1.6;
-      font-size: 18px;
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background-color: #f9f7f1;
+      color: #2c2c2c;
     }
 
     header {
+      background-color: #3a3a3a;
+      color: #fff;
+      padding: 15px;
       text-align: center;
-      padding: 25px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      font-size: 1.5em;
+      font-family: 'Amiri', serif;
     }
-    header img {
-      max-width: 320px;
-      border-radius: 8px;
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #2c2c2c;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
       display: block;
-      margin: 0 auto 12px;
+      padding: 12px;
+      text-decoration: none;
+      color: #f1f1f1;
     }
-    header h1 {
-      font-family: "Amiri", serif;
-      font-size: 42px;
-      font-weight: 400;
-      color: #3a2b1a;
+
+    .sidebar a:hover {
+      background-color: #575757;
     }
-    header p {
-      font-size: 18px;
-      color: #5c4b36;
-      margin-top: 8px;
+
+    .content {
+      margin-left: 220px;
+      padding: 20px;
     }
 
     .top-buttons {
+      margin: 15px 0;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
       gap: 15px;
-      margin-top: 15px;
       align-items: center;
     }
-    .top-buttons a, .top-buttons button {
-      text-decoration: none;
-      padding: 10px 18px;
-      background: linear-gradient(180deg, #fff, #f0e8da);
-      border: 1px solid #c8b48c;
-      border-radius: 8px;
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 6px rgba(0,0,0,0.15);
-      font-size: 16px;
-      color: #3a2b1a;
-      transition: transform 0.15s, background 0.2s;
-      cursor: pointer;
-    }
-    .top-buttons a:hover, .top-buttons button:hover {
-      transform: scale(1.05);
-      background: #fdfbf6;
-    }
 
-    .searchbar {
-      padding: 8px 12px;
-      border: 1px solid #c8b48c;
-      border-radius: 6px;
-      font-size: 16px;
-      background: #fffefb;
+    .top-buttons input {
+      padding: 5px;
+      font-size: 1em;
     }
 
     .dropdown {
       position: relative;
       display: inline-block;
     }
+
+    .dropdown button {
+      background: #444;
+      color: #fff;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
-      background: #fffdf9;
-      border: 1px solid #c8b48c;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      min-width: 240px;
-      z-index: 1000;
-      text-align: left;
-      padding: 10px;
+      background: #fff;
+      min-width: 180px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      z-index: 1;
     }
+
     .dropdown-content button {
-      display: block;
+      background: none;
+      border: none;
+      padding: 8px 12px;
       width: 100%;
       text-align: left;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 6px;
-      margin: 6px 0;
-      padding: 8px;
       cursor: pointer;
-      font-size: 15px;
     }
+
     .dropdown-content button:hover {
-      background: #f7e8c9;
+      background: #f2f2f2;
     }
+
     .dropdown:hover .dropdown-content {
       display: block;
-      animation: slideIn 0.3s ease forwards;
     }
 
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      background: #fffdf9;
-      padding: 25px;
-      border: 1px solid #e4d8c2;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    .book-description {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
     }
 
-    h2 {
-      font-size: 26px;
-      margin-bottom: 12px;
-      color: #3a2b1a;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-    }
-
-    /* Chapters */
     .chapters {
       margin-top: 20px;
+      font-size: 1.1em;
     }
+
     .chapter {
       margin: 10px 0;
-      padding-left: 15px;
-      border-left: 3px dashed #c8b48c;
     }
-    .chapter-header {
+
+    .chapter button {
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      cursor: pointer;
-      font-size: 18px;
-      color: #3a2b1a;
-      margin-bottom: 5px;
+      gap: 8px;
     }
-    .toggle-btn {
-      margin-right: 8px;
-      font-weight: bold;
-      background: #fff;
-      border: 1px solid #c8b48c;
-      border-radius: 4px;
-      width: 28px;
-      height: 28px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+    .chapter button span {
+      display: inline-block;
+      width: 16px;
       text-align: center;
-      line-height: 26px;
+      font-weight: bold;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      background: #eee;
+      border-radius: 3px;
     }
-    .chapter-items {
-      margin-left: 30px;
-      margin-bottom: 10px;
+
+    .chapter ul {
+      list-style: none;
+      margin-left: 20px;
+      margin-top: 5px;
+      padding-left: 10px;
+      border-left: 2px dashed #aaa;
+      display: block; /* expanded by default */
     }
-    .chapter-items a {
-      display: block;
-      padding: 4px 0;
+
+    .chapter ul li {
+      margin: 4px 0;
+    }
+
+    .chapter ul li a {
       text-decoration: none;
-      color: #3a2b1a;
-      font-size: 16px;
+      color: #333;
     }
-    .chapter-items a:hover {
+
+    .chapter ul li a:hover {
       text-decoration: underline;
     }
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      border-top: 1px solid #d9c7a4;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      font-size: 15px;
-      color: #6b5a45;
-      margin-top: 40px;
-    }
-
-    @keyframes slideIn {
-      to { transform: translateY(0); opacity: 1; }
+    .plain-item {
+      margin: 10px 0;
+      font-size: 1.05em;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
-    <h1>Hilyah Ṭālib al-ʿIlm</h1>
-    <p>English Translation of the Book: Etiquettes of a Student on Seeking Knowledge</p>
+    Hilyah Ṭālib al-ʿIlm - Landing Page
+  </header>
 
+  <div class="sidebar">
+    <a href="#">Home</a>
+    <a href="#">Library</a>
+    <a href="#">Articles</a>
+    <a href="#">About</a>
+  </div>
+
+  <div class="content">
     <div class="top-buttons">
       <input type="text" class="searchbar" placeholder="Search on this page..." id="searchInput">
       <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing" target="_blank" rel="noopener">Download Book PDF</a>
-
       <div class="dropdown">
         <button>Categories</button>
         <div class="dropdown-content" aria-hidden="true">
@@ -204,167 +186,107 @@
         </div>
       </div>
     </div>
-  </header>
 
-  <!-- Main -->
-  <main>
-    <h2>Description of the Book</h2>
-    <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
-    <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
-    <p><strong>Translated by:</strong> Abu ’Abdillah Murad ibn Hilmi Ash-Shuweik</p>
-    <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
-    <p><strong>Number of pages:</strong> 97</p>
+    <div class="book-description">
+      <h2>Description of the Book</h2>
+      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Etiquettes of a student on seeking knowledge</p>
+      <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
+      <p><strong>Translated by:</strong> Abu ’Abdillah Murad ibn Hilmi Ash-Shuweik</p>
+      <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
+      <p><strong>Number of pages:</strong> 97</p>
+    </div>
 
     <div class="chapters">
-      <h2>Contents</h2>
+      <div class="plain-item">Translator’s Foreword</div>
+      <div class="plain-item">Author’s Foreword</div>
 
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> <a href="#">Translator's Foreword</a></div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 1: The Etiquette of the Seeker's Inner Self
+        </button>
+        <ul>
+          <li><a href="#">1. Knowledge is worship</a></li>
+          <li><a href="#">2. Be adherent to the path of the Salaf as-Saalih</a></li>
+          <li><a href="#">3. Commit to fearing Allaah, the Most High</a></li>
+          <li><a href="#">4. Continual observance [of Allaah]</a></li>
+          <li><a href="#">5. Lower your wing and put arrogance and pride behind you</a></li>
+        </ul>
       </div>
 
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> <a href="#">Author's Foreword</a></div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 2: The Methodology of Seeking Knowledge
+        </button>
+        <ul>
+          <li><a href="#">16. The methodology of seeking knowledge and its levels</a></li>
+          <li><a href="#">17. To acquire knowledge from the mashaa’yikh</a></li>
+        </ul>
       </div>
 
-      <!-- Chapter 1 -->
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 1: The Etiquette of the Seeker's Inner Self</div>
-        <div class="chapter-items">
-          <a href="#">1. Knowledge is worship</a>
-          <a href="#">2. Be adherent to the path of the Salaf as-Saalih</a>
-          <a href="#">3. Commit to fearing Allaah, the Most High</a>
-          <a href="#">4. Continual observance [of Allaah]</a>
-          <a href="#">5. Lower your wing and put arrogance and pride behind you</a>
-          <a href="#">6. Contentment and zuhd (Asceticism)</a>
-          <a href="#">7. Adorn yourself with the splendour of knowledge</a>
-          <a href="#">8. Adorn [yourself] with honour.</a>
-          <a href="#">9. Enjoy masculine qualities.</a>
-          <a href="#">10. Forsaking luxury.</a>
-          <a href="#">11. To avoid the gatherings of vain speech.</a>
-          <a href="#">12. Avoid commotion (hayshaat)</a>
-          <a href="#">13. Adorn [yourself] with gentleness.</a>
-          <a href="#">14. Contemplation</a>
-          <a href="#">15. Firmness and confirmation</a>
-        </div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 3: The Etiquette of the Seeker with his Shaykh
+        </button>
+        <ul>
+          <li><a href="#">18. Considering the shaykh's status</a></li>
+          <li><a href="#">19. Your capital is from your shaykh</a></li>
+        </ul>
       </div>
 
-      <!-- Chapter 2 -->
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 2: The Methodology of Seeking Knowledge...</div>
-        <div class="chapter-items">
-          <a href="#">16. The methodology of seeking knowledge and its levels.</a>
-          <a href="#">17. To acquire knowledge from the mashaa'yikh (scholars)</a>
-        </div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 4: The Etiquette of Companionship
+        </button>
+        <ul>
+          <li><a href="#">23. Beware of the bad companion</a></li>
+        </ul>
       </div>
 
-      <!-- Chapter 3 -->
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 3: The Etiquette of the Seeker with his Shaykh....</div>
-        <div class="chapter-items">
-          <a href="#">18. Considering the shaykh's [consequent] status</a>
-          <a href="#">19. Your capital - O seeker - is from your shaykh</a>
-          <a href="#">20. The shaykh's enthusiasm in his lessons</a>
-          <a href="#">21. Writing what the shaykh says during the lesson or revision.</a>
-          <a href="#">22. Acquiring knowledge from a mubtadi (an innovator)</a>
-        </div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 5: The Etiquette of the Student in Leading a Life of Knowledge
+        </button>
+        <ul>
+          <li><a href="#">24. High aspirations in knowledge</a></li>
+          <li><a href="#">25. The burning desire for seeking knowledge</a></li>
+        </ul>
       </div>
 
-      <!-- Chapter 4 -->
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 4: The Etiquette of Companionship.</div>
-        <div class="chapter-items">
-          <a href="#">23. Beware of the bad companion</a>
-        </div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 6: Adorn Yourself with the Implementation of Knowledge
+        </button>
+        <ul>
+          <li><a href="#">44. The signs of beneficial knowledge</a></li>
+          <li><a href="#">45. The alms of knowledge</a></li>
+        </ul>
       </div>
 
-      <!-- Chapter 5 -->
       <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 5: The Etiquette of the Student in Leading a Life of Knowledge.</div>
-        <div class="chapter-items">
-          <a href="#">24. High aspirations in knowledge</a>
-          <a href="#">25. The burning desire for seeking knowledge.</a>
-          <a href="#">26. Emigrating for the sake of seeking knowledge</a>
-          <a href="#">27. Preserving knowledge through writing [it]</a>
-          <a href="#">28. Preservation (of knowledge) through paying attention to it...</a>
-          <a href="#">29. Occasional revision of knowledge.</a>
-          <a href="#">30. To gain understanding (of Islaam) by deriving the issues of figh (Islaamic rulings) by applying the [comprehensive] principles (of the Sharee'ah)</a>
-          <a href="#">31. Seeking refuge in Allaah when seeking knowledge and acquiring it</a>
-          <a href="#">32. Honesty in knowledge</a>
-          <a href="#">33. Truthfulness</a>
-          <a href="#">34. The sanctuary of the seeker of knowledge</a>
-          <a href="#">35. Preserving your capital [i.e. lifetime]</a>
-          <a href="#">36. Relaxing the body.</a>
-          <a href="#">37. Precision and correction reading</a>
-          <a href="#">38. Summarising long compilations [through reading]</a>
-          <a href="#">39. Excellence in asking questions</a>
-          <a href="#">40. Debating without argumentation</a>
-          <a href="#">41. Revision of the knowledge in groups</a>
-          <a href="#">42. The seeker of knowledge lives between the [texts of the] Qur'aan and Sunnah and knowledge associated to them.</a>
-          <a href="#">43. Completion of learning the tools of every subject.</a>
-        </div>
+        <button onclick="toggleChapter(this)">
+          <span>−</span> Chapter 7: Precautions
+        </button>
+        <ul>
+          <li><a href="#">54. False hopes</a></li>
+          <li><a href="#">55. Beware of being "Aboo Shibr"</a></li>
+        </ul>
       </div>
-
-      <!-- Chapter 6 -->
-      <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 6: Adorn Yourself with the Implementation of Knowledge</div>
-        <div class="chapter-items">
-          <a href="#">44. The signs of beneficial knowledge</a>
-          <a href="#">45. The alms of knowledge.</a>
-          <a href="#">46. The glory of the scholars</a>
-          <a href="#">47. Protection of knowledge.</a>
-          <a href="#">48. Diplomacy not compromise (on behalf of the religion)</a>
-          <a href="#">49. Passion for the books.</a>
-          <a href="#">50. The foundation of your library</a>
-          <a href="#">51. Dealing with the book</a>
-          <a href="#">52. Further to this.</a>
-          <a href="#">53. Writing with diacritical points</a>
-        </div>
-      </div>
-
-      <!-- Chapter 7 -->
-      <div class="chapter">
-        <div class="chapter-header"><span class="toggle-btn">-</span> Chapter 7: Precautions.</div>
-        <div class="chapter-items">
-          <a href="#">54. False hopes</a>
-          <a href="#">55. Beware of being "Aboo Shibr" (the father of a span)</a>
-          <a href="#">56. Becoming manifest before becoming qualified.</a>
-          <a href="#">57. Deterioration of manners in knowledge</a>
-          <a href="#">58. (Merely) "putting pen to paper"</a>
-          <a href="#">59. Your stance on the mistakes of those who preceded you.......</a>
-          <a href="#">60. Deterring dubious affairs.</a>
-          <a href="#">61. Beware of grammatical errors (in Arabic).</a>
-          <a href="#">62. Beware of premature intellectuality</a>
-          <a href="#">63. Beware of the new Israa'eeliyaat</a>
-          <a href="#">64. Beware of Byzantine debate</a>
-          <a href="#">65. No walaa' and baraa' (declaring allegiance and declaring innocence) should be pledged over sectarianism and partisanship.</a>
-          <a href="#">66. The things that nullify this hilyah.</a>
-        </div>
-      </div>
-
     </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
-  </footer>
+  </div>
 
   <script>
-    document.querySelectorAll(".chapter-header").forEach(header => {
-      header.addEventListener("click", () => {
-        const btn = header.querySelector(".toggle-btn");
-        const items = header.nextElementSibling;
-        if (items && items.classList.contains("chapter-items")) {
-          if (items.style.display === "none") {
-            items.style.display = "block";
-            btn.textContent = "-";
-          } else {
-            items.style.display = "none";
-            btn.textContent = "+";
-          }
-        }
-      });
-    });
+    function toggleChapter(button) {
+      const ul = button.nextElementSibling;
+      const symbol = button.querySelector("span");
+
+      if (ul.style.display === "block") {
+        ul.style.display = "none";
+        symbol.textContent = "+";
+      } else {
+        ul.style.display = "block";
+        symbol.textContent = "−";
+      }
+    }
   </script>
 </body>
 </html>
