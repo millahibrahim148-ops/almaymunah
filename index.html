@@ -37,17 +37,6 @@
       margin-top: 8px;
       display: inline-block;
     }
-    header .verse-link {
-      display: inline-block;
-      margin-left: 10px;
-      font-size: 14px;
-      color: #3a2b1a;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    header .verse-link:hover {
-      color: #8a6d3b;
-    }
 
     .container {
       display: flex;
@@ -105,63 +94,55 @@
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
-    .welcome {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .welcome h2 {
-      font-family: "Amiri", serif;
-      font-size: 28px;
-      color: #3a2b1a;
-    }
 
-    /* Popup Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      animation: fadeIn 0.4s ease forwards;
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 18px;
     }
-    .modal-content {
-      background: #fffdf9;
-      margin: 5% auto;
-      padding: 20px;
+    .article-card {
+      background: linear-gradient(180deg, #fdfbf6, #f9f3e6);
       border: 1px solid #d9c7a4;
       border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      animation: scaleIn 0.4s ease forwards;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s, background 0.3s;
     }
-    .close-btn {
+    .article-card:hover {
+      transform: translateY(-4px);
+      background: #fff7df;
+    }
+    .article-card h3 {
+      font-family: "Amiri", serif;
+      font-size: 20px;
       color: #3a2b1a;
-      float: right;
-      font-size: 22px;
-      font-weight: bold;
-      cursor: pointer;
+      margin-bottom: 10px;
     }
-    .close-btn:hover {
-      color: #8a6d3b;
+    .article-card a {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      background: #f0e0be;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #3a2b1a;
+      font-size: 14px;
+      border: 1px solid #c8b48c;
+      transition: background 0.2s;
+    }
+    .article-card a:hover {
+      background: #e6d4ab;
     }
 
-    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-    @keyframes scaleIn { from {transform: scale(0.8);} to {transform: scale(1);} }
-    @keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
-    @keyframes scaleOut { from {transform: scale(1);} to {transform: scale(0.8);} }
-
-    /* Highlight effect */
-    .highlight {
-      background: linear-gradient(to left, #f9e6a2 100%, transparent 0);
-      background-size: 200% 100%;
-      background-position: right;
-      transition: background-position 2.5s ease-in-out;
-    }
-    .highlight.active {
-      background-position: left;
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      border-top: 1px solid #c8b48c;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #4b3621;
     }
   </style>
 </head>
@@ -169,10 +150,7 @@
   <header>
     <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/maktabat%20almaymunah.gif?raw=true" alt="Maktabat Al Maymunah">
     <h1>Al Maymunah</h1>
-    <p>
-      Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah
-      <span class="verse-link" id="openModal">(58:11) Al-Mujādilah 11 – "Allāh will raise those who have believed among you and those who were given knowledge, by degrees"</span>
-    </p>
+    <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
   </header>
 
   <div class="container">
@@ -188,73 +166,26 @@
     </aside>
 
     <main>
-      <div class="welcome">
-        <h2>Welcome to Al Maymunah</h2>
-        <p>A place for beneficial books, guidance, and articles for students of knowledge.</p>
+      <h2 style="font-family: 'Amiri', serif; margin-bottom: 20px; color:#3a2b1a;">Articles</h2>
+      <div class="articles">
+        <div class="article-card">
+          <h3>Translator’s Foreword</h3>
+          <a href="foreword.html">Read</a>
+        </div>
+        <div class="article-card">
+          <h3>Virtues of Knowledge</h3>
+          <a href="virtues.html">Read</a>
+        </div>
+        <div class="article-card">
+          <h3>Recommended Books</h3>
+          <a href="books.html">Read</a>
+        </div>
       </div>
     </main>
-  </div>
-
-  <!-- Modal Popup -->
-  <div id="quranModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModal">&times;</span>
-      <h3>(58:11) Surah Al-Mujādilah</h3>
-      <p style="font-family: 'Amiri', serif; font-size: 20px; direction: rtl; text-align: right;">
-        يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قِيلَ لَكُمْ تَفَسَّحُوا۟ فِى ٱلْمَجَـٰلِسِ فَٱفْسَحُوا۟ يَفْسَحِ ٱللَّهُ لَكُمْ ۖ وَإِذَا قِيلَ ٱنشُزُوا۟ فَٱنشُزُوا۟ يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَـٰتٍۢ ۚ وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ ١١
-      </p>
-      <p><em>Translation (Dr. Mustafa Khattab):</em><br>
-        O believers! When you are told to make room in gatherings, then do so. Allah will make room for you ˹in His grace˺. And if you are told to rise, then do so. 
-        <span id="highlightText">Allah will elevate those of you who are faithful, and ˹raise˺ those gifted with knowledge in rank. And Allah is All-Aware of what you do.</span>
-      </p>
-      <p><a href="https://quran.com/al-mujadila/11" target="_blank">(Read on Quran.com)</a></p>
-      <audio id="quranAudio">
-        <source src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/058%20verse%2011.mp3?raw=true" type="audio/mp3">
-      </audio>
-    </div>
   </div>
 
   <footer>
     <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
   </footer>
-
-  <script>
-    const modal = document.getElementById("quranModal");
-    const openBtn = document.getElementById("openModal");
-    const closeBtn = document.getElementById("closeModal");
-    const audio = document.getElementById("quranAudio");
-    const highlightText = document.getElementById("highlightText");
-
-    openBtn.onclick = () => {
-      modal.style.display = "block";
-      audio.currentTime = 0;
-      audio.play();
-
-      // reset highlight
-      highlightText.classList.remove("highlight", "active");
-
-      // Add highlight after 17s
-      audio.ontimeupdate = () => {
-        if (audio.currentTime >= 17) {
-          highlightText.classList.add("highlight");
-          setTimeout(() => highlightText.classList.add("active"), 100);
-        }
-      };
-    };
-
-    closeBtn.onclick = () => {
-      modal.style.animation = "fadeOut 0.3s forwards";
-      modal.querySelector(".modal-content").style.animation = "scaleOut 0.3s forwards";
-      setTimeout(() => {
-        modal.style.display = "none";
-        modal.style.animation = "fadeIn 0.4s ease forwards";
-        modal.querySelector(".modal-content").style.animation = "scaleIn 0.4s ease forwards";
-        audio.pause();
-      }, 300);
-    };
-
-    window.onclick = (e) => { if (e.target == modal) closeBtn.onclick(); };
-  </script>
 </body>
 </html>
-
