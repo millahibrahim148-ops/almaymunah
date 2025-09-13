@@ -13,46 +13,11 @@
       line-height: 1.6;
       font-size: 18px;
       display: flex;
-    }
-
-    /* Sidebar */
-    nav {
-      width: 220px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-right: 1px solid #c8b48c;
-      padding: 25px 15px;
-      box-shadow: inset -2px 0 6px rgba(255,255,255,0.6), 2px 0 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      height: 100vh;
-    }
-    nav h2 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: #3a2b1a;
-    }
-    nav a {
-      display: block;
-      padding: 8px 12px;
-      text-decoration: none;
-      color: #3a2b1a;
-      font-size: 17px;
-      border-radius: 6px;
-      margin-bottom: 6px;
-      transition: background 0.2s;
-    }
-    nav a:hover {
-      background: #efe6d4;
-    }
-
-    /* Content wrapper */
-    .content-wrapper {
-      flex: 1;
-      display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
-    /* Header */
+    /* Header spans top */
     header {
       text-align: center;
       padding: 25px 20px;
@@ -77,7 +42,6 @@
       color: #5c4b36;
       margin-top: 8px;
     }
-
     .top-buttons {
       display: flex;
       justify-content: center;
@@ -102,7 +66,6 @@
       transform: scale(1.05);
       background: #fdfbf6;
     }
-
     .searchbar {
       padding: 8px 12px;
       border: 1px solid #c8b48c;
@@ -111,42 +74,42 @@
       background: #fffefb;
     }
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: #fffdf9;
-      border: 1px solid #c8b48c;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      min-width: 240px;
-      z-index: 1000;
-      text-align: left;
-      padding: 10px;
-    }
-    .dropdown-content button {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 6px;
-      margin: 6px 0;
-      padding: 8px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    .dropdown-content button:hover {
-      background: #f7e8c9;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
+    /* Layout after header */
+    .page {
+      display: flex;
+      flex: 1;
     }
 
+    /* Sidebar */
+    nav {
+      width: 220px;
+      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      border-right: 1px solid #c8b48c;
+      padding: 25px 15px;
+      box-shadow: inset -2px 0 6px rgba(255,255,255,0.6), 2px 0 8px rgba(0,0,0,0.1);
+    }
+    nav h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #3a2b1a;
+    }
+    nav a {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #3a2b1a;
+      font-size: 17px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      background: #efe6d4;
+    }
+
+    /* Main content */
     main {
+      flex: 1;
       max-width: 900px;
       margin: 30px auto;
       background: #fffdf9;
@@ -174,28 +137,19 @@
       border-left: 3px dashed grey;
     }
     .chapter-header {
-      display: flex;
-      align-items: center;
       font-size: 18px;
       color: #3a2b1a;
       margin-bottom: 5px;
     }
-    .toggle-btn {
-      margin-right: 8px;
-      font-weight: bold;
-      background: #f9f9f9;
-      border: 1px solid grey;
-      border-radius: 4px;
-      width: 28px;
-      height: 28px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      text-align: center;
-      line-height: 26px;
-      cursor: pointer;
-      color: grey;
+    .chapter-header a {
+      text-decoration: none;
+      color: #3a2b1a;
+    }
+    .chapter-header a:hover {
+      text-decoration: underline;
     }
     .chapter-items {
-      margin-left: 30px;
+      margin-left: 20px;
       margin-bottom: 10px;
     }
     .chapter-items a {
@@ -216,46 +170,38 @@
       background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
       font-size: 15px;
       color: #6b5a45;
-      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <nav>
-    <h2>Navigation</h2>
-    <a href="#">Home</a>
-    <a href="#">Library</a>
-    <a href="#">Articles</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
+  <!-- Header -->
+  <header>
+    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
+    <h1>Hilyah Ṭālib al-ʿIlm</h1>
+    <p>English Translation of the Book: Etiquettes of a Student on Seeking Knowledge</p>
 
-  <div class="content-wrapper">
-    <!-- Header -->
-    <header>
-      <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/hilyah%20thalib%20al%20ilm%20image?raw=true" alt="Book Banner">
-      <h1>Hilyah Ṭālib al-ʿIlm</h1>
-      <p>English Translation of the Book: Etiquettes of a Student on Seeking Knowledge</p>
+    <div class="top-buttons">
+      <input type="text" class="searchbar" placeholder="Search on this page..." id="searchInput">
+      <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing" target="_blank" rel="noopener">Download Book PDF</a>
+    </div>
+  </header>
 
-      <div class="top-buttons">
-        <input type="text" class="searchbar" placeholder="Search on this page..." id="searchInput">
-        <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing" target="_blank" rel="noopener">Download Book PDF</a>
-
-        <div class="dropdown">
-          <button>Categories</button>
-          <div class="dropdown-content" aria-hidden="true">
-            <button>(Arabic Book) Hilyaatu thaalib al-ʿIlm</button>
-            <button>(Arabic Book) Syarh by Ibn Uthaymin</button>
-          </div>
-        </div>
-      </div>
-    </header>
+  <!-- Page Content -->
+  <div class="page">
+    <!-- Sidebar -->
+    <nav>
+      <h2>Navigation</h2>
+      <a href="#">Home</a>
+      <a href="#">Library</a>
+      <a href="#">Articles</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
 
     <!-- Main -->
     <main>
       <h2>Description of the Book</h2>
-      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Ettiquettes of a student on seeking knowledge</p>
+      <p><strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Etiquettes of a Student on Seeking Knowledge</p>
       <p><strong>Author:</strong> Bakr bin Abdullah Abu Zaid (d. 1429 AH)</p>
       <p><strong>Translated by:</strong> Abu ’Abdillah Murad ibn Hilmi Ash-Shuweik</p>
       <p><strong>Publisher:</strong> Dar al-Asima, Riyadh</p>
@@ -264,47 +210,39 @@
       <div class="chapters">
         <h2>Contents</h2>
 
-        <!-- Non-toggle items -->
+        <!-- Non-toggle items now linkable -->
         <div class="chapter">
-          <div class="chapter-header">Translator's Foreword</div>
+          <div class="chapter-header"><a href="#">Translator's Foreword</a></div>
         </div>
         <div class="chapter">
-          <div class="chapter-header">Author's Foreword</div>
+          <div class="chapter-header"><a href="#">Author's Foreword</a></div>
         </div>
 
-        <!-- Example Chapter with toggle -->
+        <!-- Example Chapter with links -->
         <div class="chapter">
-          <div class="chapter-header">
-            <span class="toggle-btn">-</span> Chapter 1: The Etiquette of the Seeker's Inner Self
-          </div>
+          <div class="chapter-header"><a href="#">Chapter 1: The Etiquette of the Seeker's Inner Self</a></div>
           <div class="chapter-items">
             <a href="#">1. Knowledge is worship</a>
             <a href="#">2. Be adherent to the path of the Salaf as-Saalih</a>
             <a href="#">3. Commit to fearing Allaah, the Most High</a>
           </div>
         </div>
+
+        <div class="chapter">
+          <div class="chapter-header"><a href="#">Chapter 2: The Etiquette with One’s Teacher</a></div>
+          <div class="chapter-items">
+            <a href="#">1. Honour and respect your teacher</a>
+            <a href="#">2. Do not precede him in speech</a>
+            <a href="#">3. Lower your voice in his presence</a>
+          </div>
+        </div>
       </div>
     </main>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Hilyah Ṭālib al-ʿIlm | All Rights Reserved</p>
-    </footer>
   </div>
 
-  <script>
-    document.querySelectorAll(".toggle-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const items = btn.parentElement.nextElementSibling;
-        if (items.style.display === "none") {
-          items.style.display = "block";
-          btn.textContent = "-";
-        } else {
-          items.style.display = "none";
-          btn.textContent = "+";
-        }
-      });
-    });
-  </script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Hilyah Ṭālib al-ʿIlm | All Rights Reserved</p>
+  </footer>
 </body>
 </html>
