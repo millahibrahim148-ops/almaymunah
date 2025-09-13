@@ -26,23 +26,93 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
+    .top-buttons {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .searchbar {
+      padding: 6px 10px;
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .top-buttons a {
+      padding: 6px 12px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      color: #3a2b1a;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .top-buttons a:hover {
+      background: #f7e8c9;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      padding: 6px 12px;
+      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fdfbf6;
+      border: 1px solid #d9c7a4;
+      border-radius: 6px;
+      padding: 8px;
+      z-index: 1;
+    }
+
+    .dropdown-content button {
+      background: none;
+      border: none;
+      padding: 6px;
+      font-size: 15px;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      color: #3a2b1a;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     main {
       display: flex;
+      justify-content: center;
       width: 100%;
-      max-width: 1200px;
-      margin-top: 20px;
-      gap: 20px;
+      max-width: 1400px;
+      margin-top: 10px;
+      gap: 30px;
     }
 
     /* Sidebar left */
     .sidebar-left {
-      width: 260px;
+      width: 280px; /* stretched */
       background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
       border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
-      padding: 18px;
+      padding: 20px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
       height: fit-content;
+      text-align: center; /* center-align items */
     }
 
     .sidebar-left h2 {
@@ -92,11 +162,12 @@
     }
 
     .content {
-      max-height: 0;
+      max-height: 1000px; /* expanded default */
       overflow: hidden;
       transition: max-height 0.3s ease-out;
       padding-left: 15px;
       font-size: 14px;
+      text-align: left;
     }
 
     .content a {
@@ -111,11 +182,12 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
-    /* Expanded by default */
-    .active + .content {
-      max-height: 1000px;
-      transition: max-height 0.5s ease-in;
+    .book-content {
+      flex: 1;
+      padding: 20px;
+      max-width: 800px;
     }
+
   </style>
 </head>
 <body>
@@ -123,7 +195,22 @@
     Hilyah Ṭālib al-ʿIlm (The Etiquettes of the Student of Knowledge)
   </header>
 
+  <!-- Top buttons -->
+  <div class="top-buttons">
+    <input type="text" class="searchbar" placeholder="Search on this page..." id="searchInput">
+    <a href="https://drive.google.com/file/d/10bM2vTZQF2D6icaWGPSO3o7uVxotVGGu/view?usp=sharing" target="_blank" rel="noopener">Download Book PDF</a>
+
+    <div class="dropdown">
+      <button>Categories</button>
+      <div class="dropdown-content" aria-hidden="true">
+        <button>(Arabic Book) Hilyaatu Ṭālib al-ʿIlm</button>
+        <button>(Arabic Book) Sharh by Ibn Uthaymīn</button>
+      </div>
+    </div>
+  </div>
+
   <main>
+    <!-- Left sidebar -->
     <div class="sidebar-left">
       <h2>Navigation</h2>
       <a href="#">Home</a>
@@ -140,34 +227,34 @@
       <div class="content">
         <a href="#">1. Knowledge is worship</a>
         <a href="#">2. Be adherent to the path of the Salaf as-Saalih</a>
-        <a href="#">3. Commit to fearing Allaah, the Most High</a>
+        <a href="#">3. Commit to fearing Allaah</a>
         <a href="#">4. Continual observance [of Allaah]</a>
-        <a href="#">5. Lower your wing and put arrogance and pride behind you</a>
-        <a href="#">6. Contentment and zuhd (Asceticism)</a>
+        <a href="#">5. Lower your wing</a>
+        <a href="#">6. Contentment and zuhd</a>
         <a href="#">7. Adorn yourself with the splendour of knowledge</a>
         <a href="#">8. Adorn [yourself] with honour</a>
         <a href="#">9. Enjoy masculine qualities</a>
         <a href="#">10. Forsaking luxury</a>
-        <a href="#">11. To avoid the gatherings of vain speech</a>
-        <a href="#">12. Avoid commotion (hayshaat)</a>
-        <a href="#">13. Adorn [yourself] with gentleness</a>
+        <a href="#">11. Avoid the gatherings of vain speech</a>
+        <a href="#">12. Avoid commotion</a>
+        <a href="#">13. Gentleness</a>
         <a href="#">14. Contemplation</a>
         <a href="#">15. Firmness and confirmation</a>
       </div>
 
-      <button class="collapsible active">Chapter 2: The Methodology of Seeking Knowledge <span class="toggle-icon">[-]</span></button>
+      <button class="collapsible active">Chapter 2: Methodology of Seeking Knowledge <span class="toggle-icon">[-]</span></button>
       <div class="content">
-        <a href="#">16. The methodology of seeking knowledge and its levels</a>
-        <a href="#">17. To acquire knowledge from the mashaa'yikh (scholars)</a>
+        <a href="#">16. Methodology and levels</a>
+        <a href="#">17. Acquire knowledge from the mashāyikh</a>
       </div>
 
       <button class="collapsible active">Chapter 3: The Etiquette of the Seeker with his Shaykh <span class="toggle-icon">[-]</span></button>
       <div class="content">
-        <a href="#">18. Considering the shaykh's [consequent] status</a>
-        <a href="#">19. Your capital - O seeker - is from your shaykh</a>
-        <a href="#">20. The shaykh's enthusiasm in his lessons</a>
+        <a href="#">18. Considering the shaykh's status</a>
+        <a href="#">19. Your capital is from your shaykh</a>
+        <a href="#">20. The shaykh's enthusiasm</a>
         <a href="#">21. Writing what the shaykh says</a>
-        <a href="#">22. Acquiring knowledge from a mubtadi (an innovator)</a>
+        <a href="#">22. Acquiring knowledge from a mubtadi</a>
       </div>
 
       <button class="collapsible active">Chapter 4: The Etiquette of Companionship <span class="toggle-icon">[-]</span></button>
@@ -175,39 +262,39 @@
         <a href="#">23. Beware of the bad companion</a>
       </div>
 
-      <button class="collapsible active">Chapter 5: The Etiquette of the Student in Leading a Life of Knowledge <span class="toggle-icon">[-]</span></button>
+      <button class="collapsible active">Chapter 5: Leading a Life of Knowledge <span class="toggle-icon">[-]</span></button>
       <div class="content">
-        <a href="#">24. High aspirations in knowledge</a>
-        <a href="#">25. The burning desire for seeking knowledge</a>
-        <a href="#">26. Emigrating for the sake of seeking knowledge</a>
+        <a href="#">24. High aspirations</a>
+        <a href="#">25. Burning desire</a>
+        <a href="#">26. Emigrating for knowledge</a>
         <a href="#">27. Preserving knowledge through writing</a>
-        <a href="#">28. Preservation through paying attention</a>
-        <a href="#">29. Occasional revision of knowledge</a>
-        <a href="#">30. To gain understanding (of Islaam)</a>
+        <a href="#">28. Preservation through attention</a>
+        <a href="#">29. Occasional revision</a>
+        <a href="#">30. Understanding through fiqh</a>
         <a href="#">31. Seeking refuge in Allaah</a>
         <a href="#">32. Honesty in knowledge</a>
         <a href="#">33. Truthfulness</a>
-        <a href="#">34. The sanctuary of the seeker</a>
-        <a href="#">35. Preserving your capital [i.e. lifetime]</a>
+        <a href="#">34. Sanctuary of the seeker</a>
+        <a href="#">35. Preserving your lifetime</a>
         <a href="#">36. Relaxing the body</a>
-        <a href="#">37. Precision and correction reading</a>
-        <a href="#">38. Summarising long compilations</a>
+        <a href="#">37. Precision and correction</a>
+        <a href="#">38. Summarising compilations</a>
         <a href="#">39. Excellence in asking questions</a>
         <a href="#">40. Debating without argumentation</a>
-        <a href="#">41. Revision of knowledge in groups</a>
-        <a href="#">42. Lives between Qur'an and Sunnah</a>
-        <a href="#">43. Completion of learning tools</a>
+        <a href="#">41. Group revision</a>
+        <a href="#">42. Living between Qur’an and Sunnah</a>
+        <a href="#">43. Completion of tools</a>
       </div>
 
-      <button class="collapsible active">Chapter 6: Adorn Yourself with the Implementation of Knowledge <span class="toggle-icon">[-]</span></button>
+      <button class="collapsible active">Chapter 6: Implementation of Knowledge <span class="toggle-icon">[-]</span></button>
       <div class="content">
         <a href="#">44. Signs of beneficial knowledge</a>
         <a href="#">45. The alms of knowledge</a>
-        <a href="#">46. The glory of the scholars</a>
+        <a href="#">46. Glory of the scholars</a>
         <a href="#">47. Protection of knowledge</a>
         <a href="#">48. Diplomacy not compromise</a>
-        <a href="#">49. Passion for the books</a>
-        <a href="#">50. The foundation of your library</a>
+        <a href="#">49. Passion for books</a>
+        <a href="#">50. Foundation of your library</a>
         <a href="#">51. Dealing with the book</a>
         <a href="#">52. Further to this</a>
         <a href="#">53. Writing with diacritical points</a>
@@ -217,21 +304,22 @@
       <div class="content">
         <a href="#">54. False hopes</a>
         <a href="#">55. Beware of being "Aboo Shibr"</a>
-        <a href="#">56. Becoming manifest before qualified</a>
+        <a href="#">56. Becoming manifest prematurely</a>
         <a href="#">57. Deterioration of manners</a>
         <a href="#">58. "Putting pen to paper"</a>
-        <a href="#">59. Your stance on mistakes of predecessors</a>
-        <a href="#">60. Deterring dubious affairs</a>
-        <a href="#">61. Beware of grammatical errors</a>
-        <a href="#">62. Beware of premature intellectuality</a>
-        <a href="#">63. Beware of new Israa'eeliyaat</a>
-        <a href="#">64. Beware of Byzantine debate</a>
-        <a href="#">65. No walaa' and baraa' on sectarianism</a>
-        <a href="#">66. The things that nullify this hilyah</a>
+        <a href="#">59. Mistakes of predecessors</a>
+        <a href="#">60. Dubious affairs</a>
+        <a href="#">61. Grammatical errors</a>
+        <a href="#">62. Premature intellectuality</a>
+        <a href="#">63. New Israa’eeliyyaat</a>
+        <a href="#">64. Byzantine debate</a>
+        <a href="#">65. Sectarian walaa’ and baraa’</a>
+        <a href="#">66. Nullifiers of this hilyah</a>
       </div>
     </div>
 
-    <div style="flex:1; padding:20px;">
+    <!-- Book description -->
+    <div class="book-content">
       <h2>Description of the Book</h2>
       <p>
         <strong>The Book:</strong> Hilyah Ṭālib al-ʿIlm - Etiquettes of a Student in Seeking Knowledge<br>
@@ -247,11 +335,10 @@
     const collapsibles = document.querySelectorAll(".collapsible");
     collapsibles.forEach(button => {
       button.addEventListener("click", function() {
-        this.classList.toggle("active");
         const content = this.nextElementSibling;
         const icon = this.querySelector(".toggle-icon");
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+          content.style.maxHeight = "0px";
           icon.textContent = "[+]";
         } else {
           content.style.maxHeight = content.scrollHeight + "px";
