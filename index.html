@@ -116,8 +116,8 @@
     }
     .rec-list a {
       display: flex;
+      justify-content: space-between; /* push title left, icon right */
       align-items: center;
-      gap: 8px;
       padding: 12px 14px;
       background: linear-gradient(180deg, #fdfbf6, #efe3cd);
       border: 1px solid #d9c7a4;
@@ -132,7 +132,8 @@
       transform: translateX(3px);
     }
     .folder-icon {
-      font-size: 18px;
+      width: 20px;
+      height: 20px;
     }
 
     footer {
@@ -203,19 +204,23 @@
       const link = document.createElement("a");
       link.href = article.link;
 
-      const icon = document.createElement("span");
-      icon.classList.add("folder-icon");
-      icon.textContent = "📂";
-
       const title = document.createElement("span");
       title.textContent = article.title;
 
-      link.appendChild(icon);
-      link.appendChild(title);
+      const icon = document.createElement("img");
+      icon.classList.add("folder-icon");
+      icon.src = "https://freesvg.org/img/Folder-1.png"; // closed by default
 
-      // hover effect to change folder icon
-      link.addEventListener("mouseenter", () => icon.textContent = "📁");
-      link.addEventListener("mouseleave", () => icon.textContent = "📂");
+      link.appendChild(title);
+      link.appendChild(icon);
+
+      // hover effect to swap icons
+      link.addEventListener("mouseenter", () => {
+        icon.src = "https://github.com/millahibrahim148-ops/almaymunah/blob/main/Open-Folder-icon.png?raw=true";
+      });
+      link.addEventListener("mouseleave", () => {
+        icon.src = "https://freesvg.org/img/Folder-1.png";
+      });
 
       recContainer.appendChild(link);
     });
