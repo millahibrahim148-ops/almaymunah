@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Student’s Guide to Note-Taking & Review</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin:0; padding:0;
+      font-family:"Cormorant Garamond", serif;
+      background:#fdfbf6;
+      color:#2f2f2f;
+      line-height:1.7;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Header */
+    header {
+      text-align:center;
+      padding:35px 20px;
+      background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+      border-bottom:1px solid #c8b48c;
+      box-shadow:inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+    }
+    header img { max-width:320px; margin:0 auto 12px; display:block; }
+    header h1 { font-family:"Amiri",serif; font-size:34px; color:#3a2b1a; }
+    header p { font-size:15px; color:#5c4b36; margin-top:8px; }
+
+    /* Layout */
+    .container {
+      display:flex;
+      max-width:1300px;
+      margin:30px auto;
+      padding:0 20px;
+      gap:24px;
+    }
+
+    /* Left nav */
+    aside.left {
+      width:220px;
+      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      height:fit-content;
+    }
+    aside.left h3 {
+      font-size:18px;
+      margin-bottom:12px;
+      color:#4b3621;
+      border-bottom:1px solid #d9c7a4;
+      padding-bottom:5px;
+      font-family:"Amiri",serif;
+    }
+    .sidebar-links a {
+      display:block;
+      padding:10px 12px;
+      margin-bottom:6px;
+      background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+      border:1px solid #d9c7a4;
+      border-radius:8px;
+      color:#3a2b1a;
+      text-decoration:none;
+      font-size:15px;
+      transition:background 0.2s, transform 0.15s;
+    }
+    .sidebar-links a:hover { background:#f7e8c9; transform:translateX(3px); }
+
+    /* Article */
+    main {
+      flex:1;
+      background:#fffdf9;
+      padding:30px;
+      border:1px solid #e4d8c2;
+      border-radius:10px;
+      box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    }
+    main h2, main h3 {
+      font-family:"Amiri",serif;
+      color:#3a2b1a;
+    }
+    main h2 { font-size:26px; margin-bottom:18px; }
+    main h3 { font-size:22px; margin:20px 0 10px; }
+    main p { margin-bottom:16px; }
+
+    /* Right TOC */
+    aside.right {
+      width:260px;
+      max-height:600px;
+      overflow-y:auto;
+      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .toc-category {
+      margin-bottom:10px;
+    }
+    .toc-category h4 {
+      font-size:16px;
+      margin:0;
+      color:#3a2b1a;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:6px 8px;
+      background:#efe3cd;
+      border:1px solid #d9c7a4;
+      border-radius:6px;
+      transition:background 0.2s;
+    }
+    .toc-category h4:hover { background:#f7e8c9; }
+    .toc-links {
+      margin-top:6px;
+      margin-left:10px;
+      display:none;
+      flex-direction:column;
+      animation: slideDown 0.3s ease forwards;
+    }
+    .toc-links a {
+      font-size:14px;
+      padding:6px 8px;
+      text-decoration:none;
+      color:#4b3621;
+      border-radius:6px;
+      transition:background 0.2s;
+    }
+    .toc-links a:hover { background:#fff3d1; }
+
+    @keyframes slideDown {
+      from { opacity:0; max-height:0; }
+      to { opacity:1; max-height:500px; }
+    }
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+      border-top:1px solid #e4d8c2;
+      font-size:14px;
+      color:#5c4b36;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/icon%20image/maktabat%20almaymunah.gif" alt="Maktabat Al Maymunah">
+    <h1>Al Maymunah</h1>
+    <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
+  </header>
+
+  <div class="container">
+
+    <!-- LEFT NAV -->
+    <aside class="left">
+      <h3>Navigation</h3>
+      <div class="sidebar-links">
+        <a href="/index.html">Home</a>
+        <a href="/library.html">Library</a>
+        <a href="/article.html">Article</a>
+        <a href="#">Audio</a>
+        <a href="#">About</a>
+      </div>
+    </aside>
+
+    <!-- ARTICLE BODY -->
+    <main>
+
+      <h2 id="top">A Student’s Guide to Note-Taking & Review</h2>
+
+      <h3 id="question">Question</h3>
+      <p>
+        A question was asked to the brother regarding how can one have an effective note taking 
+        and review as a student of knowledge. The questioner mentioned having problems with excessive 
+        highlighting—turning entire pages into color due to marking every interesting point.
+      </p>
+      <p>
+        As the questioner is on the path of learning the Deen, the brother here clarifies how to properly
+        have effective note-taking and review. <em>May Allah increase us all in beneficial knowledge and make
+        this a benefit for us all.</em>
+      </p>
+
+      <h3 id="answer">Answer</h3>
+      <p>
+        When you first approach a book—especially a topic new to you—everything feels new and amazing.
+        Every page seems full of discoveries. This is normal and a beautiful experience. If you tried to
+        take notes on every mind-blowing point, you would end up rewriting the entire book.
+      </p>
+
+      <h3 id="notes">On Taking Notes</h3>
+      <p>
+        Once you become familiar with the material, fewer things will stand out as “new and special.”
+        Then you can take meaningful notes. Understanding comes in layers: the deeper your general 
+        understanding, the fewer highlights you need.
+      </p>
+
+      <h3 id="memorization">On Memorization</h3>
+      <p>
+        Scholars say: *the one who truly has knowledge is the one who acts upon it.* Acting upon knowledge
+        strengthens retention.
+      </p>
+      <p>
+        There are two levels of memorization:
+      </p>
+      <ul>
+        <li><strong>1 — Word-for-word memorization</strong>: Only suitable for Arabic texts; difficult and time-consuming.</li>
+        <li><strong>2 — Memorizing the meaning</strong>: Understanding and being able to summarize the idea in your own words.</li>
+      </ul>
+
+      <h3 id="summary">On Summarizing & Re-Reading</h3>
+      <p>
+        One of the best ways to absorb a text is to summarize it in your own words. This requires rereading 
+        the book multiple times. Each pass deepens your understanding.
+      </p>
+
+      <h3 id="review">On Reviewing & Retention</h3>
+      <p>
+        True memorization comes from revisiting knowledge repeatedly. Many students memorize but fail to 
+        review, causing them to forget large portions. Review is what keeps knowledge alive.
+      </p>
+      <p>
+        Revisiting the same material several times—even simple books—cements understanding and prevents forgetfulness.
+      </p>
+
+      <h3 id="final">Final Advice</h3>
+      <p>
+        Knowledge needs renewal. If you don’t return to it, it fades—just like a subscription that expires
+        unless renewed. As you grow in your studies, old highlights may seem unnecessary because your
+        understanding has matured. Therefore, highlight conservatively and revisit often.
+      </p>
+
+    </main>
+
+    <!-- RIGHT TOC -->
+    <aside class="right">
+      <div class="toc-category">
+        <h4>Question <span>[+]</span></h4>
+        <div class="toc-links">
+          <a href="#question">Read Question</a>
+        </div>
+      </div>
+
+      <div class="toc-category">
+        <h4>Answer <span>[+]</span></h4>
+        <div class="toc-links">
+          <a href="#answer">General Answer</a>
+          <a href="#notes">On Taking Notes</a>
+          <a href="#memorization">On Memorization</a>
+          <a href="#summary">On Summarizing & Rereading</a>
+          <a href="#review">On Reviewing & Retention</a>
+          <a href="#final">Final Advice</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".toc-category h4").forEach(toggle => {
+      toggle.addEventListener("click", () => {
+        let links = toggle.nextElementSibling;
+        let sign = toggle.querySelector("span");
+        if (links.style.display === "flex") {
+          links.style.display = "none";
+          sign.textContent = "[+]";
+        } else {
+          links.style.display = "flex";
+          sign.textContent = "[-]";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
