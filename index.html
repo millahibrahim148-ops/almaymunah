@@ -1,281 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
   <title>Al-Maymunah — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <style>
-    /* -------------------------
-       Theme (kept from your version)
-       ------------------------- */
     :root{
-      --gold:#c2a444;
-      --bg:#fdfbf6;
-      --panel:#fffdf9;
-      --trim:#d9c7a4;
-      --accent:#6d4c2f;
-      --muted:#5a4a36;
+      --bg: #fdfbf6;
+      --panel: #fffdf9;
+      --trim: #d9c7a4;
+      --accent: #6d4c2f;
+      --muted: #5a4a36;
+      --gold: #c2a444;
     }
 
-    body {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      background: var(--bg);
-      color: #2f2f2f;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Cormorant Garamond",serif;
+      background:var(--bg);
+      color:#2f2f2f;
     }
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 35px 20px;
-      background: linear-gradient(180deg,#fdfbf6,#f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7),
-                  0 3px 10px rgba(0,0,0,0.15);
+    /* HEADER */
+    header{
+      text-align:center;
+      padding:32px 18px;
+      background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+      border-bottom:1px solid #c8b48c;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.12);
     }
-    header img {
-      max-width: 320px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      font-family: "Amiri", serif;
-      font-size: 34px;
-      color: #3a2b1a;
-    }
-    header p {
-      font-size: 15px;
-      color: #5c4b36;
-    }
+    header img{max-width:320px; display:block; margin:0 auto 10px}
+    header h1{font-family:"Amiri",serif; font-size:34px; color:#3a2b1a; margin:6px 0}
+    header p{font-size:15px; color:var(--muted); margin:0}
 
-    /* Layout */
-    .container {
-      display: flex;
-      max-width: 1300px;
-      margin: 30px auto;
-      padding: 0 20px;
-      gap: 24px;
-      align-items: flex-start;
+    /* LAYOUT */
+    .page-wrap{ max-width:1200px; margin:28px auto; padding:0 18px; display:flex; gap:20px; align-items:flex-start; }
+    /* left nav fixed */
+    aside.left{
+      width:220px;
+      flex-shrink:0;
+      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
     }
-
-    /* LEFT NAV */
-    aside.left {
-      width: 220px;
-      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      height: fit-content;
-      flex-shrink: 0; /* prevents stretching */
+    aside.left h3{ font-family:"Amiri",serif; font-size:18px; color:#4b3621; margin:0 0 12px; border-bottom:1px solid var(--trim); padding-bottom:6px }
+    .sidebar-links a{
+      display:block; padding:10px 12px; margin-bottom:8px; background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+      border:1px solid var(--trim); border-radius:8px; color:#3a2b1a; text-decoration:none; font-size:15px;
     }
-    aside.left h3 {
-      font-family: "Amiri", serif;
-      font-size: 20px;
-      color: #4b3621;
-      margin-bottom: 12px;
-      border-bottom: 1px solid var(--trim);
-      padding-bottom: 5px;
-    }
-    .sidebar-links a {
-      display: block;
-      padding: 10px 12px;
-      margin-bottom: 6px;
-      background: linear-gradient(180deg,#fdfbf6,#efe3cd);
-      border: 1px solid var(--trim);
-      border-radius: 8px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      transition: 0.25s;
-    }
-    .sidebar-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(4px);
-    }
+    .sidebar-links a:hover{ background:#f7e8c9; transform:translateX(3px) }
 
     /* MAIN */
-    main {
-      flex: 1;
-      background: var(--panel);
-      padding: 25px;
-      border: 1px solid #e4d8c2;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-
-    main h2 {
-      font-family: "Amiri", serif;
-      font-size: 28px;
-      color: #3a2b1a;
-      margin-bottom: 20px;
-    }
-
-    /* Article list (vertical cards) */
-    .articles-list {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .article-card {
-      display:flex;
-      gap:16px;
-      align-items:flex-start;
-      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
-      border: 1px solid var(--trim);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
-    }
-
-    /* placeholder for future article image */
-    .article-thumb {
-      width: 140px;
-      height: 96px;
-      background: #fff;
-      border-radius: 8px;
-      flex-shrink: 0;
-      object-fit: cover;
-      border:1px solid #e6d6b0;
-    }
-
-    .article-body {
+    main.main-area{
       flex:1;
+      background:var(--panel);
+      padding:22px;
+      border:1px solid #e4d8c2;
+      border-radius:10px;
+      box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    }
+    main.main-area h2{ font-family:"Amiri",serif; font-size:26px; color:#3a2b1a; margin:6px 0 18px }
+
+    /* ARTICLE LIST (vertical cards) */
+    .articles-list{ display:flex; flex-direction:column; gap:16px }
+    .article-card{
+      display:flex; gap:14px; align-items:flex-start;
+      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid var(--trim); border-radius:12px; padding:12px 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      position:relative;
     }
 
-    .article-title {
-      font-family:"Amiri",serif;
-      font-size:20px;
-      margin:0 0 6px 0;
-      color:#3a2b1a;
+    /* thumbnail if present */
+    .article-thumb{
+      width:150px; height:100px; object-fit:cover; border-radius:8px; flex-shrink:0; border:1px solid #e6d6b0;
+      background:#fff;
     }
 
-    .article-desc {
-      margin:0 0 10px 0;
-      color: var(--muted);
-      line-height:1.6;
-      font-size:15px;
-    }
+    .article-body{ flex:1; min-width:0; }
+    .article-title{ font-family:"Amiri",serif; font-size:20px; margin:0 0 6px; color:#3a2b1a }
+    .article-desc{ margin:0 0 10px; color:var(--muted); line-height:1.6; font-size:15px }
 
-    .article-meta {
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
+    .article-meta{ display:flex; align-items:center; gap:10px }
+    .article-link{ margin-left:auto; background:var(--accent); color:#fff; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:14px }
+    .article-link:hover{ background:#8b6543 }
 
-    .article-link {
-      display:inline-block;
-      margin-left: auto;
-      background: var(--accent);
-      color: #fff;
-      padding: 8px 12px;
-      border-radius:6px;
-      text-decoration:none;
-      font-size:14px;
+    /* grey folder icon on the right */
+    .folder-icon {
+      width:34px; height:34px; position:absolute; right:12px; top:12px;
+      display:flex; align-items:center; justify-content:center;
+      background:#f2e9d8; border:1px solid #e0d1a4; border-radius:8px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
     }
-    .article-link:hover { background:#8b6543; }
+    .folder-icon svg { width:18px; height:18px; fill:#4a4a4a; opacity:0.92 }
 
-    /* Pagination area */
-    .pagination {
-      margin-top: 22px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex-wrap:wrap;
+    /* Pagination */
+    .pagination { margin-top:18px; display:flex; gap:8px; align-items:center; flex-wrap:wrap }
+    .pg-arrow{
+      padding:8px 12px; border-radius:8px; border:none; cursor:pointer;
+      background: linear-gradient(180deg,#e9d6b2,#c9a75a);
+      color:#2b2110; font-weight:700; box-shadow: 0 6px 12px rgba(0,0,0,0.18), inset 0 6px 8px rgba(255,255,255,0.35);
+      transform: perspective(10px) rotateX(1deg);
     }
+    .pg-arrow:active{ transform: translateY(1px) }
+    .pg-arrow[disabled]{ opacity:.45; cursor:not-allowed }
 
-    .pg-arrow {
-      background: var(--accent);
-      color:#fff;
-      border:none;
-      padding:8px 12px;
-      border-radius:6px;
-      cursor:pointer;
-    }
-    .pg-arrow[disabled] { opacity:.45; cursor:not-allowed; }
+    .pg-number { padding:8px 10px; border-radius:6px; border:1px solid var(--trim); background:#fbf7ef; cursor:pointer; font-family:"Amiri",serif }
+    .pg-number.current{ background:var(--accent); color:#fff; border:none }
 
-    .pg-number {
-      display:inline-block;
-      padding:8px 10px;
-      border:1px solid var(--trim);
-      background:#fbf7ef;
-      cursor:pointer;
-      font-family:"Amiri", serif;
-      border-radius:6px;
-    }
+    .page-jump{ display:flex; gap:6px; align-items:center; margin-left:8px }
+    .page-jump input{ width:64px; padding:6px 8px; border-radius:6px; border:1px solid var(--trim); text-align:center }
+    .page-jump button{ padding:7px 10px; border-radius:6px; border:none; background:var(--accent); color:#fff; cursor:pointer }
 
-    .pg-number.current {
-      background: var(--accent);
-      color:#fff;
-      border:none;
-    }
+    .status{ margin-left:12px; color:var(--muted) }
 
-    /* The jump box ... you asked for is placed here */
-    .page-jump {
-      display:flex;
-      gap:6px;
-      align-items:center;
-      margin-left:8px;
+    /* small screens */
+    @media(max-width:900px){
+      .page-wrap{ padding:18px; gap:12px }
+      aside.left{ display:none } /* hide left nav on small screens */
+      .article-thumb{ width:120px; height:80px }
     }
-    .page-jump input {
-      width:64px;
-      padding:6px 8px;
-      border-radius:6px;
-      border:1px solid var(--trim);
-      text-align:center;
-      font-size:14px;
-    }
-    .page-jump button {
-      padding:6px 10px;
-      border-radius:6px;
-      border:none;
-      background:var(--accent);
-      color:#fff;
-      cursor:pointer;
-    }
-
-    .status {
-      margin-left:8px;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    /* Footer */
-    footer {
-      text-align:center;
-      padding:20px;
-      margin-top:50px;
-      border-top:1px solid #e4d8c2;
-      color:#5c4b36;
-    }
-
-    /* Responsive: adjust per requirements */
-    @media (max-width: 900px) {
-      .container { padding: 16px; gap:12px; }
-      aside.left { display:none; } /* hide left nav on small screens */
-      .article-thumb { width: 110px; height:78px; }
-    }
-
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header>
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/d69b007b25bfaec809bc9382222712702c9e104a/icon%20image/maktabat%20almaymunah.gif" alt="Al-Maymunah Banner">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/icon%20image/maktabat%20almaymunah.gif" alt="Al-Maymunah">
     <h1>Al-Maymunah</h1>
     <p>Maktabat Al-Maymunah — Islam • Sunnah • Knowledge</p>
   </header>
 
-  <div class="container">
+  <div class="page-wrap">
 
-    <!-- LEFT NAVIGATION -->
+    <!-- left nav -->
     <aside class="left" aria-label="Main navigation">
       <h3>Navigation</h3>
       <div class="sidebar-links">
@@ -287,31 +152,29 @@
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main>
+    <!-- main -->
+    <main class="main-area" aria-live="polite">
       <h2>Recommended Articles</h2>
 
-      <!-- Articles list (injected by JS) -->
       <div id="articles-list" class="articles-list">
-        <!-- Loading placeholder -->
-        <div class="article-card"><div style="height:18px;width:220px;background:#eee;border-radius:6px"></div></div>
+        <!-- loading placeholder -->
+        <div class="article-card"><div style="height:16px;width:260px;background:#eee;border-radius:6px"></div></div>
       </div>
 
-      <!-- Pagination controls -->
+      <!-- pagination controls -->
       <div class="pagination" id="pagination">
-        <button id="prevBtn" class="pg-arrow" aria-label="Previous page">←</button>
+        <button id="prevBtn" class="pg-arrow" aria-label="Previous" disabled>←</button>
 
         <div id="pageNumbers" aria-live="polite"></div>
 
-        <!-- jump input (the (...) you asked for) -->
         <div class="page-jump">
-          <input id="jumpInput" type="number" min="1" placeholder="..." aria-label="Jump to page number">
+          <input id="jumpInput" type="number" min="1" placeholder="..." aria-label="Jump to page">
           <button id="jumpBtn">Go</button>
         </div>
 
-        <button id="nextBtn" class="pg-arrow" aria-label="Next page">→</button>
+        <button id="nextBtn" class="pg-arrow" aria-label="Next" disabled>→</button>
 
-        <div class="status" id="engineStatus"></div>
+        <div class="status" id="engineStatus" aria-live="polite"></div>
       </div>
 
     </main>
@@ -322,335 +185,315 @@
     <p>&copy; 2025 Al-Maymunah. All rights reserved.</p>
   </footer>
 
-  <!-- ====== Enhanced Auto-Detect + Pagination Script ====== -->
+  <!-- SCRIPT: auto-detect + pagination (no slider), hides missing thumbnails, shows folder icon -->
   <script>
-  (function () {
-    // ---------- CONFIG ----------
+  (function(){
+    // CONFIG: change if needed
     const GITHUB_USER = "millahibrahim148-ops";
     const REPO = "almaymunah";
     const ARTICLE_FOLDER = "articles";
     const BRANCH = "main";
 
-    // cache key & ttl
-    const CACHE_KEY = "am_article_cache_v3";
-    const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
+    const CACHE_KEY = "am_articles_v4";
+    const CACHE_TTL = 6 * 60 * 60 * 1000;
 
-    // DOM
     const listEl = document.getElementById("articles-list");
-    const pageNumbersEl = document.getElementById("pageNumbers");
+    const pageNumsEl = document.getElementById("pageNumbers");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const jumpInput = document.getElementById("jumpInput");
     const jumpBtn = document.getElementById("jumpBtn");
-    const engineStatus = document.getElementById("engineStatus");
+    const statusEl = document.getElementById("engineStatus");
 
-    // state
-    let articles = []; // {title,desc,link,thumb(optional)}
+    let articles = [];
     let currentPage = 1;
     let perPage = window.innerWidth < 768 ? 3 : 4;
 
-    // helpers: cache
-    function cacheGet() {
-      try {
+    // caching
+    function getCache(){
+      try{
         const raw = localStorage.getItem(CACHE_KEY);
-        if (!raw) return null;
+        if(!raw) return null;
         const parsed = JSON.parse(raw);
-        if (Date.now() - parsed.time > CACHE_TTL) { localStorage.removeItem(CACHE_KEY); return null; }
+        if(Date.now() - parsed.time > CACHE_TTL){ localStorage.removeItem(CACHE_KEY); return null; }
         return parsed.data;
-      } catch (e) { return null; }
+      }catch(e){ return null; }
     }
-    function cacheSet(data) {
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), data })); } catch (e) {}
-    }
-
-    // fetch helper
-    async function fetchJson(url) {
-      const r = await fetch(url);
-      if (!r.ok) throw new Error("Fetch error " + r.status);
-      return await r.json();
+    function setCache(data){
+      try{ localStorage.setItem(CACHE_KEY, JSON.stringify({time:Date.now(), data})); }catch(e){}
     }
 
-    // extract title/desc from file contents
-    function stripTags(s){ return s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(); }
+    function stripTags(s){ return s.replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim(); }
 
-    function extractTitle(content, filename) {
-      const t = content.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-      if (t && t[1].trim()) return stripTags(t[1]);
-      const h1 = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-      if (h1 && h1[1].trim()) return stripTags(h1[1]);
-      const mdH = content.match(/^#\s+(.+)/m);
-      if (mdH) return mdH[1].trim();
+    function extractTitle(content, filename){
+      let m = content.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+      if(m && m[1].trim()) return stripTags(m[1]);
+      m = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+      if(m && m[1].trim()) return stripTags(m[1]);
+      m = content.match(/^#\s+(.+)$/m);
+      if(m) return m[1].trim();
       return filename.replace(/\.(html|md|txt)$/i,"").replace(/[-_]/g," ");
     }
 
-    function extractDesc(content) {
-      const p = content.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
-      if (p && p[1].trim()) return stripTags(p[1]).slice(0,420);
-      // fallback: first block of markdown text
-      const blocks = content.split(/\r?\n\r?\n/).map(b => b.trim()).filter(Boolean);
-      for (let b of blocks) {
-        if (/^#{1,6}\s+/.test(b)) continue;
-        return b.replace(/[#>*`]/g,"").slice(0,420);
+    function extractDesc(content){
+      let m = content.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+      if(m && m[1].trim()) return stripTags(m[1]).slice(0,420);
+      const blocks = content.split(/\r?\n\r?\n/).map(b=>b.trim()).filter(Boolean);
+      for(const b of blocks){
+        if(/^#{1,6}\s+/.test(b)) continue;
+        return b.replace(/[#>*`~_-]+/g,"").slice(0,420);
       }
       return "No description available.";
     }
 
-    // build article card DOM
-    function makeCard(a) {
-      const wrap = document.createElement("div");
-      wrap.className = "article-card";
+    // thumbnail detection:
+    // prefer absolute URLs. If relative, convert using raw.githubusercontent.com /repo/branch/<file-dir>/<relpath>
+    function findFirstImage(content, filePath){
+      const img = content.match(/<img[^>]+src=["']([^"']+)["']/i);
+      if(img && img[1]) {
+        const src = img[1].trim();
+        return resolveImageUrl(src, filePath);
+      }
+      // also check markdown image: ![alt](url)
+      const mdImg = content.match(/!\[[^\]]*\]\(([^)]+)\)/);
+      if(mdImg && mdImg[1]) {
+        const src = mdImg[1].trim();
+        return resolveImageUrl(src, filePath);
+      }
+      return null;
+    }
 
-      // thumb (if present)
-      const thumb = document.createElement("img");
-      thumb.className = "article-thumb";
-      thumb.alt = "";
-      if (a.thumb) thumb.src = a.thumb;
-      else {
-        thumb.style.background = "#fff";
-        thumb.style.border = "1px solid #e6d6b0";
+    function resolveImageUrl(src, filePath){
+      if(!src) return null;
+      if(/^https?:\/\//i.test(src)) return src;
+      // relative: build raw.githubusercontent.com path
+      // filePath e.g. articles/subdir/file.html -> dirname = articles/subdir
+      const parts = filePath.split('/');
+      parts.pop();
+      const dir = parts.join('/');
+      // normalize leading ./ or /
+      const cleaned = src.replace(/^\.\//,"").replace(/^\/+/,"");
+      return `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO}/${BRANCH}/${dir ? dir + '/' : ''}${cleaned}`;
+    }
+
+    // create folder SVG element (grey folder)
+    function folderIconEl(){
+      const wrap = document.createElement('div');
+      wrap.className = 'folder-icon';
+      wrap.innerHTML = `
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 4H4a2 2 0 0 0-2 2v10.002A2 2 0 0 0 4 18h16a2 2 0 0 0 2-1.998V8a2 2 0 0 0-2-2h-8l-2-2z"/>
+        </svg>
+      `;
+      return wrap;
+    }
+
+    // build article card DOM
+    function makeCard(a){
+      const card = document.createElement('article');
+      card.className = 'article-card';
+
+      // thumbnail only if present (prevents broken image)
+      if(a.thumb){
+        const img = document.createElement('img');
+        img.className = 'article-thumb';
+        img.src = a.thumb;
+        img.alt = a.title;
+        // if image fails to load, remove it (prevents broken icon)
+        img.onerror = () => { img.remove(); };
+        card.appendChild(img);
       }
 
-      const body = document.createElement("div");
-      body.className = "article-body";
+      const body = document.createElement('div');
+      body.className = 'article-body';
 
-      const h = document.createElement("h3");
-      h.className = "article-title";
+      const h = document.createElement('h3');
+      h.className = 'article-title';
       h.textContent = a.title;
 
-      const p = document.createElement("p");
-      p.className = "article-desc";
+      const p = document.createElement('p');
+      p.className = 'article-desc';
       p.textContent = a.desc;
 
-      const meta = document.createElement("div");
-      meta.className = "article-meta";
+      const meta = document.createElement('div');
+      meta.className = 'article-meta';
 
-      const aLink = document.createElement("a");
-      aLink.className = "article-link";
-      aLink.textContent = "Read";
-      aLink.href = a.link;
-      aLink.rel = "noopener";
+      const read = document.createElement('a');
+      read.className = 'article-link';
+      read.href = a.link;
+      read.textContent = 'Read';
+      read.rel = 'noopener';
 
-      meta.appendChild(aLink);
-
+      meta.appendChild(read);
       body.appendChild(h);
       body.appendChild(p);
       body.appendChild(meta);
 
-      wrap.appendChild(thumb);
-      wrap.appendChild(body);
+      card.appendChild(body);
 
-      return wrap;
+      // folder icon placed at top-right of card
+      card.appendChild(folderIconEl());
+
+      return card;
     }
 
-    // render current page (replace content, no animation)
-    function renderPage() {
-      listEl.innerHTML = "";
-      if (!articles.length) {
-        listEl.innerHTML = `<div class="article-card"><div style="height:18px;width:220px;background:#eee;border-radius:6px"></div></div>`;
-        engineStatus.textContent = "No articles found.";
+    function renderPage(){
+      listEl.innerHTML = '';
+      if(articles.length === 0){
+        listEl.innerHTML = '<div class="article-card"><div style="height:18px;width:260px;background:#eee;border-radius:6px"></div></div>';
+        statusEl.textContent = 'No articles found.';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        pageNumsEl.innerHTML = '';
         return;
       }
       const totalPages = Math.max(1, Math.ceil(articles.length / perPage));
-      if (currentPage > totalPages) currentPage = totalPages;
+      if(currentPage > totalPages) currentPage = totalPages;
 
       const start = (currentPage - 1) * perPage;
       const slice = articles.slice(start, start + perPage);
-
       slice.forEach(a => listEl.appendChild(makeCard(a)));
 
-      // update buttons enabled state
+      // update arrows
       prevBtn.disabled = currentPage === 1;
       nextBtn.disabled = currentPage === totalPages;
 
-      engineStatus.textContent = `Page ${currentPage} of ${totalPages}`;
+      statusEl.textContent = `Page ${currentPage} of ${totalPages}`;
       renderPageNumbers(totalPages);
     }
 
-    // render page numbers in the style you requested:
-    // show up to 3 numbers: [current] current-1 current-2 (descending order left->right),
-    // then ellipsis and last page
-    function renderPageNumbers(totalPages) {
-      pageNumbersEl.innerHTML = "";
+    // renders numbers in requested format: current, current-1, current-2 (...) total
+    function renderPageNumbers(totalPages){
+      pageNumsEl.innerHTML = '';
 
-      // compute pages to show: current, current-1, current-2 (if >=1)
+      // pages array: [current, current-1, current-2] but only valid >=1
       const pages = [];
-      for (let i = 0; i < 3; i++) {
+      for(let i=0;i<3;i++){
         const n = currentPage - i;
-        if (n >= 1) pages.push(n);
+        if(n >= 1) pages.push(n);
       }
-      // pages currently: [current, current-1, current-2]
-      // we show them left-to-right as pages[0], pages[1], pages[2]
+
+      // show them left-to-right (current, current-1, ...)
       pages.forEach((num, idx) => {
-        const btn = document.createElement("span");
-        btn.className = "pg-number" + (idx === 0 ? " current" : "");
-        btn.textContent = num;
-        btn.title = "Go to page " + num;
-        btn.onclick = () => { currentPage = num; renderPage(); };
-        pageNumbersEl.appendChild(btn);
+        const span = document.createElement('span');
+        span.className = 'pg-number' + (idx===0 ? ' current' : '');
+        span.textContent = num;
+        span.title = 'Go to page ' + num;
+        span.onclick = () => { currentPage = num; renderPage(); };
+        pageNumsEl.appendChild(span);
       });
 
-      // if there are pages below (i.e., currentPage > 3), show ellipsis and last page button
-      if (currentPage > 3) {
-        const ell = document.createElement("span");
-        ell.className = "pg-number";
-        ell.textContent = "...";
-        ell.style.cursor = "default";
-        pageNumbersEl.appendChild(ell);
+      // if there are pages below (currentPage > 3), show ellipsis and last page
+      if(currentPage > 3){
+        const ell = document.createElement('span');
+        ell.className = 'pg-number';
+        ell.textContent = '...';
+        ell.style.cursor = 'default';
+        pageNumsEl.appendChild(ell);
 
-        const last = document.createElement("span");
-        last.className = "pg-number";
+        const last = document.createElement('span');
+        last.className = 'pg-number';
         last.textContent = totalPages;
-        last.title = "Go to last page";
+        last.title = 'Go to last page';
         last.onclick = () => { currentPage = totalPages; renderPage(); };
-        pageNumbersEl.appendChild(last);
+        pageNumsEl.appendChild(last);
       } else {
-        // Also if totalPages > pages shown and currentPage <=3, show any remaining pages ascending (optional)
-        if (totalPages > pages[pages.length - 1]) {
-          // show next pages if any (for neatness)
-          for (let n = pages[pages.length - 1] + 1; n <= Math.min(totalPages, 3); n++) {
-            const b = document.createElement("span");
-            b.className = "pg-number";
-            b.textContent = n;
-            b.onclick = () => { currentPage = n; renderPage(); };
-            pageNumbersEl.appendChild(b);
-          }
-          if (totalPages > 3) {
-            const ell = document.createElement("span");
-            ell.className = "pg-number";
-            ell.textContent = "...";
-            ell.style.cursor = "default";
-            pageNumbersEl.appendChild(ell);
-
-            const last = document.createElement("span");
-            last.className = "pg-number";
-            last.textContent = totalPages;
-            last.onclick = () => { currentPage = totalPages; renderPage(); };
-            pageNumbersEl.appendChild(last);
-          }
+        // if there are more pages after the shown ones (totalPages > max shown), add ellipsis+last
+        const maxShown = pages.length ? pages[pages.length-1] : 0;
+        if(totalPages > maxShown){
+          const ell = document.createElement('span');
+          ell.className = 'pg-number';
+          ell.textContent = '...';
+          ell.style.cursor = 'default';
+          pageNumsEl.appendChild(ell);
+          const last = document.createElement('span');
+          last.className = 'pg-number';
+          last.textContent = totalPages;
+          last.onclick = () => { currentPage = totalPages; renderPage(); };
+          pageNumsEl.appendChild(last);
         }
       }
     }
 
-    // page jump
-    jumpBtn.addEventListener("click", () => {
-      const totalPages = Math.max(1, Math.ceil(articles.length / perPage));
-      const n = parseInt(jumpInput.value, 10);
-      if (!isNaN(n) && n >= 1 && n <= totalPages) {
-        currentPage = n;
-        renderPage();
-      } else {
-        // invalid input: indicate briefly
-        jumpInput.value = "";
-        jumpInput.placeholder = "1 - " + totalPages;
-      }
+    prevBtn.addEventListener('click', ()=>{ if(currentPage>1){ currentPage--; renderPage(); }});
+    nextBtn.addEventListener('click', ()=>{ const tot = Math.max(1, Math.ceil(articles.length/perPage)); if(currentPage<tot){ currentPage++; renderPage(); }});
+    jumpBtn.addEventListener('click', ()=> {
+      const tot = Math.max(1, Math.ceil(articles.length/perPage));
+      const n = parseInt(jumpInput.value,10);
+      if(!isNaN(n) && n>=1 && n<=tot){ currentPage = n; renderPage(); }
+      else { jumpInput.value=''; jumpInput.placeholder=`1 - ${tot}`; setTimeout(()=>jumpInput.placeholder='...',1200); }
     });
 
-    prevBtn.addEventListener("click", () => {
-      if (currentPage > 1) { currentPage--; renderPage(); }
-    });
-    nextBtn.addEventListener("click", () => {
-      const totalPages = Math.max(1, Math.ceil(articles.length / perPage));
-      if (currentPage < totalPages) { currentPage++; renderPage(); }
-    });
-
-    // main loader: fetch file list from GitHub contents API and read a few files
-    async function loadFromGitHub() {
-      engineStatus.textContent = "Loading articles...";
-      // try cached
-      const cached = cacheGet();
-      if (cached && Array.isArray(cached)) {
+    // load from cache or github api
+    async function loadArticles(){
+      statusEl.textContent = 'Loading articles...';
+      const cached = getCache();
+      if(cached && Array.isArray(cached) && cached.length){
         articles = cached;
         renderPage();
-        engineStatus.textContent = "Loaded from cache.";
+        statusEl.textContent = 'Loaded from cache.';
         return;
       }
 
-      try {
-        const apiURL = `https://api.github.com/repos/${GITHUB_USER}/${REPO}/contents/${ARTICLE_FOLDER}?ref=${BRANCH}`;
-        const files = await fetchJson(apiURL);
+      try{
+        const api = `https://api.github.com/repos/${GITHUB_USER}/${REPO}/contents/${ARTICLE_FOLDER}?ref=${BRANCH}`;
+        const fileList = await (await fetch(api)).json();
+        if(!Array.isArray(fileList)){ throw new Error('Bad repository response'); }
 
-        if (!Array.isArray(files)) throw new Error("unexpected response");
-
-        // filter .html .md .txt, ignore starting with _ and draft folder
-        const valid = files.filter(f => {
-          const lower = (f.name || "").toLowerCase();
-          if (lower.startsWith("_")) return false;
-          if (f.type !== "file") return false;
-          if (lower.endsWith(".html") || lower.endsWith(".md") || lower.endsWith(".txt")) {
-            if ((f.path || "").toLowerCase().includes("drafts")) return false;
-            return true;
-          }
-          return false;
+        // filter files
+        const valid = fileList.filter(f=>{
+          const n = (f.name||'').toLowerCase();
+          if(n.startsWith('_')) return false;
+          if(f.type !== 'file') return false;
+          return n.endsWith('.html') || n.endsWith('.md') || n.endsWith('.txt');
         });
 
-        if (valid.length === 0) {
-          articles = [];
-          renderPage();
-          engineStatus.textContent = "No articles found in /" + ARTICLE_FOLDER + "/";
-          return;
-        }
-
-        // Fetch contents for all valid files (we can limit if extremely many)
-        const fetchPromises = valid.map(async f => {
-          try {
-            const rawUrl = f.download_url || (`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO}/${BRANCH}/${f.path}`);
-            const resp = await fetch(rawUrl);
-            if (!resp.ok) throw new Error("file fetch error");
-            const txt = await resp.text();
+        // fetch contents for each (could be many; consider limiting in future)
+        const parsed = [];
+        for(const f of valid){
+          try{
+            const raw = f.download_url || `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO}/${BRANCH}/${f.path}`;
+            const res = await fetch(raw);
+            if(!res.ok) continue;
+            const txt = await res.text();
 
             const title = extractTitle(txt, f.name);
             const desc = extractDesc(txt);
-            // optional: attempt to find first image (img src) for thumbnail
-            const imgMatch = txt.match(/<img[^>]+src=["']([^"']+)["']/i);
-            const thumb = imgMatch ? imgMatch[1] : null;
+            const thumb = findFirstImage(txt, f.path); // may be null
 
-            return {
-              title,
-              desc,
-              link: `${ARTICLE_FOLDER}/${f.name}`,
-              thumb
-            };
-          } catch (e) {
-            console.warn("file parse fail", f.name, e);
-            return null;
+            parsed.push({ title, desc, link: `${ARTICLE_FOLDER}/${f.name}`, thumb });
+          }catch(e2){
+            console.warn('skip file', f.name, e2);
+            continue;
           }
-        });
-
-        const results = await Promise.all(fetchPromises);
-        // keep only successfully parsed
-        articles = results.filter(Boolean);
-
-        // if none parsed, fallback to filename-based list
-        if (articles.length === 0) {
-          articles = valid.map(f => ({
-            title: f.name.replace(/\.(html|md|txt)$/i, "").replace(/[-_]/g, " "),
-            desc: "No description available.",
-            link: `${ARTICLE_FOLDER}/${f.name}`,
-            thumb: null
-          }));
         }
 
-        // cache the parsed list (titles and desc)
-        cacheSet(articles);
+        // fallback to filenames if nothing parsed
+        if(parsed.length === 0 && valid.length){
+          for(const f of valid){
+            parsed.push({ title: f.name.replace(/\.(html|md|txt)$/i,'').replace(/[-_]/g,' '), desc: 'No description available.', link:`${ARTICLE_FOLDER}/${f.name}`, thumb: null });
+          }
+        }
+
+        articles = parsed;
+        setCache(articles);
         renderPage();
-        engineStatus.textContent = `Loaded ${articles.length} articles.`;
-      } catch (err) {
-        console.error(err);
-        engineStatus.textContent = "Error loading articles (see console).";
+        statusEl.textContent = `Loaded ${articles.length} articles.`;
+      }catch(err){
+        console.error('load error', err);
+        statusEl.textContent = 'Error loading articles (check console).';
+        articles = [];
+        renderPage();
       }
     }
 
-    // initialize
-    loadFromGitHub();
+    // initial load
+    loadArticles();
 
-    // handle window resize (recompute perPage)
-    window.addEventListener("resize", () => {
+    // responsive perPage
+    window.addEventListener('resize', () => {
       const newPer = window.innerWidth < 768 ? 3 : 4;
-      if (newPer !== perPage) {
-        perPage = newPer;
-        currentPage = 1;
-        renderPage();
-      }
+      if(newPer !== perPage){ perPage = newPer; currentPage = 1; renderPage(); }
     });
 
   })();
@@ -658,5 +501,3 @@
 
 </body>
 </html>
-
-
