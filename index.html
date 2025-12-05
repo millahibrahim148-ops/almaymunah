@@ -1,436 +1,334 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Al Maymunah - Home</title>
+  <meta charset="UTF-8">
+  <title>Al-Maymunah — Home</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: "Cormorant Garamond", serif;
       background: #fdfbf6;
       color: #2f2f2f;
-      line-height: 1.6;
-      direction: rtl;
     }
 
     /* Header */
     header {
       text-align: center;
       padding: 35px 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
+      background: linear-gradient(180deg,#fdfbf6,#f2e9d8);
       border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), 0 3px 10px rgba(0,0,0,0.15);
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7),
+                  0 3px 10px rgba(0,0,0,0.15);
     }
     header img {
-      max-width: 340px;
-      display: block;
-      margin: 0 auto 12px auto;
+      max-width: 320px;
+      margin-bottom: 10px;
     }
     header h1 {
       font-family: "Amiri", serif;
-      font-size: 40px;
-      font-weight: 400;
+      font-size: 34px;
       color: #3a2b1a;
     }
     header p {
-      font-size: 16px;
+      font-size: 15px;
       color: #5c4b36;
-      margin-top: 8px;
-      display: inline-block;
     }
 
     /* Layout */
     .container {
       display: flex;
-      max-width: 1100px;
+      max-width: 1300px;
       margin: 30px auto;
       padding: 0 20px;
       gap: 24px;
     }
 
-    /* Sidebar */
-    aside {
-      width: 300px;
-      background: linear-gradient(180deg, #fbf7ef, #f3e9d6);
+    /* LEFT SIDEBAR */
+    aside.left {
+      width: 220px;
+      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
       border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
       padding: 18px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
       height: fit-content;
     }
-    aside h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
+    aside.left h3 {
+      font-family: "Amiri", serif;
+      font-size: 20px;
       color: #4b3621;
+      margin-bottom: 12px;
       border-bottom: 1px solid #d9c7a4;
       padding-bottom: 5px;
-      font-family: "Amiri", serif;
     }
-    .sidebar-links { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
     .sidebar-links a {
       display: block;
       padding: 10px 12px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
+      margin-bottom: 6px;
+      background: linear-gradient(180deg,#fdfbf6,#efe3cd);
       border: 1px solid #d9c7a4;
       border-radius: 8px;
       color: #3a2b1a;
       text-decoration: none;
       font-size: 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      transition: background 0.2s, transform 0.15s;
+      transition: 0.25s;
     }
-    .sidebar-links a:hover { background:#f7e8c9; transform:translateX(3px); }
+    .sidebar-links a:hover {
+      background: #f7e8c9;
+      transform: translateX(4px);
+    }
 
-    /* Main */
+    /* MAIN CONTENT — Recommended Articles Section */
     main {
       flex: 1;
       background: #fffdf9;
-      padding: 20px;
+      padding: 25px;
       border: 1px solid #e4d8c2;
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
-    /* Recommended Articles box */
-    .recommended h3 {
+    main h2 {
       font-family: "Amiri", serif;
-      font-size: 22px;
-      margin-bottom: 12px;
+      font-size: 28px;
+      color: #3a2b1a;
+      margin-bottom: 20px;
+    }
+
+    /* RECOMMENDED ARTICLES SLIDER */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 15px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      gap: 20px;
+    }
+
+    .article-card {
+      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border: 1px solid #d9c7a4;
+      border-radius: 12px;
+      padding: 18px;
+      min-width: 260px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .article-card h4 {
+      margin: 0 0 8px;
+      font-family: "Amiri", serif;
+      font-size: 20px;
       color: #3a2b1a;
     }
-    .rec-list { display:flex; flex-direction:column; gap:12px; }
-    .rec-item { position: relative; }
-    .rec-list a {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:10px 12px;
-      background: linear-gradient(180deg, #fdfbf6, #efe3cd);
-      border:1px solid #d9c7a4; border-radius:8px;
-      text-decoration:none; color:#3a2b1a; font-size:16px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      transition: transform .12s, background .12s;
+
+    .article-card p {
+      font-size: 14px;
+      color: #5a4a36;
+      margin-bottom: 10px;
     }
-    .rec-list a:hover { background:#f7e8c9; transform: translateX(3px); }
-    .folder-icon { width:20px; height:20px; }
 
-    /* Tooltip */
-    .tooltip {
-      position:absolute;
-      top:110%;
-      left:0;
-      background:#fffdf9;
-      border:1px solid #d9c7a4;
-      border-radius:8px;
-      padding:10px;
-      width:320px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-      font-size:14px; color:#3a2b1a; display:none; z-index:50;
+    .article-card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #6d4c2f;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
     }
-    .tooltip h4 { margin-bottom:6px; font-family:"Amiri", serif; font-size:16px; }
-    .rec-item:hover .tooltip { display:block; }
 
-    /* status / messages */
-    .status { font-size:14px; color:#6b4f3a; margin-top:8px; }
+    /* ARROWS */
+    .arrow {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      background: #6d4c2f;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .arrow:hover { background: #8a6543; }
 
-    /* Footer */
+    .arrow.left { left: -10px; }
+    .arrow.right { right: -10px; }
+
+    /* PAGE BUTTONS */
+    .carousel-buttons {
+      margin-top: 14px;
+      text-align: center;
+    }
+    .page-btn {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid #d9c7a4;
+      margin: 0 4px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-family: "Amiri", serif;
+      background: #fbf7ef;
+    }
+    .active-page {
+      background: #6d4c2f;
+      color: white;
+      border: none;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
-      background: linear-gradient(180deg, #fdfbf6, #f2e9d8);
-      border-top: 1px solid #c8b48c;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #4b3621;
-    }
-
-    /* Responsive small screens */
-    @media (max-width:900px) {
-      .container { flex-direction: column; padding: 16px; }
-      aside { width: 100%; order: 2; }
-      main { order: 1; }
-      .tooltip { width: 90vw; left: 50%; transform: translateX(-50%); }
+      margin-top: 50px;
+      border-top: 1px solid #e4d8c2;
+      color: #5c4b36;
     }
   </style>
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header>
-    <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/2d8a01ca5438942aadfb9c5f8a6dce724793dca7/icon%20image/maktaba-almaymnh.gif?raw=true" alt="Maktabat Al Maymunah">
-    <h1>Al Maymunah</h1>
-    <p>Maktabat Almaymunah Islamic Knowledge – Islam, Sunnah, Salafiyyah</p>
+    <img src="YOUR_BANNER_HERE" alt="Al-Maymunah Banner">
+    <h1>Al-Maymunah</h1>
+    <p>Maktabat Al-Maymunah — Islam • Sunnah • Knowledge</p>
   </header>
 
-  <!-- PAGE -->
   <div class="container">
-    <!-- Sidebar -->
-    <aside>
+
+    <!-- LEFT NAVIGATION -->
+    <aside class="left">
       <h3>Navigation</h3>
       <div class="sidebar-links">
         <a href="index.html">Home</a>
         <a href="library.html">Library</a>
-        <a href="article.html">Articles</a>
+        <a href="articles.html">Articles</a>
         <a href="#">Audio</a>
         <a href="#">About</a>
       </div>
-
-      <div style="height:12px"></div>
-
-      <h3>Recommended</h3>
-      <div id="recommended-area">
-        <div class="rec-list" id="rec-list">
-          <div class="status">Loading recommended articles…</div>
-        </div>
-      </div>
     </aside>
 
-    <!-- Main -->
+    <!-- MAIN CONTENT -->
     <main>
-      <h2 style="font-family:Amiri, serif; font-size:28px; margin-top:0; color:#3a2b1a;">Welcome to Al Maymunah</h2>
 
-      <p>
-        This is your main area — the recommended list on the left is populated automatically
-        from files in <code>/articles/</code> inside the repository.
-      </p>
+      <h2>Recommended Articles</h2>
 
-      <p class="status" id="engine-status"></p>
+      <!-- CAROUSEL -->
+      <div class="carousel-container">
+
+        <button class="arrow left">&lt;</button>
+
+        <div class="carousel-track" id="carousel-track">
+          <!-- Injected by JS -->
+        </div>
+
+        <button class="arrow right">&gt;</button>
+
+      </div>
+
+      <div class="carousel-buttons" id="carousel-buttons"></div>
+
     </main>
+
   </div>
 
   <footer>
-    <p>&copy; 2025 Al Maymunah. All rights reserved.</p>
+    <p>&copy; 2025 Al-Maymunah. All rights reserved.</p>
   </footer>
 
-  <!-- ======= Enhanced Auto-Detect Recommended Articles Engine ======= -->
   <script>
-  (function(){
-    // CONFIG - update if your repo or folder differs
-    const GITHUB_USER = "millahibrahim148-ops";
-    const REPO = "almaymunah";
-    const ARTICLE_FOLDER = "articles";
-    const BRANCH = "main";
-
-    // Caching
-    const CACHE_KEY = "am_articles_cache_v2";
-    const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
-
-    const recList = document.getElementById("rec-list");
-    const statusEl = document.getElementById("engine-status");
-
-    function setStatus(text) {
-      if (statusEl) statusEl.textContent = text;
-    }
-
-    function useCacheGet() {
-      try {
-        const raw = localStorage.getItem(CACHE_KEY);
-        if (!raw) return null;
-        const parsed = JSON.parse(raw);
-        if (Date.now() - parsed.time > CACHE_TTL) {
-          localStorage.removeItem(CACHE_KEY);
-          return null;
-        }
-        return parsed.data;
-      } catch (e) { return null; }
-    }
-
-    function useCacheSet(data) {
-      try {
-        localStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), data }));
-      } catch (e) { /* ignore */ }
-    }
-
-    async function fetchApi(url) {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Network response not ok: " + res.status);
-      return res.json();
-    }
-
-    function extractTitleFromContent(content, filename) {
-      // try <title>
-      const t = content.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-      if (t && t[1].trim()) return t[1].trim();
-
-      // try first <h1>
-      const h1 = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-      if (h1 && h1[1].trim()) return stripTags(h1[1].trim());
-
-      // try markdown # heading
-      const mdH = content.match(/^#\s+(.+)$/m);
-      if (mdH && mdH[1].trim()) return mdH[1].trim();
-
-      // fallback: nice filename
-      return filename.replace(/\.(html|md)$/i, "").replace(/[-_]/g, " ");
-    }
-
-    function extractDescriptionFromContent(content) {
-      // try first <p>
-      const p = content.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
-      if (p && p[1].trim()) return stripTags(p[1].trim()).slice(0, 280);
-
-      // try markdown paragraph
-      // split by blank line, skip headings
-      const blocks = content.split(/\r?\n\r?\n/).map(s => s.trim()).filter(Boolean);
-      for (let block of blocks) {
-        if (/^#{1,6}\s+/.test(block)) continue;
-        // remove markdown markers
-        const cleaned = block.replace(/[#>*`~_-]+/g, "").trim();
-        if (cleaned.length) return cleaned.slice(0, 280);
+    /* Recommended articles database */
+    const articles = [
+      {
+        title: "Note-Taking & Review",
+        desc: "A complete guide for beginning students of knowledge.",
+        link: "articles/note-taking.html"
+      },
+      {
+        title: "The Student's Path",
+        desc: "How to begin your journey seeking knowledge.",
+        link: "articles/student-path.html"
+      },
+      {
+        title: "Memorization Methods",
+        desc: "Techniques used by the Salaf and scholars.",
+        link: "articles/memorization.html"
+      },
+      {
+        title: "Study Discipline",
+        desc: "Practical ways to stay consistent.",
+        link: "#"
+      },
+      {
+        title: "Understanding a Text",
+        desc: "How to digest and summarize classical works.",
+        link: "#"
       }
+    ];
 
-      return "No description available.";
-    }
+    const track = document.getElementById("carousel-track");
+    const buttonContainer = document.getElementById("carousel-buttons");
 
-    function stripTags(html) {
-      return html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-    }
+    /* Inject article cards */
+    articles.forEach(a => {
+      track.innerHTML += `
+        <div class="article-card">
+          <h4>${a.title}</h4>
+          <p>${a.desc}</p>
+          <a href="${a.link}">Read Article</a>
+        </div>
+      `;
+    });
 
-    // Build UI item
-    function createItem(title, desc, href) {
-      const item = document.createElement("div");
-      item.className = "rec-item";
+    /* SLIDER LOGIC */
+    const cardWidth = 280;
+    let page = 0;
+    const totalPages = Math.ceil(articles.length / 2);
 
-      const a = document.createElement("a");
-      a.href = href;
-      a.rel = "noopener";
-
-      const span = document.createElement("span");
-      span.textContent = title;
-
-      const icon = document.createElement("img");
-      icon.className = "folder-icon";
-      icon.src = "https://freesvg.org/img/Folder-1.png";
-      icon.alt = "folder";
-
-      a.appendChild(span);
-      a.appendChild(icon);
-
-      const tooltip = document.createElement("div");
-      tooltip.className = "tooltip";
-      tooltip.innerHTML = `<h4>${escapeHtml(title)}</h4><p>${escapeHtml(desc)}</p>`;
-
-      // hover icon swap
-      a.addEventListener("mouseenter", () => {
-        icon.src = "https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/icon%20image/Open-Folder-icon.png";
+    function updateSlider() {
+      track.style.transform = `translateX(${-page * cardWidth * 2}px)`;
+      document.querySelectorAll(".page-btn").forEach((btn, i) => {
+        btn.classList.toggle("active-page", i === page);
       });
-      a.addEventListener("mouseleave", () => {
-        icon.src = "https://freesvg.org/img/Folder-1.png";
-      });
-
-      item.appendChild(a);
-      item.appendChild(tooltip);
-      return item;
     }
 
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+    /* Create page buttons */
+    for (let i = 0; i < totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.className = "page-btn";
+      btn.textContent = i + 1;
+      btn.onclick = () => { page = i; updateSlider(); };
+      buttonContainer.appendChild(btn);
     }
 
-    async function loadArticles() {
-      recList.innerHTML = `<div class="status">Loading recommended articles…</div>`;
-      setStatus("");
+    updateSlider();
 
-      try {
-        // Try cached list first
-        let files = useCacheGet();
-        if (!files) {
-          const apiURL = `https://api.github.com/repos/${GITHUB_USER}/${REPO}/contents/${ARTICLE_FOLDER}?ref=${BRANCH}`;
-          const fetched = await fetchApi(apiURL);
+    /* Arrow buttons */
+    document.querySelector(".arrow.left").onclick = () => {
+      if (page > 0) page--;
+      updateSlider();
+    };
+    document.querySelector(".arrow.right").onclick = () => {
+      if (page < totalPages - 1) page++;
+      updateSlider();
+    };
 
-          // ensure array
-          if (!Array.isArray(fetched)) throw new Error("Unexpected API response");
-
-          // filter files (allow .html and .md), skip drafts and _files
-          files = fetched.filter(f => {
-            const name = f.name || "";
-            if (name.startsWith("_")) return false;
-            if (f.type !== "file") return false;
-            if (name.endsWith(".html") || name.endsWith(".md")) {
-              // ignore files inside 'drafts' - check path too
-              if ((f.path || "").toLowerCase().includes("drafts")) return false;
-              return true;
-            }
-            return false;
-          });
-
-          useCacheSet(files); // cache raw file list (not contents)
-        }
-
-        if (!files || files.length === 0) {
-          recList.innerHTML = `<div class="status">No articles found in /${ARTICLE_FOLDER}/</div>`;
-          return;
-        }
-
-        // pick up to 6 random candidates and then fetch details for 3 (reduces API calls)
-        const shuffled = files.sort(() => Math.random() - 0.5);
-        const candidates = shuffled.slice(0, Math.min(6, files.length));
-        const results = [];
-
-        for (const f of candidates) {
-          try {
-            // fetch raw file content via download_url if present; else use GitHub API content endpoint
-            const rawUrl = f.download_url || (`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO}/${BRANCH}/${f.path}`);
-            const res = await fetch(rawUrl);
-            if (!res.ok) continue;
-            const content = await res.text();
-
-            const title = extractTitleFromContent(content, f.name);
-            const desc = extractDescriptionFromContent(content);
-
-            // compute relative link: if md -> convert to .html page under /articles/ or link to raw md
-            let href;
-            if (f.name.endsWith(".html")) {
-              href = `${ARTICLE_FOLDER}/${f.name}`;
-            } else {
-              // markdown: prefer linking to the HTML counterpart if exists, else raw file
-              href = `${ARTICLE_FOLDER}/${f.name.replace(/\.md$/i, ".html")}`;
-            }
-
-            results.push({ title, desc, href });
-            if (results.length >= 3) break;
-          } catch (innerErr) {
-            // ignore individual file errors
-            console.warn("file parse error:", f.name, innerErr);
-            continue;
-          }
-        }
-
-        // If not enough results yet, fill from remaining simple filename fallbacks
-        if (results.length < 3) {
-          for (const f of files) {
-            if (results.find(r => r.href && r.href.endsWith(f.name))) continue;
-            const title = f.name.replace(/\.(html|md)$/i, "").replace(/[-_]/g, " ");
-            const href = `${ARTICLE_FOLDER}/${f.name}`;
-            results.push({ title, desc: "Read this article.", href });
-            if (results.length >= 3) break;
-          }
-        }
-
-        // Render
-        recList.innerHTML = "";
-        if (results.length === 0) {
-          recList.innerHTML = `<div class="status">No valid articles to recommend.</div>`;
-          return;
-        }
-        for (const r of results) {
-          recList.appendChild(createItem(r.title, r.desc, r.href));
-        }
-
-        setStatus(`Showing ${results.length} recommended articles (auto-detected).`);
-      } catch (err) {
-        console.error(err);
-        recList.innerHTML = `<div class="status">Error loading articles. See console for details.</div>`;
-        setStatus("Article engine error.");
-      }
-    }
-
-    // start
-    loadArticles();
-
-  })();
   </script>
+
 </body>
 </html>
