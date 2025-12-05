@@ -1,334 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Al-Maymunah — Home</title>
+  <meta charset="UTF-8" />
+  <title>Al Maymunah – Home</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      background: #fdfbf6;
-      color: #2f2f2f;
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: 35px 20px;
-      background: linear-gradient(180deg,#fdfbf6,#f2e9d8);
-      border-bottom: 1px solid #c8b48c;
-      box-shadow: inset 0 2px 6px rgba(255,255,255,0.7),
-                  0 3px 10px rgba(0,0,0,0.15);
-    }
-    header img {
-      max-width: 320px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      font-family: "Amiri", serif;
-      font-size: 34px;
-      color: #3a2b1a;
-    }
-    header p {
-      font-size: 15px;
-      color: #5c4b36;
-    }
-
-    /* Layout */
-    .container {
-      display: flex;
-      max-width: 1300px;
-      margin: 30px auto;
-      padding: 0 20px;
-      gap: 24px;
-    }
-
-    /* LEFT SIDEBAR */
-    aside.left {
-      width: 220px;
-      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      height: fit-content;
-    }
-    aside.left h3 {
-      font-family: "Amiri", serif;
-      font-size: 20px;
-      color: #4b3621;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #d9c7a4;
-      padding-bottom: 5px;
-    }
-    .sidebar-links a {
-      display: block;
-      padding: 10px 12px;
-      margin-bottom: 6px;
-      background: linear-gradient(180deg,#fdfbf6,#efe3cd);
-      border: 1px solid #d9c7a4;
-      border-radius: 8px;
-      color: #3a2b1a;
-      text-decoration: none;
-      font-size: 15px;
-      transition: 0.25s;
-    }
-    .sidebar-links a:hover {
-      background: #f7e8c9;
-      transform: translateX(4px);
-    }
-
-    /* MAIN CONTENT — Recommended Articles Section */
-    main {
-      flex: 1;
-      background: #fffdf9;
-      padding: 25px;
-      border: 1px solid #e4d8c2;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-
-    main h2 {
-      font-family: "Amiri", serif;
-      font-size: 28px;
-      color: #3a2b1a;
-      margin-bottom: 20px;
-    }
-
-    /* RECOMMENDED ARTICLES SLIDER */
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      padding: 15px 0;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-      gap: 20px;
-    }
-
-    .article-card {
-      background: linear-gradient(180deg,#fbf7ef,#f3e9d6);
-      border: 1px solid #d9c7a4;
-      border-radius: 12px;
-      padding: 18px;
-      min-width: 260px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    }
-
-    .article-card h4 {
-      margin: 0 0 8px;
-      font-family: "Amiri", serif;
-      font-size: 20px;
-      color: #3a2b1a;
-    }
-
-    .article-card p {
-      font-size: 14px;
-      color: #5a4a36;
-      margin-bottom: 10px;
-    }
-
-    .article-card a {
-      display: inline-block;
-      margin-top: 10px;
-      background: #6d4c2f;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    /* ARROWS */
-    .arrow {
-      position: absolute;
-      top: 40%;
-      transform: translateY(-50%);
-      background: #6d4c2f;
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .arrow:hover { background: #8a6543; }
-
-    .arrow.left { left: -10px; }
-    .arrow.right { right: -10px; }
-
-    /* PAGE BUTTONS */
-    .carousel-buttons {
-      margin-top: 14px;
-      text-align: center;
-    }
-    .page-btn {
-      display: inline-block;
-      padding: 6px 10px;
-      border: 1px solid #d9c7a4;
-      margin: 0 4px;
-      cursor: pointer;
-      border-radius: 6px;
-      font-family: "Amiri", serif;
-      background: #fbf7ef;
-    }
-    .active-page {
-      background: #6d4c2f;
-      color: white;
-      border: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      border-top: 1px solid #e4d8c2;
-      color: #5c4b36;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="YOUR_BANNER_HERE" alt="Al-Maymunah Banner">
-    <h1>Al-Maymunah</h1>
-    <p>Maktabat Al-Maymunah — Islam • Sunnah • Knowledge</p>
-  </header>
+<header>
+  <img class="banner" src="https://raw.githubusercontent.com/millahibrahim148-ops/al-majeedah-org/d991a511f7d44c29627b0d73541ad21ecf28c2ac/icon%2C%20images%20%26%20misc/banner.png" alt="Al Maymunah Banner">
+</header>
 
-  <div class="container">
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Articles</a></li>
+    <li><a href="#">Library</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
 
-    <!-- LEFT NAVIGATION -->
-    <aside class="left">
-      <h3>Navigation</h3>
-      <div class="sidebar-links">
-        <a href="index.html">Home</a>
-        <a href="library.html">Library</a>
-        <a href="articles.html">Articles</a>
-        <a href="#">Audio</a>
-        <a href="#">About</a>
-      </div>
-    </aside>
+<div class="container">
 
-    <!-- MAIN CONTENT -->
-    <main>
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1 class="page-title">Recommended Articles</h1>
+    <div id="articles-container" class="articles-list"></div>
 
-      <h2>Recommended Articles</h2>
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <button id="prevPage" class="page-btn">←</button>
 
-      <!-- CAROUSEL -->
-      <div class="carousel-container">
+      <span id="pageNumbers"></span>
 
-        <button class="arrow left">&lt;</button>
+      <input id="jumpInput" type="number" min="1" class="jump-box" placeholder="...">
+      <button id="jumpBtn" class="page-btn">Go</button>
 
-        <div class="carousel-track" id="carousel-track">
-          <!-- Injected by JS -->
-        </div>
+      <button id="nextPage" class="page-btn">→</button>
+    </div>
+  </main>
 
-        <button class="arrow right">&gt;</button>
+</div>
 
-      </div>
-
-      <div class="carousel-buttons" id="carousel-buttons"></div>
-
-    </main>
-
-  </div>
-
-  <footer>
-    <p>&copy; 2025 Al-Maymunah. All rights reserved.</p>
-  </footer>
-
-  <script>
-    /* Recommended articles database */
-    const articles = [
-      {
-        title: "Note-Taking & Review",
-        desc: "A complete guide for beginning students of knowledge.",
-        link: "articles/note-taking.html"
-      },
-      {
-        title: "The Student's Path",
-        desc: "How to begin your journey seeking knowledge.",
-        link: "articles/student-path.html"
-      },
-      {
-        title: "Memorization Methods",
-        desc: "Techniques used by the Salaf and scholars.",
-        link: "articles/memorization.html"
-      },
-      {
-        title: "Study Discipline",
-        desc: "Practical ways to stay consistent.",
-        link: "#"
-      },
-      {
-        title: "Understanding a Text",
-        desc: "How to digest and summarize classical works.",
-        link: "#"
-      }
-    ];
-
-    const track = document.getElementById("carousel-track");
-    const buttonContainer = document.getElementById("carousel-buttons");
-
-    /* Inject article cards */
-    articles.forEach(a => {
-      track.innerHTML += `
-        <div class="article-card">
-          <h4>${a.title}</h4>
-          <p>${a.desc}</p>
-          <a href="${a.link}">Read Article</a>
-        </div>
-      `;
-    });
-
-    /* SLIDER LOGIC */
-    const cardWidth = 280;
-    let page = 0;
-    const totalPages = Math.ceil(articles.length / 2);
-
-    function updateSlider() {
-      track.style.transform = `translateX(${-page * cardWidth * 2}px)`;
-      document.querySelectorAll(".page-btn").forEach((btn, i) => {
-        btn.classList.toggle("active-page", i === page);
-      });
-    }
-
-    /* Create page buttons */
-    for (let i = 0; i < totalPages; i++) {
-      const btn = document.createElement("button");
-      btn.className = "page-btn";
-      btn.textContent = i + 1;
-      btn.onclick = () => { page = i; updateSlider(); };
-      buttonContainer.appendChild(btn);
-    }
-
-    updateSlider();
-
-    /* Arrow buttons */
-    document.querySelector(".arrow.left").onclick = () => {
-      if (page > 0) page--;
-      updateSlider();
-    };
-    document.querySelector(".arrow.right").onclick = () => {
-      if (page < totalPages - 1) page++;
-      updateSlider();
-    };
-
-  </script>
+<!-- JS -->
+<script src="articles.js"></script>
 
 </body>
 </html>
