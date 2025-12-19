@@ -325,8 +325,15 @@ function render(filter=""){
             </div>
           </div>
 
-          <h3>${a.title}</h3>
-          <p>${a.desc}</p>
+          ${a.image ? `
+  <div class="article-thumb">
+    <img src="${a.image}" alt="${a.title}">
+  </div>
+` : ""}
+
+<h3>${a.title}</h3>
+<p>${a.desc}</p>
+
         </div>
       </a>`;
     });
@@ -359,6 +366,7 @@ render();
 
 </body>
 </html>
+
 
 
 
