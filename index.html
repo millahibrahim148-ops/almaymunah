@@ -83,7 +83,18 @@ body{
   align-items:center;
   gap:12px;
 }
-.social img{width:20px;opacity:.85}
+.social img{
+  width:20px;
+  opacity:.85;
+  filter: drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.social img:hover{
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.45));
+}
+
 
 /* ===== HEADER ===== */
 header{
@@ -347,3 +358,4 @@ render();
 
 </body>
 </html>
+
