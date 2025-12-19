@@ -77,11 +77,18 @@ body{
 .search-results div:hover{background:#f7e8c9}
 
 /* SOCIAL */
-.social img{
+.social{
+  display:flex;
+  align-items:center;
+  gap:12px;   /* spacing between icons */
+}
+
+.social a img{
   width:20px;
   opacity:.85;
-  filter:drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
+  filter: drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
 }
+
 
 /* ===== HEADER ===== */
 header{
@@ -306,4 +313,5 @@ render();
 
 </body>
 </html>
+
 
