@@ -2,56 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Al-Maymunah — Home</title>
+  <title>Al‑Maymunah — Home</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Source+Serif+4&display=swap" rel="stylesheet">
+  <!-- Fonts (MATCH LIBRARY) -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#fdfbf6; --panel:#fffdf9; --trim:#d9c7a4; --accent:#6d4c2f; --muted:#5a4a36;
+      --bg:#fdfbf6;
+      --panel:#fffdf9;
+      --trim:#d9c7a4;
+      --accent:#6d4c2f;
+      --muted:#5c4b36;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:"Source Serif 4",serif;background:var(--bg);color:#2f2f2f}
+    body{
+      margin:0;
+      font-family:"Cormorant Garamond",serif;
+      background:var(--bg);
+      color:#2f2f2f;
+      line-height:1.6;
+    }
 
-    header{text-align:center;padding:32px 18px;background:linear-gradient(180deg,#fdfbf6,#f2e9d8);border-bottom:1px solid #c8b48c}
-    header img{max-width:320px;margin-bottom:10px}
-    header h1{font-family:"Amiri",serif;font-size:34px;margin:6px 0;color:#3a2b1a}
-    header p{color:var(--muted);font-size:15px}
+    /* HEADER (MATCH LIBRARY) */
+    header{
+      text-align:center;
+      padding:35px 20px;
+      background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+      border-bottom:1px solid #c8b48c;
+      box-shadow:inset 0 2px 6px rgba(255,255,255,.7),0 3px 10px rgba(0,0,0,.15);
+    }
+    header img{max-width:320px;display:block;margin:0 auto 12px}
+    header h1{font-family:"Amiri",serif;font-size:42px;font-weight:400;color:#3a2b1a}
+    header p{font-size:16px;color:var(--muted);margin-top:8px}
 
-    .page-wrap{max-width:1200px;margin:28px auto;padding:0 18px;display:flex;gap:20px}
-    aside.left{width:220px;background:linear-gradient(180deg,#fbf7ef,#f3e9d6);border:1px solid var(--trim);border-radius:12px;padding:16px}
-    aside.left h3{font-family:"Amiri",serif;font-size:18px;margin-bottom:12px}
-    .sidebar-links a{display:block;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--trim);background:#fbf7ef;text-decoration:none;color:#3a2b1a}
+    /* LAYOUT */
+    .container{
+      display:flex;
+      max-width:1100px;
+      margin:30px auto;
+      padding:0 20px;
+      gap:24px;
+    }
+    aside{
+      width:260px;
+      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);
+      height:fit-content;
+    }
+    aside h3{
+      font-family:"Amiri",serif;
+      font-size:18px;
+      margin-bottom:12px;
+      color:#4b3621;
+      border-bottom:1px solid var(--trim);
+      padding-bottom:5px;
+    }
+    .sidebar-links a{
+      display:block;
+      padding:10px 12px;
+      margin-bottom:6px;
+      background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+      border:1px solid var(--trim);
+      border-radius:8px;
+      color:#3a2b1a;
+      text-decoration:none;
+      font-size:15px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
+      transition:.2s;
+    }
+    .sidebar-links a:hover{background:#f7e8c9;transform:translateX(3px)}
 
-    main{flex:1;background:var(--panel);padding:22px;border:1px solid #e4d8c2;border-radius:10px}
-    main h2{font-family:"Amiri",serif;font-size:26px;margin-bottom:18px}
+    main{
+      flex:1;
+      background:var(--panel);
+      padding:22px;
+      border:1px solid #e4d8c2;
+      border-radius:10px;
+      box-shadow:0 3px 10px rgba(0,0,0,.08);
+    }
 
-    .articles-list{display:flex;flex-direction:column;gap:16px}
-    .article-card{position:relative;padding:16px;border-radius:12px;border:1px solid var(--trim);background:linear-gradient(180deg,#fbf7ef,#f3e9d6);cursor:pointer}
-    .article-card:hover{background:#f7ecd7}
+    main h2{
+      font-family:"Amiri",serif;
+      font-size:26px;
+      font-weight:400;
+      color:#3a2b1a;
+      margin-bottom:18px;
+    }
 
-    .article-title{font-family:"Amiri",serif;font-size:20px;margin:0 0 6px}
-    .article-desc{font-size:15px;color:var(--muted)}
+    /* ARTICLE CARDS (LIBRARY FEEL) */
+    .articles{display:flex;flex-direction:column;gap:16px}
 
-    .article-tags{display:flex;gap:8px;margin-top:10px;align-items:center}
-    .tag{display:flex;gap:6px;align-items:center;background:#f2e9d8;border:1px solid var(--trim);border-radius:6px;padding:4px 8px;font-size:13px}
-    .tag svg{width:14px;height:14px;fill:#4a4a4a}
+    .article{
+      background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+      border:1px solid var(--trim);
+      border-radius:12px;
+      padding:14px 16px 12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      cursor:pointer;
+      transition:.2s;
+    }
+    .article:hover{background:#f7e8c9;transform:translateY(-2px)}
 
-    footer{text-align:center;margin-top:40px;padding:18px;border-top:1px solid var(--trim);color:var(--muted)}
+    .article h3{
+      font-family:"Amiri",serif;
+      font-size:20px;
+      font-weight:400;
+      margin-bottom:6px;
+      color:#3a2b1a;
+    }
+    .article p{
+      font-size:15px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    /* TAGS */
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:13px;
+      padding:4px 8px;
+      background:#fdfbf6;
+      border:1px solid var(--trim);
+      border-radius:6px;
+      color:#4b3621;
+    }
+    .tag img{width:14px;height:14px}
+
+    footer{
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+      border-top:1px solid var(--trim);
+      background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+      font-size:14px;
+      color:#6b5a45;
+      box-shadow:inset 0 2px 6px rgba(255,255,255,.6);
+    }
+
+    @media(max-width:900px){aside{display:none}}
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/d69b007b25bfaec809bc9382222712702c9e104a/icon%20image/maktabat%20almaymunah.gif" alt="Al-Maymunah">
-  <h1>Al-Maymunah</h1>
-  <p>Maktabat Al-Maymunah — Islam • Sunnah • Knowledge</p>
+  <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/d69b007b25bfaec809bc9382222712702c9e104a/icon%20image/maktabat%20almaymunah.gif" alt="Al‑Maymunah">
+  <h1>Al‑Maymunah</h1>
+  <p>Maktabat of Sunnah & Beneficial Knowledge</p>
 </header>
 
-<div class="page-wrap">
-  <aside class="left">
+<div class="container">
+  <aside>
     <h3>Navigation</h3>
     <div class="sidebar-links">
       <a href="index.html">Home</a>
@@ -64,30 +173,32 @@
 
   <main>
     <h2>Recommended Articles</h2>
-    <div id="articles-list" class="articles-list"></div>
+
+    <div class="articles">
+      <div class="article" onclick="location.href='articles/sample.html'">
+        <h3>Hilyatu Ṭālib al‑ʿIlm</h3>
+        <p>A classical work on the manners and principles of seeking knowledge.</p>
+        <div class="tags">
+          <span class="tag"><img src="https://freesvg.org/img/Folder-1.png">Manhaj</span>
+          <span class="tag"><img src="https://freesvg.org/img/Folder-1.png">Student of Knowledge</span>
+        </div>
+      </div>
+
+      <div class="article" onclick="location.href='articles/sample2.html'">
+        <h3>The Tā’iyyah of al‑Ilbīrī</h3>
+        <p>A timeless poem advising the seeker upon sincerity and discipline.</p>
+        <div class="tags">
+          <span class="tag"><img src="https://freesvg.org/img/Folder-1.png">Poetry</span>
+          <span class="tag"><img src="https://freesvg.org/img/Folder-1.png">Admonition</span>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 
 <footer>
-  &copy; 2025 Al-Maymunah. All rights reserved.
+  &copy; 2025 Al‑Maymunah. All rights reserved.
 </footer>
-
-<script>
-const articles=[
- {title:"Hilyatu Taalib al-Ilm",desc:"Guidance for the student of knowledge.",link:"articles/hilyah.html",tags:["Aqidah","Manhaj"]},
- {title:"The Wasiyyah of Abu Ishaq al-Hibari",desc:"A classical advice text.",link:"articles/wasiyyah.html",tags:["Akhlaq"]}
-];
-
-const list=document.getElementById("articles-list");
-articles.forEach(a=>{
- const card=document.createElement("div");card.className="article-card";card.onclick=()=>location.href=a.link;
- card.innerHTML=`<h3 class="article-title">${a.title}</h3><p class="article-desc">${a.desc}</p>`;
- const tagWrap=document.createElement("div");tagWrap.className="article-tags";
- a.tags.forEach(t=>{tagWrap.innerHTML+=`<span class="tag"><svg viewBox='0 0 24 24'><path d='M10 4H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z'/></svg>${t}</span>`});
- card.appendChild(tagWrap);
- list.appendChild(card);
-});
-</script>
 
 </body>
 </html>
