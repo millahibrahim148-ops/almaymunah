@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Al Maymunah - Home</title>
+<title>Al-Maymunah — Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:"Cormorant Garamond",serif;
   background:#fdfbf6;
   color:#2f2f2f;
-  line-height:1.6;
 }
 
 /* ===== TOP BAR ===== */
@@ -25,58 +23,67 @@ body{
   padding:10px 20px;
   background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
   border-bottom:1px solid #c8b48c;
-  box-shadow: inset 0 2px 6px rgba(255,255,255,.6),
-              0 2px 6px rgba(0,0,0,.12);
+}
+
+.page-indicator{
+  font-size:14px;
+  color:#5c4b36;
+}
+.page-indicator strong{color:#3a2b1a}
+.page-indicator span{
+  display:block;
+  font-weight:bold;
+  margin-top:2px;
+}
+
+.top-tools{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
 /* SEARCH */
 .search-wrap{
   position:relative;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.search-icon{
-  width:20px;
-  height:20px;
-  opacity:.75;
 }
 .search-wrap input{
-  width:300px;
-  padding:8px 12px;
+  width:320px;
+  padding:8px 12px 8px 38px;
   border-radius:10px;
   border:1px solid #d9c7a4;
   background:linear-gradient(180deg,#fdfbf6,#efe3cd);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
-  font-family:inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
 }
-
-/* SEARCH RESULTS */
+.search-wrap input:focus{outline:none}
+.search-icon{
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;
+  opacity:.7;
+}
 .search-results{
   position:absolute;
-  top:42px;
-  left:28px;
-  width:300px;
+  top:110%;
+  left:0;
+  width:100%;
   background:#fffdf9;
   border:1px solid #d9c7a4;
   border-radius:10px;
-  box-shadow:0 6px 16px rgba(0,0,0,.15);
   display:none;
   z-index:20;
 }
 .search-results div{
-  padding:8px 12px;
+  padding:8px 10px;
   cursor:pointer;
-  border-bottom:1px solid #e4d8c2;
 }
-.search-results div:last-child{border-bottom:none}
 .search-results div:hover{background:#f7e8c9}
 
 /* SOCIAL */
-.social{display:flex;gap:12px}
-.social img{
-  width:26px;height:26px;
-  filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));
+.social a img{
+  width:20px;
+  opacity:.85;
 }
 
 /* ===== HEADER ===== */
@@ -85,12 +92,9 @@ header{
   padding:35px 20px;
   background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
   border-bottom:1px solid #c8b48c;
-  box-shadow: inset 0 2px 6px rgba(255,255,255,.6),
-              0 3px 10px rgba(0,0,0,.15);
 }
 header img{
   max-width:320px;
-  border-radius:8px;
   display:block;
   margin:0 auto 12px;
 }
@@ -100,32 +104,33 @@ header h1{
   font-weight:400;
   color:#3a2b1a;
 }
-header p{color:#5c4b36;font-size:16px}
+header p{
+  font-size:16px;
+  color:#5c4b36;
+}
 
 /* ===== LAYOUT ===== */
 .container{
-  display:flex;
   max-width:1100px;
   margin:30px auto;
   padding:0 20px;
+  display:flex;
   gap:24px;
 }
 
-/* SIDEBAR */
 aside{
   width:260px;
   background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
   border:1px solid rgba(0,0,0,.08);
   border-radius:12px;
   padding:18px;
-  box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
 aside h3{
   font-family:"Amiri",serif;
   font-size:18px;
   margin-bottom:12px;
+  color:#4b3621;
   border-bottom:1px solid #d9c7a4;
-  padding-bottom:5px;
 }
 aside a{
   display:block;
@@ -139,73 +144,55 @@ aside a{
 }
 aside a:hover{background:#f7e8c9}
 
-/* MAIN */
+/* ===== MAIN ===== */
 main{
   flex:1;
   background:#fffdf9;
   padding:20px;
   border:1px solid #e4d8c2;
   border-radius:10px;
-  box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-main h2{
-  font-family:"Amiri",serif;
-  font-size:26px;
-  font-weight:400;
-  margin-bottom:18px;
 }
 
-/* ARTICLE */
 .article{
-  padding:16px;
-  margin-bottom:16px;
-  background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+  padding:14px;
   border:1px solid #d9c7a4;
-  border-radius:10px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+  border-radius:12px;
+  background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+  margin-bottom:14px;
+  cursor:pointer;
 }
-.article:hover{transform:translateY(-2px)}
+.article:hover{background:#f7e8c9}
 
 .article-top{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:6px;
-}
-.article-date{
+  justify-content:flex-end;
   font-size:13px;
   color:#6b5a45;
-  display:flex;
   gap:8px;
-  align-items:center;
 }
-
-/* TAGS beside date */
 .tag{
   display:flex;
   align-items:center;
   gap:4px;
-  padding:2px 6px;
-  border:1px solid #d9c7a4;
-  background:#fdfbf6;
-  border-radius:6px;
-  font-size:12px;
 }
-.tag img{width:12px;height:12px}
+.tag img{width:14px}
 
 .article h3{
   font-family:"Amiri",serif;
   font-size:20px;
-  font-weight:400;
+  margin:6px 0;
 }
-.article p{font-size:15px}
+.article p{
+  font-size:15px;
+  color:#5c4b36;
+}
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   padding:20px;
-  border-top:1px solid #d9c7a4;
   background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+  border-top:1px solid #d9c7a4;
   margin-top:40px;
   font-size:14px;
   color:#6b5a45;
@@ -216,100 +203,95 @@ footer{
 <body>
 
 <div class="topbar">
-  <div class="search-wrap">
-    <img class="search-icon" src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/search-magnifying-glass-white-icon.webp?raw=true">
-    <input id="searchInput" placeholder="Search articles or tags…">
-    <div class="search-results" id="searchResults"></div>
+  <div class="page-indicator">
+    <strong>Al-Maymunah</strong> — Upon the Manhaj Salaf — Hanbali — Athari
+    <span>Home</span>
   </div>
 
-  <div class="social">
-    <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/telegram-xxl.png"></a>
-    <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/youtube-app-white-icon.webp"></a>
-    <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp"></a>
+  <div class="top-tools">
+    <div class="search-wrap">
+      <img class="search-icon" src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/search-magnifying-glass-white-icon.webp?raw=true">
+      <input id="searchInput" placeholder="Search articles or tags…">
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <div class="social">
+      <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/telegram-xxl.png"></a>
+      <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/youtube-app-white-icon.webp"></a>
+      <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp"></a>
+    </div>
   </div>
 </div>
 
 <header>
-  <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/d69b007b25bfaec809bc9382222712702c9e104a/icon%20image/maktabat%20almaymunah.gif?raw=true">
-  <h1>Al Maymunah</h1>
-  <p>Maktabat of Beneficial Knowledge</p>
+<img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/d69b007b25bfaec809bc9382222712702c9e104a/icon%20image/maktabat%20almaymunah.gif">
+<h1>Al-Maymunah</h1>
+<p>Islam • Sunnah • Knowledge</p>
 </header>
 
 <div class="container">
 <aside>
-  <h3>Navigation</h3>
-  <a href="index.html">Home</a>
-  <a href="library.html">Library</a>
-  <a href="article.html">Articles</a>
+<h3>Navigation</h3>
+<a href="index.html">Home</a>
+<a href="library.html">
+<img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/books-xxl.png" style="width:18px;margin-right:6px;vertical-align:middle">
+Library
+</a>
+<a href="article.html">Articles</a>
 </aside>
 
-<main>
-<h2>Recommended Articles</h2>
-<div id="articles"></div>
-</main>
+<main id="articles"></main>
 </div>
 
-<footer>© 2025 Al Maymunah. All rights reserved.</footer>
+<footer>
+&copy; 2025 Al-Maymunah. All rights reserved.
+</footer>
 
 <script>
-const TAG_ICON="https://freesvg.org/img/Folder-1.png";
-const ARTICLES=[
- {title:"The Path of Knowledge",desc:"Foundations of seeking knowledge.",link:"articles/path.html",tags:["Manhaj","Knowledge"]},
- {title:"Adab of the Student",desc:"Etiquettes before knowledge.",link:"articles/adab.html",tags:["Adab","Tarbiyah"]}
+const articles=[
+{title:"Seeking Knowledge Upon the Sunnah",desc:"A reminder on sincerity and methodology.",tags:["Manhaj","Ilm"]},
+{title:"Why the Salaf Warned Against Innovation",desc:"Understanding bid‘ah through the early generations.",tags:["Bidah","Salaf"]}
 ];
 
-const container=document.getElementById("articles");
-const searchInput=document.getElementById("searchInput");
-const searchResults=document.getElementById("searchResults");
+const list=document.getElementById("articles");
+const search=document.getElementById("searchInput");
+const results=document.getElementById("searchResults");
 
-function renderArticles(list){
-  container.innerHTML="";
-  list.forEach(a=>{
+function render(filter=""){
+  list.innerHTML="";
+  results.innerHTML="";
+  articles.filter(a=>a.title.toLowerCase().includes(filter)||a.tags.join().toLowerCase().includes(filter))
+  .forEach(a=>{
     const d=document.createElement("div");
     d.className="article";
-    d.onclick=()=>location.href=a.link;
-
-    const top=document.createElement("div");
-    top.className="article-top";
-
-    const date=document.createElement("div");
-    date.className="article-date";
-    date.textContent=new Date().toLocaleDateString();
-
-    a.tags.forEach(t=>{
-      date.innerHTML+=`<span class="tag"><img src="${TAG_ICON}">${t}</span>`;
-    });
-
-    top.appendChild(date);
-
-    d.innerHTML=`<h3>${a.title}</h3><p>${a.desc}</p>`;
-    d.prepend(top);
-    container.appendChild(d);
+    d.innerHTML=`
+      <div class="article-top">
+        <span>${new Date().toLocaleDateString()}</span>
+        ${a.tags.map(t=>`<span class="tag"><img src="https://freesvg.org/img/Folder-1.png">${t}</span>`).join("")}
+      </div>
+      <h3>${a.title}</h3>
+      <p>${a.desc}</p>`;
+    list.appendChild(d);
   });
 }
-renderArticles(ARTICLES);
 
-/* SEARCH LOGIC */
-searchInput.addEventListener("input",()=>{
-  const q=searchInput.value.toLowerCase();
-  searchResults.innerHTML="";
-  if(!q){searchResults.style.display="none";renderArticles(ARTICLES);return;}
-
-  const matches=ARTICLES.filter(a=>
-    a.title.toLowerCase().includes(q) ||
-    a.tags.some(t=>t.toLowerCase().includes(q))
-  );
-
-  matches.forEach(a=>{
-    const div=document.createElement("div");
-    div.textContent=a.title;
-    div.onclick=()=>location.href=a.link;
-    searchResults.appendChild(div);
+search.addEventListener("input",e=>{
+  const v=e.target.value.toLowerCase();
+  if(!v){results.style.display="none";render();return}
+  results.style.display="block";
+  results.innerHTML="";
+  articles.forEach(a=>{
+    if(a.title.toLowerCase().includes(v)){
+      const r=document.createElement("div");
+      r.textContent=a.title;
+      r.onclick=()=>{search.value=a.title;results.style.display="none";render(v)}
+      results.appendChild(r);
+    }
   });
-
-  searchResults.style.display=matches.length?"block":"none";
-  renderArticles(matches);
+  render(v);
 });
+
+render();
 </script>
 
 </body>
