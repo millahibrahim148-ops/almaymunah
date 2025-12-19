@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -75,8 +75,9 @@ body{
 /* SOCIAL */
 .social{display:flex;gap:12px}
 .social img{
-  width:26px;height:26px;
-  filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));
+  width:26px;
+  height:26px;
+  filter: drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
 }
 
 /* ===== HEADER ===== */
@@ -228,89 +229,3 @@ footer{
     <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp"></a>
   </div>
 </div>
-
-<header>
-  <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/d69b007b25bfaec809bc9382222712702c9e104a/icon%20image/maktabat%20almaymunah.gif?raw=true">
-  <h1>Al Maymunah</h1>
-  <p>Maktabat of Beneficial Knowledge</p>
-</header>
-
-<div class="container">
-<aside>
-  <h3>Navigation</h3>
-  <a href="index.html">Home</a>
-  <a href="library.html">Library</a>
-  <a href="article.html">Articles</a>
-</aside>
-
-<main>
-<h2>Recommended Articles</h2>
-<div id="articles"></div>
-</main>
-</div>
-
-<footer>© 2025 Al Maymunah. All rights reserved.</footer>
-
-<script>
-const TAG_ICON="https://freesvg.org/img/Folder-1.png";
-const ARTICLES=[
- {title:"The Path of Knowledge",desc:"Foundations of seeking knowledge.",link:"articles/path.html",tags:["Manhaj","Knowledge"]},
- {title:"Adab of the Student",desc:"Etiquettes before knowledge.",link:"articles/adab.html",tags:["Adab","Tarbiyah"]}
-];
-
-const container=document.getElementById("articles");
-const searchInput=document.getElementById("searchInput");
-const searchResults=document.getElementById("searchResults");
-
-function renderArticles(list){
-  container.innerHTML="";
-  list.forEach(a=>{
-    const d=document.createElement("div");
-    d.className="article";
-    d.onclick=()=>location.href=a.link;
-
-    const top=document.createElement("div");
-    top.className="article-top";
-
-    const date=document.createElement("div");
-    date.className="article-date";
-    date.textContent=new Date().toLocaleDateString();
-
-    a.tags.forEach(t=>{
-      date.innerHTML+=`<span class="tag"><img src="${TAG_ICON}">${t}</span>`;
-    });
-
-    top.appendChild(date);
-
-    d.innerHTML=`<h3>${a.title}</h3><p>${a.desc}</p>`;
-    d.prepend(top);
-    container.appendChild(d);
-  });
-}
-renderArticles(ARTICLES);
-
-/* SEARCH LOGIC */
-searchInput.addEventListener("input",()=>{
-  const q=searchInput.value.toLowerCase();
-  searchResults.innerHTML="";
-  if(!q){searchResults.style.display="none";renderArticles(ARTICLES);return;}
-
-  const matches=ARTICLES.filter(a=>
-    a.title.toLowerCase().includes(q) ||
-    a.tags.some(t=>t.toLowerCase().includes(q))
-  );
-
-  matches.forEach(a=>{
-    const div=document.createElement("div");
-    div.textContent=a.title;
-    div.onclick=()=>location.href=a.link;
-    searchResults.appendChild(div);
-  });
-
-  searchResults.style.display=matches.length?"block":"none";
-  renderArticles(matches);
-});
-</script>
-
-</body>
-</html>
