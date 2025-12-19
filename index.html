@@ -80,17 +80,15 @@ body{
 .social{
   display:flex;
   align-items:center;
-  gap:12px;   /* spacing between icons */
+  gap:12px;
 }
-
 .social a img{
   width:20px;
   opacity:.85;
   filter: drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
 }
 
-
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   text-align:center;
   padding:35px 20px;
@@ -110,7 +108,7 @@ header h1{
 }
 header p{color:#5c4b36}
 
-/* ===== LAYOUT ===== */
+/* LAYOUT */
 .container{
   max-width:1100px;
   margin:30px auto;
@@ -145,7 +143,7 @@ aside a{
 }
 aside a:hover{background:#f7e8c9}
 
-/* ===== MAIN ===== */
+/* MAIN */
 main{
   flex:1;
   background:#fffdf9;
@@ -154,13 +152,12 @@ main{
   border-radius:10px;
 }
 
-/* ARTICLE LINK */
+/* ARTICLE */
 .article-link{
   text-decoration:none;
   color:inherit;
   display:block;
 }
-
 .article{
   padding:14px;
   border:1px solid #d9c7a4;
@@ -173,10 +170,18 @@ main{
 .article-top{
   display:flex;
   justify-content:flex-end;
+  align-items:center;
   font-size:13px;
   color:#6b5a45;
-  gap:8px;
+  gap:10px;
 }
+
+.meta-date{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.meta-date img{width:14px}
 
 .tag{
   display:flex;
@@ -184,6 +189,11 @@ main{
   gap:4px;
 }
 .tag img{width:14px}
+
+.share-btn{
+  cursor:pointer;
+}
+.share-btn img{width:15px}
 
 .article h3{
   font-family:"Amiri",serif;
@@ -270,26 +280,38 @@ const list=document.getElementById("articles");
 const search=document.getElementById("searchInput");
 const results=document.getElementById("searchResults");
 
+function shareArticle(title, link){
+  if(navigator.share){
+    navigator.share({title, url:location.origin+"/"+link});
+  }else{
+    alert("Sharing not supported on this browser.");
+  }
+}
+
 function render(filter=""){
   list.innerHTML="";
-  articles
-    .filter(a =>
-      a.title.toLowerCase().includes(filter) ||
-      a.tags.join().toLowerCase().includes(filter)
-    )
-    .forEach(a=>{
-      list.innerHTML+=`
-      <a class="article-link" href="${a.link}">
-        <div class="article">
-          <div class="article-top">
-            <span>${new Date().toLocaleDateString()}</span>
-            ${a.tags.map(t=>`<span class="tag"><img src="https://freesvg.org/img/Folder-1.png">${t}</span>`).join("")}
-          </div>
-          <h3>${a.title}</h3>
-          <p>${a.desc}</p>
+  articles.filter(a =>
+    a.title.toLowerCase().includes(filter) ||
+    a.tags.join().toLowerCase().includes(filter)
+  ).forEach(a=>{
+    list.innerHTML+=`
+    <a class="article-link" href="${a.link}">
+      <div class="article">
+        <div class="article-top">
+          <span class="meta-date">
+            <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/2226-calendar.png?raw=true">
+            ${new Date().toLocaleDateString()}
+          </span>
+          ${a.tags.map(t=>`<span class="tag"><img src="https://freesvg.org/img/Folder-1.png">${t}</span>`).join("")}
+          <span class="share-btn" onclick="event.preventDefault();shareArticle('${a.title}','${a.link}')">
+            <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/export-share-icon.webp?raw=true">
+          </span>
         </div>
-      </a>`;
-    });
+        <h3>${a.title}</h3>
+        <p>${a.desc}</p>
+      </div>
+    </a>`;
+  });
 }
 
 search.addEventListener("input",e=>{
@@ -313,5 +335,3 @@ render();
 
 </body>
 </html>
-
-
