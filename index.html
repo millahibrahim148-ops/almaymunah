@@ -8,10 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --article-image-width: 100%; /* 👈 CHANGE IMAGE SIZE HERE */
-}
-
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:"Cormorant Garamond",serif;
@@ -29,6 +25,69 @@ body{
   border-bottom:1px solid #c8b48c;
 }
 
+.page-indicator{
+  font-size:14px;
+  color:#5c4b36;
+}
+.page-indicator strong{color:#3a2b1a}
+.page-indicator span{
+  display:block;
+  font-weight:bold;
+  margin-top:2px;
+}
+
+.top-tools{
+  display:flex;
+  gap:14px;
+}
+
+/* SEARCH */
+.search-wrap{position:relative}
+.search-wrap input{
+  width:320px;
+  padding:8px 12px 8px 38px;
+  border-radius:10px;
+  border:1px solid #d9c7a4;
+  background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+}
+.search-icon{
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;
+  opacity:.7;
+}
+
+.search-results{
+  position:absolute;
+  top:110%;
+  left:0;
+  width:100%;
+  background:#fffdf9;
+  border:1px solid #d9c7a4;
+  border-radius:10px;
+  display:none;
+  z-index:20;
+}
+.search-results div{
+  padding:8px 10px;
+  cursor:pointer;
+}
+.search-results div:hover{background:#f7e8c9}
+
+/* SOCIAL */
+.social{display:flex;gap:12px}
+.social img{
+  width:20px;
+  filter:drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
+  transition:.2s;
+}
+.social img:hover{
+  transform:translateY(-2px);
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.45));
+}
+
 /* ===== HEADER ===== */
 header{
   text-align:center;
@@ -38,15 +97,14 @@ header{
 }
 header img{
   max-width:320px;
-  display:block;
   margin:0 auto 12px;
 }
 header h1{
   font-family:"Amiri",serif;
   font-size:42px;
   font-weight:400;
-  color:#3a2b1a;
 }
+header p{color:#5c4b36}
 
 /* ===== LAYOUT ===== */
 .container{
@@ -61,19 +119,23 @@ header h1{
 aside{
   width:260px;
   background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
-  border:1px solid rgba(0,0,0,.08);
   border-radius:12px;
   padding:18px;
 }
+aside h3{
+  font-family:"Amiri",serif;
+  font-size:18px;
+  margin-bottom:12px;
+  border-bottom:1px solid #d9c7a4;
+}
 aside a{
   display:block;
-  padding:10px 12px;
+  padding:10px;
   margin-bottom:6px;
   background:linear-gradient(180deg,#fdfbf6,#efe3cd);
-  border:1px solid #d9c7a4;
   border-radius:8px;
-  color:#3a2b1a;
   text-decoration:none;
+  color:#3a2b1a;
 }
 
 /* ===== MAIN ===== */
@@ -81,55 +143,83 @@ main{
   flex:1;
   background:#fffdf9;
   padding:20px;
-  border:1px solid #e4d8c2;
   border-radius:10px;
 }
 
 /* ARTICLE */
+.article-link{text-decoration:none;color:inherit}
+
 .article{
   padding:16px;
-  border:1px solid #d9c7a4;
   border-radius:14px;
   background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
-  margin-bottom:16px;
+  margin-bottom:18px;
+  border:1px solid #d9c7a4;
+}
+
+.article-top{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:#6b5a45;
+}
+
+.meta{display:flex;gap:10px;align-items:center}
+
+.tags span:hover{
+  text-shadow:0 0 6px rgba(180,136,56,.6);
+}
+
+.share{
+  padding:6px;
+  border-radius:8px;
+}
+.share:hover{
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+  transform:translateY(-2px);
 }
 
 .article h3{
   font-family:"Amiri",serif;
   font-size:20px;
-  font-weight:400;
-  color:#3a2b1a;
-  margin-top:8px;
+  margin:8px 0;
 }
+.article p{color:#5c4b36}
 
-.article p{
-  color:#5c4b36;
-  margin:6px 0 10px;
-}
-
-/* IMAGE */
+/* ✅ IMAGE FIX */
 .article-thumb{
+  width:100%;
+  height:140px;
+  border-radius:10px;
+  overflow:hidden;
   margin-top:10px;
-  text-align:center;
 }
 .article-thumb img{
-  width:var(--article-image-width);
-  max-width:100%;
-  height:auto;
-  border-radius:8px;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
   padding:20px;
-  border-top:1px solid #d9c7a4;
   margin-top:40px;
+  border-top:1px solid #d9c7a4;
+  background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
 }
 </style>
 </head>
 
 <body>
+
+<div class="topbar">
+  <div class="page-indicator">
+    <strong>Al-Maymunah</strong>
+    <span>Home</span>
+  </div>
+</div>
 
 <header>
 <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/maktaba-almaymnh.gif">
@@ -139,9 +229,10 @@ footer{
 
 <div class="container">
 <aside>
+<h3>Navigation</h3>
 <a href="index.html">Home</a>
 <a href="library.html">Library</a>
-<a href="article.html">Articles</a>
+<a href="about.html">About</a>
 </aside>
 
 <main id="articles"></main>
@@ -152,11 +243,17 @@ footer{
 <script>
 const articles=[
 {
-  title:"Advice for the Seeker of ‘Ilm",
-  desc:"A concise advice for the student of knowledge.",
+  title:"Advice for the Seeker of 'Ilm Regarding Taking Notes & Reading Books",
+  desc:"A concise advice for the student of knowledge regarding acquiring understanding through reading and note-taking.",
   image:"https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/download%20(2).jpg",
-  imageSize:"80%", /* 👈 OPTIONAL PER ARTICLE */
-  link:"#"
+  tags:["Thaalib Al-'Ilm"],
+  link:"articles/a-concise-advice-for-notes-and-reading.html"
+},
+{
+  title:"Why the Salaf Warned Against Innovation",
+  desc:"Understanding bid‘ah through the early generations.",
+  tags:["Bid‘ah","Salaf"],
+  link:"articles/warning-against-bidah.html"
 }
 ];
 
@@ -164,17 +261,21 @@ const list=document.getElementById("articles");
 
 articles.forEach(a=>{
   list.innerHTML+=`
-  <div class="article">
-    <h3>${a.title}</h3>
-    <p>${a.desc}</p>
+  <a class="article-link" href="${a.link}">
+    <div class="article">
+      <div class="article-top">
+        <div class="meta">
+          <span>${new Date().toLocaleDateString()}</span>
+          <div class="tags">${a.tags.join(" / ")}</div>
+        </div>
+      </div>
 
-    ${a.image ? `
-    <div class="article-thumb">
-      <img src="${a.image}" style="width:${a.imageSize || 'var(--article-image-width)'}">
+      <h3>${a.title}</h3>
+      <p>${a.desc}</p>
+
+      ${a.image ? `<div class="article-thumb"><img src="${a.image}"></div>` : ""}
     </div>
-    ` : ""}
-  </div>
-  `;
+  </a>`;
 });
 </script>
 
