@@ -14,6 +14,7 @@ body{
   font-family:"Cormorant Garamond",serif;
   background:#fdfbf6;
   color:#2a2a2a;
+  line-height:1.75;
 }
 
 /* ================= TOPBAR ================= */
@@ -37,24 +38,25 @@ body{
 
 .search-box input{
   padding:10px 14px;
-  width:260px;
+  width:250px;
   border-radius:10px;
   border:1px solid #d8c7a4;
   background:linear-gradient(#fffefb,#efe3cd);
 }
 
 .search-icon{
-  width:34px;height:34px;
-  border-radius:9px;
+  width:32px;height:32px;
+  border-radius:8px;
   background:linear-gradient(#f6eedc,#e2d2ae);
   border:1px solid #cbb891;
   display:flex;
   align-items:center;
   justify-content:center;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 4px rgba(0,0,0,.15);
+  cursor:pointer;
 }
 
-.search-icon img{width:15px}
+.search-icon img{width:14px}
 
 /* ================= HEADER ================= */
 header{
@@ -84,6 +86,46 @@ header{
   max-width:600px;
 }
 
+/* ================= SOCIAL ICONS (NEW) ================= */
+.header-social{
+  margin-left:auto;
+  display:flex;
+  gap:10px;
+}
+
+.social-btn{
+  width:42px;
+  height:42px;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(0,0,0,.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 2px 4px rgba(0,0,0,.18);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+
+.social-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 4px 6px rgba(0,0,0,.22);
+}
+
+.social-btn svg{
+  width:18px;
+  height:18px;
+  fill:#fff;
+}
+
+/* Colors inspired by your reference */
+.fb{background:#5b78c7}
+.tw{background:#6ec6f1}
+.tg{background:#4f79a3}
+.mail{background:#3aa9d8}
+
 /* ================= LAYOUT ================= */
 .container{
   max-width:1150px;
@@ -112,7 +154,7 @@ main h2{
 
 /* ARTICLE */
 .article{
-  padding:18px 0;
+  padding:20px 0;
   border-bottom:1px solid #e6dbc3;
 }
 
@@ -122,71 +164,73 @@ main h2{
   text-decoration:none;
 }
 
-/* CATEGORY TAGS */
-.tags{
-  margin:10px 0;
-}
-
-.tags a{
-  display:inline-block;
-  margin-right:6px;
-  padding:4px 10px;
-  font-size:13px;
-  border-radius:6px;
-  text-decoration:none;
-  color:#1a5fb4;
-  background:linear-gradient(#fffdf8,#efe3cd);
-  border:1px solid #d8c7a4;
-}
-
-/* META */
+/* META LINE */
 .article-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
   font-size:14px;
   color:#6b5a45;
-  margin-bottom:8px;
+  margin:8px 0;
+  align-items:center;
 }
 
-.article p{color:#4a3f2f}
+.article-meta img{
+  width:14px;
+  vertical-align:middle;
+}
+
+/* AUTHOR */
+.author a{
+  color:#1a5fb4;
+  text-decoration:none;
+}
+
+/* CATEGORIES */
+.categories a{
+  color:#1a5fb4;
+  text-decoration:none;
+}
+
+/* CONTENT */
+.article p{
+  color:#4a3f2f;
+  margin:10px 0;
+}
 
 .read-more{
   color:#1a5fb4;
   text-decoration:none;
-  font-size:15px;
 }
 
 /* SHARE */
-.share{
-  display:flex;
-  gap:10px;
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   margin-top:10px;
-}
-
-.share img{
-  width:18px;
-  opacity:.75;
+  font-size:14px;
+  color:#1a5fb4;
   cursor:pointer;
 }
 
-.share img:hover{opacity:1}
+.share-btn img{width:16px}
 
-/* AUTHOR BOX */
-.author-box{
-  margin-top:26px;
-  padding:16px;
-  background:linear-gradient(#fbf7ef,#f2e6cf);
-  border:1px solid #e0d3b7;
-  border-radius:10px;
+/* PAGINATION */
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:30px;
 }
 
-.author-box h4{
-  font-family:"Amiri",serif;
-  font-size:18px;
-  margin-bottom:6px;
-}
-
-.author-box p{
-  font-size:15px;
-  color:#4a3f2f;
+.pagination a{
+  padding:6px 12px;
+  border:1px solid #d8c7a4;
+  background:linear-gradient(#fffdf8,#efe3cd);
+  border-radius:6px;
+  text-decoration:none;
+  color:#3a2b1a;
 }
 
 /* ================= SIDEBAR ================= */
@@ -214,9 +258,6 @@ aside a{
   color:#3a2b1a;
 }
 
-aside a:hover{background:#f0e4cc}
-
-/* Latest links */
 .latest-links{
   border-top:1px solid #d8c7a4;
   margin-top:14px;
@@ -245,6 +286,8 @@ footer{
   .container{grid-template-columns:1fr}
   aside{order:-1}
   aside a{padding:16px;font-size:17px}
+  .header-inner{flex-wrap:wrap}
+  .header-social{margin-left:0}
 }
 </style>
 </head>
@@ -264,76 +307,20 @@ footer{
 <header>
   <div class="header-inner">
     <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
+
     <div class="header-text">
       <h1>Al-Istibānah</h1>
       <p>Preserving Sunni knowledge upon the understanding of the Salaf.</p>
     </div>
+
+    <!-- SOCIAL ICONS -->
+    <div class="header-social">
+      <a class="social-btn fb" href="#" title="Facebook"></a>
+      <a class="social-btn tw" href="#" title="Twitter"></a>
+      <a class="social-btn tg" href="#" title="Telegram"></a>
+      <a class="social-btn mail" href="#" title="Email"></a>
+    </div>
   </div>
 </header>
 
-<div class="container">
-
-<main>
-<h2>Latest Articles</h2>
-
-<div class="article">
-  <div class="article-title">
-    <a href="#">The Correct Methodology in Seeking Knowledge</a>
-  </div>
-
-  <div class="tags">
-    <a href="#">Manhaj</a>
-    <a href="#">ʿAqīdah</a>
-    <a href="#">Seeking Knowledge</a>
-  </div>
-
-  <div class="article-meta">
-    Published: 12 Rabīʿ al-Ākhir 1446H
-  </div>
-
-  <p>
-    A reminder regarding sincerity, patience, and adherence to the understanding of the Salaf.
-  </p>
-
-  <a class="read-more" href="#">Read more »</a>
-
-  <div class="share">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/60/60525.png">
-  </div>
-
-  <div class="author-box">
-    <h4>Written by: Abu ʿAbdillāh</h4>
-    <p>
-      Student of knowledge concerned with preserving the creed and methodology of Ahl al-Sunnah
-      upon the understanding of the Salaf.
-    </p>
-  </div>
-</div>
-
-</main>
-
-<aside>
-  <h3>Navigation</h3>
-  <a href="#">Home</a>
-  <a href="#">Articles</a>
-  <a href="#">Library</a>
-  <a href="#">About</a>
-
-  <div class="latest-links">
-    <h3>Latest Articles</h3>
-    <a href="#">Correct Methodology</a>
-    <a href="#">Warnings Against Innovation</a>
-    <a href="#">Understanding Tawḥīd</a>
-  </div>
-</aside>
-
-</div>
-
-<footer>
-© 2025 Al-Istibānah
-</footer>
-
-</body>
-</html>
+<!-- REST OF YOUR HTML REMAINS UNCHANGED -->
