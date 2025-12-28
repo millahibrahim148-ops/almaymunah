@@ -14,6 +14,7 @@ body{
   font-family:"Cormorant Garamond",serif;
   background:#fdfbf6;
   color:#2a2a2a;
+  line-height:1.75;
 }
 
 /* ================= TOPBAR ================= */
@@ -37,15 +38,15 @@ body{
 
 .search-box input{
   padding:10px 14px;
-  width:260px;
+  width:250px;
   border-radius:10px;
   border:1px solid #d8c7a4;
   background:linear-gradient(#fffefb,#efe3cd);
 }
 
 .search-icon{
-  width:34px;height:34px;
-  border-radius:9px;
+  width:32px;height:32px;
+  border-radius:8px;
   background:linear-gradient(#f6eedc,#e2d2ae);
   border:1px solid #cbb891;
   display:flex;
@@ -54,7 +55,7 @@ body{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 4px rgba(0,0,0,.15);
 }
 
-.search-icon img{width:15px}
+.search-icon img{width:14px}
 
 /* ================= HEADER ================= */
 header{
@@ -112,7 +113,7 @@ main h2{
 
 /* ARTICLE */
 .article{
-  padding:18px 0;
+  padding:20px 0;
   border-bottom:1px solid #e6dbc3;
 }
 
@@ -122,71 +123,73 @@ main h2{
   text-decoration:none;
 }
 
-/* CATEGORY TAGS */
-.tags{
-  margin:10px 0;
-}
-
-.tags a{
-  display:inline-block;
-  margin-right:6px;
-  padding:4px 10px;
-  font-size:13px;
-  border-radius:6px;
-  text-decoration:none;
-  color:#1a5fb4;
-  background:linear-gradient(#fffdf8,#efe3cd);
-  border:1px solid #d8c7a4;
-}
-
-/* META */
+/* META LINE */
 .article-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
   font-size:14px;
   color:#6b5a45;
-  margin-bottom:8px;
+  margin:8px 0;
+  align-items:center;
 }
 
-.article p{color:#4a3f2f}
+.article-meta img{
+  width:14px;
+  vertical-align:middle;
+}
+
+/* AUTHOR */
+.author a{
+  color:#1a5fb4;
+  text-decoration:none;
+}
+
+/* CATEGORIES */
+.categories a{
+  color:#1a5fb4;
+  text-decoration:none;
+}
+
+/* CONTENT */
+.article p{
+  color:#4a3f2f;
+  margin:10px 0;
+}
 
 .read-more{
   color:#1a5fb4;
   text-decoration:none;
-  font-size:15px;
 }
 
 /* SHARE */
-.share{
-  display:flex;
-  gap:10px;
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   margin-top:10px;
-}
-
-.share img{
-  width:18px;
-  opacity:.75;
+  font-size:14px;
+  color:#1a5fb4;
   cursor:pointer;
 }
 
-.share img:hover{opacity:1}
+.share-btn img{width:16px}
 
-/* AUTHOR BOX */
-.author-box{
-  margin-top:26px;
-  padding:16px;
-  background:linear-gradient(#fbf7ef,#f2e6cf);
-  border:1px solid #e0d3b7;
-  border-radius:10px;
+/* PAGINATION */
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:30px;
 }
 
-.author-box h4{
-  font-family:"Amiri",serif;
-  font-size:18px;
-  margin-bottom:6px;
-}
-
-.author-box p{
-  font-size:15px;
-  color:#4a3f2f;
+.pagination a{
+  padding:6px 12px;
+  border:1px solid #d8c7a4;
+  background:linear-gradient(#fffdf8,#efe3cd);
+  border-radius:6px;
+  text-decoration:none;
+  color:#3a2b1a;
 }
 
 /* ================= SIDEBAR ================= */
@@ -214,9 +217,6 @@ aside a{
   color:#3a2b1a;
 }
 
-aside a:hover{background:#f0e4cc}
-
-/* Latest links */
 .latest-links{
   border-top:1px solid #d8c7a4;
   margin-top:14px;
@@ -278,38 +278,43 @@ footer{
 
 <div class="article">
   <div class="article-title">
-    <a href="#">The Correct Methodology in Seeking Knowledge</a>
-  </div>
-
-  <div class="tags">
-    <a href="#">Manhaj</a>
-    <a href="#">ʿAqīdah</a>
-    <a href="#">Seeking Knowledge</a>
+    <a href="article.html">The Correct Methodology in Seeking Knowledge</a>
   </div>
 
   <div class="article-meta">
-    Published: 12 Rabīʿ al-Ākhir 1446H
+    <span>
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
+      12 Rabīʿ al-Ākhir 1446H
+    </span>
+
+    <span class="author">
+      by <a href="author.html">Abu ʿAbdillāh</a>
+    </span>
+
+    <span class="categories">
+      🏷️
+      <a href="category.html?cat=manhaj">Manhaj</a> /
+      <a href="category.html?cat=aqidah">ʿAqīdah</a>
+    </span>
   </div>
 
   <p>
     A reminder regarding sincerity, patience, and adherence to the understanding of the Salaf.
   </p>
 
-  <a class="read-more" href="#">Read more »</a>
+  <a class="read-more" href="article.html">Read more »</a>
 
-  <div class="share">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/60/60525.png">
+  <div class="share-btn">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/export-share-icon.webp">
+    Share
   </div>
+</div>
 
-  <div class="author-box">
-    <h4>Written by: Abu ʿAbdillāh</h4>
-    <p>
-      Student of knowledge concerned with preserving the creed and methodology of Ahl al-Sunnah
-      upon the understanding of the Salaf.
-    </p>
-  </div>
+<div class="pagination">
+  <a href="#">« Previous</a>
+  <a href="#">1</a>
+  <a href="#">2</a>
+  <a href="#">Next »</a>
 </div>
 
 </main>
@@ -322,10 +327,10 @@ footer{
   <a href="#">About</a>
 
   <div class="latest-links">
-    <h3>Latest Articles</h3>
-    <a href="#">Correct Methodology</a>
-    <a href="#">Warnings Against Innovation</a>
-    <a href="#">Understanding Tawḥīd</a>
+    <h3>Categories</h3>
+    <a href="category.html?cat=aqidah">ʿAqīdah</a>
+    <a href="category.html?cat=manhaj">Manhaj</a>
+    <a href="category.html?cat=fiqh">Fiqh</a>
   </div>
 </aside>
 
