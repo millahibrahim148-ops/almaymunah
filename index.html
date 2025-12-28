@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Al-Maymunah | Knowledge upon the Salaf</title>
+<title>Al-Istibānah | Knowledge upon the Salaf</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@ body{
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  transition:all .25s ease;
+  transition:.25s;
 }
 
 .search-icon:hover{
@@ -65,13 +65,7 @@ body{
   transform:translateY(-1px);
 }
 
-.search-icon:active{
-  transform:scale(.95);
-}
-
-.search-icon img{
-  width:20px;
-}
+.search-icon img{width:20px}
 
 .search-box input{
   width:360px;
@@ -79,47 +73,11 @@ body{
   border-radius:14px;
   border:1px solid #d8c7a4;
   background:linear-gradient(180deg,#fffefb,#efe3cd);
-  transition:all .25s ease;
-}
-
-.search-box input::placeholder{
-  color:#8a7a5e;
-  font-style:italic;
 }
 
 .search-box input:focus{
   outline:none;
   box-shadow:0 0 0 3px rgba(182,138,58,.3);
-}
-
-/* SEARCH RESULTS */
-.search-results{
-  position:absolute;
-  top:120%;
-  width:100%;
-  background:#fffdf9;
-  border:1px solid #d8c7a4;
-  border-radius:14px;
-  display:none;
-  overflow:hidden;
-  animation:fadeSlide .2s ease;
-  z-index:20;
-}
-
-.search-results div{
-  padding:14px 16px;
-  border-bottom:1px solid #efe3cd;
-  cursor:pointer;
-  transition:background .2s ease;
-}
-
-.search-results div:hover{
-  background:#f4e6c7;
-}
-
-@keyframes fadeSlide{
-  from{opacity:0;transform:translateY(-6px)}
-  to{opacity:1;transform:translateY(0)}
 }
 
 /* ================= SOCIAL ================= */
@@ -130,15 +88,13 @@ body{
 
 .social-icons img{
   width:22px;
-  opacity:.9;
   filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
-  transition:all .25s ease;
+  transition:.25s;
   cursor:pointer;
 }
 
 .social-icons img:hover{
   transform:translateY(-2px);
-  filter:drop-shadow(0 5px 10px rgba(0,0,0,.45));
 }
 
 /* ================= HEADER ================= */
@@ -156,9 +112,7 @@ header{
   gap:30px;
 }
 
-.header-inner img{
-  max-width:220px;
-}
+.header-inner img{max-width:220px}
 
 .header-text h1{
   font-family:"Amiri",serif;
@@ -182,35 +136,61 @@ header{
   gap:30px;
 }
 
-/* ================= SIDEBAR ================= */
+/* ================= SIDEBAR / NAVIGATION ================= */
 aside{
   background:linear-gradient(180deg,#fbf7ef,#f2e6cf);
   border:1px solid #e0d3b7;
-  border-radius:16px;
+  border-radius:18px;
   padding:22px;
 }
 
 aside h3{
   font-family:"Amiri",serif;
   font-size:20px;
-  margin-bottom:16px;
+  margin-bottom:18px;
+  padding-bottom:10px;
+  border-bottom:1px solid #d8c7a4;
+  color:#3a2b1a;
 }
 
+/* NAV LINKS */
 aside a{
-  display:block;
-  padding:14px 18px;
-  margin-bottom:10px;
-  border-radius:10px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:15px 18px;
+  margin-bottom:12px;
+  border-radius:12px;
   background:linear-gradient(180deg,#fffdf8,#efe3cd);
   border:1px solid #d8c7a4;
   text-decoration:none;
   color:#3a2b1a;
-  transition:all .25s ease;
+  font-size:17px;
+  transition:.25s;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.8),
+    0 2px 4px rgba(0,0,0,.08);
 }
 
+/* LEFT ACCENT */
+aside a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background:#b58a3a;
+  border-radius:12px 0 0 12px;
+  opacity:0;
+  transition:.25s;
+}
+
+aside a:hover::before{opacity:1}
+
 aside a:hover{
-  box-shadow:0 3px 8px rgba(0,0,0,.18);
   transform:translateY(-1px);
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
 }
 
 aside a:active{
@@ -221,7 +201,7 @@ aside a:active{
 main{
   background:#fffdf9;
   border:1px solid #e0d3b7;
-  border-radius:16px;
+  border-radius:18px;
   padding:26px;
 }
 
@@ -232,7 +212,7 @@ main{
   background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
   border:1px solid #d8c7a4;
   margin-bottom:22px;
-  transition:all .25s ease;
+  transition:.25s;
 }
 
 .post:hover{
@@ -246,10 +226,7 @@ main{
   margin-bottom:8px;
 }
 
-.post p{
-  color:#4a3f2f;
-  font-size:17px;
-}
+.post p{color:#4a3f2f}
 
 /* ================= FOOTER ================= */
 footer{
@@ -264,31 +241,16 @@ footer{
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-  .container{
-    grid-template-columns:1fr;
-  }
-
-  .search-box input{
-    width:220px;
-    font-size:16px;
-  }
+  .container{grid-template-columns:1fr}
 
   aside a{
-    padding:18px;
-    font-size:17px;
+    padding:20px;
+    font-size:18px;
   }
 
   .search-icon{
     width:56px;
     height:56px;
-  }
-
-  body{
-    font-size:17px;
-  }
-
-  .post h2{
-    font-size:24px;
   }
 }
 </style>
@@ -309,7 +271,6 @@ footer{
     </div>
     <div class="search-box">
       <input id="searchInput" placeholder="Search articles, fatāwā, references…">
-      <div class="search-results" id="searchResults"></div>
     </div>
   </div>
 
@@ -325,7 +286,7 @@ footer{
   <div class="header-inner">
     <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
     <div class="header-text">
-      <h1>Al-Maymunah</h1>
+      <h1>Al-Istibānah</h1>
       <p>
         Preserving Sunni knowledge upon the understanding of the Salaf —
         Atharī in creed, Hanbalī in fiqh.
@@ -343,13 +304,13 @@ footer{
     <a href="#">About</a>
   </aside>
 
-  <main id="posts">
-    <div class="post" data-title="methodology seeking knowledge">
+  <main>
+    <div class="post">
       <h2>The Correct Methodology in Seeking Knowledge</h2>
       <p>A reminder regarding sincerity, patience, and adherence to the Salaf.</p>
     </div>
 
-    <div class="post" data-title="warning innovations bidah">
+    <div class="post">
       <h2>Warnings Against Innovations</h2>
       <p>Clarifying the dangers of bidʿah and holding firmly to the Sunnah.</p>
     </div>
@@ -357,45 +318,8 @@ footer{
 </div>
 
 <footer>
-  © 2025 Al-Maymunah — All rights reserved.
+  © 2025 Al-Istibānah — All rights reserved.
 </footer>
-
-<script>
-const input = document.getElementById("searchInput");
-const results = document.getElementById("searchResults");
-const posts = document.querySelectorAll(".post");
-
-input.addEventListener("input", () => {
-  const value = input.value.toLowerCase();
-  results.innerHTML = "";
-  let found = false;
-
-  if (!value) {
-    results.style.display = "none";
-    posts.forEach(p => p.style.display = "block");
-    return;
-  }
-
-  posts.forEach(post => {
-    const text = post.dataset.title;
-    if (text.includes(value)) {
-      found = true;
-      const div = document.createElement("div");
-      div.textContent = post.querySelector("h2").innerText;
-      div.onclick = () => {
-        post.scrollIntoView({behavior:"smooth"});
-        results.style.display="none";
-      };
-      results.appendChild(div);
-      post.style.display = "block";
-    } else {
-      post.style.display = "none";
-    }
-  });
-
-  results.style.display = found ? "block" : "none";
-});
-</script>
 
 </body>
 </html>
