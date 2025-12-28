@@ -197,16 +197,7 @@ main{
   gap:10px;
 }
 
-.date{
-  display:flex;
-  align-items:center;
-  gap:4px;
-}
-
 .tags span{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
   cursor:pointer;
 }
 .tags span:hover{
@@ -243,6 +234,34 @@ main{
   border-radius:10px;
 }
 
+/* ===== PAGINATION ===== */
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:24px;
+}
+
+.pagination button{
+  min-width:38px;
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid #d9c7a4;
+  background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+  font-family:inherit;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.pagination button:hover{
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
+}
+
+.pagination button.active{
+  background:#e8d7b5;
+  font-weight:bold;
+}
+
 /* FOOTER */
 footer{
   text-align:center;
@@ -258,6 +277,7 @@ footer{
 
 <body>
 
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="page-indicator">
     <strong>Al-Maymunah</strong> — Upon the Manhaj Salaf
@@ -294,56 +314,52 @@ footer{
   <a href="about.html">About</a>
 </aside>
 
-<main id="articles"></main>
+<main>
+  <div id="articles"></div>
+  <div class="pagination" id="pagination"></div>
+</main>
 </div>
 
 <footer>© 2025 Al-Maymunah. All rights reserved.</footer>
 
 <script>
 const articles=[
-{
-  title:"Advice for the Seeker of ‘Ilm",
-  desc:"Concise advice on seeking knowledge correctly.",
-  tags:["Talib al-‘Ilm"],
-  link:"articles/advice.html",
-  image:"https://picsum.photos/600/300"
-}
+  {title:"Advice for the Seeker of ‘Ilm",desc:"Concise advice.",tags:["Talib al-‘Ilm"],link:"#",image:"https://picsum.photos/600/300?1"},
+  {title:"Understanding Bid‘ah",desc:"From the Salaf.",tags:["Bid‘ah"],link:"#",image:"https://picsum.photos/600/300?2"},
+  {title:"The Path of the Salaf",desc:"Manhaj explained.",tags:["Salaf"],link:"#",image:"https://picsum.photos/600/300?3"},
+  {title:"Seeking Knowledge",desc:"Etiquettes.",tags:["‘Ilm"],link:"#",image:"https://picsum.photos/600/300?4"}
 ];
 
-const list=document.getElementById("articles");
-const search=document.getElementById("searchInput");
-const results=document.getElementById("searchResults");
+const perPage=2;
+let page=1;
 
-function render(filter=""){
-  list.innerHTML="";
-  articles.filter(a =>
-    a.title.toLowerCase().includes(filter) ||
-    a.tags.join(" ").toLowerCase().includes(filter)
-  ).forEach(a=>{
-    list.innerHTML+=`
-    <a class="article-link" href="${a.link}">
-      <div class="article">
-        <div class="article-top">
-          <div class="meta">
-            <div class="date">📅 ${new Date().toLocaleDateString()}</div>
-            <div class="tags">${a.tags.map(t=>`<span>📁 ${t}</span>`).join(" / ")}</div>
+function render(){
+  const start=(page-1)*perPage;
+  const end=start+perPage;
+  document.getElementById("articles").innerHTML=
+    articles.slice(start,end).map(a=>`
+      <a class="article-link" href="${a.link}">
+        <div class="article">
+          <div class="article-top">
+            <div class="meta">
+              <div>📅 ${new Date().toLocaleDateString()}</div>
+              <div class="tags">${a.tags.join(" / ")}</div>
+            </div>
+            <div class="share">🔗</div>
           </div>
-          <div class="share">🔗</div>
+          <h3>${a.title}</h3>
+          <p>${a.desc}</p>
+          <div class="article-image"><img src="${a.image}"></div>
         </div>
-        <h3>${a.title}</h3>
-        <p>${a.desc}</p>
-        <div class="article-image"><img src="${a.image}"></div>
-      </div>
-    </a>`;
-  });
+      </a>
+    `).join("");
+
+  const pages=Math.ceil(articles.length/perPage);
+  document.getElementById("pagination").innerHTML=
+    Array.from({length:pages},(_,i)=>`
+      <button class="${i+1===page?'active':''}" onclick="page=${i+1};render()">${i+1}</button>
+    `).join("");
 }
-
-search.addEventListener("input",e=>{
-  const v=e.target.value.toLowerCase();
-  results.innerHTML="";
-  render(v);
-});
-
 render();
 </script>
 
