@@ -14,7 +14,6 @@ body{
   font-family:"Cormorant Garamond",serif;
   background:#fdfbf6;
   color:#2a2a2a;
-  line-height:1.75;
 }
 
 /* ================= TOPBAR ================= */
@@ -38,25 +37,24 @@ body{
 
 .search-box input{
   padding:10px 14px;
-  width:250px;
+  width:260px;
   border-radius:10px;
   border:1px solid #d8c7a4;
   background:linear-gradient(#fffefb,#efe3cd);
 }
 
 .search-icon{
-  width:32px;height:32px;
-  border-radius:8px;
+  width:34px;height:34px;
+  border-radius:9px;
   background:linear-gradient(#f6eedc,#e2d2ae);
   border:1px solid #cbb891;
   display:flex;
   align-items:center;
   justify-content:center;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 4px rgba(0,0,0,.15);
-  cursor:pointer;
 }
 
-.search-icon img{width:14px}
+.search-icon img{width:15px}
 
 /* ================= HEADER ================= */
 header{
@@ -86,41 +84,6 @@ header{
   max-width:600px;
 }
 
-/* ================= SOCIAL ICONS ================= */
-.header-social{
-  margin-left:auto;
-  display:flex;
-  gap:10px;
-}
-
-.social-btn{
-  width:42px;
-  height:42px;
-  border-radius:6px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(0,0,0,.15);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    0 2px 4px rgba(0,0,0,.18);
-  transition:.15s ease;
-}
-
-.social-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    0 4px 6px rgba(0,0,0,.22);
-}
-
-.social-btn img{width:18px}
-
-/* Icon colors (matching classic WP style) */
-.telegram{background:#4f79a3}
-.instagram{background:#c06c84}
-.youtube{background:#c43b3b}
-
 /* ================= LAYOUT ================= */
 .container{
   max-width:1150px;
@@ -149,7 +112,7 @@ main h2{
 
 /* ARTICLE */
 .article{
-  padding:20px 0;
+  padding:18px 0;
   border-bottom:1px solid #e6dbc3;
 }
 
@@ -159,61 +122,71 @@ main h2{
   text-decoration:none;
 }
 
-.article-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  font-size:14px;
-  color:#6b5a45;
-  margin:8px 0;
-}
-
-.article-meta img{width:14px}
-
-.author a,
-.categories a{
-  color:#1a5fb4;
-  text-decoration:none;
-}
-
-.article p{
-  color:#4a3f2f;
+/* CATEGORY TAGS */
+.tags{
   margin:10px 0;
 }
+
+.tags a{
+  display:inline-block;
+  margin-right:6px;
+  padding:4px 10px;
+  font-size:13px;
+  border-radius:6px;
+  text-decoration:none;
+  color:#1a5fb4;
+  background:linear-gradient(#fffdf8,#efe3cd);
+  border:1px solid #d8c7a4;
+}
+
+/* META */
+.article-meta{
+  font-size:14px;
+  color:#6b5a45;
+  margin-bottom:8px;
+}
+
+.article p{color:#4a3f2f}
 
 .read-more{
   color:#1a5fb4;
   text-decoration:none;
+  font-size:15px;
 }
 
 /* SHARE */
-.share-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
+.share{
+  display:flex;
+  gap:10px;
   margin-top:10px;
-  font-size:14px;
-  color:#1a5fb4;
+}
+
+.share img{
+  width:18px;
+  opacity:.75;
   cursor:pointer;
 }
 
-.share-btn img{width:16px}
+.share img:hover{opacity:1}
 
-/* PAGINATION */
-.pagination{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:30px;
+/* AUTHOR BOX */
+.author-box{
+  margin-top:26px;
+  padding:16px;
+  background:linear-gradient(#fbf7ef,#f2e6cf);
+  border:1px solid #e0d3b7;
+  border-radius:10px;
 }
 
-.pagination a{
-  padding:6px 12px;
-  border:1px solid #d8c7a4;
-  background:linear-gradient(#fffdf8,#efe3cd);
-  border-radius:6px;
-  text-decoration:none;
-  color:#3a2b1a;
+.author-box h4{
+  font-family:"Amiri",serif;
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.author-box p{
+  font-size:15px;
+  color:#4a3f2f;
 }
 
 /* ================= SIDEBAR ================= */
@@ -241,6 +214,22 @@ aside a{
   color:#3a2b1a;
 }
 
+aside a:hover{background:#f0e4cc}
+
+/* Latest links */
+.latest-links{
+  border-top:1px solid #d8c7a4;
+  margin-top:14px;
+  padding-top:10px;
+}
+
+.latest-links a{
+  background:none;
+  border:none;
+  padding:6px 0;
+  color:#1a5fb4;
+}
+
 /* ================= FOOTER ================= */
 footer{
   margin-top:50px;
@@ -255,8 +244,7 @@ footer{
 @media(max-width:768px){
   .container{grid-template-columns:1fr}
   aside{order:-1}
-  .header-inner{flex-wrap:wrap}
-  .header-social{margin-left:0}
+  aside a{padding:16px;font-size:17px}
 }
 </style>
 </head>
@@ -276,16 +264,9 @@ footer{
 <header>
   <div class="header-inner">
     <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
-
     <div class="header-text">
       <h1>Al-Istibānah</h1>
       <p>Preserving Sunni knowledge upon the understanding of the Salaf.</p>
-    </div>
-
-    <div class="header-social">
-      <a class="social-btn telegram" href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
-      <a class="social-btn instagram" href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-      <a class="social-btn youtube" href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
     </div>
   </div>
 </header>
@@ -297,37 +278,38 @@ footer{
 
 <div class="article">
   <div class="article-title">
-    <a href="article.html">The Correct Methodology in Seeking Knowledge</a>
+    <a href="#">The Correct Methodology in Seeking Knowledge</a>
+  </div>
+
+  <div class="tags">
+    <a href="#">Manhaj</a>
+    <a href="#">ʿAqīdah</a>
+    <a href="#">Seeking Knowledge</a>
   </div>
 
   <div class="article-meta">
-    <span>
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
-      12 Rabīʿ al-Ākhir 1446H
-    </span>
-
-    <span class="author">by <a href="#">Abu ʿAbdillāh</a></span>
-
-    <span class="categories">🏷️
-      <a href="#">Manhaj</a> /
-      <a href="#">ʿAqīdah</a>
-    </span>
+    Published: 12 Rabīʿ al-Ākhir 1446H
   </div>
 
-  <p>A reminder regarding sincerity, patience, and adherence to the Salaf.</p>
+  <p>
+    A reminder regarding sincerity, patience, and adherence to the understanding of the Salaf.
+  </p>
+
   <a class="read-more" href="#">Read more »</a>
 
-  <div class="share-btn">
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/export-share-icon.webp">
-    Share
+  <div class="share">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/60/60525.png">
   </div>
-</div>
 
-<div class="pagination">
-  <a href="#">« Previous</a>
-  <a href="#">1</a>
-  <a href="#">2</a>
-  <a href="#">Next »</a>
+  <div class="author-box">
+    <h4>Written by: Abu ʿAbdillāh</h4>
+    <p>
+      Student of knowledge concerned with preserving the creed and methodology of Ahl al-Sunnah
+      upon the understanding of the Salaf.
+    </p>
+  </div>
 </div>
 
 </main>
@@ -339,10 +321,12 @@ footer{
   <a href="#">Library</a>
   <a href="#">About</a>
 
-  <h3>Categories</h3>
-  <a href="#">ʿAqīdah</a>
-  <a href="#">Manhaj</a>
-  <a href="#">Fiqh</a>
+  <div class="latest-links">
+    <h3>Latest Articles</h3>
+    <a href="#">Correct Methodology</a>
+    <a href="#">Warnings Against Innovation</a>
+    <a href="#">Understanding Tawḥīd</a>
+  </div>
 </aside>
 
 </div>
