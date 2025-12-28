@@ -86,7 +86,7 @@ header{
   max-width:600px;
 }
 
-/* ================= SOCIAL ICONS (NEW) ================= */
+/* ================= SOCIAL ICONS ================= */
 .header-social{
   margin-left:auto;
   display:flex;
@@ -104,7 +104,7 @@ header{
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.35),
     0 2px 4px rgba(0,0,0,.18);
-  transition:transform .15s ease, box-shadow .15s ease;
+  transition:.15s ease;
 }
 
 .social-btn:hover{
@@ -114,17 +114,12 @@ header{
     0 4px 6px rgba(0,0,0,.22);
 }
 
-.social-btn svg{
-  width:18px;
-  height:18px;
-  fill:#fff;
-}
+.social-btn img{width:18px}
 
-/* Colors inspired by your reference */
-.fb{background:#5b78c7}
-.tw{background:#6ec6f1}
-.tg{background:#4f79a3}
-.mail{background:#3aa9d8}
+/* Icon colors (matching classic WP style) */
+.telegram{background:#4f79a3}
+.instagram{background:#c06c84}
+.youtube{background:#c43b3b}
 
 /* ================= LAYOUT ================= */
 .container{
@@ -164,7 +159,6 @@ main h2{
   text-decoration:none;
 }
 
-/* META LINE */
 .article-meta{
   display:flex;
   flex-wrap:wrap;
@@ -172,27 +166,16 @@ main h2{
   font-size:14px;
   color:#6b5a45;
   margin:8px 0;
-  align-items:center;
 }
 
-.article-meta img{
-  width:14px;
-  vertical-align:middle;
-}
+.article-meta img{width:14px}
 
-/* AUTHOR */
-.author a{
-  color:#1a5fb4;
-  text-decoration:none;
-}
-
-/* CATEGORIES */
+.author a,
 .categories a{
   color:#1a5fb4;
   text-decoration:none;
 }
 
-/* CONTENT */
 .article p{
   color:#4a3f2f;
   margin:10px 0;
@@ -258,19 +241,6 @@ aside a{
   color:#3a2b1a;
 }
 
-.latest-links{
-  border-top:1px solid #d8c7a4;
-  margin-top:14px;
-  padding-top:10px;
-}
-
-.latest-links a{
-  background:none;
-  border:none;
-  padding:6px 0;
-  color:#1a5fb4;
-}
-
 /* ================= FOOTER ================= */
 footer{
   margin-top:50px;
@@ -285,7 +255,6 @@ footer{
 @media(max-width:768px){
   .container{grid-template-columns:1fr}
   aside{order:-1}
-  aside a{padding:16px;font-size:17px}
   .header-inner{flex-wrap:wrap}
   .header-social{margin-left:0}
 }
@@ -313,14 +282,74 @@ footer{
       <p>Preserving Sunni knowledge upon the understanding of the Salaf.</p>
     </div>
 
-    <!-- SOCIAL ICONS -->
     <div class="header-social">
-      <a class="social-btn fb" href="#" title="Facebook"></a>
-      <a class="social-btn tw" href="#" title="Twitter"></a>
-      <a class="social-btn tg" href="#" title="Telegram"></a>
-      <a class="social-btn mail" href="#" title="Email"></a>
+      <a class="social-btn telegram" href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+      <a class="social-btn instagram" href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+      <a class="social-btn youtube" href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
     </div>
   </div>
 </header>
 
-<!-- REST OF YOUR HTML REMAINS UNCHANGED -->
+<div class="container">
+
+<main>
+<h2>Latest Articles</h2>
+
+<div class="article">
+  <div class="article-title">
+    <a href="article.html">The Correct Methodology in Seeking Knowledge</a>
+  </div>
+
+  <div class="article-meta">
+    <span>
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
+      12 Rabīʿ al-Ākhir 1446H
+    </span>
+
+    <span class="author">by <a href="#">Abu ʿAbdillāh</a></span>
+
+    <span class="categories">🏷️
+      <a href="#">Manhaj</a> /
+      <a href="#">ʿAqīdah</a>
+    </span>
+  </div>
+
+  <p>A reminder regarding sincerity, patience, and adherence to the Salaf.</p>
+  <a class="read-more" href="#">Read more »</a>
+
+  <div class="share-btn">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/export-share-icon.webp">
+    Share
+  </div>
+</div>
+
+<div class="pagination">
+  <a href="#">« Previous</a>
+  <a href="#">1</a>
+  <a href="#">2</a>
+  <a href="#">Next »</a>
+</div>
+
+</main>
+
+<aside>
+  <h3>Navigation</h3>
+  <a href="#">Home</a>
+  <a href="#">Articles</a>
+  <a href="#">Library</a>
+  <a href="#">About</a>
+
+  <h3>Categories</h3>
+  <a href="#">ʿAqīdah</a>
+  <a href="#">Manhaj</a>
+  <a href="#">Fiqh</a>
+</aside>
+
+</div>
+
+<footer>
+© 2025 Al-Istibānah
+</footer>
+
+</body>
+</html>
