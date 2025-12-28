@@ -180,7 +180,7 @@ main{
   transition:.2s;
 }
 .article:hover{
-  box-shadow:0 8px 18px rgba(0,0,0,.18);
+  box-shadow:0 6px 14px rgba(0,0,0,.18);
 }
 
 .article-top{
@@ -223,18 +223,7 @@ main{
 }
 .article p{color:#5c4b36}
 
-/* ARTICLE IMAGE */
-.article-image{
-  margin-top:12px;
-}
-.article-image img{
-  width:95%;
-  max-height:220px;
-  object-fit:cover;
-  border-radius:10px;
-}
-
-/* ===== PAGINATION ===== */
+/* PAGINATION */
 .pagination{
   display:flex;
   justify-content:center;
@@ -243,20 +232,12 @@ main{
 }
 
 .pagination button{
-  min-width:38px;
   padding:8px 12px;
   border-radius:8px;
   border:1px solid #d9c7a4;
   background:linear-gradient(180deg,#fdfbf6,#efe3cd);
-  font-family:inherit;
   cursor:pointer;
-  transition:.2s;
 }
-
-.pagination button:hover{
-  box-shadow:0 4px 10px rgba(0,0,0,.18);
-}
-
 .pagination button.active{
   background:#e8d7b5;
   font-weight:bold;
@@ -277,10 +258,9 @@ footer{
 
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="page-indicator">
-    <strong>Al-Maymunah</strong> — Upon the Manhaj Salaf
+    <strong>المكتب استبانة</strong>
     <span>Home</span>
   </div>
 
@@ -301,8 +281,8 @@ footer{
 
 <header>
   <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
-  <h1>Al-Maymunah</h1>
-  <p>Islam • Sunnah • Knowledge</p>
+  <h1>Al-Istibānah</h1>
+  <p>Knowledge • Sunnah • Athar</p>
 </header>
 
 <div class="container">
@@ -320,14 +300,13 @@ footer{
 </main>
 </div>
 
-<footer>© 2025 Al-Maymunah. All rights reserved.</footer>
+<footer>© 2025 Al-Istibānah. All rights reserved.</footer>
 
 <script>
 const articles=[
-  {title:"Advice for the Seeker of ‘Ilm",desc:"Concise advice.",tags:["Talib al-‘Ilm"],link:"#",image:"https://picsum.photos/600/300?1"},
-  {title:"Understanding Bid‘ah",desc:"From the Salaf.",tags:["Bid‘ah"],link:"#",image:"https://picsum.photos/600/300?2"},
-  {title:"The Path of the Salaf",desc:"Manhaj explained.",tags:["Salaf"],link:"#",image:"https://picsum.photos/600/300?3"},
-  {title:"Seeking Knowledge",desc:"Etiquettes.",tags:["‘Ilm"],link:"#",image:"https://picsum.photos/600/300?4"}
+  {title:"Advice for the Seeker of ‘Ilm",desc:"A concise reminder regarding seeking knowledge.",tags:["‘Ilm"],link:"#"},
+  {title:"Why the Salaf Warned Against Bid‘ah",desc:"Understanding innovation through the Salaf.",tags:["Bid‘ah"],link:"#"},
+  {title:"Holding Firm to the Sunnah",desc:"Principles of steadfastness.",tags:["Sunnah"],link:"#"}
 ];
 
 const perPage=2;
@@ -336,6 +315,7 @@ let page=1;
 function render(){
   const start=(page-1)*perPage;
   const end=start+perPage;
+
   document.getElementById("articles").innerHTML=
     articles.slice(start,end).map(a=>`
       <a class="article-link" href="${a.link}">
@@ -349,7 +329,6 @@ function render(){
           </div>
           <h3>${a.title}</h3>
           <p>${a.desc}</p>
-          <div class="article-image"><img src="${a.image}"></div>
         </div>
       </a>
     `).join("");
