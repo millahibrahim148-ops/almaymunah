@@ -2,58 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Al-Maymunah | Knowledge upon the Salaf</title>
+<title>Al-Istibanah — Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#fdfbf6;
+  --panel:#fbf7ef;
+  --border:#d9c7a4;
+  --text:#2f2f2f;
+  --muted:#5c4b36;
+  --accent:#b68a3a;
+}
+
+body[data-theme="light"]{
+  --bg:#ffffff;
+  --panel:#f6f6f6;
+  --border:#dddddd;
+  --text:#222;
+  --muted:#555;
+}
+
+body[data-theme="dark"]{
+  --bg:#121212;
+  --panel:#1c1c1c;
+  --border:#2a2a2a;
+  --text:#e5e5e5;
+  --muted:#b3b3b3;
+}
 
 body{
   font-family:"Cormorant Garamond",serif;
-  background:#fdfbf6;
-  color:#2f2f2f;
-  line-height:1.7;
+  background:var(--bg);
+  color:var(--text);
+  transition:background .35s,color .35s;
 }
 
-/* ================= TOP BAR ================= */
+/* ===== TOP BAR ===== */
 .topbar{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:14px 30px;
-  background:linear-gradient(180deg,#fdfbf6,#efe4cc);
-  border-bottom:1px solid #cbb891;
+  align-items:center;
+  padding:14px 22px;
+  background:linear-gradient(180deg,var(--bg),var(--panel));
+  border-bottom:1px solid var(--border);
 }
 
-.site-brand{
+.page-indicator{
   font-family:"Amiri",serif;
-  font-size:26px;
-  color:#3a2b1a;
+  font-size:20px;
 }
 
-.site-brand span{
+.page-indicator span{
   display:block;
   font-size:13px;
-  font-family:"Cormorant Garamond",serif;
-  color:#6b5a45;
+  color:var(--muted);
+}
+
+.top-tools{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
 /* SEARCH */
-.search-area{
+.search-wrap{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
   position:relative;
 }
 
-.search-icon{
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  background:linear-gradient(180deg,#fffdf7,#efe3cd);
-  border:1px solid #d8c7a4;
+.search-btn{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--panel);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -61,86 +90,92 @@ body{
   transition:.25s;
 }
 
-.search-icon:hover{
-  box-shadow:0 6px 16px rgba(0,0,0,.25);
-  transform:translateY(-1px);
+.search-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
-.search-icon img{
-  width:18px;
-}
+.search-btn img{width:18px}
 
-.search-box{
-  position:relative;
-}
-
-.search-box input{
-  width:360px;
-  padding:10px 16px;
+.search-wrap input{
+  width:300px;
+  padding:12px 14px;
   border-radius:16px;
-  border:1px solid #d8c7a4;
-  background:linear-gradient(180deg,#fffdf9,#efe3cd);
-  transition:.25s;
+  border:1px solid var(--border);
+  background:var(--panel);
+  transition:.3s;
 }
 
-.search-box input:focus{
+.search-wrap input:focus{
   outline:none;
   box-shadow:0 0 0 3px rgba(182,138,58,.35);
 }
 
-/* SEARCH DROPDOWN */
+/* SEARCH RESULTS (PRESERVED) */
 .search-results{
   position:absolute;
-  top:120%;
-  width:100%;
-  background:#fffdf9;
-  border:1px solid #d8c7a4;
-  border-radius:18px;
+  top:110%;
+  left:54px;
+  width:calc(100% - 54px);
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
   display:none;
-  overflow:hidden;
-  animation:fadeSlide .2s ease;
   z-index:20;
 }
 
 .search-results div{
-  padding:12px 16px;
-  border-bottom:1px solid #efe3cd;
+  padding:10px;
   cursor:pointer;
 }
 
-.search-results div:last-child{border-bottom:none}
-
 .search-results div:hover{
-  background:#f6e7c8;
+  background:rgba(182,138,58,.15);
 }
 
-@keyframes fadeSlide{
-  from{opacity:0;transform:translateY(-6px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* SOCIAL */
-.social-icons{
-  display:flex;
-  gap:14px;
-}
-
-.social-icons img{
-  width:22px;
-  opacity:.9;
-  filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));
+/* SETTINGS */
+.settings{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--panel);
+  cursor:pointer;
   transition:.25s;
 }
 
-.social-icons img:hover{
+.settings:hover{
   transform:translateY(-2px);
 }
 
-/* ================= HEADER ================= */
+.settings-panel{
+  position:absolute;
+  right:22px;
+  top:70px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  display:none;
+  z-index:50;
+}
+
+.settings-panel button{
+  display:block;
+  width:100%;
+  padding:10px;
+  margin-bottom:8px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  cursor:pointer;
+}
+
+/* ===== HEADER ===== */
 header{
-  background:linear-gradient(180deg,#fdfbf6,#f3e8d2);
-  border-bottom:1px solid #cbb891;
-  padding:26px 20px;
+  padding:28px 20px;
+  background:linear-gradient(180deg,var(--bg),var(--panel));
+  border-bottom:1px solid var(--border);
 }
 
 .header-inner{
@@ -148,156 +183,136 @@ header{
   margin:auto;
   display:flex;
   align-items:center;
-  gap:30px;
+  gap:26px;
 }
 
-.header-inner img{
-  max-width:240px;
+header img{
+  max-width:220px;
 }
 
-.header-text h1{
+header h1{
   font-family:"Amiri",serif;
-  font-size:46px;
-  font-weight:400;
-  color:#3a2b1a;
+  font-size:42px;
 }
 
-.header-text p{
-  color:#5c4b36;
-  max-width:560px;
+header p{
+  color:var(--muted);
 }
 
-/* ================= LAYOUT ================= */
+/* ===== LAYOUT ===== */
 .container{
-  max-width:1140px;
-  margin:40px auto;
-  padding:0 24px;
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:30px;
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 20px;
+  display:flex;
+  gap:24px;
 }
 
 /* SIDEBAR */
 aside{
-  background:linear-gradient(180deg,#fbf7ef,#f2e6cf);
-  border:1px solid #e0d3b7;
-  border-radius:18px;
-  padding:22px;
-}
-
-aside h3{
-  font-family:"Amiri",serif;
-  font-size:20px;
-  margin-bottom:16px;
+  width:260px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
 }
 
 aside a{
   display:block;
-  padding:12px 16px;
-  margin-bottom:10px;
-  border-radius:12px;
-  background:linear-gradient(180deg,#fffdf8,#efe3cd);
-  border:1px solid #d8c7a4;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:10px;
+  border:1px solid var(--border);
   text-decoration:none;
-  color:#3a2b1a;
+  color:var(--text);
   transition:.25s;
 }
 
 aside a:hover{
-  box-shadow:0 6px 16px rgba(0,0,0,.25);
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
-/* MAIN */
+/* ===== MAIN ===== */
 main{
-  background:#fffdf9;
-  border:1px solid #e0d3b7;
-  border-radius:18px;
-  padding:26px;
+  flex:1;
+  background:var(--panel);
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:14px;
 }
 
-/* POST CARD */
-.post{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  padding:22px;
-  border-radius:20px;
-  background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
-  border:1px solid #d8c7a4;
-  margin-bottom:22px;
-  transition:.25s;
+/* ARTICLE (PRESERVED) */
+.article{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:18px;
+  transition:.3s;
 }
 
-.post:hover{
-  box-shadow:0 10px 28px rgba(0,0,0,.28);
-}
-
-.post h2{
-  font-family:"Amiri",serif;
-  font-size:26px;
-  font-weight:400;
-}
-
-.post p{
-  color:#5c4b36;
+.article:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 26px rgba(0,0,0,.25);
 }
 
 /* FOOTER */
 footer{
-  margin-top:60px;
-  padding:26px;
   text-align:center;
-  background:linear-gradient(180deg,#fdfbf6,#f2e8d4);
-  border-top:1px solid #d8c7a4;
-  font-size:14px;
-  color:#6b5a45;
+  padding:24px;
+  border-top:1px solid var(--border);
+  margin-top:40px;
+  color:var(--muted);
+}
+
+/* MOBILE */
+@media(max-width:800px){
+  .container{flex-direction:column}
+  .search-wrap input{width:100%}
+  .search-btn,.settings{width:52px;height:52px}
 }
 </style>
 </head>
 
-<body>
+<body data-theme="sepia">
 
-<!-- TOP BAR -->
 <div class="topbar">
-  <div class="site-brand">
-    استبانة
-    <span>Upon the Manhaj of the Salaf</span>
+  <div class="page-indicator">
+    المكتب استبانة
+    <span>Sunni • Salafi • Athari</span>
   </div>
 
-  <div class="search-area">
-    <div class="search-icon" onclick="document.getElementById('searchInput').focus()">
-      <img src="YOUR_SEARCH_ICON_HERE.png" alt="Search">
-    </div>
-    <div class="search-box">
-      <input id="searchInput" placeholder="Search articles, topics, references…">
+  <div class="top-tools">
+    <div class="search-wrap">
+      <div class="search-btn" onclick="document.getElementById('searchInput').focus()">
+        <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
+      </div>
+      <input id="searchInput" placeholder="Search articles or tags…">
       <div class="search-results" id="searchResults"></div>
     </div>
-  </div>
 
-  <div class="social-icons">
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/telegram-xxl.png">
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/youtube-app-white-icon.webp">
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp">
+    <div class="settings" onclick="toggleSettings()">⚙</div>
   </div>
 </div>
 
-<!-- HEADER -->
+<div class="settings-panel" id="settingsPanel">
+  <button onclick="setTheme('sepia')">Sepia</button>
+  <button onclick="setTheme('light')">Light</button>
+  <button onclick="setTheme('dark')">Black</button>
+</div>
+
 <header>
   <div class="header-inner">
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
-    <div class="header-text">
-      <h1>Al-Maymunah</h1>
-      <p>
-        Preserving Sunni knowledge upon the understanding of the Salaf —
-        Athari in creed, Hanbali in fiqh.
-      </p>
+    <img id="banner"
+      src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
+    <div>
+      <h1>Al-Istibanah</h1>
+      <p>Knowledge upon the understanding of the Salaf</p>
     </div>
   </div>
 </header>
 
 <div class="container">
   <aside>
-    <h3>Navigation</h3>
     <a href="#">Home</a>
     <a href="#">Articles</a>
     <a href="#">Library</a>
@@ -305,40 +320,32 @@ footer{
   </aside>
 
   <main>
-    <div class="post">
-      <h2>The Correct Methodology in Seeking Knowledge</h2>
-      <p>
-        A reminder regarding sincerity, patience, and adherence to the
-        understanding of the Salaf.
-      </p>
-    </div>
-
-    <div class="post">
-      <h2>Warnings Against Innovations</h2>
-      <p>
-        Clarifying the dangers of bidʿah and the obligation of holding firmly
-        to the Sunnah.
-      </p>
+    <div class="article">
+      <h3>Advice for the Student of Knowledge</h3>
+      <p>Guidance regarding sincerity, patience, and method.</p>
     </div>
   </main>
 </div>
 
-<footer>
-  © 2025 Al-Maymunah — All rights reserved.
-</footer>
+<footer>© 2025 Al-Istibanah</footer>
 
 <script>
-const input=document.getElementById("searchInput");
-const results=document.getElementById("searchResults");
+function toggleSettings(){
+  const p=document.getElementById("settingsPanel");
+  p.style.display=p.style.display==="block"?"none":"block";
+}
 
-input.addEventListener("input",()=>{
-  if(!input.value){
-    results.style.display="none";
-    return;
-  }
-  results.innerHTML="<div>Example Article</div><div>Another Topic</div>";
-  results.style.display="block";
-});
+function setTheme(t){
+  document.body.setAttribute("data-theme",t);
+  localStorage.setItem("theme",t);
+  document.getElementById("banner").src =
+    t==="dark"
+    ? "https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png"
+    : "https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif";
+}
+
+const saved=localStorage.getItem("theme");
+if(saved) setTheme(saved);
 </script>
 
 </body>
