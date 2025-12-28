@@ -71,7 +71,9 @@ header{
   gap:26px;
 }
 
-.header-inner img{width:200px}
+.header-inner img{
+  width:200px;
+}
 
 .header-text h1{
   font-family:"Amiri",serif;
@@ -114,36 +116,19 @@ main h2{
 .article{
   padding:18px 0;
   border-bottom:1px solid #e6dbc3;
+  position:relative;
 }
 
 .article-title a{
   color:#1a5fb4;
-  font-size:22px;
+  font-size:20px;
   text-decoration:none;
 }
 
-/* CATEGORY TAGS */
-.tags{
-  margin:10px 0;
-}
-
-.tags a{
-  display:inline-block;
-  margin-right:6px;
-  padding:4px 10px;
-  font-size:13px;
-  border-radius:6px;
-  text-decoration:none;
-  color:#1a5fb4;
-  background:linear-gradient(#fffdf8,#efe3cd);
-  border:1px solid #d8c7a4;
-}
-
-/* META */
 .article-meta{
   font-size:14px;
   color:#6b5a45;
-  margin-bottom:8px;
+  margin:6px 0;
 }
 
 .article p{color:#4a3f2f}
@@ -158,36 +143,16 @@ main h2{
 .share{
   display:flex;
   gap:10px;
-  margin-top:10px;
+  margin-top:8px;
+  opacity:.75;
 }
 
 .share img{
   width:18px;
-  opacity:.75;
   cursor:pointer;
 }
 
 .share img:hover{opacity:1}
-
-/* AUTHOR BOX */
-.author-box{
-  margin-top:26px;
-  padding:16px;
-  background:linear-gradient(#fbf7ef,#f2e6cf);
-  border:1px solid #e0d3b7;
-  border-radius:10px;
-}
-
-.author-box h4{
-  font-family:"Amiri",serif;
-  font-size:18px;
-  margin-bottom:6px;
-}
-
-.author-box p{
-  font-size:15px;
-  color:#4a3f2f;
-}
 
 /* ================= SIDEBAR ================= */
 aside{
@@ -203,6 +168,7 @@ aside h3{
   margin-bottom:12px;
 }
 
+/* Skewmorphic buttons */
 aside a{
   display:block;
   padding:10px 12px;
@@ -212,11 +178,12 @@ aside a{
   border:1px solid #d8c7a4;
   text-decoration:none;
   color:#3a2b1a;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
 }
 
 aside a:hover{background:#f0e4cc}
 
-/* Latest links */
+/* Latest articles */
 .latest-links{
   border-top:1px solid #d8c7a4;
   margin-top:14px;
@@ -226,8 +193,10 @@ aside a:hover{background:#f0e4cc}
 .latest-links a{
   background:none;
   border:none;
+  box-shadow:none;
   padding:6px 0;
   color:#1a5fb4;
+  font-size:15px;
 }
 
 /* ================= FOOTER ================= */
@@ -280,35 +249,13 @@ footer{
   <div class="article-title">
     <a href="#">The Correct Methodology in Seeking Knowledge</a>
   </div>
-
-  <div class="tags">
-    <a href="#">Manhaj</a>
-    <a href="#">ʿAqīdah</a>
-    <a href="#">Seeking Knowledge</a>
-  </div>
-
-  <div class="article-meta">
-    Published: 12 Rabīʿ al-Ākhir 1446H
-  </div>
-
-  <p>
-    A reminder regarding sincerity, patience, and adherence to the understanding of the Salaf.
-  </p>
-
+  <div class="article-meta">Published: 12 Rabīʿ al-Ākhir 1446H</div>
+  <p>A reminder regarding sincerity and adherence to the Salaf.</p>
   <a class="read-more" href="#">Read more »</a>
-
   <div class="share">
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">
     <img src="https://cdn-icons-png.flaticon.com/512/60/60525.png">
-  </div>
-
-  <div class="author-box">
-    <h4>Written by: Abu ʿAbdillāh</h4>
-    <p>
-      Student of knowledge concerned with preserving the creed and methodology of Ahl al-Sunnah
-      upon the understanding of the Salaf.
-    </p>
   </div>
 </div>
 
