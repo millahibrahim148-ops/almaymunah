@@ -2,360 +2,349 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>المكتب استبانة | Al-Istibanah</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al-Maymunah — Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
-/* =====================
-   ROOT & THEMES
-===================== */
-:root {
-  --bg-main: #f4efe7;
-  --bg-card: #fbf8f2;
-  --text-main: #2a241b;
-  --text-muted: #6b5f4b;
-  --border-soft: #d8cfc0;
-  --accent: #8a6b3e;
-  --shadow-soft: 0 4px 10px rgba(0,0,0,0.08);
-  --radius: 14px;
-  --transition: all 0.25s ease;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:"Cormorant Garamond",serif;
+  background:#fdfbf6;
+  color:#2f2f2f;
 }
 
-body.white-theme {
-  --bg-main: #f6f6f6;
-  --bg-card: #ffffff;
-  --text-main: #1e1e1e;
-  --text-muted: #666;
-  --border-soft: #ddd;
-  --accent: #333;
+/* ===== TOP BAR ===== */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+  border-bottom:1px solid #c8b48c;
 }
 
-/* =====================
-   BASE
-===================== */
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background: var(--bg-main);
-  color: var(--text-main);
-  transition: var(--transition);
+.page-indicator{
+  font-size:14px;
+  color:#5c4b36;
+}
+.page-indicator strong{color:#3a2b1a}
+.page-indicator span{
+  display:block;
+  font-weight:bold;
+  margin-top:2px;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.top-tools{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* SEARCH */
+.search-wrap{position:relative}
+.search-wrap input{
+  width:300px;
+  padding:8px 12px 8px 38px;
+  border-radius:10px;
+  border:1px solid #d9c7a4;
+  background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+}
+.search-wrap input:focus{
+  outline:none;
+  box-shadow:0 0 0 2px rgba(180,136,56,.25);
 }
 
-/* =====================
-   TOP BAR
-===================== */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
-  background: linear-gradient(to bottom, #3b2f1e, #2a2116);
-  color: #fff;
+.search-icon{
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;
+  opacity:.7;
 }
 
-.site-title {
-  font-size: 18px;
-  font-weight: 600;
+.search-results{
+  position:absolute;
+  top:110%;
+  left:0;
+  width:100%;
+  background:#fffdf9;
+  border:1px solid #d9c7a4;
+  border-radius:10px;
+  display:none;
+  z-index:20;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+.search-results div{
+  padding:8px 10px;
+  cursor:pointer;
+}
+.search-results div:hover{background:#f7e8c9}
+
+/* SOCIAL */
+.social{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.social img{
+  width:20px;
+  opacity:.85;
+  filter: drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
+  transition:.2s;
+}
+.social img:hover{
+  transform:translateY(-2px);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.45));
 }
 
-.top-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+/* ===== HEADER ===== */
+header{
+  text-align:center;
+  padding:26px 20px;
+  background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+  border-bottom:1px solid #c8b48c;
+}
+header img{
+  max-width:300px;
+  margin-bottom:10px;
+}
+header h1{
+  font-family:"Amiri",serif;
+  font-size:38px;
+  font-weight:400;
+  color:#3a2b1a;
+}
+header p{color:#5c4b36}
+
+/* ===== LAYOUT ===== */
+.container{
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 20px;
+  display:flex;
+  gap:24px;
 }
 
-.icon-btn {
-  background: rgba(255,255,255,0.08);
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: var(--transition);
+/* SIDEBAR */
+aside{
+  width:260px;
+  background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
+}
+aside h3{
+  font-family:"Amiri",serif;
+  font-size:18px;
+  margin-bottom:12px;
+  border-bottom:1px solid #d9c7a4;
+}
+aside a{
+  display:block;
+  padding:10px 12px;
+  margin-bottom:6px;
+  background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+  border:1px solid #d9c7a4;
+  border-radius:8px;
+  color:#3a2b1a;
+  text-decoration:none;
+}
+aside a:hover{
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
 }
 
-.icon-btn:hover {
-  background: rgba(255,255,255,0.18);
+/* ===== MAIN ===== */
+main{
+  flex:1;
+  background:#fffdf9;
+  padding:20px;
+  border:1px solid #e4d8c2;
+  border-radius:10px;
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
 }
 
-/* =====================
-   SEARCH
-===================== */
-.search-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* ARTICLE */
+.article-link{ text-decoration:none; color:inherit }
+
+.article{
+  padding:16px;
+  border:1px solid #d9c7a4;
+  border-radius:14px;
+  background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
+  margin-bottom:18px;
+  transition:.2s;
+}
+.article:hover{
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
 }
 
-.search-wrapper input {
-  padding: 10px 14px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  width: 200px;
+.article-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+  color:#6b5a45;
 }
 
-.search-wrapper img {
-  width: 22px;
-  cursor: pointer;
+.meta{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-/* =====================
-   HEADER
-===================== */
-header {
-  text-align: center;
-  padding: 40px 20px;
+.date{
+  display:flex;
+  align-items:center;
+  gap:4px;
 }
 
-header img {
-  max-width: 260px;
-  margin: 0 auto 15px;
+.tags span{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  cursor:pointer;
+}
+.tags span:hover{
+  text-shadow:0 0 6px rgba(180,136,56,.6);
 }
 
-header h1 {
-  font-weight: 500;
-  letter-spacing: 1px;
+.share{
+  padding:6px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.share:hover{
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+  transform:translateY(-2px);
 }
 
-/* =====================
-   LAYOUT
-===================== */
-.container {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 24px;
-  padding: 20px;
+.article h3{
+  font-family:"Amiri",serif;
+  font-size:20px;
+  font-weight:400;
+  margin:8px 0;
+  color:#3a2b1a;
+}
+.article p{color:#5c4b36}
+
+/* ARTICLE IMAGE */
+.article-image{
+  margin-top:12px;
+}
+.article-image img{
+  width:95%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:10px;
 }
 
-aside {
-  background: var(--bg-card);
-  padding: 18px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-}
-
-aside h3 {
-  margin-top: 0;
-}
-
-aside a {
-  display: block;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 6px;
-  transition: var(--transition);
-}
-
-aside a:hover {
-  background: rgba(0,0,0,0.05);
-}
-
-/* =====================
-   ARTICLES
-===================== */
-.article-card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  padding: 18px;
-  margin-bottom: 22px;
-  transition: var(--transition);
-}
-
-.article-card:hover {
-  transform: translateY(-3px);
-}
-
-.article-title {
-  font-size: 20px;
-  margin: 0 0 6px;
-  font-weight: 500;
-}
-
-.article-desc {
-  color: var(--text-muted);
-}
-
-.article-image {
-  margin: 14px 0;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.article-image img {
-  width: 100%;
-  height: auto;
-}
-
-/* =====================
-   META
-===================== */
-.article-meta {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.meta-item img {
-  width: 16px;
-}
-
-.tag {
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: var(--transition);
-}
-
-.tag:hover {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.share-btn {
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.share-btn:hover {
-  transform: scale(1.1);
-}
-
-/* =====================
-   FOOTER
-===================== */
-footer {
-  text-align: center;
-  padding: 25px;
-  color: var(--text-muted);
-}
-
-/* =====================
-   RESPONSIVE
-===================== */
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-
-  .search-wrapper input {
-    width: 140px;
-  }
-
-  .icon-btn {
-    padding: 14px;
-  }
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #d9c7a4;
+  background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+  margin-top:40px;
+  font-size:14px;
+  color:#6b5a45;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
-  <div class="site-title">المكتب استبانة</div>
+  <div class="page-indicator">
+    <strong>Al-Maymunah</strong> — Upon the Manhaj Salaf
+    <span>Home</span>
+  </div>
 
-  <div class="top-actions">
-    <div class="search-wrapper">
-      <input type="text" id="searchInput" placeholder="Search articles...">
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
+  <div class="top-tools">
+    <div class="search-wrap">
+      <img class="search-icon" src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
+      <input id="searchInput" placeholder="Search articles or tags…">
+      <div class="search-results" id="searchResults"></div>
     </div>
 
-    <div class="icon-btn" onclick="toggleTheme()">⚙</div>
+    <div class="social">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/telegram-xxl.png">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/youtube-app-white-icon.webp">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp">
+    </div>
   </div>
 </div>
 
-<!-- HEADER -->
 <header>
-  <img id="bannerImg" src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
-  <h1>Al-Istibanah</h1>
+  <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif">
+  <h1>Al-Maymunah</h1>
+  <p>Islam • Sunnah • Knowledge</p>
 </header>
 
-<!-- CONTENT -->
 <div class="container">
+<aside>
+  <h3>Navigation</h3>
+  <a href="index.html">Home</a>
+  <a href="library.html">Library</a>
+  <a href="article.html">Articles</a>
+  <a href="about.html">About</a>
+</aside>
 
-  <!-- SIDEBAR -->
-  <aside>
-    <h3>Navigation</h3>
-    <a href="#">Home</a>
-    <a href="#">Articles</a>
-    <a href="#">Library</a>
-    <a href="#">About</a>
-  </aside>
-
-  <!-- MAIN -->
-  <main id="articleList">
-
-    <article class="article-card">
-      <h2 class="article-title">Sample Article Title</h2>
-      <p class="article-desc">A short description of the article goes here.</p>
-
-      <div class="article-image">
-        <img src="https://via.placeholder.com/800x400">
-      </div>
-
-      <div class="article-meta">
-        <div class="meta-item">
-          <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/icon%20image/2226-calendar.png">
-          <span>12 Ramadan 1446</span>
-        </div>
-
-        <div class="meta-item">
-          📁
-          <span class="tag">Aqeedah</span> /
-          <span class="tag">Manhaj</span>
-        </div>
-
-        <div class="meta-item share-btn">
-          <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/main/icon%20image/export-share-icon.webp">
-        </div>
-      </div>
-    </article>
-
-  </main>
+<main id="articles"></main>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  © Al-Istibanah — Knowledge upon the way of the Salaf
-</footer>
+<footer>© 2025 Al-Maymunah. All rights reserved.</footer>
 
 <script>
-function toggleTheme() {
-  document.body.classList.toggle("white-theme");
+const articles=[
+{
+  title:"Advice for the Seeker of ‘Ilm",
+  desc:"Concise advice on seeking knowledge correctly.",
+  tags:["Talib al-‘Ilm"],
+  link:"articles/advice.html",
+  image:"https://picsum.photos/600/300"
+}
+];
 
-  const banner = document.getElementById("bannerImg");
-  if (document.body.classList.contains("white-theme")) {
-    banner.src = "https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png";
-  } else {
-    banner.src = "https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/39741e6058e78501ffa1b331e3d995aaaad8ff04/icon%20image/1228(1).gif";
-  }
+const list=document.getElementById("articles");
+const search=document.getElementById("searchInput");
+const results=document.getElementById("searchResults");
+
+function render(filter=""){
+  list.innerHTML="";
+  articles.filter(a =>
+    a.title.toLowerCase().includes(filter) ||
+    a.tags.join(" ").toLowerCase().includes(filter)
+  ).forEach(a=>{
+    list.innerHTML+=`
+    <a class="article-link" href="${a.link}">
+      <div class="article">
+        <div class="article-top">
+          <div class="meta">
+            <div class="date">📅 ${new Date().toLocaleDateString()}</div>
+            <div class="tags">${a.tags.map(t=>`<span>📁 ${t}</span>`).join(" / ")}</div>
+          </div>
+          <div class="share">🔗</div>
+        </div>
+        <h3>${a.title}</h3>
+        <p>${a.desc}</p>
+        <div class="article-image"><img src="${a.image}"></div>
+      </div>
+    </a>`;
+  });
 }
 
-/* Simple Search */
-document.getElementById("searchInput").addEventListener("keyup", function() {
-  const value = this.value.toLowerCase();
-  document.querySelectorAll(".article-card").forEach(card => {
-    card.style.display = card.innerText.toLowerCase().includes(value) ? "" : "none";
-  });
+search.addEventListener("input",e=>{
+  const v=e.target.value.toLowerCase();
+  results.innerHTML="";
+  render(v);
 });
+
+render();
 </script>
 
 </body>
