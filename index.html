@@ -15,64 +15,72 @@ body{
   color:#2f2f2f;
 }
 
-/* ===== TOP BAR ===== */
+/* ===== TOP BAR (NEW) ===== */
 .topbar{
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
   align-items:center;
-  padding:10px 20px;
-  background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
+  padding:14px 26px;
+  background:linear-gradient(180deg,#fdfbf6,#f1e6cf);
   border-bottom:1px solid #c8b48c;
 }
 
-.page-indicator{
-  font-size:14px;
-  color:#5c4b36;
-}
-.page-indicator strong{color:#3a2b1a}
-.page-indicator span{
-  display:block;
-  font-weight:bold;
-  margin-top:2px;
-}
-
-.top-tools{
+.brand-left{
   display:flex;
-  align-items:center;
-  gap:14px;
+  flex-direction:column;
+}
+.brand-left strong{
+  font-family:"Amiri",serif;
+  font-size:18px;
+  color:#3a2b1a;
+}
+.brand-left span{
+  font-size:12px;
+  color:#6b5a45;
 }
 
 /* SEARCH */
-.search-wrap{position:relative}
-.search-wrap input{
-  width:320px;
-  padding:8px 12px 8px 38px;
-  border-radius:10px;
-  border:1px solid #d9c7a4;
-  background:linear-gradient(180deg,#fdfbf6,#efe3cd);
+.search-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
 }
-.search-icon{
+.search-btn{
   position:absolute;
-  left:12px;
-  top:50%;
-  transform:translateY(-50%);
+  left:14px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.search-btn img{
   width:16px;
-  opacity:.7;
+  opacity:.75;
+}
+.search-wrap input{
+  width:100%;
+  padding:10px 14px 10px 44px;
+  border-radius:14px;
+  border:1px solid #d9c7a4;
+  background:linear-gradient(180deg,#fffdf8,#efe3cd);
+}
+.search-wrap input:focus{
+  outline:none;
+  box-shadow:0 0 0 2px rgba(180,136,56,.35);
 }
 
 .search-results{
   position:absolute;
-  top:110%;
+  top:120%;
   left:0;
   width:100%;
   background:#fffdf9;
   border:1px solid #d9c7a4;
-  border-radius:10px;
+  border-radius:12px;
   display:none;
   z-index:20;
 }
 .search-results div{
-  padding:8px 10px;
+  padding:10px;
   cursor:pointer;
 }
 .search-results div:hover{background:#f7e8c9}
@@ -80,26 +88,24 @@ body{
 /* SOCIAL */
 .social{
   display:flex;
-  align-items:center;
-  gap:12px;
+  justify-content:flex-end;
+  gap:14px;
 }
 .social img{
   width:20px;
   opacity:.85;
   filter: drop-shadow(0 1.5px 2.5px rgba(0,0,0,.35));
-  transition: transform .2s ease, filter .2s ease;
+  transition:.2s;
 }
-
 .social img:hover{
-  transform: translateY(-2px);
+  transform:translateY(-2px);
   filter: drop-shadow(0 4px 6px rgba(0,0,0,.45));
 }
-
 
 /* ===== HEADER ===== */
 header{
   text-align:center;
-  padding:35px 20px;
+  padding:40px 20px;
   background:linear-gradient(180deg,#fdfbf6,#f2e9d8);
   border-bottom:1px solid #c8b48c;
 }
@@ -161,7 +167,6 @@ main{
 
 /* ARTICLE */
 .article-link{ text-decoration:none; color:inherit }
-
 .article{
   padding:16px;
   border:1px solid #d9c7a4;
@@ -169,57 +174,47 @@ main{
   background:linear-gradient(180deg,#fbf7ef,#f3e9d6);
   margin-bottom:16px;
 }
-
 .article-top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   font-size:13px;
   color:#6b5a45;
 }
-
-.meta{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.date{
-  display:flex;
-  align-items:center;
-  gap:4px;
-}
-
+.meta{display:flex;gap:10px;align-items:center}
+.date{display:flex;gap:4px;align-items:center}
 .tags span{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
   cursor:pointer;
-  transition:.2s;
 }
 .tags span:hover{
   text-shadow:0 0 6px rgba(180,136,56,.6);
 }
-
 .share{
   cursor:pointer;
   padding:6px;
   border-radius:8px;
-  transition:.2s;
 }
 .share:hover{
   box-shadow:0 4px 12px rgba(0,0,0,.25);
   transform:translateY(-2px);
 }
-
 .article h3{
   font-family:"Amiri",serif;
   font-size:20px;
-  font-weight:400;
   margin:6px 0;
   color:#3a2b1a;
 }
 .article p{color:#5c4b36}
+
+/* IMAGE */
+.article-image{
+  margin-top:12px;
+}
+.article-image img{
+  width:95%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:10px;
+}
 
 /* FOOTER */
 footer{
@@ -231,43 +226,29 @@ footer{
   font-size:14px;
   color:#6b5a45;
 }
-</style 
-  .article-image{
-  margin-top:12px;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.article-image img{
-  width:95%;
-  max-height:220px;      /* 👈 CONTROL SIZE HERE */
-  object-fit:cover;     /* 👈 CROPS NICELY */
-  display:block;
-  border-radius:10px;
-}
->
+</style>
 </head>
 
 <body>
 
 <div class="topbar">
-  <div class="page-indicator">
-    <strong>Al-Maymunah</strong> — Upon the Manhaj Salaf — Hanbali — Athari
-    <span>Home</span>
+  <div class="brand-left">
+    <strong>استبانة</strong>
+    <span>Upon the Manhaj of the Salaf</span>
   </div>
 
-  <div class="top-tools">
-    <div class="search-wrap">
-      <img class="search-icon" src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/images-removebg-preview.png?raw=true">
-      <input id="searchInput" placeholder="Search articles or tags…">
-      <div class="search-results" id="searchResults"></div>
-    </div>
+  <div class="search-wrap">
+    <button class="search-btn" onclick="document.getElementById('searchInput').focus()">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/images-removebg-preview.png">
+    </button>
+    <input id="searchInput" placeholder="Search articles or tags…">
+    <div class="search-results" id="searchResults"></div>
+  </div>
 
-    <div class="social">
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/telegram-xxl.png">
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/youtube-app-white-icon.webp">
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp">
-    </div>
+  <div class="social">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/telegram-xxl.png">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/youtube-app-white-icon.webp">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/ff54784088973c101bc9ca0c447a4f49649b2b75/icon%20image/instagram-white-icon.webp">
   </div>
 </div>
 
@@ -294,10 +275,10 @@ footer{
 <script>
 const articles=[
 {
-  title: "Advice for the Seeker of 'Ilm Regarding Taking Notes & Reading Books",
-  desc: "a concise advice for the student of knowledge regarding on how to acquire knowledge and understanding of books within taking notes & Reading.",
-  tags: ["Thaalib Al-'īlm"],
-  link: "articles/a-concise-advice-for-notes-and-reading.html"
+  title:"Advice for the Seeker of 'Ilm Regarding Taking Notes & Reading Books",
+  desc:"A concise advice for the student of knowledge.",
+  tags:["Thaalib Al-'Ilm"],
+  link:"articles/a-concise-advice.html"
 },
 {
   title:"Why the Salaf Warned Against Innovation",
@@ -313,64 +294,38 @@ const results=document.getElementById("searchResults");
 
 function render(filter=""){
   list.innerHTML="";
-  articles
-    .filter(a =>
-      a.title.toLowerCase().includes(filter) ||
-      a.tags.join(" ").toLowerCase().includes(filter)
-    )
-    .forEach(a=>{
-      list.innerHTML+=`
-      <a class="article-link" href="${a.link}">
-        <div class="article">
-          <div class="article-top">
-            <div class="meta">
-              <div class="date">
-                <img width="14" src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/2226-calendar.png?raw=true">
-                ${new Date().toLocaleDateString()}
-              </div>
-              <div class="tags">
-                ${a.tags.map(t=>`<span><img width="14" src="https://freesvg.org/img/Folder-1.png">${t}</span>`).join(" / ")}
-              </div>
-            </div>
-
-            <div class="share" onclick="event.preventDefault();navigator.share?navigator.share({title:'${a.title}',url:'${a.link}'}):alert('Sharing not supported');">
-              <img width="16" src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/export-share-icon.webp?raw=true">
-            </div>
+  articles.filter(a=>
+    a.title.toLowerCase().includes(filter) ||
+    a.tags.join(" ").toLowerCase().includes(filter)
+  ).forEach(a=>{
+    list.innerHTML+=`
+    <a class="article-link" href="${a.link}">
+      <div class="article">
+        <div class="article-top">
+          <div class="meta">
+            <div class="date">${new Date().toLocaleDateString()}</div>
+            <div class="tags">${a.tags.join(" / ")}</div>
           </div>
-
-<h3>${a.title}</h3>
-<p class="article-desc">${a.desc}</p>
-
-${a.image ? `
-  <div class="article-image">
-    <img src="${a.image}" alt="${a.title}">
-  </div>
-` : ``}
-
-
         </div>
-      </a>`;
-    });
+        <h3>${a.title}</h3>
+        <p>${a.desc}</p>
+      </div>
+    </a>`;
+  });
 }
 
 search.addEventListener("input",e=>{
   const v=e.target.value.toLowerCase();
   results.innerHTML="";
-  if(!v){
-    results.style.display="none";
-    render();
-    return;
-  }
-
+  if(!v){results.style.display="none";render();return;}
   articles.forEach(a=>{
     if(a.title.toLowerCase().includes(v)){
-      const div=document.createElement("div");
-      div.textContent=a.title;
-      div.onclick=()=>location.href=a.link;
-      results.appendChild(div);
+      const d=document.createElement("div");
+      d.textContent=a.title;
+      d.onclick=()=>location.href=a.link;
+      results.appendChild(d);
     }
   });
-
   results.style.display=results.children.length?"block":"none";
   render(v);
 });
@@ -380,17 +335,3 @@ render();
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
