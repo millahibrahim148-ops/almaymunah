@@ -180,7 +180,14 @@ main h2{
   border-radius:10px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #e6dbc3;
+  transition:box-shadow .25s ease, transform .25s ease;
 }
+
+.article:hover{
+  box-shadow:0 6px 14px rgba(0,0,0,.28);
+  transform:translateY(-2px);
+}
+
 
 .article-title{
   color:#1a5fb4;
@@ -324,4 +331,5 @@ function searchArticles(){
 
 </body>
 </html>
+
 
