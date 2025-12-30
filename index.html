@@ -21,30 +21,31 @@ body{
   .search-box{
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:6px 10px;
-  border-radius:10px;
-  background:rgba(255,255,255,.08);
-  transition:
-    box-shadow .25s ease,
-    transform .25s ease,
-    background .25s ease;
+  gap:10px;
+  transition:width .35s ease;
 }
 
-/* hover effect */
-.search-box:hover{
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-  transform:scale(1.04);
-  background:rgba(255,255,255,.12);
-}
-
-/* remove ugly default outline */
 .search-box input{
-  background:transparent;
-  border:none;
-  outline:none;
-  color:#fff;
+  width:240px;
+  transition:width .35s ease;
 }
+
+/* when hovering or typing */
+.search-box:hover input,
+.search-box input:focus{
+  width:340px;
+}
+@media(max-width:600px){
+  .search-box input{
+    width:180px;
+  }
+
+  .search-box:hover input,
+  .search-box input:focus{
+    width:220px;
+  }
+}
+
 
 
 /* ================= TOPBAR ================= */
@@ -394,6 +395,7 @@ function searchArticles(){
 
 </body>
 </html>
+
 
 
 
