@@ -5,7 +5,6 @@
 <title>Al-Istibānah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- WEBSITE ICON -->
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Untitled%20design.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
@@ -21,9 +20,6 @@ body{
 
 /* ================= TOPBAR ================= */
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   padding:14px 26px;
   background:linear-gradient(#fdfbf6,#efe4cc);
   border-bottom:1px solid #cbb891;
@@ -39,17 +35,15 @@ body{
 header{
   position:relative;
   border-bottom:1px solid #cbb891;
-  background:#fdfbf6;
   overflow:hidden;
 }
 
-/* faint background inspiration image */
 header::before{
   content:"";
   position:absolute;
   inset:0;
   background:url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover no-repeat;
-  opacity:.08;
+  opacity:.16;
   z-index:0;
 }
 
@@ -58,7 +52,7 @@ header::before{
   z-index:1;
   max-width:1100px;
   margin:auto;
-  padding:26px 20px;
+  padding:36px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -68,17 +62,16 @@ header::before{
 .header-title{
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:22px;
 }
 
 .header-title img{
-  width:70px;
-  height:auto;
+  width:120px;
 }
 
 .header-text h1{
   font-family:"Amiri",serif;
-  font-size:42px;
+  font-size:44px;
   color:#3a2b1a;
 }
 
@@ -122,7 +115,9 @@ header::before{
 
 /* ================= MAIN ================= */
 main{
-  background:linear-gradient(#fffefb,#f2e6cf);
+  background:
+    linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
+    url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
   border:1px solid #e0d3b7;
   border-radius:14px;
   padding:26px;
@@ -142,31 +137,14 @@ main h2{
   border-radius:10px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #e6dbc3;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.8),
-    0 2px 4px rgba(0,0,0,.15);
-}
-
-.article-title a{
-  color:#1a5fb4;
-  font-size:20px;
-  text-decoration:none;
-}
-
-.article-meta{
-  font-size:14px;
-  color:#6b5a45;
-  margin:6px 0;
-}
-
-.read-more{
-  color:#1a5fb4;
-  text-decoration:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 4px rgba(0,0,0,.15);
 }
 
 /* ================= ASIDE ================= */
 aside{
-  background:linear-gradient(#fbf7ef,#f2e6cf);
+  background:
+    linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
+    url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
   border:1px solid #e0d3b7;
   border-radius:14px;
   padding:18px;
@@ -175,28 +153,16 @@ aside{
 aside h3{
   font-family:"Amiri",serif;
   font-size:18px;
-  margin-bottom:12px;
+  margin:14px 0 10px;
 }
 
-.nav-box{
-  padding:12px;
-  margin-bottom:10px;
-  border-radius:6px;
-  background:linear-gradient(#fffdf8,#efe3cd);
+/* Excel-like labels */
+.label-list div{
+  padding:8px 10px;
   border:1px solid #d6c4a3;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.8),
-    0 1px 3px rgba(0,0,0,.15);
-}
-
-.nav-box span{color:#3a2b1a}
-
-.recent-posts a{
-  display:block;
-  color:#1a5fb4;
-  text-decoration:none;
-  font-size:15px;
-  margin:6px 0;
+  background:#fffdf8;
+  margin-bottom:6px;
+  font-size:14px;
 }
 
 /* ================= FOOTER ================= */
@@ -209,7 +175,6 @@ footer{
   color:#6b5a45;
 }
 
-/* ================= MOBILE ================= */
 @media(max-width:768px){
   .container{grid-template-columns:1fr}
   .header-inner{flex-direction:column;align-items:flex-start}
@@ -226,7 +191,7 @@ footer{
 <header>
   <div class="header-inner">
     <div class="header-title">
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif" alt="">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif">
       <div class="header-text">
         <h1>Al-Istibānah</h1>
         <p>Preserving Sunni knowledge upon the understanding of the Salaf.</p>
@@ -246,29 +211,35 @@ footer{
 
 <main>
   <h2>Latest Articles</h2>
-
   <div class="article">
-    <div class="article-title">
-      <a href="#">The Correct Methodology in Seeking Knowledge</a>
-    </div>
-    <div class="article-meta">Published: 12 Rabīʿ al-Ākhir 1446H</div>
-    <p>A reminder regarding sincerity, patience, and adherence to the Salaf.</p>
-    <a class="read-more" href="#">Read more »</a>
+    <strong>The Correct Methodology in Seeking Knowledge</strong><br>
+    <small>12 Rabīʿ al-Ākhir 1446H</small>
   </div>
 </main>
 
 <aside>
   <h3>Navigation</h3>
-  <div class="nav-box"><span>Home</span></div>
-  <div class="nav-box"><span>Articles</span></div>
-  <div class="nav-box"><span>Library</span></div>
-  <div class="nav-box"><span>About</span></div>
+  <div class="label-list">
+    <div>Home</div>
+    <div>Articles</div>
+    <div>Library</div>
+    <div>About</div>
+  </div>
+
+  <h3>Topics</h3>
+  <div class="label-list">
+    <div>ʿAqīdah</div>
+    <div>Manhaj</div>
+    <div>Fiqh</div>
+    <div>Tazkiyah</div>
+    <div>Refutations</div>
+  </div>
 
   <h3>Recent Posts</h3>
-  <div class="recent-posts">
-    <a href="#">What is Salafiyyah?</a>
-    <a href="#">The Danger of Innovation</a>
-    <a href="#">Advice to the Student of Knowledge</a>
+  <div class="label-list">
+    <div>What is Salafiyyah?</div>
+    <div>The Danger of Innovation</div>
+    <div>Advice to the Student of Knowledge</div>
   </div>
 </aside>
 
