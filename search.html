@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Search Results</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:"Cormorant Garamond", serif;
+  background:#fdfbf6;
+  color:#2a2a2a;
+}
+
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
+}
+
+h1{
+  font-family:"Amiri", serif;
+  margin-bottom:20px;
+}
+
+.result{
+  padding:16px;
+  margin-bottom:14px;
+  border-radius:10px;
+  background:linear-gradient(#fffdf8,#efe3cd);
+  border:1px solid #e6dbc3;
+}
+
+.result-title{
+  font-size:22px;
+  color:#1a5fb4;
+  margin-bottom:6px;
+}
+
+.result-title a{
+  color:#1a5fb4;
+  text-decoration:none;
+}
+
+.result-title a:hover{
+  text-decoration:underline;
+}
+
+.result-date{
+  font-size:14px;
+  color:#6b5a45;
+  margin-bottom:8px;
+}
+
+.no-result{
+  font-style:italic;
+  color:#6b5a45;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1 id="searchTitle">Search Results</h1>
+  <div id="results"></div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const query = params.get("s");
+
+const titleEl = document.getElementById("searchTitle");
+const resultsEl = document.getElementById("results");
+
+if(!query){
+  titleEl.textContent = "No search query provided.";
+} else {
+  titleEl.textContent = `Search results for “${query}”`;
+
+  fetch("/articles.json")
+    .then(res => res.json())
+    .then(data => {
+      const results = data.filter(a =>
+        a.title.toLowerCase().includes(query.toLowerCase()) ||
+        a.excerpt.toLowerCase().includes(query.toLowerCase())
+      );
+
+      if(results.length === 0){
+        resultsEl.innerHTML = `<p class="no-result">No results found.</p>`;
+        return;
+      }
+
+      results
+        .sort((a,b) => new Date(b.date) - new Date(a.date))
+        .forEach(article => {
+          const div = document.createElement("div");
+          div.className = "result";
+          div.innerHTML = `
+            <div class="result-title">
+              <a href="${article.file}">${article.title}</a>
+            </div>
+            <div class="result-date">${formatDate(article.date)}</div>
+            <p>${article.excerpt} <a href="${article.file}">Read more »</a></p>
+          `;
+          resultsEl.appendChild(div);
+        });
+    });
+}
+
+function formatDate(dateStr){
+  return new Date(dateStr).toLocaleDateString("en-GB", {
+    day:"numeric",
+    month:"long",
+    year:"numeric"
+  });
+}
+</script>
