@@ -26,6 +26,43 @@ body{
 .read-more:hover {
   text-decoration: underline;  /* underline ONLY on hover */
 }
+  /* Hard bending light sweep */
+.sweep{
+  position:relative;
+  overflow:hidden;
+}
+
+.sweep::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-120%;
+  width:60%;
+  height:200%;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.15) 30%,
+    rgba(255,255,255,0.9) 50%,
+    rgba(255,255,255,0.15) 70%,
+    rgba(255,255,255,0) 100%
+  );
+  transform:skewX(-18deg);
+  animation:hardSweep 6s cubic-bezier(.4,0,.2,1) infinite;
+  pointer-events:none;
+}
+@keyframes hardSweep{
+  0%{
+    left:-120%;
+  }
+  45%{
+    left:120%;
+  }
+  100%{
+    left:120%;
+  }
+}
+
 
 
 /* ================= SEARCH EXPAND ================= */
@@ -350,6 +387,7 @@ document.getElementById("searchInput").addEventListener("keydown",e=>{
 
 </body>
 </html>
+
 
 
 
