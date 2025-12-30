@@ -8,7 +8,6 @@
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Untitled%20design.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-  
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -19,17 +18,18 @@ body{
   background:#fdfbf6;
   color:#2a2a2a;
 }
-  .header-text h1{
-  font-family: "Playfair Display", "Cormorant Garamond", serif;
-  font-weight: 600;
-  letter-spacing: .3px;
+
+.header-text h1{
+  font-family:"Playfair Display","Cormorant Garamond",serif;
+  font-weight:600;
+  letter-spacing:.3px;
 }
- /* Hard bending light sweep */
+
+/* Hard bending light sweep */
 .sweep{
   position:relative;
   overflow:hidden;
 }
-
 .sweep::after{
   content:"";
   position:absolute;
@@ -40,30 +40,20 @@ body{
   background:linear-gradient(
     120deg,
     rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.15) 30%,
-    rgba(255,255,255,0.9) 50%,
-    rgba(255,255,255,0.15) 70%,
+    rgba(255,255,255,.15) 30%,
+    rgba(255,255,255,.9) 50%,
+    rgba(255,255,255,.15) 70%,
     rgba(255,255,255,0) 100%
   );
   transform:skewX(-18deg);
   animation:hardSweep 4.5s cubic-bezier(.4,0,.2,1) infinite;
   pointer-events:none;
 }
-  
 @keyframes hardSweep{
-  0%{
-    left:-120%;
-  }
-  45%{
-    left:120%;
-  }
-  100%{
-    left:120%;
-  }
+  0%{left:-120%}
+  45%{left:120%}
+  100%{left:120%}
 }
-
-
-
 
 /* ================= TOPBAR ================= */
 .topbar{
@@ -95,11 +85,6 @@ body{
   background:linear-gradient(#fffefb,#efe3cd);
 }
 
-.search-box input:focus{
-  outline:none;
-  box-shadow:0 0 0 2px rgba(180,140,70,.35);
-}
-
 .search-icon{
   width:36px;
   height:36px;
@@ -110,9 +95,6 @@ body{
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.8),
-    0 2px 4px rgba(0,0,0,.15);
 }
 
 .search-icon img{width:16px}
@@ -150,9 +132,7 @@ header::before{
 
 .header-title img{
   width:220px;
-  height:auto;
 }
-
 
 .header-text h1{
   font-family:"Amiri",serif;
@@ -165,7 +145,7 @@ header::before{
   color:#4a3f2f;
 }
 
-/* ================= SOCIAL ICONS ================= */
+/* ================= SOCIAL ================= */
 .social-icons{
   display:flex;
   gap:8px;
@@ -178,21 +158,9 @@ header::before{
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 2px 4px rgba(0,0,0,.25);
-  transition:filter .2s, transform .2s;
-}
-
-.social-icons a:hover{
-  filter:brightness(1.2);
-  transform:translateY(-1px);
 }
 
 .social-icons img{width:22px}
-
-.social-fb{background:#5b7bd5;}
-.social-tw{background:#5fc0eb;}
-.social-ig{background:#3f658a;}
-.social-mail{background:#39b4e3;}
 
 /* ================= LAYOUT ================= */
 .container{
@@ -206,9 +174,8 @@ header::before{
 
 /* ================= MAIN ================= */
 main{
-  background:
-    linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
-    url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
+  background:linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
+  url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
   border:1px solid #e0d3b7;
   border-radius:14px;
   padding:26px;
@@ -227,36 +194,46 @@ main h2{
   border-radius:10px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #e6dbc3;
-  transition:box-shadow .25s ease, transform .25s ease;
+  margin-bottom:16px;
 }
-
-.article:hover{
-  box-shadow:0 6px 14px rgba(0,0,0,.28);
-  transform:translateY(-2px);
-}
-
 
 .article-title{
-  color:#1a5fb4;
   font-size:22px;
-  margin-bottom:10px;
+  color:#1a5fb4;
+}
+.article-title:hover{
+  text-decoration:underline;
+  cursor:pointer;
 }
 
-.article p{
-  margin-bottom:10px;
-  line-height:1.6;
+/* WordPress-style meta */
+.article-meta{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+  color:#6b5a45;
+  margin:6px 0 10px;
+}
+
+.article-meta img{
+  width:14px;
+  height:14px;
+  opacity:.75;
 }
 
 .read-more{
   color:#1a5fb4;
   text-decoration:none;
 }
+.read-more:hover{
+  text-decoration:underline;
+}
 
-/* ================= NAVIGATION ================= */
+/* ================= ASIDE ================= */
 aside{
-  background:
-    linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
-    url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
+  background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
+  url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
   border:1px solid #e0d3b7;
   border-radius:14px;
   padding:18px;
@@ -264,7 +241,6 @@ aside{
 
 aside h3{
   font-family:"Amiri",serif;
-  font-size:18px;
   margin:14px 0 10px;
 }
 
@@ -274,12 +250,6 @@ aside h3{
   border-radius:6px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #d6c4a3;
-  transition:box-shadow .2s, transform .2s;
-}
-
-.nav-item:hover{
-  box-shadow:0 4px 8px rgba(0,0,0,.35);
-  transform:translateY(-1px);
 }
 
 /* ================= FOOTER ================= */
@@ -289,12 +259,6 @@ footer{
   text-align:center;
   border-top:1px solid #d8c7a4;
   color:#6b5a45;
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-  .container{grid-template-columns:1fr}
-  .header-inner{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -317,24 +281,17 @@ footer{
   <div class="header-inner">
     <div class="header-title">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif">
-     <div class="header-text sweep">
-  <h1>Al-Istibānah</h1>
-  <p>Upholding the Athār and the Creed of the Salaf.</p>
-</div>
-    </div>
-
-    <div class="social-icons">
-      <a href="#" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
-      <a href="#" class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
-      <a href="#" class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
-      <a href="#" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/mail-xxl.png"></a>
+      <div class="header-text sweep">
+        <h1>Al-Istibānah</h1>
+        <p>Upholding the Athār and the Creed of the Salaf.</p>
+      </div>
     </div>
   </div>
 </header>
 
 <div class="container">
 
-<main id="articles">
+<main>
   <h2>Latest Articles</h2>
   <div id="articlesList"></div>
 </main>
@@ -344,15 +301,6 @@ footer{
   <div class="nav-item">Home</div>
   <div class="nav-item">Articles</div>
   <div class="nav-item">Library</div>
-
-  <h3>Latest Article</h3>
-  <div class="nav-item">The Correct Methodology in Seeking Knowledge</div>
-
-  <h3>Topics</h3>
-  <div class="nav-item">ʿAqīdah</div>
-  <div class="nav-item">Manhaj</div>
-  <div class="nav-item">Fiqh</div>
-  <div class="nav-item">Tazkiyah</div>
 </aside>
 
 </div>
@@ -362,56 +310,48 @@ footer{
 </footer>
 
 <script>
-let articlesData = [];
+let articlesData=[];
 
 fetch("/articles.json")
-  .then(res => res.json())
-  .then(data => {
-    articlesData = data;
-    renderArticles(data);
-  })
-  .catch(err => console.error("Failed to load articles:", err));
+.then(r=>r.json())
+.then(d=>{
+  articlesData=d;
+  renderArticles(d);
+});
 
-function renderArticles(list) {
-  const container = document.getElementById("articlesList");
-  container.innerHTML = "";
-
-  list
-    .sort((a,b) => new Date(b.date) - new Date(a.date))
-    .forEach(article => {
-      const div = document.createElement("div");
-      div.className = "article";
-      div.innerHTML = `
-        <div class="article-title">${article.title}</div>
-        <p><small>${formatDate(article.date)}</small></p>
-        <p>${article.excerpt}
-          <a class="read-more" href="${article.file}">Read more »</a>
-        </p>
-      `;
-      container.appendChild(div);
-    });
-}
-
-function searchArticles() {
-  const q = document.getElementById("searchInput").value.toLowerCase();
-  const filtered = articlesData.filter(a =>
-    a.title.toLowerCase().includes(q) ||
-    a.excerpt.toLowerCase().includes(q)
-  );
-  renderArticles(filtered);
-}
-
-function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
+function renderArticles(list){
+  const c=document.getElementById("articlesList");
+  c.innerHTML="";
+  list.sort((a,b)=>new Date(b.date)-new Date(a.date))
+  .forEach(a=>{
+    const d=document.createElement("div");
+    d.className="article";
+    d.innerHTML=`
+      <div class="article-title">${a.title}</div>
+      <div class="article-meta">
+        <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
+        <span>${formatDate(a.date)}</span>
+      </div>
+      <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
+    `;
+    c.appendChild(d);
   });
+}
+
+function searchArticles(){
+  const q=document.getElementById("searchInput").value.toLowerCase();
+  renderArticles(
+    articlesData.filter(a=>
+      a.title.toLowerCase().includes(q)||
+      a.excerpt.toLowerCase().includes(q)
+    )
+  );
+}
+
+function formatDate(d){
+  return new Date(d).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
 }
 </script>
 
-
 </body>
 </html>
-
-
