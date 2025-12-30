@@ -5,10 +5,10 @@
 <title>Al-Istibānah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Untitled%20design.png">
+<!-- WEBSITE ICON -->
+<link rel="icon" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Untitled%20design.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -17,36 +17,6 @@ body{
   font-family:"Cormorant Garamond",serif;
   background:#fdfbf6;
   color:#2a2a2a;
-}
-.header-text h1{
-  font-family:"Playfair Display","Cormorant Garamond",serif;
-  font-weight:600;
-  letter-spacing:.3px;
-}
-.sweep{position:relative;overflow:hidden}
-.sweep::after{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-120%;
-  width:60%;
-  height:200%;
-  background:linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,.15) 30%,
-    rgba(255,255,255,.9) 50%,
-    rgba(255,255,255,.15) 70%,
-    rgba(255,255,255,0) 100%
-  );
-  transform:skewX(-18deg);
-  animation:hardSweep 4.5s cubic-bezier(.4,0,.2,1) infinite;
-  pointer-events:none;
-}
-@keyframes hardSweep{
-  0%{left:-120%}
-  45%{left:120%}
-  100%{left:120%}
 }
 
 /* ================= TOPBAR ================= */
@@ -58,27 +28,32 @@ body{
   background:linear-gradient(#fdfbf6,#efe4cc);
   border-bottom:1px solid #cbb891;
 }
+
 .site-brand{
   font-family:"Amiri",serif;
   font-size:26px;
   color:#3a2b1a;
 }
+
 .search-area{
   display:flex;
   align-items:center;
   gap:10px;
 }
+
 .search-box input{
   padding:10px 14px;
-  width:280px;
+  width:260px;
   border-radius:10px;
   border:1px solid #d8c7a4;
   background:linear-gradient(#fffefb,#efe3cd);
 }
+
 .search-box input:focus{
   outline:none;
   box-shadow:0 0 0 2px rgba(180,140,70,.35);
 }
+
 .search-icon{
   width:36px;
   height:36px;
@@ -90,6 +65,7 @@ body{
   justify-content:center;
   cursor:pointer;
 }
+
 .search-icon img{width:16px}
 
 /* ================= HEADER ================= */
@@ -97,59 +73,68 @@ header{
   position:relative;
   border-bottom:1px solid #cbb891;
 }
+
 header::before{
   content:"";
   position:absolute;
   inset:0;
-  background:url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover no-repeat;
-  opacity:.18;
+  background:url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
+  opacity:.22;
+  z-index:0;
 }
+
 .header-inner{
   position:relative;
+  z-index:1;
   max-width:1100px;
   margin:auto;
   padding:40px 20px;
   display:flex;
-  justify-content:space-between;
-  align-items:center;
   gap:30px;
-}
-.header-title{
-  display:flex;
-  gap:26px;
   align-items:center;
 }
-.header-title img{
-  width:220px;
+
+.header-img{
+  width:120px;
 }
+
+.header-img img{
+  width:100%;
+}
+
 .header-text h1{
   font-family:"Amiri",serif;
   font-size:46px;
   color:#3a2b1a;
 }
+
 .header-text p{
-  max-width:600px;
+  font-size:18px;
   color:#4a3f2f;
 }
 
-/* ================= SOCIAL ICONS ================= */
+/* ================= SOCIAL ================= */
 .social-icons{
   display:flex;
   gap:8px;
+  margin-top:12px;
 }
+
 .social-icons a{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   border-radius:6px;
   display:flex;
   align-items:center;
   justify-content:center;
+  transition:filter .2s;
 }
+
+.social-icons a:hover{
+  filter:brightness(1.25);
+}
+
 .social-icons img{width:22px}
-.social-fb{background:#5b7bd5}
-.social-tw{background:#5fc0eb}
-.social-ig{background:#3f658a}
-.social-mail{background:#39b4e3}
 
 /* ================= LAYOUT ================= */
 .container{
@@ -161,75 +146,72 @@ header::before{
   gap:30px;
 }
 
-/* ================= MAIN ================= */
-main{
-  background:linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
-    url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
-  border:1px solid #e0d3b7;
-  border-radius:14px;
-  padding:26px;
-}
-main h2{
-  font-family:"Amiri",serif;
-  font-size:26px;
-  margin-bottom:20px;
-  border-bottom:1px solid #d8c7a4;
-  padding-bottom:10px;
-}
+/* ================= ARTICLE ================= */
 .article{
   padding:18px;
   border-radius:10px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #e6dbc3;
+  transition:.25s;
 }
-.article-title{
+
+.article:hover{
+  box-shadow:0 6px 14px rgba(0,0,0,.28);
+  transform:translateY(-2px);
+}
+
+.article-title a{
   color:#1a5fb4;
   font-size:22px;
-  margin-bottom:10px;
+  text-decoration:none;
 }
-.article p{
-  margin-bottom:10px;
-  line-height:1.6;
+
+.article-meta{
+  font-size:14px;
+  color:#6b5a45;
+  margin:6px 0;
 }
+
 .read-more{
   color:#1a5fb4;
   text-decoration:none;
 }
 
+.read-more:hover{
+  color:#0f3f87;
+  text-decoration:underline;
+}
+
 /* ================= ASIDE ================= */
 aside{
-  background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
-    url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
+  background:linear-gradient(#fbf7ef,#f2e6cf);
   border:1px solid #e0d3b7;
   border-radius:14px;
   padding:18px;
 }
-aside h3{
-  font-family:"Amiri",serif;
-  font-size:18px;
-  margin:14px 0 10px;
-}
-.nav-item{
-  padding:10px;
-  margin-bottom:8px;
+
+.nav-box{
+  padding:12px;
+  margin-bottom:10px;
   border-radius:6px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #d6c4a3;
+  transition:.25s;
 }
 
-/* ================= FOOTER ================= */
-footer{
-  margin-top:50px;
-  padding:24px;
-  text-align:center;
-  border-top:1px solid #d8c7a4;
-  color:#6b5a45;
+.nav-box:hover{
+  box-shadow:0 4px 8px rgba(0,0,0,.3);
+}
+
+/* ================= SEARCH RESULTS ================= */
+#searchResults .article{
+  margin-top:20px;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
   .container{grid-template-columns:1fr}
-  .header-inner{flex-direction:column;align-items:flex-start}
+  .header-inner{flex-direction:column}
 }
 </style>
 </head>
@@ -238,6 +220,7 @@ footer{
 
 <div class="topbar">
   <div class="site-brand">استبانة</div>
+
   <div class="search-area">
     <div class="search-box">
       <input id="searchInput" placeholder="Search articles…">
@@ -248,75 +231,86 @@ footer{
   </div>
 </div>
 
-<!-- ✅ ADDED (ONLY THIS) -->
-<div id="searchResults"></div>
-
 <header>
   <div class="header-inner">
-    <div class="header-title">
+    <div class="header-img">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif">
-      <div class="header-text sweep">
-        <h1>Al-Istibānah</h1>
-        <p>Upholding the Athār and the Creed of the Salaf.</p>
-      </div>
     </div>
 
-    <div class="social-icons">
-      <a href="#" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
-      <a href="#" class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
-      <a href="#" class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
-      <a href="#" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/mail-xxl.png"></a>
+    <div class="header-text">
+      <h1>Al-Istibānah</h1>
+      <p>Upholding the Athār and the Creed of the Salaf</p>
+
+      <div class="social-icons">
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
+      </div>
     </div>
   </div>
 </header>
 
 <div class="container">
 
-<main id="articles">
-  <h2>Latest Articles</h2>
+<main>
   <div class="article">
-    <div class="article-title">The Correct Methodology in Seeking Knowledge</div>
-    <p>Seeking knowledge is from the greatest acts of worship...</p>
+    <div class="article-title">
+      <a href="#">The Correct Methodology in Seeking Knowledge</a>
+    </div>
+    <div class="article-meta">12 Rabīʿ al-Ākhir 1446H</div>
+
+    <p>
+      Seeking knowledge is among the greatest acts of worship, yet it is only accepted
+      when it is built upon sincerity and correct methodology. The Salaf emphasized
+      beginning with the foundations before the branches, and acting upon knowledge
+      before calling others to it.
+    </p>
+
+    <p>
+      Many were those who memorized texts, yet few were those who embodied them.
+      For this reason, the people of Athār warned against haste, argumentation,
+      and seeking prominence through knowledge...
+      <a class="read-more" href="#">Read more »</a>
+    </p>
   </div>
+
+  <div id="searchResults"></div>
 </main>
 
 <aside>
-  <h3>Navigation</h3>
-  <div class="nav-item">Home</div>
-  <div class="nav-item">Articles</div>
-  <div class="nav-item">Library</div>
+  <div class="nav-box">Latest Articles</div>
+  <div class="nav-box">Aqīdah</div>
+  <div class="nav-box">Manhaj</div>
+  <div class="nav-box">Tazkiyah</div>
 </aside>
 
 </div>
 
-<footer>
-© 2025 Al-Istibānah — Upon the Manhaj of the Salaf
-</footer>
-
-<!-- ✅ ONLY SCRIPT CHANGE -->
 <script>
-let articles = [];
+const articles = [
+  {
+    title:"The Correct Methodology in Seeking Knowledge",
+    excerpt:"Seeking knowledge is among the greatest acts of worship",
+    url:"#",
+    date:"12 Rabīʿ al-Ākhir 1446H"
+  }
+];
 
-fetch('/data/articles.json')
-  .then(res => res.json())
-  .then(data => articles = data);
-
-document.getElementById('searchInput').addEventListener('input', function () {
-  const query = this.value.toLowerCase();
-
+document.getElementById("searchInput").addEventListener("input", function(){
+  const q = this.value.toLowerCase();
   const results = articles.filter(a =>
-    a.title.toLowerCase().includes(query) ||
-    a.excerpt.toLowerCase().includes(query) ||
-    a.tags.join(' ').toLowerCase().includes(query)
+    a.title.toLowerCase().includes(q) ||
+    a.excerpt.toLowerCase().includes(q)
   );
 
-  document.getElementById('searchResults').innerHTML = results.map(a => `
-    <div class="article">
-      <h3>${a.title}</h3>
-      <p>${a.excerpt}... <a href="${a.url}" class="read-more">Read more »</a></p>
-      <small>${a.date}</small>
-    </div>
-  `).join('');
+  document.getElementById("searchResults").innerHTML =
+    results.map(a => `
+      <div class="article">
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}... <a href="${a.url}" class="read-more">Read more »</a></p>
+        <small>${a.date}</small>
+      </div>
+    `).join("");
 });
 </script>
 
