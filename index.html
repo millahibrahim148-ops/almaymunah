@@ -382,19 +382,26 @@ function renderRecent(list){
   });
 }
 
+<script>
 function searchArticles(){
-  const q=document.getElementById("searchInput").value.toLowerCase();
-  renderArticles(
-    articlesData.filter(a =>
-      a.title.toLowerCase().includes(q) ||
-      a.excerpt.toLowerCase().includes(q)
-    )
-  );
+  const q = document.getElementById("searchInput").value.trim();
+  if(!q) return;
+
+  // Redirect to search result page
+  window.location.href = "/search.html?s=" + encodeURIComponent(q);
 }
+  document.getElementById("searchInput").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    searchArticles();
+  }
+});
+
 </script>
+
 
 </body>
 </html>
+
 
 
 
