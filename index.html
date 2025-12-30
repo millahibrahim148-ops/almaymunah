@@ -18,35 +18,27 @@ body{
   background:#fdfbf6;
   color:#2a2a2a;
 }
-  .search-box{
+
+/* ================= SEARCH EXPAND ================= */
+.search-box{
   display:flex;
   align-items:center;
   gap:10px;
   transition:width .35s ease;
 }
-
 .search-box input{
   width:240px;
   transition:width .35s ease;
 }
-
-/* when hovering or typing */
 .search-box:hover input,
 .search-box input:focus{
   width:340px;
 }
 @media(max-width:600px){
-  .search-box input{
-    width:180px;
-  }
-
+  .search-box input{width:180px}
   .search-box:hover input,
-  .search-box input:focus{
-    width:220px;
-  }
+  .search-box input:focus{width:220px}
 }
-
-
 
 /* ================= TOPBAR ================= */
 .topbar{
@@ -57,32 +49,22 @@ body{
   background:linear-gradient(#fdfbf6,#efe4cc);
   border-bottom:1px solid #cbb891;
 }
-
 .site-brand{
   font-family:"Amiri",serif;
   font-size:26px;
   color:#3a2b1a;
 }
-
 .search-area{
   display:flex;
   align-items:center;
   gap:10px;
 }
-
 .search-box input{
   padding:10px 14px;
-  width:280px;
   border-radius:10px;
   border:1px solid #d8c7a4;
   background:linear-gradient(#fffefb,#efe3cd);
 }
-
-.search-box input:focus{
-  outline:none;
-  box-shadow:0 0 0 2px rgba(180,140,70,.35);
-}
-
 .search-icon{
   width:36px;
   height:36px;
@@ -101,7 +83,6 @@ header{
   position:relative;
   border-bottom:1px solid #cbb891;
 }
-
 header::before{
   content:"";
   position:absolute;
@@ -109,7 +90,6 @@ header::before{
   background:url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover no-repeat;
   opacity:.18;
 }
-
 .header-inner{
   position:relative;
   max-width:1100px;
@@ -118,23 +98,18 @@ header::before{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:30px;
 }
-
 .header-title{
   display:flex;
   gap:26px;
   align-items:center;
 }
-
 .header-title img{width:220px}
-
 .header-text h1{
   font-family:"Playfair Display","Cormorant Garamond",serif;
   font-size:46px;
   color:#3a2b1a;
 }
-
 .header-text p{color:#4a3f2f}
 
 /* ================= SOCIAL ================= */
@@ -142,7 +117,6 @@ header::before{
   display:flex;
   gap:8px;
 }
-
 .social-icons a{
   width:44px;
   height:44px;
@@ -158,11 +132,10 @@ header::before{
   transform:translateY(-1px);
 }
 .social-icons img{width:22px}
-
-.social-fb{background:#5b7bd5;}
-.social-tw{background:#5fc0eb;}
-.social-ig{background:#3f658a;}
-.social-mail{background:#39b4e3;}
+.social-fb{background:#5b7bd5}
+.social-tw{background:#5fc0eb}
+.social-ig{background:#3f658a}
+.social-mail{background:#39b4e3}
 
 /* ================= LAYOUT ================= */
 .container{
@@ -182,56 +155,38 @@ main{
   border-radius:14px;
   padding:26px;
 }
-
 main h2{
   font-family:"Amiri",serif;
   font-size:26px;
   margin-bottom:20px;
   border-bottom:1px solid #d8c7a4;
-  padding-bottom:10px;
 }
-
 .article{
   padding:18px;
   border-radius:10px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #e6dbc3;
   margin-bottom:16px;
-  transition:box-shadow .25s ease, transform .25s ease;
+  transition:box-shadow .25s,transform .25s;
 }
-
 .article:hover{
   box-shadow:0 6px 14px rgba(0,0,0,.28);
   transform:translateY(-2px);
 }
-
 .article-title{
   color:#1a5fb4;
   font-size:22px;
 }
-.article-title:hover{
-  text-decoration:underline;
-  cursor:pointer;
-}
-
+.article-title:hover{text-decoration:underline}
 .article-meta{
   display:flex;
   align-items:center;
   gap:6px;
   font-size:14px;
   color:#6b5a45;
-  margin:6px 0 10px;
 }
-
-.article-meta img{
-  width:14px;
-  opacity:.75;
-}
-
-.read-more{
-  color:#1a5fb4;
-  text-decoration:none;
-}
+.article-meta img{width:14px}
+.read-more{color:#1a5fb4}
 .read-more:hover{text-decoration:underline}
 
 /* ================= ASIDE ================= */
@@ -242,21 +197,15 @@ aside{
   border-radius:14px;
   padding:18px;
 }
-
-aside h3{
-  font-family:"Amiri",serif;
-  margin:14px 0 10px;
-}
-
+aside h3{font-family:"Amiri",serif}
 .nav-item{
   padding:10px;
   margin-bottom:8px;
   border-radius:6px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #d6c4a3;
-  transition:box-shadow .2s, transform .2s;
+  transition:box-shadow .2s,transform .2s;
 }
-
 .nav-item:hover{
   box-shadow:0 4px 8px rgba(0,0,0,.35);
   transform:translateY(-1px);
@@ -279,7 +228,7 @@ footer{
   <div class="site-brand">استبانة</div>
   <div class="search-area">
     <div class="search-box">
-      <input id="searchInput" placeholder="Search articles…" onkeyup="searchArticles()">
+      <input id="searchInput" placeholder="Search articles…">
     </div>
     <div class="search-icon" onclick="searchArticles()">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
@@ -296,18 +245,16 @@ footer{
         <p>Upholding the Athār and the Creed of the Salaf.</p>
       </div>
     </div>
-
     <div class="social-icons">
-      <a href="#" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/discord-white-icon.webp"></a>
+      <a href="#" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
       <a href="#" class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
       <a href="#" class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
-      <a href="#" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
+      <a href="#" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/mail-xxl.png"></a>
     </div>
   </div>
 </header>
 
 <div class="container">
-
 <main>
   <h2>Latest Articles</h2>
   <div id="articlesList"></div>
@@ -328,7 +275,6 @@ footer{
   <div class="nav-item">Fiqh</div>
   <div class="nav-item">Tazkiyah</div>
 </aside>
-
 </div>
 
 <footer>
@@ -382,29 +328,16 @@ function renderRecent(list){
   });
 }
 
-<script>
 function searchArticles(){
-  const q = document.getElementById("searchInput").value.trim();
-  if(!q) return;
-
-  // Redirect to search result page
-  window.location.href = "/search.html?s=" + encodeURIComponent(q);
+  const q=document.getElementById("searchInput").value.trim();
+  if(!q)return;
+  window.location.href="/search.html?s="+encodeURIComponent(q);
 }
-  document.getElementById("searchInput").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
-    searchArticles();
-  }
+
+document.getElementById("searchInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter")searchArticles();
 });
-
 </script>
-
 
 </body>
 </html>
-
-
-
-
-
-
-
