@@ -364,7 +364,7 @@ footer{
 <script>
 let articlesData = [];
 
-fetch("data/articles.json")
+fetch("/articles.json")
   .then(res => res.json())
   .then(data => {
     articlesData = data;
@@ -413,4 +413,5 @@ function formatDate(dateStr) {
 
 </body>
 </html>
+
 
