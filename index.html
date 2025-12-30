@@ -2,192 +2,222 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Al-Istibanah</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al-Istibānah</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Serif font similar to your screenshot -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --sepia-bg: #f6f1e7;
-  --card-bg: #ffffff;
-  --primary: #0a3aa8;
-  --text: #1f2937;
-  --shadow: rgba(0,0,0,0.15);
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:"Cormorant Garamond",serif;
+  background:#fdfbf6;
+  color:#2a2a2a;
 }
 
-body {
-  margin: 0;
-  background: var(--sepia-bg);
-  color: var(--text);
-  font-family: Inter, system-ui, sans-serif;
+/* ================= TOPBAR ================= */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 26px;
+  background:linear-gradient(#fdfbf6,#efe4cc);
+  border-bottom:1px solid #cbb891;
 }
 
-/* TOP BAR */
-.topbar {
-  background: #2b2b2b;
-  color: #fff;
-  padding: 8px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.site-brand{
+  font-family:"Amiri",serif;
+  font-size:26px;
+  color:#3a2b1a;
 }
 
-.topbar-title {
-  font-weight: 600;
-  letter-spacing: .5px;
+.search-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-/* HEADER */
-header {
-  padding: 30px 20px;
-  text-align: center;
+.search-box input{
+  padding:10px 14px;
+  width:280px;
+  border-radius:10px;
+  border:1px solid #d8c7a4;
+  background:linear-gradient(#fffefb,#efe3cd);
 }
 
-.site-title {
-  font-family: Playfair Display, Georgia, serif;
-  font-size: 2.8rem;
-  color: var(--primary);
-  margin: 0;
+.search-box input:focus{
+  outline:none;
+  box-shadow:0 0 0 2px rgba(180,140,70,.35);
 }
 
-/* NAVIGATION */
-nav {
-  background: #fff;
-  margin: 20px auto;
-  max-width: 1100px;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px var(--shadow);
-  padding: 12px 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.search-icon{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:linear-gradient(#f6eedc,#e2d2ae);
+  border:1px solid #cbb891;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.8),
+    0 2px 4px rgba(0,0,0,.15);
 }
 
-.nav-links a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: #111;
-  padding: 8px 14px;
-  border-radius: 6px;
-  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1);
-  transition: box-shadow .25s ease;
+.search-icon img{width:16px}
+
+/* ================= HEADER ================= */
+header{
+  padding:28px 20px;
+  background:linear-gradient(#fdfbf6,#f3e8d2);
+  border-bottom:1px solid #cbb891;
 }
 
-.nav-links a:hover {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:30px;
 }
 
-/* SEARCH */
-.search-wrap {
-  display: flex;
-  align-items: center;
+.header-text h1{
+  font-family:"Amiri",serif;
+  font-size:42px;
+  color:#3a2b1a;
 }
 
-.search-wrap input {
-  padding: 10px 12px;
-  border-radius: 6px 0 0 6px;
-  border: 1px solid #ccc;
-  outline: none;
-  min-width: 200px;
+.header-text p{
+  color:#4a3f2f;
+  max-width:600px;
 }
 
-.search-wrap button {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-left: none;
-  padding: 8px 12px;
-  border-radius: 0 6px 6px 0;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,.25);
-  transition: box-shadow .25s ease;
+/* ================= SOCIAL ICONS ================= */
+.social-icons{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
 }
 
-.search-wrap button:hover {
-  box-shadow: 0 5px 10px rgba(0,0,0,.35);
+.social-icons a{
+  width:42px;
+  height:42px;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(#5c7bd9,#4867c4);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 2px 4px rgba(0,0,0,.25);
 }
 
-.search-wrap img {
-  width: 18px;
+.social-icons a img{
+  width:20px;
+  opacity:.95;
 }
 
-/* ARTICLE */
-.article {
-  max-width: 900px;
-  margin: 30px auto;
-  background: var(--card-bg);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px var(--shadow);
+/* ================= LAYOUT ================= */
+.container{
+  max-width:1150px;
+  margin:40px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:30px;
 }
 
-.article-title {
-  font-family: Playfair Display, Georgia, serif;
-  font-size: 2.6rem;
-  color: var(--primary);
-  margin-bottom: 10px;
+/* ================= MAIN ================= */
+main{
+  background:#fffdf9;
+  border:1px solid #e0d3b7;
+  border-radius:14px;
+  padding:26px;
 }
 
-.meta {
-  font-size: .9rem;
-  margin-bottom: 25px;
+main h2{
+  font-family:"Amiri",serif;
+  font-size:26px;
+  margin-bottom:20px;
+  border-bottom:1px solid #d8c7a4;
+  padding-bottom:10px;
 }
 
-.meta a {
-  color: var(--primary);
-  text-decoration: none;
+.article{
+  padding:18px 0;
+  border-bottom:1px solid #e6dbc3;
 }
 
-.arabic {
-  font-size: 2rem;
-  text-align: center;
-  margin: 30px 0;
-  font-family: "Amiri", serif;
+.article:last-child{border-bottom:none}
+
+.article-title a{
+  color:#1a5fb4;
+  font-size:20px;
+  text-decoration:none;
 }
 
-/* SOCIAL BUTTONS */
-.social {
-  margin-top: 40px;
-  display: flex;
-  gap: 14px;
+.article-meta{
+  font-size:14px;
+  color:#6b5a45;
+  margin:6px 0;
 }
 
-.social a {
-  width: 44px;
-  height: 44px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 10px rgba(0,0,0,.35);
-  transition: box-shadow .25s ease;
+.read-more{
+  color:#1a5fb4;
+  text-decoration:none;
 }
 
-.social a:hover {
-  box-shadow: 0 7px 14px rgba(0,0,0,.45);
+/* ================= NAVIGATION (SKEUOMORPHIC) ================= */
+aside{
+  background:linear-gradient(#fbf7ef,#f2e6cf);
+  border:1px solid #e0d3b7;
+  border-radius:14px;
+  padding:18px;
 }
 
-.facebook { background: #3b5998; }
-.twitter { background: #55acee; }
-.instagram { background: #3f729b; }
-.email { background: #4aa3df; }
-
-.social img {
-  width: 20px;
+aside h3{
+  font-family:"Amiri",serif;
+  font-size:18px;
+  margin-bottom:14px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 14px;
-  }
+aside a{
+  display:block;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:6px;
+  background:linear-gradient(#fffdf8,#efe3cd);
+  border:1px solid #d6c4a3;
+  text-decoration:none;
+  color:#1a5fb4;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.8),
+    0 1px 3px rgba(0,0,0,.15);
+  transition:box-shadow .2s;
+}
 
-  .nav-links a {
-    padding: 12px 18px;
-    font-size: 1.05rem;
-  }
+aside a:hover{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 3px 6px rgba(0,0,0,.35);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  margin-top:50px;
+  padding:24px;
+  text-align:center;
+  background:#fdfbf6;
+  border-top:1px solid #d8c7a4;
+  color:#6b5a45;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .container{grid-template-columns:1fr}
+  aside{order:-1}
 }
 </style>
 </head>
@@ -195,56 +225,59 @@ nav {
 <body>
 
 <div class="topbar">
-  <div class="topbar-title">المكتب استبانة</div>
+  <div class="site-brand">استبانة</div>
+  <div class="search-area">
+    <div class="search-box">
+      <input placeholder="Search articles…">
+    </div>
+    <div class="search-icon">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
+    </div>
+  </div>
 </div>
 
 <header>
-  <h1 class="site-title">Al-Istibanah</h1>
+  <div class="header-inner">
+    <div class="header-text">
+      <h1>Al-Istibānah</h1>
+      <p>Preserving Sunni knowledge upon the understanding of the Salaf.</p>
+
+      <div class="social-icons">
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
+        <a href="#"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/mail-xxl.png"></a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<nav>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Articles</a>
-    <a href="#">Categories</a>
-    <a href="#">Latest</a>
+<div class="container">
+<main>
+  <h2>Latest Articles</h2>
+
+  <div class="article">
+    <div class="article-title">
+      <a href="#">The Correct Methodology in Seeking Knowledge</a>
+    </div>
+    <div class="article-meta">Published: 12 Rabīʿ al-Ākhir 1446H</div>
+    <p>A reminder regarding sincerity, patience, and adherence to the Salaf.</p>
+    <a class="read-more" href="#">Read more »</a>
   </div>
+</main>
 
-  <div class="search-wrap">
-    <input type="text" placeholder="Search articles…">
-    <button>
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
-    </button>
-  </div>
-</nav>
+<aside>
+  <h3>Navigation</h3>
+  <a href="#">Home</a>
+  <a href="#">Articles</a>
+  <a href="#">Library</a>
+  <a href="#">About</a>
+</aside>
+</div>
 
-<article class="article">
-  <h2 class="article-title">
-    The Believers’ Love for Allah: Tafsir al-Baghawi
-  </h2>
-
-  <div class="meta">
-    Posted on <strong>December 29, 2025</strong> by
-    <a href="#">Tulayhah</a>
-  </div>
-
-  <p>Allah says in <em>surah al-Baqarah</em>:</p>
-
-  <div class="arabic">
-    وَمِنَ النَّاسِ مَن يَتَّخِذُ مِن دُونِ اللَّهِ أَندَادًا يُحِبُّونَهُمْ كَحُبِّ اللَّهِ وَالَّذِينَ آمَنُوا أَشَدُّ حُبًّا لِّلَّهِ
-  </div>
-
-  <p style="text-align:center;">
-    There are some people who take others besides Allah as rivals… <strong>[2:165]</strong>
-  </p>
-
-  <div class="social">
-    <a class="facebook" href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-    <a class="twitter" href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
-    <a class="instagram" href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-    <a class="email" href="#"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"></a>
-  </div>
-</article>
+<footer>
+© 2025 Al-Istibānah
+</footer>
 
 </body>
 </html>
