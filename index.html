@@ -5,7 +5,8 @@
 <title>Al-Istibānah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Untitled%20design.png">
+<!-- WEBSITE ICON -->
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/icon.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
@@ -52,32 +53,62 @@ header::before{
   z-index:1;
   max-width:1100px;
   margin:auto;
-  padding:36px 20px;
+  padding:40px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:30px;
+  gap:40px;
 }
 
 .header-title{
   display:flex;
   align-items:center;
-  gap:22px;
+  gap:28px;
 }
 
 .header-title img{
-  width:120px;
+  width:160px;
 }
 
 .header-text h1{
   font-family:"Amiri",serif;
-  font-size:44px;
+  font-size:46px;
   color:#3a2b1a;
 }
 
 .header-text p{
   color:#4a3f2f;
-  max-width:600px;
+  max-width:620px;
+  font-size:17px;
+}
+
+/* ================= SEARCH ================= */
+.search-wrapper{
+  max-width:1100px;
+  margin:18px auto 0;
+  padding:0 20px;
+}
+
+.search-box{
+  display:flex;
+  gap:10px;
+}
+
+.search-box input{
+  flex:1;
+  padding:12px 16px;
+  border-radius:10px;
+  border:1px solid #d8c7a4;
+  background:linear-gradient(#fffefb,#efe3cd);
+}
+
+.search-box button{
+  padding:12px 18px;
+  border-radius:10px;
+  border:1px solid #cbb891;
+  background:linear-gradient(#f6eedc,#e2d2ae);
+  cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 4px rgba(0,0,0,.15);
 }
 
 /* ================= SOCIAL ICONS ================= */
@@ -140,6 +171,27 @@ main h2{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 4px rgba(0,0,0,.15);
 }
 
+.article-meta{
+  font-size:14px;
+  color:#6b5a45;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.article-meta img{
+  width:16px;
+}
+
+.article-actions{
+  margin-top:8px;
+}
+
+.article-actions img{
+  width:18px;
+  cursor:pointer;
+}
+
 /* ================= ASIDE ================= */
 aside{
   background:
@@ -156,13 +208,28 @@ aside h3{
   margin:14px 0 10px;
 }
 
-/* Excel-like labels */
-.label-list div{
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
   padding:8px 10px;
   border:1px solid #d6c4a3;
   background:#fffdf8;
   margin-bottom:6px;
-  font-size:14px;
+  transition:box-shadow .2s, transform .2s;
+}
+
+.nav-item img{
+  width:18px;
+}
+
+.nav-item:hover{
+  box-shadow:0 4px 8px rgba(0,0,0,.25);
+  transform:translateY(-1px);
+}
+
+.nav-item:hover img{
+  content:url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Open-Folder-icon.png");
 }
 
 /* ================= FOOTER ================= */
@@ -207,39 +274,39 @@ footer{
   </div>
 </header>
 
+<div class="search-wrapper">
+  <div class="search-box">
+    <input placeholder="Search articles…">
+    <button>Search</button>
+  </div>
+</div>
+
 <div class="container">
 
 <main>
   <h2>Latest Articles</h2>
   <div class="article">
-    <strong>The Correct Methodology in Seeking Knowledge</strong><br>
-    <small>12 Rabīʿ al-Ākhir 1446H</small>
+    <strong>The Correct Methodology in Seeking Knowledge</strong>
+    <div class="article-meta">
+      <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/2226-calendar.png?raw=true">
+      12 Rabīʿ al-Ākhir 1446H
+    </div>
+    <div class="article-actions">
+      <img src="https://github.com/millahibrahim148-ops/almaymunah/blob/main/icon%20image/export-share-icon.webp">
+    </div>
   </div>
 </main>
 
 <aside>
   <h3>Navigation</h3>
-  <div class="label-list">
-    <div>Home</div>
-    <div>Articles</div>
-    <div>Library</div>
-    <div>About</div>
+  <div class="nav-item">
+    <img src="https://www.iconsdb.com/icons/preview/color/383838/folder-7-xxl.png"> Home
   </div>
-
-  <h3>Topics</h3>
-  <div class="label-list">
-    <div>ʿAqīdah</div>
-    <div>Manhaj</div>
-    <div>Fiqh</div>
-    <div>Tazkiyah</div>
-    <div>Refutations</div>
+  <div class="nav-item">
+    <img src="https://www.iconsdb.com/icons/preview/color/383838/folder-7-xxl.png"> Articles
   </div>
-
-  <h3>Recent Posts</h3>
-  <div class="label-list">
-    <div>What is Salafiyyah?</div>
-    <div>The Danger of Innovation</div>
-    <div>Advice to the Student of Knowledge</div>
+  <div class="nav-item">
+    <img src="https://www.iconsdb.com/icons/preview/color/383838/folder-7-xxl.png"> Library
   </div>
 </aside>
 
