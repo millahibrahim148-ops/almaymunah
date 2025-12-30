@@ -24,6 +24,35 @@ body{
   font-weight: 600;
   letter-spacing: .3px;
 }
+  /* Light sweep effect (subtle, scholarly) */
+.sweep{
+  position:relative;
+  overflow:hidden;
+}
+
+.sweep::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.35) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation:sweepLight 7s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes sweepLight{
+  0%{left:-150%}
+  40%{left:150%}
+  100%{left:150%}
+}
+
 
 
 /* ================= TOPBAR ================= */
@@ -278,10 +307,10 @@ footer{
   <div class="header-inner">
     <div class="header-title">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif">
-      <div class="header-text">
-        <h1>Al-Istibānah</h1>
-        <p>Upholding the Athār and the Creed of the Salaf.</p>
-      </div>
+     <div class="header-text sweep">
+  <h1>Al-Istibānah</h1>
+  <p>Upholding the Athār and the Creed of the Salaf.</p>
+</div>
     </div>
 
     <div class="social-icons">
@@ -339,6 +368,7 @@ function searchArticles(){
 
 </body>
 </html>
+
 
 
 
