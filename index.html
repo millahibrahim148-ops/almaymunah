@@ -49,6 +49,11 @@ body{
   background:linear-gradient(#fffefb,#efe3cd);
 }
 
+.search-box input:focus{
+  outline:none;
+  box-shadow:0 0 0 2px rgba(180,140,70,.35);
+}
+
 .search-icon{
   width:36px;
   height:36px;
@@ -163,6 +168,12 @@ main h2{
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #e6dbc3;
   margin-bottom:16px;
+  transition:box-shadow .25s ease, transform .25s ease;
+}
+
+.article:hover{
+  box-shadow:0 6px 14px rgba(0,0,0,.28);
+  transform:translateY(-2px);
 }
 
 .article-title{
@@ -214,6 +225,12 @@ aside h3{
   border-radius:6px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #d6c4a3;
+  transition:box-shadow .2s, transform .2s;
+}
+
+.nav-item:hover{
+  box-shadow:0 4px 8px rgba(0,0,0,.35);
+  transform:translateY(-1px);
 }
 
 /* ================= FOOTER ================= */
@@ -233,7 +250,7 @@ footer{
   <div class="site-brand">استبانة</div>
   <div class="search-area">
     <div class="search-box">
-      <input id="searchInput" placeholder="Search articles…">
+      <input id="searchInput" placeholder="Search articles…" onkeyup="searchArticles()">
     </div>
     <div class="search-icon" onclick="searchArticles()">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
@@ -317,7 +334,7 @@ function renderArticles(list){
       <div class="article-title">${a.title}</div>
       <div class="article-meta">
         <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
-        <span>${hijriDate(a.date)} AH</span>
+        <span>${hijriDate(a.date)}</span>
       </div>
       <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
     `;
@@ -338,10 +355,12 @@ function renderRecent(list){
 
 function searchArticles(){
   const q=document.getElementById("searchInput").value.toLowerCase();
-  renderArticles(articlesData.filter(a =>
-    a.title.toLowerCase().includes(q) ||
-    a.excerpt.toLowerCase().includes(q)
-  ));
+  renderArticles(
+    articlesData.filter(a =>
+      a.title.toLowerCase().includes(q) ||
+      a.excerpt.toLowerCase().includes(q)
+    )
+  );
 }
 </script>
 
