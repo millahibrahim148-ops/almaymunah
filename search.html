@@ -2,22 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Search Results</title>
+<title>Search Results – Al-Istibānah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
 <style>
+/* ===== GLOBAL ===== */
 body{
-  font-family:"Cormorant Garamond", serif;
-  background:#ffffff;
-  color:#111;
   margin:0;
+  font-family:"Cormorant Garamond", serif;
+  background:#fff;
+  color:#111;
 }
 
+/* ===== TOP BAR ===== */
+.top-bar{
+  background:linear-gradient(#fdf7e8,#efe2c6);
+  padding:12px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #d6c7a1;
+}
+
+.top-bar .arabic{
+  font-family:"Amiri", serif;
+  font-size:22px;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box{
+  display:flex;
+  gap:10px;
+}
+
+.search-box input{
+  padding:10px 14px;
+  border-radius:20px;
+  border:1px solid #d6c7a1;
+  font-size:15px;
+  width:260px;
+}
+
+.search-box button{
+  border:none;
+  background:#e8d6b0;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  cursor:pointer;
+}
+
+/* ===== MAIN HEADER ===== */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:40px 60px;
+  background:#faf7f0;
+  border-bottom:1px solid #d6c7a1;
+}
+
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.header-left img{
+  height:110px;
+}
+
+.site-title{
+  font-family:"Amiri", serif;
+  font-size:44px;
+}
+
+.site-desc{
+  font-size:18px;
+  max-width:620px;
+  color:#4a3b27;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.socials{
+  display:flex;
+  gap:14px;
+}
+
+.socials a{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:20px;
+}
+
+.discord{background:#5865F2;}
+.instagram{background:#4aa3df;}
+.youtube{background:#2c4a6e;}
+.telegram{background:#35b7e8;}
+
+/* ===== BACK NAV ===== */
+.nav-back{
+  max-width:1000px;
+  margin:25px auto 0;
+  padding:0 20px;
+}
+
+.nav-back a{
+  font-size:16px;
+  color:#0056d6;
+  text-decoration:none;
+}
+
+.nav-back a:hover{
+  text-decoration:underline;
+}
+
+/* ===== SEARCH RESULTS ===== */
 .container{
   max-width:1000px;
-  margin:40px auto;
+  margin:30px auto;
   padding:0 20px;
 }
 
@@ -40,7 +151,6 @@ h1{
 .result-title{
   font-size:32px;
   line-height:1.25;
-  margin-bottom:6px;
 }
 
 .result-title a{
@@ -54,9 +164,7 @@ h1{
 
 .result-excerpt{
   font-size:18px;
-  color:#222;
-  line-height:1.5;
-  margin-bottom:6px;
+  margin:6px 0;
 }
 
 .result-date{
@@ -68,7 +176,6 @@ h1{
   margin-top:40px;
   display:flex;
   justify-content:space-between;
-  font-size:16px;
 }
 
 .pagination a{
@@ -77,20 +184,6 @@ h1{
 }
 
 .pagination a:hover{
-  text-decoration:underline;
-}
-
-.back-home{
-  margin-top:40px;
-}
-
-.back-home a{
-  color:#0056d6;
-  text-decoration:none;
-  font-size:16px;
-}
-
-.back-home a:hover{
   text-decoration:underline;
 }
 
@@ -103,34 +196,66 @@ h1{
 
 <body>
 
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+  <div class="arabic">استبانة</div>
+  <form class="search-box" action="search.html">
+    <input type="text" name="s" placeholder="Search articles...">
+    <button type="submit">🔍</button>
+  </form>
+</div>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="header-left">
+    <!-- replace src with your logo -->
+    <img src="logo.png" alt="Al-Istibānah">
+    <div>
+      <div class="site-title">Al-Istibānah</div>
+      <div class="site-desc">
+        Upholding the Athār and the Creed of the Salaf — Providing Concise Advices,
+        Translation of Books, Treaties and Gems from the ‘Ulamā and the Salaf
+        «Raḍī Allāhu ‘Anhum»
+      </div>
+    </div>
+  </div>
+
+  <div class="socials">
+    <a class="discord" href="#"></a>
+    <a class="instagram" href="#"></a>
+    <a class="youtube" href="#"></a>
+    <a class="telegram" href="#"></a>
+  </div>
+</div>
+
+<!-- ===== BACK NAV ===== -->
+<div class="nav-back">
+  ← <a href="index.html">Back to Home</a>
+</div>
+
+<!-- ===== RESULTS ===== -->
 <div class="container">
 
   <h1 id="searchTitle">Search Results</h1>
   <div id="searchMeta" class="meta"></div>
 
   <div id="results"></div>
-
   <div class="pagination" id="pagination"></div>
-
-  <div class="back-home">
-    ← <a href="index.html">Back to Home</a>
-  </div>
 
 </div>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const query = params.get("s");
+const startTime = performance.now();
+
+const RESULTS_PER_PAGE = 5;
+let currentPage = parseInt(params.get("page")) || 1;
 
 const titleEl = document.getElementById("searchTitle");
 const metaEl = document.getElementById("searchMeta");
 const resultsEl = document.getElementById("results");
 const paginationEl = document.getElementById("pagination");
-
-const startTime = performance.now();
-
-const RESULTS_PER_PAGE = 5;
-let currentPage = parseInt(params.get("page")) || 1;
 
 if(!query){
   titleEl.textContent = "No search query provided.";
@@ -148,8 +273,8 @@ if(!query){
 
       const totalResults = results.length;
       const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE);
-
       const time = ((performance.now() - startTime) / 1000).toFixed(2);
+
       metaEl.textContent = `About ${totalResults} results (${time} seconds)`;
 
       if(totalResults === 0){
@@ -158,48 +283,32 @@ if(!query){
       }
 
       const start = (currentPage - 1) * RESULTS_PER_PAGE;
-      const paginated = results.slice(start, start + RESULTS_PER_PAGE);
+      const pageItems = results.slice(start, start + RESULTS_PER_PAGE);
 
-      paginated.forEach(article => {
+      pageItems.forEach(article => {
         const div = document.createElement("div");
         div.className = "result";
         div.innerHTML = `
           <div class="result-title">
             <a href="${article.file}">${article.title}</a>
           </div>
-          <div class="result-excerpt">
-            ${article.excerpt}
-          </div>
-          <div class="result-date">
-            ${formatDate(article.date)}
-          </div>
+          <div class="result-excerpt">${article.excerpt}</div>
+          <div class="result-date">${new Date(article.date).toDateString()}</div>
         `;
         resultsEl.appendChild(div);
       });
 
-      // Pagination
-      let paginationHTML = "";
-
+      let nav = "";
       if(currentPage > 1){
-        paginationHTML += `<a href="?s=${encodeURIComponent(query)}&page=${currentPage - 1}">← Previous</a>`;
+        nav += `<a href="?s=${query}&page=${currentPage-1}">← Previous</a>`;
       } else {
-        paginationHTML += `<span></span>`;
+        nav += `<span></span>`;
       }
-
       if(currentPage < totalPages){
-        paginationHTML += `<a href="?s=${encodeURIComponent(query)}&page=${currentPage + 1}">Next →</a>`;
+        nav += `<a href="?s=${query}&page=${currentPage+1}">Next →</a>`;
       }
-
-      paginationEl.innerHTML = paginationHTML;
+      paginationEl.innerHTML = nav;
     });
-}
-
-function formatDate(dateStr){
-  return new Date(dateStr).toLocaleDateString("en-GB", {
-    day:"numeric",
-    month:"long",
-    year:"numeric"
-  });
 }
 </script>
 
