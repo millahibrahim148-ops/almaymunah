@@ -244,6 +244,7 @@ main h2{
   content:"";
   position:absolute;
   inset:0;
+  background-image: var(--bg);
   background-size:cover;
   background-position:center;
   opacity:.25;
@@ -383,6 +384,10 @@ function renderArticles(list){
   .forEach(a=>{
     const d=document.createElement("div");
     d.className = a.image ? "article has-image" : "article";
+    if(a.image){
+  d.style.setProperty("--bg", `url('${a.image}')`);
+}
+
     d.innerHTML=`
       <div class="article-title">${a.title}</div>
       <div class="article-meta">
@@ -419,6 +424,7 @@ document.getElementById("searchInput").addEventListener("keydown",e=>{
 
 </body>
 </html>
+
 
 
 
