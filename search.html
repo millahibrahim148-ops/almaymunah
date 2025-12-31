@@ -10,37 +10,41 @@
 <style>
 body{
   font-family:"Cormorant Garamond", serif;
-  background:#fdfbf6;
-  color:#2a2a2a;
+  background:#ffffff;
+  color:#111;
+  margin:0;
 }
 
 .container{
-  max-width:900px;
+  max-width:1000px;
   margin:40px auto;
-  padding:20px;
+  padding:0 20px;
 }
 
 h1{
   font-family:"Amiri", serif;
-  margin-bottom:20px;
+  margin-bottom:6px;
+}
+
+.meta{
+  font-size:14px;
+  color:#555;
+  margin-bottom:25px;
 }
 
 .result{
-  padding:16px;
-  margin-bottom:14px;
-  border-radius:10px;
-  background:linear-gradient(#fffdf8,#efe3cd);
-  border:1px solid #e6dbc3;
+  padding:20px 0;
+  border-bottom:1px solid #ccc;
 }
 
 .result-title{
-  font-size:22px;
-  color:#1a5fb4;
+  font-size:32px;
+  line-height:1.25;
   margin-bottom:6px;
 }
 
 .result-title a{
-  color:#1a5fb4;
+  color:#0056d6;
   text-decoration:none;
 }
 
@@ -48,15 +52,51 @@ h1{
   text-decoration:underline;
 }
 
+.result-excerpt{
+  font-size:18px;
+  color:#222;
+  line-height:1.5;
+  margin-bottom:6px;
+}
+
 .result-date{
   font-size:14px;
-  color:#6b5a45;
-  margin-bottom:8px;
+  color:#444;
+}
+
+.pagination{
+  margin-top:40px;
+  display:flex;
+  justify-content:space-between;
+  font-size:16px;
+}
+
+.pagination a{
+  color:#0056d6;
+  text-decoration:none;
+}
+
+.pagination a:hover{
+  text-decoration:underline;
+}
+
+.back-home{
+  margin-top:40px;
+}
+
+.back-home a{
+  color:#0056d6;
+  text-decoration:none;
+  font-size:16px;
+}
+
+.back-home a:hover{
+  text-decoration:underline;
 }
 
 .no-result{
   font-style:italic;
-  color:#6b5a45;
+  color:#555;
 }
 </style>
 </head>
@@ -64,8 +104,18 @@ h1{
 <body>
 
 <div class="container">
+
   <h1 id="searchTitle">Search Results</h1>
+  <div id="searchMeta" class="meta"></div>
+
   <div id="results"></div>
+
+  <div class="pagination" id="pagination"></div>
+
+  <div class="back-home">
+    ← <a href="index.html">Back to Home</a>
+  </div>
+
 </div>
 
 <script>
@@ -73,7 +123,14 @@ const params = new URLSearchParams(window.location.search);
 const query = params.get("s");
 
 const titleEl = document.getElementById("searchTitle");
+const metaEl = document.getElementById("searchMeta");
 const resultsEl = document.getElementById("results");
+const paginationEl = document.getElementById("pagination");
+
+const startTime = performance.now();
+
+const RESULTS_PER_PAGE = 5;
+let currentPage = parseInt(params.get("page")) || 1;
 
 if(!query){
   titleEl.textContent = "No search query provided.";
@@ -83,30 +140,57 @@ if(!query){
   fetch("/articles.json")
     .then(res => res.json())
     .then(data => {
+
       const results = data.filter(a =>
         a.title.toLowerCase().includes(query.toLowerCase()) ||
         a.excerpt.toLowerCase().includes(query.toLowerCase())
       );
 
-      if(results.length === 0){
+      const totalResults = results.length;
+      const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE);
+
+      const time = ((performance.now() - startTime) / 1000).toFixed(2);
+      metaEl.textContent = `About ${totalResults} results (${time} seconds)`;
+
+      if(totalResults === 0){
         resultsEl.innerHTML = `<p class="no-result">No results found.</p>`;
         return;
       }
 
-      results
-        .sort((a,b) => new Date(b.date) - new Date(a.date))
-        .forEach(article => {
-          const div = document.createElement("div");
-          div.className = "result";
-          div.innerHTML = `
-            <div class="result-title">
-              <a href="${article.file}">${article.title}</a>
-            </div>
-            <div class="result-date">${formatDate(article.date)}</div>
-            <p>${article.excerpt} <a href="${article.file}">Read more »</a></p>
-          `;
-          resultsEl.appendChild(div);
-        });
+      const start = (currentPage - 1) * RESULTS_PER_PAGE;
+      const paginated = results.slice(start, start + RESULTS_PER_PAGE);
+
+      paginated.forEach(article => {
+        const div = document.createElement("div");
+        div.className = "result";
+        div.innerHTML = `
+          <div class="result-title">
+            <a href="${article.file}">${article.title}</a>
+          </div>
+          <div class="result-excerpt">
+            ${article.excerpt}
+          </div>
+          <div class="result-date">
+            ${formatDate(article.date)}
+          </div>
+        `;
+        resultsEl.appendChild(div);
+      });
+
+      // Pagination
+      let paginationHTML = "";
+
+      if(currentPage > 1){
+        paginationHTML += `<a href="?s=${encodeURIComponent(query)}&page=${currentPage - 1}">← Previous</a>`;
+      } else {
+        paginationHTML += `<span></span>`;
+      }
+
+      if(currentPage < totalPages){
+        paginationHTML += `<a href="?s=${encodeURIComponent(query)}&page=${currentPage + 1}">Next →</a>`;
+      }
+
+      paginationEl.innerHTML = paginationHTML;
     });
 }
 
@@ -118,3 +202,6 @@ function formatDate(dateStr){
   });
 }
 </script>
+
+</body>
+</html>
