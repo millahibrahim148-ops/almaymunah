@@ -185,7 +185,7 @@ footer{
     <div class="search-box">
       <input id="searchInput" placeholder="Search articles…">
     </div>
-    <div class="search-icon" onclick="runSearch()">
+    <div class="search-icon" onclick="submitSearch()">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
     </div>
   </div>
@@ -201,7 +201,7 @@ footer{
       </div>
     </div>
     <div class="social-icons">
-    <a href="https://discord.com/users/1401569195388440637" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/discord-white-icon.webp"></a>
+      <a href="https://discord.com/users/1401569195388440637" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/discord-white-icon.webp"></a>
       <a href="https://www.instagram.com/millah.ibrah1m/" class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
       <a href="https://www.youtube.com/@abuharbah05" class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
       <a href="https://t.me/istibanah_bot" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
@@ -231,7 +231,8 @@ footer{
 let articlesData=[],currentPage=1,perPage=5;
 
 fetch("/articles.json").then(r=>r.json()).then(d=>{
-  articlesData=d;runSearch();
+  articlesData=d;
+  runSearch();
 });
 
 function hijriDate(g){
@@ -239,16 +240,25 @@ function hijriDate(g){
   {day:"numeric",month:"long",year:"numeric"}).format(new Date(g));
 }
 
+function submitSearch(){
+  const q=document.getElementById("searchInput").value.trim();
+  if(!q)return;
+  window.location.href="/search.html?s="+encodeURIComponent(q);
+}
+
 function runSearch(){
   const q=new URLSearchParams(location.search).get("s");
   if(!q)return;
   document.getElementById("searchInput").value=q;
+
   const res=articlesData.filter(a=>
     a.title.toLowerCase().includes(q.toLowerCase())||
     a.excerpt.toLowerCase().includes(q.toLowerCase())
   );
+
   document.getElementById("resultCount").textContent=
     "Showing "+res.length+" article(s)";
+
   render(res,1);
 }
 
@@ -265,24 +275,24 @@ function render(list,page){
       <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>`;
     c.appendChild(d);
   });
-  paginate(list.length);
+  paginate(list.length,list);
 }
 
-function paginate(total){
+function paginate(total,list){
   const p=document.getElementById("pagination");
   p.innerHTML="";
   for(let i=1;i<=Math.ceil(total/perPage);i++){
     const b=document.createElement("button");
     b.textContent=i;
     if(i===currentPage)b.className="active";
-    b.onclick=()=>render(
-      articlesData.filter(a=>a.title.toLowerCase().includes(
-        document.getElementById("searchInput").value.toLowerCase()
-      )),i
-    );
+    b.onclick=()=>render(list,i);
     p.appendChild(b);
   }
 }
+
+document.getElementById("searchInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter")submitSearch();
+});
 </script>
 
 </body>
