@@ -234,6 +234,39 @@ main h2{
 .read-more{color:#1a5fb4}
 .read-more:hover{text-decoration:underline}
 
+  .article.has-image{
+  position:relative;
+  color:#2a2a2a;
+  overflow:hidden;
+}
+
+.article.has-image::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:.25;
+  z-index:0;
+}
+
+.article.has-image > *{
+  position:relative;
+  z-index:1;
+}
+
+.article.has-image .article-title{
+  font-size:26px;
+  font-weight:700;
+}
+
+.article.has-image p{
+  background:rgba(255,255,255,.7);
+  padding:10px;
+  border-radius:6px;
+}
+
+
 /* ================= ASIDE ================= */
 aside{
   background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
@@ -349,7 +382,7 @@ function renderArticles(list){
   list.sort((a,b)=>new Date(b.date)-new Date(a.date))
   .forEach(a=>{
     const d=document.createElement("div");
-    d.className="article";
+    d.className = a.image ? "article has-image" : "article";
     d.innerHTML=`
       <div class="article-title">${a.title}</div>
       <div class="article-meta">
@@ -386,6 +419,7 @@ document.getElementById("searchInput").addEventListener("keydown",e=>{
 
 </body>
 </html>
+
 
 
 
