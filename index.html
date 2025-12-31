@@ -349,14 +349,20 @@ function renderArticles(list){
   .forEach(a=>{
     const d=document.createElement("div");
     d.className="article";
-    d.innerHTML=`
-      <div class="article-title">${a.title}</div>
-      <div class="article-meta">
-        <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
-        <span>${hijriDate(a.date)}</span>
-      </div>
-      <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
-    `;
+   const imageHTML = a.image
+  ? `<img src="${a.image}" class="article-thumb" alt="">`
+  : "";
+
+d.innerHTML = `
+  ${imageHTML}
+  <div class="article-title">${a.title}</div>
+  <div class="article-meta">
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
+    <span>${hijriDate(a.date)}</span>
+  </div>
+  <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
+`;
+
     c.appendChild(d);
   });
 }
@@ -385,6 +391,7 @@ document.getElementById("searchInput").addEventListener("keydown",e=>{
 
 </body>
 </html>
+
 
 
 
