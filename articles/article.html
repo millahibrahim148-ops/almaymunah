@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Article Title – Al-Istibanah</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="icon.png">
+
+<style>
+/* ===== BASE ===== */
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f4ecd8;
+    color: #2b2b2b;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: #e6dcc5;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+
+.social-icons img {
+    width: 22px;
+    margin-left: 8px;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f8f1e3;
+    border-radius: 6px;
+    padding: 4px 6px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box button {
+    border: none;
+    background: #d6c7a1;
+    border-radius: 4px;
+    padding: 4px 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+/* ===== HEADER ===== */
+header {
+    background: url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(244,236,216,0.85);
+}
+
+header * {
+    position: relative;
+}
+
+header img {
+    width: 80px;
+    vertical-align: middle;
+}
+
+header h1 {
+    margin: 10px 0 0;
+    font-size: 36px;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    background: #e2d3b3;
+    padding: 10px;
+    box-shadow: inset 0 -2px 3px rgba(0,0,0,0.25);
+}
+
+nav a {
+    margin-right: 14px;
+    text-decoration: none;
+    color: #2b2b2b;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.25);
+}
+
+nav a:hover {
+    box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #0044aa;
+    text-decoration: none;
+}
+
+/* ===== ARTICLE CONTAINER ===== */
+.article-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #f8f1e3;
+    padding: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+}
+
+/* ===== ARTICLE META ===== */
+.article-meta {
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.article-meta span {
+    margin-right: 14px;
+}
+
+.article-meta a {
+    color: #0044aa;
+    text-decoration: none;
+}
+
+/* ===== ARTICLE CONTENT ===== */
+.article-content h2 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.article-content p {
+    line-height: 1.8;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+/* ===== SHARE ===== */
+.share-box {
+    margin-top: 30px;
+}
+
+.share-box button {
+    padding: 8px 14px;
+    border: none;
+    background: #d6c7a1;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.35);
+    cursor: pointer;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 16px;
+    background: #e6dcc5;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <div class="search-box">
+        <input type="text" placeholder="Search articles...">
+        <button>
+            <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search.png" width="14">
+        </button>
+    </div>
+
+    <div class="social-icons">
+        <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png">
+        <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp">
+        <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp">
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif">
+    <h1>Al-Istibanah</h1>
+</header>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">Categories</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a> ›
+    <a href="#">Articles</a> ›
+    Article Title
+</div>
+
+<!-- ARTICLE -->
+<div class="article-container">
+
+    <div class="article-meta">
+        <span>📅 12 Ramadan 1446</span>
+        <span>🏷 Aqeedah</span>
+        <span>✍ <a href="#">Abu Khattab</a></span>
+    </div>
+
+    <div class="article-content">
+        <h2>Article Title Goes Here</h2>
+
+        <p>
+            This is where the article content begins.  
+            You can freely write long-form content here, quotes, evidences,
+            explanations, and structured knowledge.
+        </p>
+
+        <p>
+            This template is intentionally calm, readable, and scholarly —
+            suitable for libraries, research, and Islamic articles.
+        </p>
+    </div>
+
+    <div class="share-box">
+        <button>Share Article</button>
+    </div>
+
+</div>
+
+<footer>
+    © Al-Istibanah
+</footer>
+
+</body>
+</html>
