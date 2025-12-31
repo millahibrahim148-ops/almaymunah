@@ -17,30 +17,27 @@ body{
   color:#2a2a2a;
 }
 
-/* ================= SEARCH ================= */
-.search-area{
-  display:flex;
-  align-items:center;
-  gap:10px;
+/* ================= SWEEP ================= */
+.sweep{position:relative;overflow:hidden}
+.sweep::after{
+  content:"";
+  position:absolute;
+  top:-40%;left:-120%;
+  width:60%;height:200%;
+  background:linear-gradient(120deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.15),
+    rgba(255,255,255,.9),
+    rgba(255,255,255,.15),
+    rgba(255,255,255,0)
+  );
+  transform:skewX(-18deg);
+  animation:sweep 6s infinite;
 }
-.search-box input{
-  padding:10px 14px;
-  border-radius:10px;
-  border:1px solid #d8c7a4;
-  background:linear-gradient(#fffefb,#efe3cd);
+@keyframes sweep{
+  0%{left:-120%}
+  45%,100%{left:120%}
 }
-.search-icon{
-  width:36px;
-  height:36px;
-  border-radius:10px;
-  background:linear-gradient(#f6eedc,#e2d2ae);
-  border:1px solid #cbb891;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-}
-.search-icon img{width:16px}
 
 /* ================= TOPBAR ================= */
 .topbar{
@@ -56,16 +53,28 @@ body{
   font-size:26px;
   color:#3a2b1a;
 }
+.search-area{display:flex;gap:10px}
+.search-box input{
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #d8c7a4;
+  background:linear-gradient(#fffefb,#efe3cd);
+}
+.search-icon{
+  width:36px;height:36px;
+  border-radius:10px;
+  background:linear-gradient(#f6eedc,#e2d2ae);
+  border:1px solid #cbb891;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.search-icon img{width:16px}
 
 /* ================= HEADER ================= */
-header{
-  position:relative;
-  border-bottom:1px solid #cbb891;
-}
+header{position:relative;border-bottom:1px solid #cbb891}
 header::before{
   content:"";
-  position:absolute;
-  inset:0;
+  position:absolute;inset:0;
   background:url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover no-repeat;
   opacity:.18;
 }
@@ -74,22 +83,53 @@ header::before{
   max-width:1100px;
   margin:auto;
   padding:40px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.header-inner h1{
+.header-title{
+  display:flex;
+  gap:26px;
+  align-items:center;
+}
+.header-title img{width:220px}
+.header-text h1{
   font-family:"Playfair Display",serif;
   font-size:46px;
   color:#3a2b1a;
 }
+.header-text p{color:#4a3f2f}
 
-/* ================= LAYOUT ================= */
-.container{
-  max-width:1150px;
-  margin:40px auto;
-  padding:0 20px;
-  display:grid;
-  grid-template-columns:1fr 260px;
-  gap:30px;
+/* ================= SOCIAL ================= */
+.social-icons{display:flex;gap:8px}
+.social-icons a{
+  width:44px;height:44px;
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 4px rgba(0,0,0,.25);
 }
+.social-icons img{width:22px}
+.social-fb{background:#5b7bd5}
+.social-tw{background:#5fc0eb}
+.social-ig{background:#3f658a}
+.social-mail{background:#39b4e3}
+
+/* ================= CONTENT ================= */
+.container{
+  max-width:900px;
+  margin:30px auto;
+  padding:0 20px;
+}
+
+.back-home{
+  margin-bottom:14px;
+}
+.back-home a{
+  text-decoration:none;
+  color:#1a5fb4;
+  font-size:15px;
+}
+.back-home a:hover{text-decoration:underline}
 
 main{
   background:linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
@@ -108,15 +148,12 @@ main{
 }
 .article-title{color:#1a5fb4;font-size:22px}
 .article-meta{font-size:14px;color:#6b5a45}
-
 .read-more{color:#1a5fb4;text-decoration:none}
 .read-more:hover{text-decoration:underline}
 
 /* ================= PAGINATION ================= */
 .pagination{
-  display:flex;
-  gap:8px;
-  margin-top:20px;
+  display:flex;gap:8px;margin-top:20px
 }
 .pagination button{
   padding:6px 12px;
@@ -126,27 +163,8 @@ main{
   cursor:pointer;
 }
 .pagination button.active{
-  background:#e2d2ae;
-  font-weight:bold;
+  background:#e2d2ae;font-weight:bold
 }
-
-/* ================= ASIDE ================= */
-aside{
-  background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
-  url("https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/image.png") center/cover;
-  border:1px solid #e0d3b7;
-  border-radius:14px;
-  padding:18px;
-}
-.nav-item{
-  padding:12px;
-  border-radius:6px;
-  background:linear-gradient(#fffdf8,#efe3cd);
-  border:1px solid #d6c4a3;
-  cursor:pointer;
-  text-align:center;
-}
-.nav-item:hover{box-shadow:0 4px 8px rgba(0,0,0,.25)}
 
 /* ================= FOOTER ================= */
 footer{
@@ -154,13 +172,13 @@ footer{
   padding:24px;
   text-align:center;
   border-top:1px solid #d8c7a4;
+  color:#6b5a45;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="site-brand">استبانة</div>
   <div class="search-area">
@@ -175,21 +193,33 @@ footer{
 
 <header>
   <div class="header-inner">
-    <h1>Search Results</h1>
+    <div class="header-title">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/1228%20(1).gif">
+      <div class="header-text sweep">
+        <h1>Al-Istibānah</h1>
+        <p>Search results for articles</p>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/discord-white-icon.webp"></a>
+      <a class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
+      <a class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
+      <a class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
+    </div>
   </div>
 </header>
 
 <div class="container">
+
+<div class="back-home">
+  <a href="/">← Back to Home</a>
+</div>
 
 <main>
   <p id="resultCount" style="margin-bottom:20px;color:#6b5a45;"></p>
   <div id="articlesList"></div>
   <div class="pagination" id="pagination"></div>
 </main>
-
-<aside>
-  <div class="nav-item" onclick="location.href='/'">← Go Back Home</div>
-</aside>
 
 </div>
 
@@ -198,75 +228,57 @@ footer{
 </footer>
 
 <script>
-let articlesData=[];
-let currentPage=1;
-const perPage=5;
+let articlesData=[],currentPage=1,perPage=5;
 
-fetch("/articles.json")
-.then(r=>r.json())
-.then(d=>{
-  articlesData=d;
-  runSearch();
+fetch("/articles.json").then(r=>r.json()).then(d=>{
+  articlesData=d;runSearch();
 });
 
 function hijriDate(g){
-  return new Intl.DateTimeFormat("en-TN-u-ca-islamic",{
-    day:"numeric",month:"long",year:"numeric"
-  }).format(new Date(g));
+  return new Intl.DateTimeFormat("en-TN-u-ca-islamic",
+  {day:"numeric",month:"long",year:"numeric"}).format(new Date(g));
 }
 
 function runSearch(){
   const q=new URLSearchParams(location.search).get("s");
   if(!q)return;
-
   document.getElementById("searchInput").value=q;
-
-  const results=articlesData.filter(a=>
-    a.title.toLowerCase().includes(q.toLowerCase()) ||
+  const res=articlesData.filter(a=>
+    a.title.toLowerCase().includes(q.toLowerCase())||
     a.excerpt.toLowerCase().includes(q.toLowerCase())
   );
-
-  document.getElementById("resultCount").textContent =
-    "Showing " + results.length + " article(s)";
-
-  renderPage(results,1);
+  document.getElementById("resultCount").textContent=
+    "Showing "+res.length+" article(s)";
+  render(res,1);
 }
 
-function renderPage(list,page){
+function render(list,page){
   currentPage=page;
-  const start=(page-1)*perPage;
-  const slice=list.slice(start,start+perPage);
-
   const c=document.getElementById("articlesList");
   c.innerHTML="";
-  slice.forEach(a=>{
+  list.slice((page-1)*perPage,page*perPage).forEach(a=>{
     const d=document.createElement("div");
     d.className="article";
     d.innerHTML=`
       <div class="article-title">${a.title}</div>
       <div class="article-meta">${hijriDate(a.date)}</div>
-      <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
-    `;
+      <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>`;
     c.appendChild(d);
   });
-
-  renderPagination(list.length);
+  paginate(list.length);
 }
 
-function renderPagination(total){
+function paginate(total){
   const p=document.getElementById("pagination");
   p.innerHTML="";
-  const pages=Math.ceil(total/perPage);
-  for(let i=1;i<=pages;i++){
+  for(let i=1;i<=Math.ceil(total/perPage);i++){
     const b=document.createElement("button");
     b.textContent=i;
     if(i===currentPage)b.className="active";
-    b.onclick=()=>renderPage(
-      articlesData.filter(a=>
-        a.title.toLowerCase().includes(
-          document.getElementById("searchInput").value.toLowerCase()
-        )
-      ),i
+    b.onclick=()=>render(
+      articlesData.filter(a=>a.title.toLowerCase().includes(
+        document.getElementById("searchInput").value.toLowerCase()
+      )),i
     );
     p.appendChild(b);
   }
