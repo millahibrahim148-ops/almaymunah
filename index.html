@@ -5,8 +5,9 @@
 <title>Al-Istibānah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/Untitled%20design.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -16,80 +17,39 @@ body{
   background:#fdfbf6;
   color:#2a2a2a;
 }
-  .read-more {
-  text-decoration: none;   /* remove underline normally */
-  color: #1a5fb4;
-}
 
-.read-more:hover {
-  text-decoration: underline;  /* underline ONLY on hover */
-}
-  /* Hard bending light sweep */
-.sweep{
-  position:relative;
-  overflow:hidden;
-}
-
-.sweep::after{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-120%;
-  width:60%;
-  height:200%;
-  background:linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.15) 30%,
-    rgba(255,255,255,0.9) 50%,
-    rgba(255,255,255,0.15) 70%,
-    rgba(255,255,255,0) 100%
-  );
-  transform:skewX(-18deg);
-  animation:hardSweep 6s cubic-bezier(.4,0,.2,1) infinite;
-  pointer-events:none;
-}
-@keyframes hardSweep{
-  0%{
-    left:-120%;
-  }
-  45%{
-    left:120%;
-  }
-  100%{
-    left:120%;
-  }
-}
-.article-thumb {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-
-
-
-/* ================= SEARCH EXPAND ================= */
+/* ================= SEARCH ================= */
 .search-box{
   display:flex;
   align-items:center;
-  gap:10px;
-  transition:width .35s ease;
 }
 .search-box input{
   width:240px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #d8c7a4;
+  background:linear-gradient(#fffefb,#efe3cd);
   transition:width .35s ease;
 }
 .search-box:hover input,
+.search-box input:focus{width:340px}
 .search-box input:focus{
-  width:340px;
+  outline:none;
+  box-shadow:0 0 0 2px rgba(180,140,70,.35);
 }
-@media(max-width:600px){
-  .search-box input{width:180px}
-  .search-box:hover input,
-  .search-box input:focus{width:220px}
+.search-icon{
+  margin-left:10px;
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:linear-gradient(#f6eedc,#e2d2ae);
+  border:1px solid #cbb891;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
 }
+.search-icon img{width:16px}
 
 /* ================= TOPBAR ================= */
 .topbar{
@@ -105,29 +65,6 @@ body{
   font-size:26px;
   color:#3a2b1a;
 }
-.search-area{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.search-box input{
-  padding:10px 14px;
-  border-radius:10px;
-  border:1px solid #d8c7a4;
-  background:linear-gradient(#fffefb,#efe3cd);
-}
-.search-icon{
-  width:36px;
-  height:36px;
-  border-radius:10px;
-  background:linear-gradient(#f6eedc,#e2d2ae);
-  border:1px solid #cbb891;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-}
-.search-icon img{width:16px}
 
 /* ================= HEADER ================= */
 header{
@@ -149,6 +86,7 @@ header::before{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:30px;
 }
 .header-title{
   display:flex;
@@ -156,10 +94,28 @@ header::before{
   align-items:center;
 }
 .header-title img{width:220px}
+
+/* ==== SWEEP ANIMATION FIXED ==== */
 .header-text h1{
-  font-family:"Playfair Display","Cormorant Garamond",serif;
+  font-family:"Playfair Display",serif;
   font-size:46px;
   color:#3a2b1a;
+  position:relative;
+  overflow:hidden;
+}
+.header-text h1::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.85),transparent);
+  animation:sweep 6s infinite;
+}
+@keyframes sweep{
+  0%{left:-150%}
+  100%{left:150%}
 }
 .header-text p{color:#4a3f2f}
 
@@ -183,10 +139,10 @@ header::before{
   transform:translateY(-1px);
 }
 .social-icons img{width:22px}
-.social-fb{background:#5b7bd5}
-.social-tw{background:#5fc0eb}
-.social-ig{background:#3f658a}
-.social-mail{background:#39b4e3}
+.social-fb{background:#5b7bd5;}
+.social-tw{background:#5fc0eb;}
+.social-ig{background:#3f658a;}
+.social-mail{background:#39b4e3;}
 
 /* ================= LAYOUT ================= */
 .container{
@@ -211,33 +167,66 @@ main h2{
   font-size:26px;
   margin-bottom:20px;
   border-bottom:1px solid #d8c7a4;
+  padding-bottom:10px;
 }
+
+/* ==== ARTICLE CARD WITH IMAGE OVERLAY ==== */
 .article{
-  padding:18px;
-  border-radius:10px;
-  background:linear-gradient(#fffdf8,#efe3cd);
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:18px;
+  background:#fff;
   border:1px solid #e6dbc3;
-  margin-bottom:16px;
-  transition:box-shadow .25s,transform .25s;
+  transition:box-shadow .25s, transform .25s;
 }
 .article:hover{
   box-shadow:0 6px 14px rgba(0,0,0,.28);
   transform:translateY(-2px);
 }
-.article-title{
-  color:#1a5fb4;
-  font-size:22px;
+
+.article-image{
+  position:relative;
 }
-.article-title:hover{text-decoration:underline}
+.article-image img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+}
+.article-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.15),transparent);
+}
+.article-text{
+  position:absolute;
+  bottom:16px;
+  left:16px;
+  right:16px;
+  color:#fff;
+}
+.article-title{
+  font-size:24px;
+  color:#fff;
+}
+.article-title:hover{text-decoration:underline;cursor:pointer}
+
 .article-meta{
   display:flex;
   align-items:center;
   gap:6px;
   font-size:14px;
-  color:#6b5a45;
+  opacity:.9;
 }
 .article-meta img{width:14px}
-.read-more{color:#1a5fb4}
+
+.article-content{
+  padding:18px;
+}
+.read-more{
+  color:#1a5fb4;
+  text-decoration:none;
+}
 .read-more:hover{text-decoration:underline}
 
 /* ================= ASIDE ================= */
@@ -248,14 +237,17 @@ aside{
   border-radius:14px;
   padding:18px;
 }
-aside h3{font-family:"Amiri",serif}
+aside h3{
+  font-family:"Amiri",serif;
+  margin:14px 0 10px;
+}
 .nav-item{
   padding:10px;
   margin-bottom:8px;
   border-radius:6px;
   background:linear-gradient(#fffdf8,#efe3cd);
   border:1px solid #d6c4a3;
-  transition:box-shadow .2s,transform .2s;
+  transition:box-shadow .2s, transform .2s;
 }
 .nav-item:hover{
   box-shadow:0 4px 8px rgba(0,0,0,.35);
@@ -277,10 +269,8 @@ footer{
 
 <div class="topbar">
   <div class="site-brand">استبانة</div>
-  <div class="search-area">
-    <div class="search-box">
-      <input id="searchInput" placeholder="Search articles…">
-    </div>
+  <div class="search-box">
+    <input id="searchInput" placeholder="Search articles…">
     <div class="search-icon" onclick="searchArticles()">
       <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/search-magnifying-glass-white-icon.webp">
     </div>
@@ -290,22 +280,24 @@ footer{
 <header>
   <div class="header-inner">
     <div class="header-title">
-      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/1228%20(1).gif">
+      <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/1228(1).gif">
       <div class="header-text">
         <h1>Al-Istibānah</h1>
-        <p>Upholding the Athār and the Creed of the Salaf — Providing Concise Advices, Translation of Books Treaties And Gems from the 'Ulamā and the Salaf «Radī Allahu ʿAnhum»</p>
+        <p>Upholding the Athār and the Creed of the Salaf.</p>
       </div>
     </div>
+
     <div class="social-icons">
-      <a href="https://discord.com/users/1401569195388440637" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/discord-white-icon.webp"></a>
-      <a href="https://www.instagram.com/millah.ibrah1m/" class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
-      <a href="https://www.youtube.com/@abuharbah05" class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
-      <a href="https://t.me/istibanah_bot" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
+      <a href="#" class="social-fb"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/Al-Istibanah/refs/heads/main/icon%20image/discord-white-icon.webp"></a>
+      <a href="#" class="social-tw"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/instagram-white-icon.webp"></a>
+      <a href="#" class="social-ig"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/youtube-app-white-icon.webp"></a>
+      <a href="#" class="social-mail"><img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/telegram-xxl.png"></a>
     </div>
   </div>
 </header>
 
 <div class="container">
+
 <main>
   <h2>Latest Articles</h2>
   <div id="articlesList"></div>
@@ -317,15 +309,13 @@ footer{
   <div class="nav-item">Articles</div>
   <div class="nav-item">Library</div>
 
-  <h3>Recent Articles</h3>
-  <div id="recentArticles"></div>
-
   <h3>Topics</h3>
   <div class="nav-item">ʿAqīdah</div>
   <div class="nav-item">Manhaj</div>
   <div class="nav-item">Fiqh</div>
   <div class="nav-item">Tazkiyah</div>
 </aside>
+
 </div>
 
 <footer>
@@ -340,83 +330,47 @@ fetch("/articles.json")
 .then(d=>{
   articlesData=d;
   renderArticles(d);
-  renderRecent(d);
 });
 
 function hijriDate(g){
-  return new Intl.DateTimeFormat("en-TN-u-ca-islamic",{
-    day:"numeric",month:"long",year:"numeric"
-  }).format(new Date(g));
+  return new Intl.DateTimeFormat("en-TN-u-ca-islamic",{day:"numeric",month:"long",year:"numeric"}).format(new Date(g));
 }
 
 function renderArticles(list){
   const c=document.getElementById("articlesList");
   c.innerHTML="";
-  list.sort((a,b)=>new Date(b.date)-new Date(a.date))
-  .forEach(a=>{
+  list.forEach(a=>{
     const d=document.createElement("div");
     d.className="article";
-   const imageHTML = a.image
-  ? `<img src="${a.image}" class="article-thumb" alt="">`
-  : "";
 
-d.innerHTML = `
-  ${imageHTML}
-  <div class="article-title">${a.title}</div>
-  <div class="article-meta">
-    <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
-    <span>${hijriDate(a.date)}</span>
-  </div>
-  <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
-`;
+    const imageHTML = a.image ? `
+      <div class="article-image">
+        <img src="${a.image}">
+        <div class="article-overlay"></div>
+        <div class="article-text">
+          <div class="article-title">${a.title}</div>
+          <div class="article-meta">
+            <img src="https://raw.githubusercontent.com/millahibrahim148-ops/almaymunah/refs/heads/main/icon%20image/2226-calendar.png">
+            <span>${hijriDate(a.date)}</span>
+          </div>
+        </div>
+      </div>` : "";
 
+    d.innerHTML = `
+      ${imageHTML}
+      <div class="article-content">
+        <p>${a.excerpt} <a class="read-more" href="${a.file}">Read more »</a></p>
+      </div>
+    `;
     c.appendChild(d);
-  });
-}
-
-function renderRecent(list){
-  const r=document.getElementById("recentArticles");
-  r.innerHTML="";
-  list.slice(0,5).forEach(a=>{
-    const d=document.createElement("div");
-    d.className="nav-item";
-    d.textContent=a.title;
-    r.appendChild(d);
   });
 }
 
 function searchArticles(){
   const q=document.getElementById("searchInput").value.trim();
-  if(!q)return;
-  window.location.href="/search.html?s="+encodeURIComponent(q);
+  if(q) window.location.href="/search.html?s="+encodeURIComponent(q);
 }
-
-document.getElementById("searchInput").addEventListener("keydown",e=>{
-  if(e.key==="Enter")searchArticles();
-});
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
